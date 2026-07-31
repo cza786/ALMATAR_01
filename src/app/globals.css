@@ -2273,6 +2273,15 @@ textarea.form-control {
   }
 }
 
+@media (max-width: 991px) {
+  .top-header-fullwidth {
+    padding: 0 1rem !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-tabs-grid {
     display: flex !important;
@@ -2306,26 +2315,34 @@ textarea.form-control {
     width: 22px;
   }
 
+  /* Specialized Oilfield Portfolio: Keep Row-Wise Layout on Mobile */
   .luxurious-accordion-grid {
-    flex-direction: column;
-    height: auto;
-    gap: 14px;
+    flex-direction: row !important;
+    display: flex !important;
+    overflow-x: auto !important;
+    height: 480px !important;
+    gap: 12px !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.5rem;
   }
 
   .luxurious-card-item {
-    transform: skewX(0deg);
-    min-height: 220px;
-    border-radius: 16px;
+    flex: 0 0 82vw !important;
+    scroll-snap-align: center;
+    transform: skewX(0deg) !important;
+    height: 100% !important;
+    border-radius: 18px !important;
   }
 
   .luxurious-card-item:hover,
   .luxurious-card-item.expanded {
-    min-height: 380px;
+    flex: 0 0 88vw !important;
   }
 
   .lux-bg-wrapper,
   .lux-card-inner {
-    transform: skewX(0deg);
+    transform: skewX(0deg) !important;
   }
 
   .lux-card-inner {
