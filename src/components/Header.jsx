@@ -11,8 +11,10 @@ export default function Header({ onOpenDrawer }) {
   return (
     <header className="top-header">
       <div className="top-header-main">
-        <div className="container top-header-inner">
-          {/* Text Brand Navigation */}
+        {/* Full-width container to push Brand Text to far-left and Get In Touch button to far-right */}
+        <div className="top-header-fullwidth">
+          
+          {/* Brand Text Navigation (Most Left) */}
           <div className="brand-text-nav">
             <Link href="/" className="brand-title-link">
               <span className="brand-title">ALMATAR</span>
@@ -20,6 +22,7 @@ export default function Header({ onOpenDrawer }) {
             </Link>
           </div>
 
+          {/* Centered Main Navigation Links */}
           <nav className="main-nav" aria-label="Main Navigation">
             <Link href="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>Home</Link>
             <Link href="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`}>About</Link>
@@ -33,7 +36,7 @@ export default function Header({ onOpenDrawer }) {
                 </svg>
               </Link>
               
-              {/* Dropdown Menu matching user screenshot */}
+              {/* Dropdown Menu */}
               <div className="nav-dropdown-menu">
                 <div className="dropdown-header-bar">
                   <span className="dropdown-header-text">Services Portfolio</span>
@@ -58,6 +61,7 @@ export default function Header({ onOpenDrawer }) {
             <Link href="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`}>Contact</Link>
           </nav>
 
+          {/* Header Actions: Get In Touch Button (Most Right) */}
           <div className="header-actions">
             <Link href="/contact" className="btn-contact-header">Get In Touch</Link>
             <button className="drawer-toggle-btn desktop-hide" onClick={onOpenDrawer} aria-label="Open Side Drawer">
@@ -68,6 +72,7 @@ export default function Header({ onOpenDrawer }) {
               </svg>
             </button>
           </div>
+
         </div>
       </div>
     </header>

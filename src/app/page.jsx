@@ -3,11 +3,12 @@
 import Link from 'next/link';
 import HeroCarousel from '@/components/HeroCarousel';
 import SlantedPortfolioAccordion from '@/components/SlantedPortfolioAccordion';
+import NextPageBanner from '@/components/NextPageBanner';
 
 export default function Home() {
   return (
     <>
-      {/* Top Dynamic Aramco Hero Carousel Header */}
+      {/* Top Dynamic Hero Carousel Header */}
       <HeroCarousel />
 
       <div className="container" style={{ paddingTop: '3rem', paddingBottom: '1rem' }}>
@@ -34,8 +35,16 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Slanted Diagonal Flex Accordion Portfolio Section (Under Hero Section) */}
+      {/* Slanted Diagonal Flex Accordion Portfolio Section */}
       <SlantedPortfolioAccordion />
+
+      {/* Next Page Navigation Banner */}
+      <NextPageBanner
+        title="About us"
+        subtitle="Learn more"
+        link="/about"
+        bgImage="/images/banner_about_corporate.png"
+      />
     </>
   );
 }

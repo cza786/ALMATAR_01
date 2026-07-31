@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import NextPageBanner from '@/components/NextPageBanner';
 
 export default function WellServicesPage() {
   const [selectedService, setSelectedService] = useState(null);
@@ -189,7 +190,8 @@ export default function WellServicesPage() {
   ];
 
   return (
-    <div className="container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
+    <>
+      <div className="container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
       
       {/* Header Banner */}
       <div className="static-page-banner" style={{ marginBottom: '2.5rem' }}>
@@ -270,5 +272,14 @@ export default function WellServicesPage() {
       )}
 
     </div>
+
+      {/* Next Page Navigation Banner */}
+      <NextPageBanner
+        title="Drilling & Fluids"
+        subtitle="Learn more"
+        link="/drilling-fluids"
+        bgImage="/images/banner_drilling_hero.png"
+      />
+    </>
   );
 }
