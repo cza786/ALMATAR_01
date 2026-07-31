@@ -2,15 +2,15 @@
 
 import Link from 'next/link';
 import HeroCarousel from '@/components/HeroCarousel';
+import SlantedPortfolioAccordion from '@/components/SlantedPortfolioAccordion';
 
 export default function Home() {
   return (
     <>
-      {/* Dynamic Aramco Hero Carousel */}
+      {/* Top Dynamic Aramco Hero Carousel Header */}
       <HeroCarousel />
 
-      <div className="container" style={{ paddingTop: '3rem' }}>
-        
+      <div className="container" style={{ paddingTop: '3rem', paddingBottom: '1rem' }}>
         {/* Main Intro Card */}
         <div className="about-hero-card">
           <div className="about-split-grid">
@@ -32,8 +32,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-
       </div>
+
+      {/* Slanted Diagonal Flex Accordion Portfolio Section (Under Hero Section) */}
+      <SlantedPortfolioAccordion />
     </>
   );
 }
