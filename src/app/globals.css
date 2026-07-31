@@ -165,6 +165,101 @@ button {
   background-color: var(--accent-cyan);
 }
 
+/* --- COLLAPSIBLE SERVICES DROPDOWN (DESKTOP) --- */
+.nav-item-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dropdown-chevron {
+  margin-left: 4px;
+  transition: transform 0.3s ease;
+}
+
+.nav-item-dropdown:hover .dropdown-chevron {
+  transform: rotate(180deg);
+  color: var(--accent-cyan);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: -10px;
+  min-width: 270px;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 163, 224, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.96);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.nav-item-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.dropdown-header-bar {
+  background: #1e293b;
+  padding: 0.85rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dropdown-header-text {
+  color: var(--accent-cyan);
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.dropdown-icon-indicator {
+  color: var(--accent-cyan);
+  font-size: 0.8rem;
+}
+
+.dropdown-links-list {
+  padding: 0.4rem 0;
+  position: relative;
+  background: #0a0f1d;
+}
+
+.dropdown-links-list::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12px;
+  width: 2px;
+  height: 100%;
+  background: var(--accent-cyan);
+}
+
+.dropdown-link-item {
+  display: block;
+  padding: 0.7rem 1.2rem 0.7rem 1.8rem;
+  color: #e2e8f0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.dropdown-link-item:hover {
+  color: var(--accent-gold);
+  background: rgba(255, 255, 255, 0.06);
+  padding-left: 2.2rem;
+}
+
 .header-actions {
   display: flex;
   align-items: center;
@@ -197,6 +292,40 @@ button {
   align-items: center;
   justify-content: center;
   transition: var(--transition);
+}
+
+/* Hide side drawer toggle button on Desktop viewports (> 992px) */
+@media (min-width: 992px) {
+  .drawer-toggle-btn.desktop-hide,
+  .drawer-toggle-btn {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   SMOOTH 3D POP-UP EFFECT FOR CARDS ACROSS ALL PAGES
+   ========================================================================== */
+.solid-card,
+.icon-service-card,
+.about-hero-card,
+.vm-box,
+.service-detail-drawer,
+.contact-info-card,
+.contact-form-card {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+  will-change: transform, box-shadow;
+}
+
+.solid-card:hover,
+.icon-service-card:hover,
+.about-hero-card:hover,
+.vm-box:hover,
+.service-detail-drawer:hover,
+.contact-info-card:hover,
+.contact-form-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18), 0 0 25px rgba(217, 119, 6, 0.3);
+  border-color: var(--accent-gold);
 }
 
 .drawer-toggle-btn:hover {
@@ -612,8 +741,28 @@ button {
 }
 
 .hero-tab-item.active {
-  color: var(--accent-cyan);
-  background-color: rgba(0, 163, 224, 0.1);
+  color: var(--accent-gold);
+  background-color: rgba(217, 119, 6, 0.12);
+}
+
+.tab-label-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.tab-dot-mini {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.hero-tab-item.active .tab-dot-mini {
+  background: var(--accent-gold);
+  box-shadow: 0 0 8px var(--accent-gold);
 }
 
 .progress-track {
@@ -627,7 +776,8 @@ button {
 
 .progress-fill {
   height: 100%;
-  background-color: var(--accent-cyan);
+  background-color: var(--accent-gold);
+  box-shadow: 0 0 8px var(--accent-gold);
   width: 100%;
   animation: progressFill 6s linear forwards;
 }
@@ -635,6 +785,100 @@ button {
 @keyframes progressFill {
   0% { width: 0%; }
   100% { width: 100%; }
+}
+
+/* ==========================================================================
+   CAROUSEL INDICATORS / SLIDER DOTS & ORANGE PROGRESS LINE PAGINATION
+   ========================================================================== */
+.hero-carousel-pagination {
+  position: absolute;
+  bottom: 5rem;
+  right: 4rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(10, 15, 29, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.pagination-item {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.3rem 0.2rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transition: all 0.35s ease;
+}
+
+.pagination-item:hover .indicator-dot,
+.pagination-item.active .indicator-dot {
+  background: var(--accent-gold);
+  box-shadow: 0 0 12px var(--accent-gold);
+  transform: scale(1.3);
+}
+
+.indicator-line-track {
+  width: 32px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.indicator-line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--accent-gold);
+  box-shadow: 0 0 8px var(--accent-gold);
+  animation: progressLineFill 6s linear forwards;
+}
+
+@keyframes progressLineFill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.indicator-number {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #9ca3af;
+  font-family: var(--font-family);
+  transition: color 0.3s ease;
+}
+
+.pagination-item.active .indicator-number {
+  color: var(--accent-gold);
+}
+
+@media (max-width: 768px) {
+  .hero-carousel-pagination {
+    bottom: 4.5rem;
+    right: 1.5rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .indicator-line-track {
+    width: 20px;
+  }
 }
 
 /* --- LUXURIOUS SLANTED DIAGONAL ACCORDION WITH LINE-BY-LINE ANIMATIONS --- */
@@ -1588,31 +1832,31 @@ button {
   transition: all 0.35s ease;
 }
 
-/* --- BLUISH HOVER EFFECT (AS REQUESTED) --- */
+/* --- GOLDEN HOVER EFFECT (LOGO BRAND COLOR) --- */
 .icon-service-card:hover,
 .icon-service-card.active-selected {
-  background: linear-gradient(135deg, rgba(0, 163, 224, 0.08) 0%, rgba(0, 163, 224, 0.18) 100%);
-  border-color: #00a3e0;
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 163, 224, 0.22), inset 0 0 15px rgba(0, 163, 224, 0.08);
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, rgba(217, 119, 6, 0.18) 100%);
+  border-color: var(--accent-gold);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 14px 35px rgba(217, 119, 6, 0.28), inset 0 0 15px rgba(217, 119, 6, 0.1);
 }
 
 .icon-service-card:hover .card-top-accent,
 .icon-service-card.active-selected .card-top-accent {
-  background: #00a3e0;
-  box-shadow: 0 0 10px #00a3e0;
+  background: var(--accent-gold);
+  box-shadow: 0 0 12px var(--accent-gold);
 }
 
 .icon-service-card:hover .icon-wrapper,
 .icon-service-card.active-selected .icon-wrapper {
-  color: #00a3e0;
-  transform: scale(1.12);
-  filter: drop-shadow(0 4px 10px rgba(0, 163, 224, 0.4));
+  color: var(--accent-gold);
+  transform: scale(1.14);
+  filter: drop-shadow(0 4px 12px rgba(217, 119, 6, 0.45));
 }
 
 .icon-service-card:hover .icon-card-title,
 .icon-service-card.active-selected .icon-card-title {
-  color: #005580;
+  color: #b45309;
 }
 
 /* Selected Detail Drawer */
@@ -1897,14 +2141,70 @@ textarea.form-control {
 
 @media (max-width: 1024px) {
   .main-nav {
-    display: none;
+    display: none !important;
   }
-  
+}
+
+@media (max-width: 768px) {
   .hero-tabs-grid {
-    grid-template-columns: repeat(3, 1fr);
+    display: flex !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 2px;
+    padding-bottom: 2px;
   }
   
-  .hero-tab-item:nth-child(4), .hero-tab-item:nth-child(5) {
-    display: none;
+  .hero-tab-item {
+    flex: 0 0 150px !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.74rem;
+  }
+
+  .hero-carousel-pagination {
+    bottom: 4rem;
+    right: 0.8rem;
+    padding: 0.35rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .indicator-line-track {
+    width: 22px;
+  }
+
+  .luxurious-accordion-grid {
+    flex-direction: column;
+    height: auto;
+    gap: 14px;
+  }
+
+  .luxurious-card-item {
+    transform: skewX(0deg);
+    min-height: 220px;
+    border-radius: 16px;
+  }
+
+  .luxurious-card-item:hover,
+  .luxurious-card-item.expanded {
+    min-height: 380px;
+  }
+
+  .lux-bg-wrapper,
+  .lux-card-inner {
+    transform: skewX(0deg);
+  }
+
+  .lux-card-inner {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .services-icon-panel {
+    padding: 1.2rem 0.8rem;
   }
 }

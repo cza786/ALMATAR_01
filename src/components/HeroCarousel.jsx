@@ -73,6 +73,7 @@ export default function HeroCarousel() {
               <span className="hero-tag">{slide.tag}</span>
               <h1 className="hero-title">{slide.title}</h1>
               <p className="hero-description">{slide.description}</p>
+              
               <Link href={slide.link} className="btn-learn-more">
                 <span>Learn more</span>
                 <span className="arrow-circle">&rarr;</span>
@@ -80,8 +81,34 @@ export default function HeroCarousel() {
             </div>
           </div>
         ))}
+
+        {/* Carousel Indicators / Slider Dots & Orange Progress Lines */}
+        <div className="hero-carousel-pagination">
+          {slides.map((_, idx) => {
+            const isActive = idx === currentIndex;
+            return (
+              <button
+                key={idx}
+                className={`pagination-item ${isActive ? 'active' : ''}`}
+                onClick={() => setCurrentIndex(idx)}
+                aria-label={`Jump to slide ${idx + 1}`}
+              >
+                {/* Glowing Dot */}
+                <span className="indicator-dot"></span>
+                
+                {/* Orange Progress Line Pagination */}
+                <span className="indicator-line-track">
+                  {isActive && <span className="indicator-line-fill"></span>}
+                </span>
+
+                <span className="indicator-number">0{idx + 1}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
+      {/* Bottom Tabs Grid with Progress Indicators */}
       <div className="hero-nav-bar">
         <div className="container">
           <div className="hero-tabs-grid">
@@ -91,7 +118,10 @@ export default function HeroCarousel() {
                 className={`hero-tab-item ${i === currentIndex ? 'active' : ''}`}
                 onClick={() => setCurrentIndex(i)}
               >
-                <span>{slide.tabLabel}</span>
+                <div className="tab-label-wrap">
+                  <span className="tab-dot-mini"></span>
+                  <span>{slide.tabLabel}</span>
+                </div>
                 <div className="progress-track">
                   {i === currentIndex && <div className="progress-fill"></div>}
                 </div>
