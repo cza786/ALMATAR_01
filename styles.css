@@ -515,6 +515,66 @@ button {
   height: 100%;
   object-fit: cover;
   filter: brightness(0.42);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- KEYFRAME ANIMATIONS FOR SLIDING TEXT & PICTURES --- */
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pictureScaleIn {
+  0% {
+    transform: scale(1.12);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes emblemFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) rotate(-10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Apply animations to active Hero Carousel slide elements */
+.hero-slide.active .hero-slide-bg img {
+  animation: pictureScaleIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-slide.active .hero-tag {
+  animation: slideInFromLeft 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.hero-slide.active .hero-title {
+  animation: slideInFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.hero-slide.active .hero-description {
+  animation: slideInFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.hero-slide.active .btn-learn-more {
+  animation: slideInFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+.hero-slide.active .hero-emblem-img {
+  animation: emblemFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
 }
 
 .hero-content-wrap {
