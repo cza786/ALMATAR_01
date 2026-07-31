@@ -1,141 +1,131 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 
 export default function SlantedPortfolioAccordion() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(0);
 
   const services = [
     {
       id: 'well-services',
+      number: '01',
       tag: 'WELL SERVICES',
       title: 'ADVANCED WELL INTERVENTION & STIMULATION',
-      shortTitle: 'Well Services & Intervention',
-      description: 'Increase production from older and marginal fields with engineered fluids, down-hole systems, Coiled Tubing Zone I & II units, and complete zonal isolation cementing.',
+      shortTitle: 'Well Intervention & CT',
+      description: 'Maximize hydrocarbon recovery with engineered down-hole tools, Zone I & II Coiled Tubing units, nitrogen lift, and high-pressure matrix stimulation.',
+      features: ['Zone I & II Coiled Tubing', 'High Pressure Pumping', '7-Point Wellhead Maintenance'],
       image: '/images/service_coiled_tubing.png',
       link: '/well-services',
-      tabLabel: 'WELL SERVICES'
+      color: 'var(--accent-gold)'
     },
     {
       id: 'drilling-fluids',
+      number: '02',
       tag: 'DRILLING & FLUIDS',
       title: 'DIRECTIONAL DRILLING & FLUID CHEMISTRY',
       shortTitle: 'Drilling & Fluid Chemistry',
-      description: 'Delivering superior hole quality and precise wellbore placement combined with innovative fluid chemistry systems and laboratory sample specialists.',
+      description: 'Precision wellbore trajectory control combined with custom-formulated drilling fluid systems and advanced laboratory testing facilities.',
+      features: ['Directional Drilling', 'Water & Oil-Based Mud', 'Laboratory Analysis'],
       image: '/images/service_drilling_fluids.png',
       link: '/drilling-fluids',
-      tabLabel: 'DRILLING & FLUIDS'
+      color: 'var(--accent-cyan)'
     },
     {
       id: 'construction',
+      number: '03',
       tag: 'CONSTRUCTION & LOGISTICS',
-      title: 'TOTAL FIELD CONSTRUCTION & MANPOWER LOGISTICS',
+      title: 'TOTAL FIELD CONSTRUCTION & HEAVY LOGISTICS',
       shortTitle: 'Construction & Logistics',
-      description: 'In collaboration with highly reputed partners, ALMATAR provides comprehensive construction, heavy equipment transportations, manpower, and catering services.',
+      description: 'Comprehensive field infrastructure construction, heavy machinery transport, 500 BBL FRAC tank fleets, technical manpower, and camp catering.',
+      features: ['Heavy Transport Fleet', 'FRAC Tank Rentals', 'Modular Site Camps'],
       image: '/images/service_construction.png',
       link: '/construction',
-      tabLabel: 'CONSTRUCTION'
+      color: '#10b981'
     },
     {
       id: 'qhse',
+      number: '04',
       tag: 'QHSE COMMITMENT',
-      title: 'QUALITY, HEALTH, SAFETY & ENVIRONMENTAL (QHSE)',
-      shortTitle: 'QHSE Safety & Policy',
-      description: 'Demonstrating an ongoing and determined commitment to improving health and safety at work throughout our organization and operating facilities.',
+      title: 'QUALITY, HEALTH, SAFETY & ENVIRONMENT (QHSE)',
+      shortTitle: 'QHSE Safety & Compliance',
+      description: 'Rigorous safety standards, risk mitigation frameworks, site hazard assessments, and certified technical training across all Syrian field sites.',
+      features: ['Zero Harm Policy', '7-Point Site Inspection', 'ISO Standard Compliance'],
       image: '/images/qhse_safety.png',
       link: '/qhse',
-      tabLabel: 'QHSE SAFETY'
+      color: '#f59e0b'
     }
   ];
 
-  useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % services.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [services.length, isPaused]);
-
   return (
-    <section 
-      className="slanted-hero-section" 
-      style={{ paddingTop: '2.5rem', paddingBottom: '3rem' }}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    <section className="slanted-portfolio-section">
       <div className="container position-relative" style={{ zIndex: 5 }}>
         
         {/* Section Header */}
-        <div className="section-header text-center" style={{ marginBottom: '2rem' }}>
-          <span className="section-eyebrow" style={{ color: 'var(--accent-gold)' }}>OUR SPECIALIZED CAPABILITIES</span>
-          <h2 className="section-title" style={{ color: '#ffffff' }}>CORE OPERATIONAL PORTFOLIO</h2>
-          <p className="section-subtitle" style={{ color: '#9ca3af', maxWidth: '700px', margin: '0.5rem auto 0 auto' }}>
-            Hover or click across our interactive slanted portfolio cards to explore integrated oilfield solutions in Syria.
+        <div className="section-header text-center" style={{ marginBottom: '2.5rem' }}>
+          <span className="section-eyebrow" style={{ color: 'var(--accent-gold)' }}>CORE OPERATIONAL CAPABILITIES</span>
+          <h2 className="section-title" style={{ color: '#ffffff' }}>SPECIALIZED OILFIELD PORTFOLIO</h2>
+          <p className="section-subtitle" style={{ color: '#9ca3af', maxWidth: '720px', margin: '0.6rem auto 0 auto' }}>
+            Hover across any operational card to smoothly reveal its full engineering capabilities, technical specifications, and service options.
           </p>
         </div>
 
-        {/* Slanted Diagonal Flex Accordion Container */}
-        <div className="slanted-accordion-container">
+        {/* Slanted Diagonal Accordion Container */}
+        <div className="luxurious-accordion-grid">
           {services.map((item, index) => {
-            const isActive = index === activeIndex;
+            const isHovered = index === hoveredIndex;
             return (
               <div
                 key={item.id}
-                className={`slanted-card-item ${isActive ? 'active' : ''}`}
-                onClick={() => setActiveIndex(index)}
-                onMouseEnter={() => setActiveIndex(index)}
+                className={`luxurious-card-item ${isHovered ? 'expanded' : ''}`}
+                onMouseEnter={() => setHoveredIndex(index)}
               >
-                {/* Background Image (Inverse Skewed) */}
-                <div className="slanted-card-bg-wrap">
-                  <img src={item.image} alt={item.title} className="slanted-card-bg" />
-                  <div className="slanted-card-overlay"></div>
+                {/* Background Image Wrapper (Inverse Skewed) */}
+                <div className="lux-bg-wrapper">
+                  <img src={item.image} alt={item.title} className="lux-bg-img" />
+                  <div className="lux-gradient-overlay"></div>
                 </div>
 
-                {/* Inner Content Container with Inverse Skew so text/images are upright */}
-                <div className="slanted-card-inner">
-                  {isActive ? (
-                    <div className="active-card-content">
-                      <span className="hero-tag">{item.tag}</span>
-                      <h3 className="hero-title" style={{ fontSize: 'clamp(1.4rem, 2.4vw, 2.1rem)' }}>{item.title}</h3>
-                      <p className="hero-description">{item.description}</p>
-                      
-                      <div className="hero-btn-wrap">
-                        <Link href={item.link} className="btn-learn-more">
-                          <span>Explore {item.tabLabel}</span>
-                          <span className="arrow-circle">&rarr;</span>
-                        </Link>
-                      </div>
+                {/* Inner Content (Upright Inverse Skewed) */}
+                <div className="lux-card-inner">
+                  
+                  {/* Line 1: Number & Eyebrow Tag */}
+                  <div className="lux-line-1">
+                    <span className="lux-card-num">{item.number}</span>
+                    <span className="lux-card-tag" style={{ color: item.color }}>{item.tag}</span>
+                  </div>
+
+                  {/* Line 2: Main Title */}
+                  <div className="lux-line-2">
+                    <h3 className="lux-card-title">{item.title}</h3>
+                  </div>
+
+                  {/* Line 3: Description */}
+                  <div className="lux-line-3">
+                    <p className="lux-card-desc">{item.description}</p>
+                  </div>
+
+                  {/* Line 4: Feature Badges (Animated Line 4) */}
+                  <div className="lux-line-4">
+                    <div className="lux-feature-pills">
+                      {item.features.map((feat, fIdx) => (
+                        <span key={fIdx} className="lux-pill">{feat}</span>
+                      ))}
                     </div>
-                  ) : (
-                    <div className="inactive-card-content">
-                      <span className="inactive-tag-number">0{index + 1}</span>
-                      <h4 className="inactive-card-title">{item.shortTitle}</h4>
-                    </div>
-                  )}
+                  </div>
+
+                  {/* Line 5: Luxurious Action Link Button (Animated Line 5) */}
+                  <div className="lux-line-5">
+                    <Link href={item.link} className="lux-action-btn">
+                      <span>Explore Capability</span>
+                      <span className="lux-arrow">&rarr;</span>
+                    </Link>
+                  </div>
+
                 </div>
               </div>
             );
           })}
-        </div>
-
-        {/* Accordion Navigation Tabs */}
-        <div className="slanted-nav-bar">
-          <div className="slanted-tabs-grid" style={{ gridTemplateColumns: `repeat(${services.length}, 1fr)` }}>
-            {services.map((item, i) => (
-              <div
-                key={item.id}
-                className={`slanted-tab-item ${i === activeIndex ? 'active' : ''}`}
-                onClick={() => setActiveIndex(i)}
-              >
-                <span>{item.tabLabel}</span>
-                <div className="progress-track">
-                  {i === activeIndex && <div className="progress-fill"></div>}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
       </div>

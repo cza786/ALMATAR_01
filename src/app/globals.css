@@ -637,48 +637,274 @@ button {
   100% { width: 100%; }
 }
 
-/* --- SLANTED DIAGONAL FLEX ACCORDION HERO LAYOUT (JEREH INSPIRED) --- */
-.slanted-hero-section {
+/* --- LUXURIOUS SLANTED DIAGONAL ACCORDION WITH LINE-BY-LINE ANIMATIONS --- */
+.slanted-portfolio-section {
   position: relative;
-  background: #0a0f1d;
-  padding: 2rem 0 1.5rem 0;
+  background: radial-gradient(circle at 50% 0%, #151d30 0%, #080c16 100%);
+  padding: 3.5rem 0 4.5rem 0;
   overflow: hidden;
-  min-height: 600px;
 }
 
-.slanted-accordion-container {
+.luxurious-accordion-grid {
   display: flex;
   gap: 16px;
   width: 100%;
-  height: 540px;
+  height: 560px;
   position: relative;
-  margin-bottom: 1.5rem;
 }
 
-/* 1. CSS transform: skewX(-12deg) on the card item for diagonal slanted shape */
-.slanted-card-item {
+/* Diagonal Slanted Card Container (-12deg skew) */
+.luxurious-card-item {
   flex: 1;
   height: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 22px;
   transform: skewX(-12deg);
-  transition: flex 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  transition: flex 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
   cursor: pointer;
   border: 2px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
 }
 
-/* 2. React State (activeIndex) dynamic sizing: flex-[4.5] for active, flex-[1] for inactive */
-.slanted-card-item.active {
-  flex: 4.5;
+/* Hover or Active State expands dynamically like butter (flex: 4.8) */
+.luxurious-card-item:hover,
+.luxurious-card-item.expanded {
+  flex: 4.8;
   border-color: var(--accent-gold);
-  box-shadow: 0 16px 45px rgba(217, 119, 6, 0.28), 0 0 30px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(217, 119, 6, 0.3);
 }
 
-.slanted-card-item:hover:not(.active) {
-  flex: 1.35;
-  border-color: rgba(0, 163, 224, 0.6);
+/* Background Image Wrapper (Inverse Skew +12deg) */
+.lux-bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: -25%;
+  width: 150%;
+  height: 100%;
+  transform: skewX(12deg);
+  transform-origin: center center;
+}
+
+.lux-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.45);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+}
+
+.luxurious-card-item:hover .lux-bg-img,
+.luxurious-card-item.expanded .lux-bg-img {
+  filter: brightness(0.68);
+  transform: scale(1.06);
+}
+
+.lux-gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(10, 15, 29, 0.1) 0%, rgba(10, 15, 29, 0.88) 100%);
+}
+
+/* Inner Upright Content Container (+12deg Inverse Skew) */
+.lux-card-inner {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  transform: skewX(12deg);
+  transform-origin: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.2rem 2.5rem;
+}
+
+/* --- LINE-BY-LINE ANIMATION KEYFRAMES & STAGGERED TIMINGS --- */
+@keyframes luxSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Line 1: Number & Eyebrow Tag */
+.lux-line-1 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.lux-card-num {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+}
+
+.lux-card-tag {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Line 2: Card Title */
+.lux-line-2 {
+  margin-bottom: 0.8rem;
+}
+
+.lux-card-title {
+  font-size: clamp(1.2rem, 2.2vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #ffffff;
+  max-width: 680px;
+}
+
+/* Line 3: Description */
+.lux-line-3 {
+  margin-bottom: 1.2rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease, opacity 0.6s ease;
+}
+
+.luxurious-card-item:hover .lux-line-3,
+.luxurious-card-item.expanded .lux-line-3 {
+  max-height: 120px;
+  opacity: 1;
+  animation: luxSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.lux-card-desc {
+  font-size: clamp(0.9rem, 1.3vw, 1.02rem);
+  color: #cbd5e1;
+  line-height: 1.6;
+  max-width: 620px;
+}
+
+/* Line 4: Feature Badges */
+.lux-line-4 {
+  margin-bottom: 1.5rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease, opacity 0.6s ease;
+}
+
+.luxurious-card-item:hover .lux-line-4,
+.luxurious-card-item.expanded .lux-line-4 {
+  max-height: 80px;
+  opacity: 1;
+  animation: luxSlideUp 0.72s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
+}
+
+.lux-feature-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.lux-pill {
+  font-size: 0.76rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+/* Line 5: Luxurious Action Link Button */
+.lux-line-5 {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease, opacity 0.6s ease;
+}
+
+.luxurious-card-item:hover .lux-line-5,
+.luxurious-card-item.expanded .lux-line-5 {
+  max-height: 60px;
+  opacity: 1;
+  animation: luxSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.lux-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid var(--accent-gold);
+  padding: 0.65rem 1.6rem;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.lux-action-btn:hover {
+  background: var(--accent-gold);
+  color: #000000;
+  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
+}
+
+.lux-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.lux-action-btn:hover .lux-arrow {
+  background: #000000;
+  color: #ffffff;
+}
+
+@media (max-width: 992px) {
+  .luxurious-accordion-grid {
+    height: 480px;
+    gap: 10px;
+  }
+  .luxurious-card-item {
+    transform: skewX(-6deg);
+  }
+  .lux-bg-wrapper, .lux-card-inner {
+    transform: skewX(6deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .luxurious-accordion-grid {
+    flex-direction: column;
+    height: auto;
+  }
+  .luxurious-card-item {
+    transform: skewX(0deg);
+    min-height: 240px;
+  }
+  .luxurious-card-item:hover,
+  .luxurious-card-item.expanded {
+    min-height: 420px;
+  }
+  .lux-bg-wrapper, .lux-card-inner {
+    transform: skewX(0deg);
+  }
 }
 
 /* Background Image Container */
@@ -1269,6 +1495,171 @@ button {
 
 .card-footer-link:hover {
   color: #0077a8;
+}
+
+/* ==========================================================================
+   INCH-PERFECT WHITE SERVICES ICON PANEL GRID WITH BLUISH HOVER EFFECT
+   ========================================================================== */
+.services-icon-panel {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  padding: 2rem 1.5rem;
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.services-icon-grid {
+  display: grid;
+  gap: 0;
+  position: relative;
+}
+
+.services-icon-grid.row-5-cols {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.services-icon-grid.row-4-cols {
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.services-row-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 1.8rem 0;
+  width: 100%;
+}
+
+.icon-service-card {
+  padding: 2.5rem 1.2rem 2.2rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #1e293b;
+  margin: 4px;
+}
+
+/* Subtle vertical divider between columns */
+.services-icon-grid .icon-service-card:not(:last-child) {
+  border-right: 1px solid #f1f5f9;
+}
+
+.card-top-accent {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  width: 60%;
+  height: 3px;
+  background: transparent;
+  border-radius: 0 0 4px 4px;
+  transition: all 0.35s ease;
+}
+
+.icon-wrapper {
+  color: #b45309; /* Golden metallic outline icon */
+  margin-bottom: 1.2rem;
+  transition: all 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-wrapper svg {
+  transition: all 0.35s ease;
+}
+
+.icon-card-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.35s ease;
+}
+
+/* --- BLUISH HOVER EFFECT (AS REQUESTED) --- */
+.icon-service-card:hover,
+.icon-service-card.active-selected {
+  background: linear-gradient(135deg, rgba(0, 163, 224, 0.08) 0%, rgba(0, 163, 224, 0.18) 100%);
+  border-color: #00a3e0;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 163, 224, 0.22), inset 0 0 15px rgba(0, 163, 224, 0.08);
+}
+
+.icon-service-card:hover .card-top-accent,
+.icon-service-card.active-selected .card-top-accent {
+  background: #00a3e0;
+  box-shadow: 0 0 10px #00a3e0;
+}
+
+.icon-service-card:hover .icon-wrapper,
+.icon-service-card.active-selected .icon-wrapper {
+  color: #00a3e0;
+  transform: scale(1.12);
+  filter: drop-shadow(0 4px 10px rgba(0, 163, 224, 0.4));
+}
+
+.icon-service-card:hover .icon-card-title,
+.icon-service-card.active-selected .icon-card-title {
+  color: #005580;
+}
+
+/* Selected Detail Drawer */
+.service-detail-drawer {
+  background: #0a0f1d;
+  border: 1px solid var(--accent-gold);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  animation: slideInFromLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.drawer-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawer-close-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.drawer-close-btn:hover {
+  color: var(--accent-gold);
+}
+
+@media (max-width: 1024px) {
+  .services-icon-grid.row-5-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .services-icon-grid.row-4-cols {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-icon-grid.row-5-cols,
+  .services-icon-grid.row-4-cols {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 /* --- ABOUT US CIRCULAR CARD --- */
