@@ -81,31 +81,6 @@ export default function HeroCarousel() {
             </div>
           </div>
         ))}
-
-        {/* Carousel Indicators / Slider Dots & Orange Progress Lines */}
-        <div className="hero-carousel-pagination">
-          {slides.map((_, idx) => {
-            const isActive = idx === currentIndex;
-            return (
-              <button
-                key={idx}
-                className={`pagination-item ${isActive ? 'active' : ''}`}
-                onClick={() => setCurrentIndex(idx)}
-                aria-label={`Jump to slide ${idx + 1}`}
-              >
-                {/* Glowing Dot */}
-                <span className="indicator-dot"></span>
-                
-                {/* Orange Progress Line Pagination */}
-                <span className="indicator-line-track">
-                  {isActive && <span className="indicator-line-fill"></span>}
-                </span>
-
-                <span className="indicator-number">0{idx + 1}</span>
-              </button>
-            );
-          })}
-        </div>
       </div>
 
       {/* Bottom Tabs Grid with Progress Indicators */}
