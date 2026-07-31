@@ -1159,23 +1159,7 @@ button {
   }
 }
 
-@media (max-width: 768px) {
-  .luxurious-accordion-grid {
-    flex-direction: column;
-    height: auto;
-  }
-  .luxurious-card-item {
-    transform: skewX(0deg);
-    min-height: 240px;
-  }
-  .luxurious-card-item:hover,
-  .luxurious-card-item.expanded {
-    min-height: 420px;
-  }
-  .lux-bg-wrapper, .lux-card-inner {
-    transform: skewX(0deg);
-  }
-}
+
 
 /* Background Image Container */
 .slanted-card-bg-wrap {
@@ -2292,34 +2276,28 @@ textarea.form-control {
     width: 22px;
   }
 
-  /* Specialized Oilfield Portfolio: Keep Row-Wise Layout on Mobile */
+  /* Specialized Oilfield Portfolio: Keep Row-Wise Layout and SLANTED EFFECT on Mobile */
   .luxurious-accordion-grid {
     flex-direction: row !important;
     display: flex !important;
     overflow-x: auto !important;
     height: 480px !important;
-    gap: 12px !important;
+    gap: 8px !important;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
-    padding-bottom: 0.5rem;
+    padding: 0 2rem 0.5rem 2rem !important; /* Extra padding so slanted edges aren't cut off */
   }
 
   .luxurious-card-item {
-    flex: 0 0 82vw !important;
+    flex: 0 0 70vw !important; /* Smaller width so next card peeks in */
     scroll-snap-align: center;
-    transform: skewX(0deg) !important;
     height: 100% !important;
     border-radius: 18px !important;
   }
 
   .luxurious-card-item:hover,
   .luxurious-card-item.expanded {
-    flex: 0 0 88vw !important;
-  }
-
-  .lux-bg-wrapper,
-  .lux-card-inner {
-    transform: skewX(0deg) !important;
+    flex: 0 0 78vw !important;
   }
 
   .lux-card-inner {
