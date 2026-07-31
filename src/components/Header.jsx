@@ -17,7 +17,8 @@ export default function Header({ onOpenDrawer }) {
           {/* Brand Text Navigation (Most Left) */}
           <div className="brand-text-nav">
             <Link href="/" className="brand-title-link brand-header-link">
-              <img src="/images/almatar_logo_transparent.png" alt="ALMATAR PETROLEUM SERVICES" className="header-logo-img" style={{ height: '75px', width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0px 0px 12px rgba(255,255,255,0.45))' }} />
+              <span className="brand-title">ALMATAR</span>
+              <span className="brand-subtitle">PETROLEUM SERVICES</span>
             </Link>
           </div>
 
