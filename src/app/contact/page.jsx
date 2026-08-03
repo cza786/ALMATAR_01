@@ -33,7 +33,7 @@ export default function ContactPage() {
               <div className="contact-icon">📍</div>
               <div>
                 <strong style={{ display: 'block', color: '#fff' }}>Headquarters Location</strong>
-                <span style={{ color: '#9ca3af', fontSize: '0.95rem' }}>Syria – Damascus / Qamishli</span>
+                <a href="https://maps.app.goo.gl/rZ9DLZ6nyEhxMC2n7" target="_blank" rel="noopener noreferrer" style={{ color: '#9ca3af', fontSize: '0.95rem', display: 'block', textDecoration: 'none' }}>Syria – Damascus / Qamishli</a>
               </div>
             </div>
 
