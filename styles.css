@@ -2185,6 +2185,15 @@ textarea.form-control {
   }
 }
 
+.footer-logo-img {
+  height: 65px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
 .footer-brand p {
   color: #9ca3af;
   font-size: 0.9rem;

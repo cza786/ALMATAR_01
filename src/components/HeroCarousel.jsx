@@ -81,11 +81,6 @@ export default function HeroCarousel() {
               <img src={slide.image} alt={slide.title} />
             </div>
             <div className="container hero-content-wrap position-relative">
-              {/* Golden Transparent Logo Badge in Hero Section (Home Screen Only) */}
-              <div className="hero-corner-emblem">
-                <img src="/images/almatar_logo_transparent.png" alt="ALMATAR Logo" className="hero-emblem-img" />
-              </div>
-
               <span className="hero-tag">{slide.tag}</span>
               <h1 className="hero-title">{slide.title}</h1>
               <p className="hero-description">{slide.description}</p>

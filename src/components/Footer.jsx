@@ -8,7 +8,7 @@ export default function Footer() {
           
           <div className="footer-brand">
             <Link href="/">
-              <img src="/images/almatar_emblem_transparent.png" alt="ALMATAR Logo Emblem" style={{ height: '40px', marginBottom: '0.8rem' }} />
+              <img src="/images/almatar_logo_transparent.png" alt="ALMATAR Logo" className="footer-logo-img" />
             </Link>
             <p>Integrated Oilfield & Projects Management supporting onshore oil operations in Syria within SYR OPCO with technical collaboration with internationally reputed organizations.</p>
           </div>

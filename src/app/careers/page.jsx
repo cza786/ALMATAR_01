@@ -1,262 +1,252 @@
-import Link from 'next/link';
-import NextPageBanner from '@/components/NextPageBanner';
+'use client';
 
-export const metadata = {
-  title: 'Careers | Join Our Team at ALMATAR Petroleum Services',
-  description: 'Build your future with AlMatar Petroleum Services. Explore professional growth, employee benefits, and life at AlMatar.'
-};
+import Link from 'next/link';
 
 export default function CareersPage() {
+
   const whyWorkItems = [
     {
-      title: 'Professional Growth',
-      desc: 'Clear advancement pathways, mentorship from senior oilfield experts, and structured skill progression.',
+      title: 'GROW YOUR CAREER',
+      desc: 'Development programs and on-the-job training to help you reach your full potential.',
       icon: (
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-          <polyline points="17 6 23 6 23 12"></polyline>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
         </svg>
-      )
+      ),
     },
     {
-      title: 'Modern Equipment',
-      desc: 'Access to state-of-the-art downhole technology, coiled tubing units, and advanced fluid testing labs.',
+      title: 'WORK SAFELY',
+      desc: 'We prioritise the health and safety of our people in everything we do.',
       icon: (
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-          <line x1="8" y1="21" x2="16" y2="21"></line>
-          <line x1="12" y1="17" x2="12" y2="21"></line>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="m9 12 2 2 4-4"/>
         </svg>
-      )
+      ),
     },
     {
-      title: 'International Projects',
-      desc: 'Technical collaboration with internationally reputed energy organizations and SYR OPCO partners.',
+      title: 'BE PART OF A TEAM',
+      desc: 'Collaborate with experienced professionals and build lasting relationships.',
       icon: (
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="2" y1="12" x2="22" y2="12"></line>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
         </svg>
-      )
+      ),
     },
     {
-      title: 'Safe Working Environment',
-      desc: 'Zero-compromise QHSE protocols safeguarding our field engineers and camp operating facilities.',
+      title: 'MAKE AN IMPACT',
+      desc: 'Contribute to reliable energy solutions that power communities worldwide.',
       icon: (
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
         </svg>
-      )
+      ),
     },
     {
-      title: 'Training Programs',
-      desc: 'Continuous technical certification, state-of-the-art simulator training, and safety competency development.',
+      title: 'OUR VALUES',
+      desc: 'Integrity, innovation and excellence are at the core of our culture and every decision we make.',
       icon: (
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-          <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="8" r="6"/>
+          <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
         </svg>
-      )
+      ),
     },
-    {
-      title: 'Competitive Benefits',
-      desc: 'Market-leading financial compensation, performance bonuses, health coverage, and field allowances.',
-      icon: (
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-        </svg>
-      )
-    }
   ];
 
-  const culturePoints = [
-    { name: 'Teamwork', icon: '🤝', desc: 'Collaborative field environment & supportive team leadership' },
-    { name: 'Innovation', icon: '💡', desc: 'Adopting next-generation oilfield chemistry and smart tools' },
-    { name: 'Safety', icon: '🛡️', desc: 'Prioritizing health, environment & rigorous risk mitigation' },
-    { name: 'Engineering Excellence', icon: '⚡', desc: 'Delivering precision operational results without compromise' },
-    { name: 'Career Development', icon: '📈', desc: 'Empowering every team member to reach their leadership potential' }
-  ];
-
-  const benefits = [
+  const employeeBenefits = [
     {
-      title: 'Medical Insurance',
-      desc: 'Comprehensive healthcare coverage for employees and dependent family members.',
+      title: 'Competitive Compensation',
+      desc: 'We offer competitive salaries and performance-based rewards.',
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="6" width="20" height="12" rx="2"/>
+          <circle cx="12" cy="12" r="2"/>
+          <path d="M6 12h.01M18 12h.01"/>
         </svg>
-      )
+      ),
     },
     {
-      title: 'Professional Training',
-      desc: 'Fully funded technical certifications & specialized well intervention workshops.',
+      title: 'Health & Medical Coverage',
+      desc: 'Comprehensive medical insurance for you and your family.',
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+          <path d="M12 9v6M9 12h6"/>
         </svg>
-      )
+      ),
     },
     {
-      title: 'Career Growth',
-      desc: 'Fast-track promotion opportunities based on technical competence and leadership.',
+      title: 'Training & Development',
+      desc: 'Continuous learning opportunities to enhance your skills and grow.',
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="12" y1="19" x2="12" y2="5"></line>
-          <polyline points="5 12 12 5 19 12"></polyline>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
         </svg>
-      )
+      ),
     },
     {
-      title: 'Transportation',
-      desc: 'Dedicated field logistics, site transport, and travel allowances.',
+      title: 'Safe & Supportive Work Environment',
+      desc: 'We are committed to providing a safe, inclusive and respectful workplace.',
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="1" y="3" width="15" height="13"></rect>
-          <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-          <circle cx="5.5" cy="18.5" r="2.5"></circle>
-          <circle cx="18.5" cy="18.5" r="2.5"></circle>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M2 18h20M4 18v-4a8 8 0 0 1 16 0v4M9 10a3 3 0 0 1 6 0"/>
         </svg>
-      )
+      ),
     },
     {
-      title: 'Performance Bonuses',
-      desc: 'Quarterly and annual financial incentives celebrating project milestones.',
+      title: 'Career Growth Opportunities',
+      desc: 'Clear career paths and opportunities to advance within the company.',
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
-          <line x1="12" y1="6" x2="12" y2="18"></line>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M16 16v-4h-4V8H8V4H4v16h16v-4z"/>
+          <circle cx="6" cy="2" r="2"/>
         </svg>
-      )
+      ),
     },
     {
-      title: 'Safe Work Environment',
-      desc: 'World-class protective equipment and rigorous safety compliance.',
+      title: 'Performance Recognition',
+      desc: 'We recognise and reward the dedication and achievements of our people.',
       icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="8" r="6"/>
+          <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
         </svg>
-      )
+      ),
     },
-    {
-      title: 'International Exposure',
-      desc: 'Working alongside global petroleum consultants and multinational field teams.',
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="2" y1="12" x2="22" y2="12"></line>
-        </svg>
-      )
-    }
   ];
 
   return (
     <>
-      {/* ===================== HERO BANNER ===================== */}
-      <section className="car-hero">
-        <div className="car-hero-bg">
-          <img src="/images/careers_engineers_hero.png" alt="ALMATAR Petroleum Engineers on industrial site" />
-          <div className="car-hero-overlay" />
+      {/* ===================== 1. HERO SECTION ===================== */}
+      <section className="cr-hero">
+        <div className="cr-hero-bg">
+          <img src="/images/careers_engineers_hero.png" alt="Build Your Future With ALMATAR" />
+          <div className="cr-hero-overlay" />
         </div>
-        <div className="car-hero-content container">
-          <span className="car-hero-eyebrow">CAREERS AT ALMATAR</span>
-          <h1 className="car-hero-title">Join Our Team</h1>
-          <div className="car-hero-accent" />
-          <p className="car-hero-desc">
-            Build your future with AlMatar Petroleum Services — a company where
-            engineering excellence, safety, and career development go hand in hand.
+        <div className="cr-hero-content container">
+          <span className="cr-hero-eyebrow">— CAREERS</span>
+          <h1 className="cr-hero-title">
+            Build Your Future<br />With ALMATAR
+          </h1>
+          <p className="cr-hero-desc">
+            Our people are the driving force behind our success. We are always looking for talented,
+            motivated and passionate professionals to join our team and help shape the future of the
+            oil and gas industry.
           </p>
-          <Link href="/contact" className="car-hero-btn">
-            View Open Positions
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </Link>
+          <a href="#submit-cv" className="cr-hero-btn">
+            JOIN OUR TEAM <span className="cr-btn-arrow">&rsaquo;</span>
+          </a>
         </div>
       </section>
 
-      {/* ===================== WHY WORK WITH US ===================== */}
-      <section className="car-why-section">
+      {/* ===================== 2. WHY WORK WITH ALMATAR ===================== */}
+      <section className="cr-why-section">
         <div className="container">
-          <div className="car-section-header">
-            <span className="section-eyebrow">WHY CHOOSE US</span>
-            <h2 className="section-title">Why Work With Us</h2>
-            <p className="car-section-lead">
-              At AlMatar, we invest in our people with the same dedication we bring to every oilfield operation.
+          <div className="cr-section-header">
+            <span className="cr-eyebrow-gold">WHY WORK WITH ALMATAR?</span>
+            <h2 className="cr-main-heading">More Than a Job, It&apos;s a Purpose</h2>
+            <p className="cr-lead-desc">
+              At ALMATAR Petroleum Services, we offer a challenging work environment, continuous learning
+              opportunities and the chance to grow your career while contributing to the energy that drives the world.
             </p>
           </div>
-          <div className="car-why-grid">
+
+          <div className="cr-why-grid">
             {whyWorkItems.map((item, idx) => (
-              <div key={idx} className="car-why-card">
-                <div className="car-why-icon">{item.icon}</div>
-                <h3 className="car-why-title">{item.title}</h3>
-                <p className="car-why-desc">{item.desc}</p>
+              <div key={idx} className="cr-why-box">
+                <div className="cr-why-icon">{item.icon}</div>
+                <h3 className="cr-why-box-title">{item.title}</h3>
+                <p className="cr-why-box-desc">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===================== LIFE AT ALMATAR (DARK FULL-WIDTH) ===================== */}
-      <section className="car-life-section">
-        <div className="container">
-          <div className="car-life-grid">
-            <div className="car-life-img">
-              <img src="/images/qhse_inspection_team.png" alt="Life at AlMatar – Engineers collaborating onsite" />
-              <div className="car-life-img-caption">Engineers & Technical Specialists Collaborating Onsite</div>
-            </div>
-            <div className="car-life-content">
-              <span className="car-life-eyebrow">OUR CULTURE</span>
-              <h2 className="car-life-title">Life at AlMatar</h2>
-              <p className="car-life-lead">
-                At AlMatar Petroleum Services, our people are our greatest strength. We foster an inclusive,
-                dynamic, and safety-focused work environment where engineering passion meets operational mastery.
-              </p>
-              <div className="car-culture-list">
-                {culturePoints.map((pt, idx) => (
-                  <div key={idx} className="car-culture-item">
-                    <div className="car-culture-icon">{pt.icon}</div>
-                    <div>
-                      <div className="car-culture-name">{pt.name}</div>
-                      <div className="car-culture-sub">{pt.desc}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+      {/* ===================== 3. OUR PEOPLE, OUR STRENGTH ===================== */}
+      <section className="cr-strength-section">
+        <div className="cr-strength-grid">
+          {/* Left Column: Dark Content */}
+          <div className="cr-strength-content">
+            <span className="cr-eyebrow-gold">OUR PEOPLE, OUR STRENGTH</span>
+            <h2 className="cr-strength-heading">Together, We Achieve More</h2>
+            <p className="cr-strength-desc">
+              We believe in building long-term relationships with our employees based on trust,
+              respect and teamwork. At ALMATAR, you&apos;ll find a supportive environment where your
+              ideas are valued and your contributions matter.
+            </p>
+            <Link href="/about" className="cr-hero-btn">
+              LEARN MORE ABOUT US <span className="cr-btn-arrow">&rsaquo;</span>
+            </Link>
+          </div>
+
+          {/* Right Column: Team Image */}
+          <div className="cr-strength-img-wrap">
+            <img
+              src="/images/careers_team_walking.png"
+              alt="Together, We Achieve More — ALMATAR Engineers Team"
+              className="cr-strength-img"
+            />
           </div>
         </div>
       </section>
 
-      {/* ===================== EMPLOYEE BENEFITS ===================== */}
-      <section className="car-benefits-section">
+      {/* ===================== 4. EMPLOYEE BENEFITS ===================== */}
+      <section className="cr-benefits-section">
         <div className="container">
-          <div className="car-section-header">
-            <span className="section-eyebrow">YOUR REWARDS &amp; PERKS</span>
-            <h2 className="section-title">Employee Benefits</h2>
+          <div className="cr-benefits-header">
+            <span className="cr-eyebrow-gold">EMPLOYEE BENEFITS</span>
+            <div className="cr-gold-accent-bar" />
           </div>
-          <div className="car-benefits-grid">
-            {benefits.map((benefit, idx) => (
-              <div key={idx} className="car-benefit-card">
-                <div className="car-benefit-icon">{benefit.icon}</div>
-                <h3 className="car-benefit-title">{benefit.title}</h3>
-                <p className="car-benefit-desc">{benefit.desc}</p>
+
+          <div className="cr-benefits-grid">
+            {employeeBenefits.map((item, idx) => (
+              <div key={idx} className="cr-benefit-box">
+                <div className="cr-benefit-icon">{item.icon}</div>
+                <h3 className="cr-benefit-box-title">{item.title}</h3>
+                <p className="cr-benefit-box-desc">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ===================== NEXT PAGE BANNER ===================== */}
-      <NextPageBanner
-        title="Contact Us"
-        subtitle="Learn more"
-        link="/contact"
-        bgImage="/images/service_site_camp.png"
-      />
+      {/* ===================== 5. READY TO MAKE A DIFFERENCE CTA ===================== */}
+      <section id="submit-cv" className="cr-cta-banner">
+        <div className="container">
+          <div className="cr-cta-inner">
+            <div className="cr-cta-left">
+              <div className="cr-cta-icon-circle">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <path d="m9 15 2 2 4-4" />
+                </svg>
+              </div>
+              <div className="cr-cta-text-group">
+                <span className="cr-cta-eyebrow">READY TO MAKE A DIFFERENCE?</span>
+                <h2 className="cr-cta-heading">
+                  Join ALMATAR and be part of a team that powers progress.
+                </h2>
+              </div>
+            </div>
+
+            <a href="mailto:info@almatar.com?subject=Job%20Application%20-%20ALMATAR%20Careers" className="cr-cta-btn">
+              SUBMIT YOUR CV <span className="cr-cta-btn-arrow">&rsaquo;</span>
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
