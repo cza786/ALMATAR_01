@@ -23,13 +23,14 @@ export default function Header({ onOpenDrawer }) {
             </Link>
           </div>
 
-          {/* Desktop Navigation Bar: Home, Services, Trading, Careers, Contact */}
+          {/* Desktop Navigation Bar: Home, About Us, Services, Trading, QHSE Safety, Careers, Contact */}
           <nav className="main-nav" aria-label="Main Navigation">
             <Link href="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>Home</Link>
+            <Link href="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`}>About Us</Link>
             
             {/* Services Dropdown Item */}
             <div className="nav-item-dropdown">
-              <Link href="/well-services" className={`nav-link dropdown-toggle-link ${isActive('/well-services') ? 'active' : ''}`}>
+              <Link href="/well-services" className={`nav-link dropdown-toggle-link ${isActive('/well-services') || isActive('/drilling-fluids') || isActive('/construction') ? 'active' : ''}`}>
                 <span>Services</span>
                 <svg className="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M7 10l5 5 5-5z"/>
@@ -43,26 +44,22 @@ export default function Header({ onOpenDrawer }) {
                   <span className="dropdown-icon-indicator">&#9662;</span>
                 </div>
                 <div className="dropdown-links-list">
-                  <Link href="/well-services" className="dropdown-link-item">• Well Intervention</Link>
-                  <Link href="/well-services" className="dropdown-link-item">• Coiled Tubing & Nitrogen</Link>
-                  <Link href="/well-services" className="dropdown-link-item">• Stimulation & Tanks</Link>
-                  <Link href="/well-services" className="dropdown-link-item">• Wellhead & Xmas Tree</Link>
-                  <Link href="/well-services" className="dropdown-link-item">• Slickline Services</Link>
-                  <Link href="/well-services" className="dropdown-link-item">• Surface Well Testing</Link>
-                  <Link href="/drilling-fluids" className="dropdown-link-item">• Drilling & Workover</Link>
-                  <Link href="/construction" className="dropdown-link-item">• Construction Services</Link>
+                  <Link href="/well-services" className="dropdown-link-item">• Well Intervention & Stimulation</Link>
+                  <Link href="/drilling-fluids" className="dropdown-link-item">• Drilling & Fluids Chemistry</Link>
+                  <Link href="/construction" className="dropdown-link-item">• Field Construction & Logistics</Link>
                 </div>
               </div>
             </div>
 
             <Link href="/trading" className={`nav-link ${isActive('/trading') ? 'active' : ''}`}>Trading</Link>
+            <Link href="/qhse" className={`nav-link ${isActive('/qhse') ? 'active' : ''}`}>QHSE Safety</Link>
             <Link href="/careers" className={`nav-link ${isActive('/careers') ? 'active' : ''}`}>Careers</Link>
             <Link href="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`}>Contact</Link>
           </nav>
 
           {/* Header Actions: Far-Right Mega Menu Box (:::) */}
           <div className="header-actions">
-            {/* Mega Menu Right Box Icon (::: inspired by reference image) */}
+            {/* Mega Menu Right Box Icon */}
             <div 
               className="megamenu-trigger-wrap"
               onMouseEnter={() => setIsMegaOpen(true)}
@@ -111,7 +108,20 @@ export default function Header({ onOpenDrawer }) {
                       <p className="mega-card-text">Pioneers in oilfield management & SYR OPCO partnerships.</p>
                     </Link>
 
-                    {/* Card 2: Drilling & Fluids */}
+                    {/* Card 2: Well Services */}
+                    <Link href="/well-services" className="mega-card" onClick={() => setIsMegaOpen(false)}>
+                      <div className="mega-card-header">
+                        <span className="mega-card-title">WELL SERVICES</span>
+                        <div className="mega-title-line"></div>
+                      </div>
+                      <div className="mega-card-img-wrap">
+                        <img src="/images/banner_well_services_hero.png" alt="Well Services" />
+                      </div>
+                      <h4 className="mega-card-heading">Well Intervention & Stimulation</h4>
+                      <p className="mega-card-text">Coiled tubing, slickline, pumping & well testing.</p>
+                    </Link>
+
+                    {/* Card 3: Drilling & Fluids */}
                     <Link href="/drilling-fluids" className="mega-card" onClick={() => setIsMegaOpen(false)}>
                       <div className="mega-card-header">
                         <span className="mega-card-title">DRILLING & FLUIDS</span>
@@ -121,10 +131,10 @@ export default function Header({ onOpenDrawer }) {
                         <img src="/images/service_drilling_fluids.png" alt="Drilling & Fluids" />
                       </div>
                       <h4 className="mega-card-heading">Directional Drilling & Chemistry</h4>
-                      <p className="mega-card-text">Hole quality, mud chemistry, and fluid sample testing.</p>
+                      <p className="mega-card-text">Hole quality, mud chemistry, and fluid testing.</p>
                     </Link>
 
-                    {/* Card 3: Construction & Heavy Equipment */}
+                    {/* Card 4: Construction */}
                     <Link href="/construction" className="mega-card" onClick={() => setIsMegaOpen(false)}>
                       <div className="mega-card-header">
                         <span className="mega-card-title">CONSTRUCTION</span>
@@ -134,10 +144,23 @@ export default function Header({ onOpenDrawer }) {
                         <img src="/images/service_construction.png" alt="Construction & Logistics" />
                       </div>
                       <h4 className="mega-card-heading">Field Construction & Logistics</h4>
-                      <p className="mega-card-text">Heavy transportations, site camps, and technical manpower.</p>
+                      <p className="mega-card-text">Heavy transportations, camps, and technical manpower.</p>
                     </Link>
 
-                    {/* Card 4: QHSE Safety */}
+                    {/* Card 5: Trading */}
+                    <Link href="/trading" className="mega-card" onClick={() => setIsMegaOpen(false)}>
+                      <div className="mega-card-header">
+                        <span className="mega-card-title">TRADING</span>
+                        <div className="mega-title-line"></div>
+                      </div>
+                      <div className="mega-card-img-wrap">
+                        <img src="/images/service_wellhead.png" alt="Oilfield Trading" />
+                      </div>
+                      <h4 className="mega-card-heading">Equipment Supply & Chemicals</h4>
+                      <p className="mega-card-text">API certified tools, wellheads, and drilling chemicals.</p>
+                    </Link>
+
+                    {/* Card 6: QHSE Safety */}
                     <Link href="/qhse" className="mega-card" onClick={() => setIsMegaOpen(false)}>
                       <div className="mega-card-header">
                         <span className="mega-card-title">QHSE SAFETY</span>
@@ -148,6 +171,32 @@ export default function Header({ onOpenDrawer }) {
                       </div>
                       <h4 className="mega-card-heading">Quality & Environmental Standards</h4>
                       <p className="mega-card-text">Rigorous health, safety, and environmental excellence.</p>
+                    </Link>
+
+                    {/* Card 7: Careers */}
+                    <Link href="/careers" className="mega-card" onClick={() => setIsMegaOpen(false)}>
+                      <div className="mega-card-header">
+                        <span className="mega-card-title">CAREERS</span>
+                        <div className="mega-title-line"></div>
+                      </div>
+                      <div className="mega-card-img-wrap">
+                        <img src="/images/careers_engineers_hero.png" alt="Careers at AlMatar" />
+                      </div>
+                      <h4 className="mega-card-heading">Join Our Team</h4>
+                      <p className="mega-card-text">Explore career growth, benefits, and life at AlMatar.</p>
+                    </Link>
+
+                    {/* Card 8: Contact Us */}
+                    <Link href="/contact" className="mega-card" onClick={() => setIsMegaOpen(false)}>
+                      <div className="mega-card-header">
+                        <span className="mega-card-title">CONTACT US</span>
+                        <div className="mega-title-line"></div>
+                      </div>
+                      <div className="mega-card-img-wrap">
+                        <img src="/images/service_site_camp.png" alt="Contact Us" />
+                      </div>
+                      <h4 className="mega-card-heading">Get In Touch</h4>
+                      <p className="mega-card-text">Inquire about oilfield project requirements and services.</p>
                     </Link>
 
                   </div>

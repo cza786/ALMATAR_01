@@ -40,7 +40,7 @@ export default function Home() {
 
       {/* Next Page Navigation Banner */}
       <NextPageBanner
-        title="About us"
+        title="About Us"
         subtitle="Learn more"
         link="/about"
         bgImage="/images/banner_about_corporate.png"

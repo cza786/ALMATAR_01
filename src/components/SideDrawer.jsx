@@ -114,11 +114,31 @@ export default function SideDrawer({ isOpen, onClose }) {
             </div>
           )}
 
+          {/* Trading */}
+          {('trading'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
+            <div className="drawer-nav-item">
+              <Link href="/trading" className={`drawer-nav-link ${pathname === '/trading' ? 'active' : ''}`} onClick={onClose}>
+                <span>Trading</span>
+                <span className="drawer-arrow">&rsaquo;</span>
+              </Link>
+            </div>
+          )}
+
           {/* QHSE */}
           {('qhse'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
             <div className="drawer-nav-item">
               <Link href="/qhse" className={`drawer-nav-link ${pathname === '/qhse' ? 'active' : ''}`} onClick={onClose}>
                 <span>QHSE Safety</span>
+                <span className="drawer-arrow">&rsaquo;</span>
+              </Link>
+            </div>
+          )}
+
+          {/* Careers */}
+          {('careers'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
+            <div className="drawer-nav-item">
+              <Link href="/careers" className={`drawer-nav-link ${pathname === '/careers' ? 'active' : ''}`} onClick={onClose}>
+                <span>Careers</span>
                 <span className="drawer-arrow">&rsaquo;</span>
               </Link>
             </div>

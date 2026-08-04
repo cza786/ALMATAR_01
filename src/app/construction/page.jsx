@@ -57,10 +57,10 @@ export default function ConstructionPage() {
 
       {/* Next Page Navigation Banner */}
       <NextPageBanner
-        title="QHSE Safety"
+        title="Oilfield Trading"
         subtitle="Learn more"
-        link="/qhse"
-        bgImage="/images/qhse_inspection_team.png"
+        link="/trading"
+        bgImage="/images/service_drilling_fluids.png"
       />
     </>
   );

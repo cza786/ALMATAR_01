@@ -40,12 +40,28 @@ export default function HeroCarousel() {
       tabLabel: 'CONSTRUCTION'
     },
     {
+      tag: 'OILFIELD TRADING',
+      title: 'OILFIELD TRADING & EQUIPMENT SUPPLY',
+      description: 'Sourcing high-spec drilling chemicals, downhole tools, API certified wellheads, and heavy oilfield equipment through trusted international partner networks.',
+      image: '/images/service_wellhead.png',
+      link: '/trading',
+      tabLabel: 'TRADING'
+    },
+    {
       tag: 'QHSE COMMITMENT',
       title: 'QUALITY, HEALTH, SAFETY & ENVIRONMENTAL (QHSE)',
       description: 'Demonstrating an ongoing and determined commitment to improving health and safety at work throughout our organization and operating facilities.',
       image: '/images/qhse_safety.png',
       link: '/qhse',
       tabLabel: 'QHSE SAFETY'
+    },
+    {
+      tag: 'JOIN OUR TEAM',
+      title: 'BUILD YOUR FUTURE WITH ALMATAR PETROLEUM SERVICES',
+      description: 'Join our team of dedicated field engineers and technical experts. Discover professional growth, modern equipment, and competitive employee benefits.',
+      image: '/images/careers_engineers_hero.png',
+      link: '/careers',
+      tabLabel: 'CAREERS'
     }
   ];
 

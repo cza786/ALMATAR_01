@@ -44,10 +44,10 @@ export default function QhsePage() {
 
       {/* Next Page Navigation Banner */}
       <NextPageBanner
-        title="Contact Us"
+        title="Careers"
         subtitle="Learn more"
-        link="/contact"
-        bgImage="/images/service_site_camp.png"
+        link="/careers"
+        bgImage="/images/careers_engineers_hero.png"
       />
     </>
   );

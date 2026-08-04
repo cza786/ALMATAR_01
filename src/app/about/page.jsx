@@ -58,7 +58,7 @@ export default function AboutPage() {
 
       {/* Next Page Navigation Banner */}
       <NextPageBanner
-        title="Our Services"
+        title="Well Services"
         subtitle="Learn more"
         link="/well-services"
         bgImage="/images/banner_well_services_hero.png"
