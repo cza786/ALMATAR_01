@@ -1,39 +1,41 @@
 'use client';
 
 import NextPageBanner from '@/components/NextPageBanner';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function ContactPage() {
+  const { t } = useLanguage();
 
   const contactCards = [
     {
       id: 'location',
-      type: 'Location',
-      label: 'Headquarters',
-      value: 'Syria – Damascus / Qamishli',
+      type: t('contact.locationLabel'),
+      label: t('contact.locationLabel'),
+      value: t('contact.locationValue'),
       href: '#our-location-map',
       isExternal: false,
-      badge: 'Mapped Below',
+      badge: t('contact.mappedBadge'),
     },
     {
       id: 'telephone',
-      type: 'Telephone',
-      label: 'Direct Line',
+      type: t('contact.telephoneLabel'),
+      label: t('contact.telephoneLabel'),
       value: '00963 52 426 915',
       href: 'tel:0096352426915',
       isExternal: false,
     },
     {
       id: 'mobile',
-      type: 'Mobile',
-      label: 'Direct Lines',
+      type: t('contact.mobileLabel'),
+      label: t('contact.mobileLabel'),
       value: ['00963 93 982 2415', '00963 93 140 7723'],
       href: 'tel:00963939822415',
       isExternal: false,
     },
     {
       id: 'email',
-      type: 'Email',
-      label: 'Enquiries',
+      type: t('contact.emailLabel'),
+      label: t('contact.emailLabel'),
       value: 'info@almatar.com',
       href: 'mailto:info@almatar.com',
       isExternal: false,
@@ -75,12 +77,11 @@ export default function ContactPage() {
           <div className="ctp-hero-overlay" />
         </div>
         <div className="ctp-hero-content container">
-          <span className="ctp-hero-eyebrow">GET IN TOUCH</span>
-          <h1 className="ctp-hero-title">Contact ALMATAR</h1>
+          <span className="ctp-hero-eyebrow">{t('contact.eyebrow')}</span>
+          <h1 className="ctp-hero-title">{t('contact.title')}</h1>
           <div className="ctp-hero-accent" />
           <p className="ctp-hero-desc">
-            Reach our technical and procurement teams directly. We are based in Syria
-            and operate across the region to serve the oil and gas industry.
+            {t('contact.desc')}
           </p>
         </div>
       </section>
@@ -127,8 +128,8 @@ export default function ContactPage() {
         <div className="container">
           <div className="ctp-map-header">
             <div>
-              <span className="ctp-hero-eyebrow" style={{ color: 'var(--accent-gold)' }}>HEADQUARTERS LOCATION</span>
-              <h2 className="ctp-map-title">Syria Headquarters & Operations Map</h2>
+              <span className="ctp-hero-eyebrow" style={{ color: 'var(--accent-gold)' }}>{t('contact.mapEyebrow')}</span>
+              <h2 className="ctp-map-title">{t('contact.mapTitle')}</h2>
             </div>
             <a
               href="https://maps.app.goo.gl/rZ9DLZ6nyEhxMC2n7"
@@ -141,7 +142,7 @@ export default function ContactPage() {
                 <polyline points="15 3 21 3 21 9"/>
                 <line x1="10" y1="14" x2="21" y2="3"/>
               </svg>
-              Open in Google Maps
+              {t('contact.openMap')}
             </a>
           </div>
 
@@ -164,9 +165,9 @@ export default function ContactPage() {
               <div className="ctp-overlay-badge">
                 <span className="ctp-dot-active" /> ALMATAR Headquarters
               </div>
-              <h3 className="ctp-overlay-heading">Damascus & Qamishli, Syria</h3>
+              <h3 className="ctp-overlay-heading">{t('contact.overlayHeading')}</h3>
               <p className="ctp-overlay-sub">
-                Integrated Oilfield & Projects Management Headquarters & Operational Base.
+                {t('contact.overlaySub')}
               </p>
               <div className="ctp-overlay-meta">
                 <div className="ctp-meta-item">

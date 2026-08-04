@@ -4,9 +4,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import { useLanguage } from '../context/LanguageContext';
+
 export default function Header({ onOpenDrawer }) {
   const pathname = usePathname();
   const [isMegaOpen, setIsMegaOpen] = useState(false);
+  const { lang, toggleLanguage, t } = useLanguage();
 
   const isActive = (path) => pathname === path;
 
@@ -23,15 +26,15 @@ export default function Header({ onOpenDrawer }) {
             </Link>
           </div>
 
-          {/* Desktop Navigation Bar: Home, About Us, Services, Trading, QHSE Safety, Careers, Contact */}
+          {/* Desktop Navigation Bar */}
           <nav className="main-nav" aria-label="Main Navigation">
-            <Link href="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>Home</Link>
-            <Link href="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`}>About Us</Link>
+            <Link href="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>{t('nav.home')}</Link>
+            <Link href="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`}>{t('nav.about')}</Link>
             
             {/* Services Dropdown Item */}
             <div className="nav-item-dropdown">
               <Link href="/well-services" className={`nav-link dropdown-toggle-link ${isActive('/well-services') || isActive('/drilling-fluids') || isActive('/construction') ? 'active' : ''}`}>
-                <span>Services</span>
+                <span>{t('nav.services')}</span>
                 <svg className="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M7 10l5 5 5-5z"/>
                 </svg>
@@ -40,25 +43,40 @@ export default function Header({ onOpenDrawer }) {
               {/* Dropdown Menu */}
               <div className="nav-dropdown-menu">
                 <div className="dropdown-header-bar">
-                  <span className="dropdown-header-text">Services Portfolio</span>
+                  <span className="dropdown-header-text">{t('nav.portfolio')}</span>
                   <span className="dropdown-icon-indicator">&#9662;</span>
                 </div>
                 <div className="dropdown-links-list">
-                  <Link href="/well-services" className="dropdown-link-item">• Well Intervention & Stimulation</Link>
-                  <Link href="/drilling-fluids" className="dropdown-link-item">• Drilling & Fluids Chemistry</Link>
-                  <Link href="/construction" className="dropdown-link-item">• Field Construction & Logistics</Link>
+                  <Link href="/well-services" className="dropdown-link-item">• {t('nav.wellServices')}</Link>
+                  <Link href="/drilling-fluids" className="dropdown-link-item">• {t('nav.drillingFluids')}</Link>
+                  <Link href="/construction" className="dropdown-link-item">• {t('nav.construction')}</Link>
                 </div>
               </div>
             </div>
 
-            <Link href="/trading" className={`nav-link ${isActive('/trading') ? 'active' : ''}`}>Trading</Link>
-            <Link href="/qhse" className={`nav-link ${isActive('/qhse') ? 'active' : ''}`}>QHSE Safety</Link>
-            <Link href="/careers" className={`nav-link ${isActive('/careers') ? 'active' : ''}`}>Careers</Link>
-            <Link href="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`}>Contact</Link>
+            <Link href="/trading" className={`nav-link ${isActive('/trading') ? 'active' : ''}`}>{t('nav.trading')}</Link>
+            <Link href="/qhse" className={`nav-link ${isActive('/qhse') ? 'active' : ''}`}>{t('nav.qhse')}</Link>
+            <Link href="/careers" className={`nav-link ${isActive('/careers') ? 'active' : ''}`}>{t('nav.careers')}</Link>
+            <Link href="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`}>{t('nav.contact')}</Link>
           </nav>
 
-          {/* Header Actions: Far-Right Mega Menu Box (:::) */}
+          {/* Header Actions: Language Switcher + Mega Menu Box */}
           <div className="header-actions">
+            
+            {/* Arabic / English Toggle Switcher Icon Button */}
+            <button
+              onClick={toggleLanguage}
+              className="lang-switcher-btn"
+              title={lang === 'en' ? 'Switch to Arabic (التحويل للعربية)' : 'Switch to English'}
+              aria-label="Toggle Language"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              <span className="lang-switcher-text">{lang === 'en' ? 'العربية' : 'EN'}</span>
+            </button>
             {/* Mega Menu Right Box Icon */}
             <div 
               className="megamenu-trigger-wrap"

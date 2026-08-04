@@ -1,6 +1,11 @@
+'use client';
+
 import Link from 'next/link';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="site-footer">
       <div className="container">
@@ -10,37 +15,37 @@ export default function Footer() {
             <Link href="/">
               <img src="/images/almatar_logo_transparent.png" alt="ALMATAR Logo" className="footer-logo-img" />
             </Link>
-            <p>Integrated Oilfield & Projects Management supporting onshore oil operations in Syria within SYR OPCO with technical collaboration with internationally reputed organizations.</p>
+            <p>{t('footer.desc')}</p>
           </div>
 
           <div>
-            <h4 className="footer-heading">Pages</h4>
+            <h4 className="footer-heading">{t('footer.pages')}</h4>
             <ul className="footer-links">
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">About</Link></li>
-              <li><Link href="/well-services">Services</Link></li>
-              <li><Link href="/drilling-fluids">Drilling</Link></li>
-              <li><Link href="/construction">Construction</Link></li>
-              <li><Link href="/qhse">QHSE</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
+              <li><Link href="/">{t('nav.home')}</Link></li>
+              <li><Link href="/about">{t('nav.about')}</Link></li>
+              <li><Link href="/well-services">{t('nav.wellServices')}</Link></li>
+              <li><Link href="/drilling-fluids">{t('nav.drillingFluids')}</Link></li>
+              <li><Link href="/construction">{t('nav.construction')}</Link></li>
+              <li><Link href="/qhse">{t('nav.qhse')}</Link></li>
+              <li><Link href="/contact">{t('nav.contact')}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="footer-heading">Core Capabilities</h4>
+            <h4 className="footer-heading">{t('footer.capabilities')}</h4>
             <ul className="footer-links">
-              <li><Link href="/well-services">Coiled Tubing & Nitrogen</Link></li>
-              <li><Link href="/well-services">High Pressure Stimulation</Link></li>
-              <li><Link href="/well-services">Wellhead Maintenance (7-Point)</Link></li>
-              <li><Link href="/well-services">500 BBL FRAC Tanks</Link></li>
-              <li><Link href="/drilling-fluids">Drilling Fluid Chemistry</Link></li>
+              <li><Link href="/well-services">• {t('nav.wellServices')}</Link></li>
+              <li><Link href="/drilling-fluids">• {t('nav.drillingFluids')}</Link></li>
+              <li><Link href="/construction">• {t('nav.construction')}</Link></li>
+              <li><Link href="/trading">• {t('nav.trading')}</Link></li>
+              <li><Link href="/qhse">• {t('nav.qhse')}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="footer-heading">Contact Details</h4>
+            <h4 className="footer-heading">{t('footer.contactDetails')}</h4>
             <ul className="footer-links">
-              <li><span style={{ color: '#d1d5db' }}>📍 Syria – Damascus / Qamishli</span></li>
+              <li><span style={{ color: '#d1d5db' }}>📍 {t('contact.locationValue')}</span></li>
               <li><a href="tel:0096352426915" style={{ color: '#d1d5db' }}>📞 Tel: 00963 52 426 915</a></li>
               <li><a href="tel:00963939822415" style={{ color: '#d1d5db' }}>📱 Mob: 00963 93 982 2415</a></li>
               <li><a href="tel:00963931407723" style={{ color: '#d1d5db' }}>📱 Mob: 00963 93 140 7723</a></li>
@@ -51,10 +56,10 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <div>
-            &copy; {new Date().getFullYear()} ALMATAR Integrated Oilfield & Projects Management. All Rights Reserved.
+            &copy; {new Date().getFullYear()} {t('footer.rights')}
           </div>
           <div>
-            Damascus / Qamishli, Syria
+            {t('footer.location')}
           </div>
         </div>
       </div>

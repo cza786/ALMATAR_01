@@ -4,10 +4,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import { useLanguage } from '../context/LanguageContext';
+
 export default function SideDrawer({ isOpen, onClose }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [isServicesOpen, setIsServicesOpen] = useState(true); // Collapsible state
   const pathname = usePathname();
+  const { lang, toggleLanguage, t } = useLanguage();
 
   const serviceSubItems = [
     { href: '/well-services#well-intervention', label: '• Well Intervention' },
@@ -34,11 +37,28 @@ export default function SideDrawer({ isOpen, onClose }) {
             </svg>
             <input
               type="text"
-              placeholder="Search services..."
+              placeholder={lang === 'ar' ? 'البحث عن خدمة...' : 'Search services...'}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
+        </div>
+
+        {/* Mobile Language Switcher */}
+        <div style={{ padding: '0.5rem 1.5rem', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+          <button
+            onClick={toggleLanguage}
+            className="lang-switcher-btn"
+            style={{ width: '100%', justifyContent: 'center' }}
+            aria-label="Toggle Language"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span>{lang === 'en' ? 'التحويل إلى العربية (Arabic)' : 'Switch to English'}</span>
+          </button>
         </div>
 
         <nav className="drawer-nav">

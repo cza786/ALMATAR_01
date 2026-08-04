@@ -3,65 +3,68 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
+import { useLanguage } from '../context/LanguageContext';
+
 export default function HeroCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { t } = useLanguage();
 
   const slides = [
     {
-      tag: 'INTEGRATED OILFIELD MANAGEMENT',
-      title: 'INTEGRATED OILFIELD & PROJECTS MANAGEMENT',
-      description: 'ALMATAR provides a range of specialized services and solutions to the oil and gas industry within SYR OPCO with technical collaboration with internationally reputed organizations.',
+      tag: t('hero.slide1Tag'),
+      title: t('hero.slide1Title'),
+      description: t('hero.slide1Desc'),
       image: '/images/hero_drilling_rig.png',
       link: '/about',
-      tabLabel: 'OVERVIEW'
+      tabLabel: t('hero.tabs.overview')
     },
     {
-      tag: 'WELL SERVICES',
-      title: 'ADVANCED WELL INTERVENTION & STIMULATION',
-      description: 'Increase production from older and marginal fields with engineered fluids, down-hole systems, Coiled Tubing Zone I & II units, and complete zonal isolation cementing.',
+      tag: t('hero.slide2Tag'),
+      title: t('hero.slide2Title'),
+      description: t('hero.slide2Desc'),
       image: '/images/service_coiled_tubing.png',
       link: '/well-services',
-      tabLabel: 'WELL SERVICES'
+      tabLabel: t('hero.tabs.wellServices')
     },
     {
-      tag: 'DRILLING & FLUIDS',
-      title: 'DIRECTIONAL DRILLING & FLUID CHEMISTRY',
-      description: 'Delivering superior hole quality and precise wellbore placement combined with innovative fluid chemistry systems and laboratory sample specialists.',
+      tag: t('hero.slide3Tag'),
+      title: t('hero.slide3Title'),
+      description: t('hero.slide3Desc'),
       image: '/images/service_drilling_fluids.png',
       link: '/drilling-fluids',
-      tabLabel: 'DRILLING & FLUIDS'
+      tabLabel: t('hero.tabs.drillingFluids')
     },
     {
-      tag: 'CONSTRUCTION & LOGISTICS',
-      title: 'TOTAL FIELD CONSTRUCTION & MANPOWER LOGISTICS',
-      description: 'In collaboration with highly reputed partners, ALMATAR provides comprehensive construction, heavy equipment transportations, manpower, and catering services.',
+      tag: t('hero.slide4Tag'),
+      title: t('hero.slide4Title'),
+      description: t('hero.slide4Desc'),
       image: '/images/service_construction.png',
       link: '/construction',
-      tabLabel: 'CONSTRUCTION'
+      tabLabel: t('hero.tabs.construction')
     },
     {
-      tag: 'OILFIELD TRADING',
-      title: 'OILFIELD TRADING & EQUIPMENT SUPPLY',
-      description: 'Sourcing high-spec drilling chemicals, downhole tools, API certified wellheads, and heavy oilfield equipment through trusted international partner networks.',
+      tag: t('hero.slide5Tag'),
+      title: t('hero.slide5Title'),
+      description: t('hero.slide5Desc'),
       image: '/images/service_wellhead.png',
       link: '/trading',
-      tabLabel: 'TRADING'
+      tabLabel: t('hero.tabs.trading')
     },
     {
-      tag: 'QHSE COMMITMENT',
-      title: 'QUALITY, HEALTH, SAFETY & ENVIRONMENTAL (QHSE)',
-      description: 'Demonstrating an ongoing and determined commitment to improving health and safety at work throughout our organization and operating facilities.',
+      tag: t('hero.slide6Tag'),
+      title: t('hero.slide6Title'),
+      description: t('hero.slide6Desc'),
       image: '/images/qhse_safety.png',
       link: '/qhse',
-      tabLabel: 'QHSE SAFETY'
+      tabLabel: t('hero.tabs.qhse')
     },
     {
-      tag: 'JOIN OUR TEAM',
-      title: 'BUILD YOUR FUTURE WITH ALMATAR PETROLEUM SERVICES',
-      description: 'Join our team of dedicated field engineers and technical experts. Discover professional growth, modern equipment, and competitive employee benefits.',
+      tag: t('hero.slide7Tag'),
+      title: t('hero.slide7Title'),
+      description: t('hero.slide7Desc'),
       image: '/images/careers_engineers_hero.png',
       link: '/careers',
-      tabLabel: 'CAREERS'
+      tabLabel: t('hero.tabs.careers')
     }
   ];
 
@@ -86,7 +89,7 @@ export default function HeroCarousel() {
               <p className="hero-description">{slide.description}</p>
               
               <Link href={slide.link} className="btn-learn-more">
-                <span>Learn more</span>
+                <span>{t('hero.learnMore')}</span>
                 <span className="arrow-circle">&rarr;</span>
               </Link>
             </div>
