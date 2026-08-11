@@ -1,8 +1,12 @@
 'use client';
 
 import Link from 'next/link';
+import { useLanguage } from '../context/LanguageContext';
 
-export default function NextPageBanner({ title, subtitle = "Learn more", link, bgImage }) {
+export default function NextPageBanner({ title, subtitle, link, bgImage }) {
+  const { t } = useLanguage();
+  const displaySubtitle = subtitle || t('hero.learnMore') || "Learn more";
+
   return (
     <section className="next-page-banner-section">
       <Link href={link} className="next-page-banner-wrapper" aria-label={`Navigate to ${title}`}>
@@ -15,7 +19,7 @@ export default function NextPageBanner({ title, subtitle = "Learn more", link, b
           <h2 className="next-page-title">{title}</h2>
           <div className="next-page-link">
             <span className="next-arrow">&rarr;</span>
-            <span>{subtitle}</span>
+            <span>{displaySubtitle}</span>
           </div>
         </div>
       </Link>

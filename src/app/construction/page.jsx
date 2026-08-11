@@ -1,23 +1,28 @@
+'use client';
+
 import NextPageBanner from '@/components/NextPageBanner';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function ConstructionPage() {
+  const { t } = useLanguage();
+
   return (
     <>
       <div className="container" style={{ paddingTop: '2rem' }}>
         
-        {/* Static Header Banner */}
+        {/* Header Banner */}
         <div className="static-page-banner">
           <img src="/images/service_construction.png" alt="Construction & Logistics" />
           <div className="static-banner-overlay">
-            <span className="section-eyebrow" style={{ color: 'var(--accent-cyan)' }}>FIELD INFRASTRUCTURE</span>
-            <h1 className="static-banner-title">CONSTRUCTION & LOGISTICS SERVICES</h1>
+            <span className="section-eyebrow" style={{ color: 'var(--accent-cyan)' }}>{t('constructionPage.eyebrow')}</span>
+            <h1 className="static-banner-title">{t('constructionPage.title')}</h1>
           </div>
         </div>
 
         <div className="about-hero-card">
-          <h2 className="section-title">FULL CONSTRUCTION & FIELD SUPPORT</h2>
+          <h2 className="section-title">{t('constructionPage.title')}</h2>
           <p style={{ marginTop: '1rem', color: 'var(--text-muted)', lineHeight: '1.7' }}>
-            ALMATAR in collaboration with highly reputed Partners are leading the way, breaking ground and discovering new paths, while raising industry standards. As safety, performance, and reliability of equipment and personnel play a vital role, ALMATAR provides all required construction services:
+            {t('constructionPage.card1Desc')}
           </p>
 
           <div className="cards-grid" style={{ marginTop: '2rem' }}>
@@ -26,8 +31,8 @@ export default function ConstructionPage() {
                 <img src="/images/service_heavy_logistics.png" alt="Logistics & Heavy Transportations" />
               </div>
               <div className="card-body">
-                <h3 className="card-title">🚛 LOGISTICS & TRANSPORTATIONS</h3>
-                <p className="card-text">Full fleet transportation coordination for heavy oilfield equipment, fluid tanks, and field materials.</p>
+                <h3 className="card-title">🚛 {t('constructionPage.card1Title')}</h3>
+                <p className="card-text">{t('constructionPage.card1Desc')}</p>
               </div>
             </div>
 
@@ -36,18 +41,18 @@ export default function ConstructionPage() {
                 <img src="/images/service_manpower_supply.png" alt="Manpower Supply" />
               </div>
               <div className="card-body">
-                <h3 className="card-title">👷 MANPOWER SUPPLY</h3>
-                <p className="card-text">Certified engineering, drilling, and technical personnel for onshore field operations.</p>
+                <h3 className="card-title">👷 {t('constructionPage.card2Title')}</h3>
+                <p className="card-text">{t('constructionPage.card2Desc')}</p>
               </div>
             </div>
 
             <div className="solid-card">
               <div className="card-img-wrap">
-                <img src="/images/service_site_camp.png" alt="Catering & Site Camp" />
+                <img src="/images/frac_tanks.png" alt="FRAC Tanks & Containment" />
               </div>
               <div className="card-body">
-                <h3 className="card-title">🍱 CATERING & SITE CAMP</h3>
-                <p className="card-text">Comprehensive camp management, catering, and hospitality services for remote drilling sites.</p>
+                <h3 className="card-title">🛢️ {t('constructionPage.card3Title')}</h3>
+                <p className="card-text">{t('constructionPage.card3Desc')}</p>
               </div>
             </div>
           </div>
@@ -57,8 +62,8 @@ export default function ConstructionPage() {
 
       {/* Next Page Navigation Banner */}
       <NextPageBanner
-        title="Oilfield Trading"
-        subtitle="Learn more"
+        title={t('nav.trading')}
+        subtitle={t('hero.learnMore')}
         link="/trading"
         bgImage="/images/service_drilling_fluids.png"
       />

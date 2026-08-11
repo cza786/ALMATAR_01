@@ -1,16 +1,21 @@
+'use client';
+
 import NextPageBanner from '@/components/NextPageBanner';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function DrillingFluidsPage() {
+  const { t } = useLanguage();
+
   return (
     <>
       <div className="container" style={{ paddingTop: '2rem' }}>
         
-        {/* Static Header Banner */}
+        {/* Header Banner */}
         <div className="static-page-banner">
           <img src="/images/banner_drilling_hero.png" alt="Drilling and Fluid Chemistry" />
           <div className="static-banner-overlay">
-            <span className="section-eyebrow" style={{ color: 'var(--accent-cyan)' }}>ADVANCED DRILLING</span>
-            <h1 className="static-banner-title">DRILLING & FLUID CHEMICAL SERVICES</h1>
+            <span className="section-eyebrow" style={{ color: 'var(--accent-cyan)' }}>{t('drillingFluidsPage.eyebrow')}</span>
+            <h1 className="static-banner-title">{t('drillingFluidsPage.title')}</h1>
           </div>
         </div>
 
@@ -20,13 +25,13 @@ export default function DrillingFluidsPage() {
               <img src="/images/service_directional_drilling.png" alt="Drilling & Workover" />
             </div>
             <div className="card-body">
-              <h3 className="card-title">DRILLING AND WORKOVER SERVICES</h3>
+              <h3 className="card-title">{t('drillingFluidsPage.card1Title')}</h3>
               <p className="card-text">
-                ALMATAR Petroleum Services provides the latest drilling technologies for directional drilling, casing running, and cementing services.
+                {t('drillingFluidsPage.card1Desc')}
               </p>
               <ul className="card-list">
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Faster rates of penetration & superior hole quality</li>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Precise wellbore placement for land operations</li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> {t('drillingFluidsPage.card1Point1')}</li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> {t('drillingFluidsPage.card1Point2')}</li>
               </ul>
             </div>
           </div>
@@ -36,13 +41,13 @@ export default function DrillingFluidsPage() {
               <img src="/images/service_drilling_fluids.png" alt="Drilling Fluid Chemistry" />
             </div>
             <div className="card-body">
-              <h3 className="card-title">DRILLING FLUID & CHEMICAL SERVICES</h3>
+              <h3 className="card-title">{t('drillingFluidsPage.card2Title')}</h3>
               <p className="card-text">
-                Innovative fluid systems and products designed to advance the science of drilling wells. Fluid chemistry specially formulated and tested for harsh applications.
+                {t('drillingFluidsPage.card2Desc')}
               </p>
               <ul className="card-list">
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> On-site engineer advice and training</li>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Laboratory specialists for sample analysis & custom fluids</li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> {t('drillingFluidsPage.card2Point1')}</li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> {t('drillingFluidsPage.card2Point2')}</li>
               </ul>
             </div>
           </div>
@@ -52,8 +57,8 @@ export default function DrillingFluidsPage() {
 
       {/* Next Page Navigation Banner */}
       <NextPageBanner
-        title="Construction & Logistics"
-        subtitle="Learn more"
+        title={t('nav.construction')}
+        subtitle={t('hero.learnMore')}
         link="/construction"
         bgImage="/images/service_heavy_logistics.png"
       />

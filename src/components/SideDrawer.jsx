@@ -13,12 +13,12 @@ export default function SideDrawer({ isOpen, onClose }) {
   const { lang, toggleLanguage, t } = useLanguage();
 
   const serviceSubItems = [
-    { href: '/well-services#well-intervention', label: '• Well Intervention' },
-    { href: '/well-services#coiled-tubing', label: '• Coiled Tubing & Nitrogen' },
-    { href: '/well-services#stimulation-tanks', label: '• Stimulation & Tanks' },
-    { href: '/well-services#wellhead-xmas-tree', label: '• Wellhead & Xmas Tree' },
-    { href: '/well-services#slickline', label: '• Slickline Services' },
-    { href: '/well-services#surface-testing', label: '• Surface Well Testing' }
+    { href: '/well-services#well-intervention', label: `• ${t('drawer.subItems.wellIntervention')}` },
+    { href: '/well-services#coiled-tubing', label: `• ${t('drawer.subItems.coiledTubing')}` },
+    { href: '/well-services#stimulation-tanks', label: `• ${t('drawer.subItems.stimulationTanks')}` },
+    { href: '/well-services#wellhead-xmas-tree', label: `• ${t('drawer.subItems.wellheadXmasTree')}` },
+    { href: '/well-services#slickline', label: `• ${t('drawer.subItems.slickline')}` },
+    { href: '/well-services#surface-testing', label: `• ${t('drawer.subItems.surfaceTesting')}` }
   ];
 
   return (
@@ -37,7 +37,7 @@ export default function SideDrawer({ isOpen, onClose }) {
             </svg>
             <input
               type="text"
-              placeholder={lang === 'ar' ? 'البحث عن خدمة...' : 'Search services...'}
+              placeholder={t('drawer.searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -67,7 +67,7 @@ export default function SideDrawer({ isOpen, onClose }) {
           {('home'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
             <div className="drawer-nav-item">
               <Link href="/" className={`drawer-nav-link ${pathname === '/' ? 'active' : ''}`} onClick={onClose}>
-                <span>Home</span>
+                <span>{t('nav.home')}</span>
                 <span className="drawer-arrow">&rsaquo;</span>
               </Link>
             </div>
@@ -77,7 +77,7 @@ export default function SideDrawer({ isOpen, onClose }) {
           {('about'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
             <div className="drawer-nav-item">
               <Link href="/about" className={`drawer-nav-link ${pathname === '/about' ? 'active' : ''}`} onClick={onClose}>
-                <span>About</span>
+                <span>{t('nav.about')}</span>
                 <span className="drawer-arrow">&rsaquo;</span>
               </Link>
             </div>
@@ -90,7 +90,7 @@ export default function SideDrawer({ isOpen, onClose }) {
               onClick={() => setIsServicesOpen(!isServicesOpen)}
               style={{ cursor: 'pointer', userSelect: 'none' }}
             >
-              <span style={{ fontWeight: 700 }}>Services Portfolio</span>
+              <span style={{ fontWeight: 700 }}>{t('nav.portfolio')}</span>
               <span className={`drawer-arrow ${isServicesOpen ? 'expanded' : ''}`}>
                 {isServicesOpen ? '▾' : '›'}
               </span>
@@ -118,7 +118,7 @@ export default function SideDrawer({ isOpen, onClose }) {
           {('drilling'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
             <div className="drawer-nav-item">
               <Link href="/drilling-fluids" className={`drawer-nav-link ${pathname === '/drilling-fluids' ? 'active' : ''}`} onClick={onClose}>
-                <span>Drilling & Fluids</span>
+                <span>{t('nav.drillingFluids')}</span>
                 <span className="drawer-arrow">&rsaquo;</span>
               </Link>
             </div>
@@ -128,7 +128,7 @@ export default function SideDrawer({ isOpen, onClose }) {
           {('construction'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
             <div className="drawer-nav-item">
               <Link href="/construction" className={`drawer-nav-link ${pathname === '/construction' ? 'active' : ''}`} onClick={onClose}>
-                <span>Construction</span>
+                <span>{t('nav.construction')}</span>
                 <span className="drawer-arrow">&rsaquo;</span>
               </Link>
             </div>
@@ -138,7 +138,7 @@ export default function SideDrawer({ isOpen, onClose }) {
           {('trading'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
             <div className="drawer-nav-item">
               <Link href="/trading" className={`drawer-nav-link ${pathname === '/trading' ? 'active' : ''}`} onClick={onClose}>
-                <span>Trading</span>
+                <span>{t('nav.trading')}</span>
                 <span className="drawer-arrow">&rsaquo;</span>
               </Link>
             </div>
@@ -148,7 +148,7 @@ export default function SideDrawer({ isOpen, onClose }) {
           {('qhse'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
             <div className="drawer-nav-item">
               <Link href="/qhse" className={`drawer-nav-link ${pathname === '/qhse' ? 'active' : ''}`} onClick={onClose}>
-                <span>QHSE Safety</span>
+                <span>{t('nav.qhse')}</span>
                 <span className="drawer-arrow">&rsaquo;</span>
               </Link>
             </div>
@@ -158,7 +158,7 @@ export default function SideDrawer({ isOpen, onClose }) {
           {('careers'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
             <div className="drawer-nav-item">
               <Link href="/careers" className={`drawer-nav-link ${pathname === '/careers' ? 'active' : ''}`} onClick={onClose}>
-                <span>Careers</span>
+                <span>{t('nav.careers')}</span>
                 <span className="drawer-arrow">&rsaquo;</span>
               </Link>
             </div>
@@ -168,7 +168,7 @@ export default function SideDrawer({ isOpen, onClose }) {
           {('contact'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
             <div className="drawer-nav-item">
               <Link href="/contact" className={`drawer-nav-link ${pathname === '/contact' ? 'active' : ''}`} onClick={onClose}>
-                <span>Contact</span>
+                <span>{t('nav.contact')}</span>
                 <span className="drawer-arrow">&rsaquo;</span>
               </Link>
             </div>
@@ -178,7 +178,7 @@ export default function SideDrawer({ isOpen, onClose }) {
 
         <div className="drawer-footer">
           <div className="drawer-contact-info">
-            <p>📍 Syria – Damascus / Qamishli</p>
+            <p>📍 {t('contact.locationValue')}</p>
             <p>📞 Tel: 00963 52 426 915</p>
             <p>📱 Mob: 00963 93 982 2415 | 00963 93 140 7723</p>
           </div>

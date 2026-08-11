@@ -2,19 +2,21 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function SlantedPortfolioAccordion() {
   const [hoveredIndex, setHoveredIndex] = useState(0);
+  const { t } = useLanguage();
 
   const services = [
     {
       id: 'well-services',
       number: '01',
-      tag: 'WELL SERVICES',
-      title: 'ADVANCED WELL INTERVENTION & STIMULATION',
-      shortTitle: 'Well Intervention & CT',
-      description: 'Maximize hydrocarbon recovery with engineered down-hole tools, Zone I & II Coiled Tubing units, nitrogen lift, and high-pressure matrix stimulation.',
-      features: ['Zone I & II Coiled Tubing', 'High Pressure Pumping', '7-Point Wellhead Maintenance'],
+      tag: t('accordion.item1.tag'),
+      title: t('accordion.item1.title'),
+      shortTitle: t('accordion.item1.tag'),
+      description: t('accordion.item1.desc'),
+      features: t('accordion.item1.feats') || ['Zone I & II Coiled Tubing', 'High Pressure Pumping', 'Wellhead Maintenance'],
       image: '/images/service_coiled_tubing.png',
       link: '/well-services',
       color: 'var(--accent-gold)'
@@ -22,11 +24,11 @@ export default function SlantedPortfolioAccordion() {
     {
       id: 'drilling-fluids',
       number: '02',
-      tag: 'DRILLING & FLUIDS',
-      title: 'DIRECTIONAL DRILLING & FLUID CHEMISTRY',
-      shortTitle: 'Drilling & Fluid Chemistry',
-      description: 'Precision wellbore trajectory control combined with custom-formulated drilling fluid systems and advanced laboratory testing facilities.',
-      features: ['Directional Drilling', 'Water & Oil-Based Mud', 'Laboratory Analysis'],
+      tag: t('accordion.item2.tag'),
+      title: t('accordion.item2.title'),
+      shortTitle: t('accordion.item2.tag'),
+      description: t('accordion.item2.desc'),
+      features: t('accordion.item2.feats') || ['Directional Drilling', 'Water & Oil-Based Mud', 'Laboratory Analysis'],
       image: '/images/service_drilling_fluids.png',
       link: '/drilling-fluids',
       color: 'var(--accent-cyan)'
@@ -34,11 +36,11 @@ export default function SlantedPortfolioAccordion() {
     {
       id: 'construction',
       number: '03',
-      tag: 'CONSTRUCTION & LOGISTICS',
-      title: 'TOTAL FIELD CONSTRUCTION & HEAVY LOGISTICS',
-      shortTitle: 'Construction & Logistics',
-      description: 'Comprehensive field infrastructure construction, heavy machinery transport, 500 BBL FRAC tank fleets, technical manpower, and camp catering.',
-      features: ['Heavy Transport Fleet', 'FRAC Tank Rentals', 'Modular Site Camps'],
+      tag: t('accordion.item3.tag'),
+      title: t('accordion.item3.title'),
+      shortTitle: t('accordion.item3.tag'),
+      description: t('accordion.item3.desc'),
+      features: t('accordion.item3.feats') || ['Heavy Transport Fleet', 'FRAC Tank Rentals', 'Modular Site Camps'],
       image: '/images/service_construction.png',
       link: '/construction',
       color: '#10b981'
@@ -46,11 +48,11 @@ export default function SlantedPortfolioAccordion() {
     {
       id: 'qhse',
       number: '04',
-      tag: 'QHSE COMMITMENT',
-      title: 'QUALITY, HEALTH, SAFETY & ENVIRONMENT (QHSE)',
-      shortTitle: 'QHSE Safety & Compliance',
-      description: 'Rigorous safety standards, risk mitigation frameworks, site hazard assessments, and certified technical training across all Syrian field sites.',
-      features: ['Zero Harm Policy', '7-Point Site Inspection', 'ISO Standard Compliance'],
+      tag: t('accordion.item4.tag'),
+      title: t('accordion.item4.title'),
+      shortTitle: t('accordion.item4.tag'),
+      description: t('accordion.item4.desc'),
+      features: t('accordion.item4.feats') || ['Zero Harm Policy', '7-Point Site Inspection', 'ISO Standard Compliance'],
       image: '/images/qhse_safety.png',
       link: '/qhse',
       color: '#f59e0b'
@@ -63,10 +65,10 @@ export default function SlantedPortfolioAccordion() {
         
         {/* Section Header */}
         <div className="section-header text-center" style={{ marginBottom: '2.5rem' }}>
-          <span className="section-eyebrow" style={{ color: 'var(--accent-gold)' }}>CORE OPERATIONAL CAPABILITIES</span>
-          <h2 className="section-title" style={{ color: '#ffffff' }}>SPECIALIZED OILFIELD PORTFOLIO</h2>
+          <span className="section-eyebrow" style={{ color: 'var(--accent-gold)' }}>{t('accordion.eyebrow')}</span>
+          <h2 className="section-title" style={{ color: '#ffffff' }}>{t('accordion.title')}</h2>
           <p className="section-subtitle" style={{ color: '#9ca3af', maxWidth: '720px', margin: '0.6rem auto 0 auto' }}>
-            Hover across any operational card to smoothly reveal its full engineering capabilities, technical specifications, and service options.
+            {t('accordion.subtitle')}
           </p>
         </div>
 
@@ -117,7 +119,7 @@ export default function SlantedPortfolioAccordion() {
                   {/* Line 5: Luxurious Action Link Button (Animated Line 5) */}
                   <div className="lux-line-5">
                     <Link href={item.link} className="lux-action-btn">
-                      <span>Explore Capability</span>
+                      <span>{t('accordion.explore')}</span>
                       <span className="lux-arrow">&rarr;</span>
                     </Link>
                   </div>

@@ -187,8 +187,8 @@ export default function TradingPage() {
 
       {/* ===================== NEXT PAGE BANNER ===================== */}
       <NextPageBanner
-        title="Safety & QHSE"
-        subtitle="Learn more"
+        title={t('nav.qhse')}
+        subtitle={t('hero.learnMore')}
         link="/qhse"
         bgImage="/images/qhse_inspection_team.png"
       />

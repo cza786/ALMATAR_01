@@ -145,15 +145,13 @@ export default function CareersPage() {
         <div className="cr-strength-grid">
           {/* Left Column: Dark Content */}
           <div className="cr-strength-content">
-            <span className="cr-eyebrow-gold">OUR PEOPLE, OUR STRENGTH</span>
-            <h2 className="cr-strength-heading">Together, We Achieve More</h2>
+            <span className="cr-eyebrow-gold">{t('careers.whyWorkEyebrow')}</span>
+            <h2 className="cr-strength-heading">{t('careers.whyWorkHeading')}</h2>
             <p className="cr-strength-desc">
-              We believe in building long-term relationships with our employees based on trust,
-              respect and teamwork. At ALMATAR, you&apos;ll find a supportive environment where your
-              ideas are valued and your contributions matter.
+              {t('careers.whyWorkLead')}
             </p>
             <Link href="/about" className="cr-hero-btn">
-              LEARN MORE ABOUT US <span className="cr-btn-arrow">&rsaquo;</span>
+              {t('hero.learnMore')} <span className="cr-btn-arrow">&rsaquo;</span>
             </Link>
           </div>
 
