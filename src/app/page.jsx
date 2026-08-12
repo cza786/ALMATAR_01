@@ -8,6 +8,8 @@ import NextPageBanner from '@/components/NextPageBanner';
 import QuoteModal from '@/components/QuoteModal';
 import { useLanguage } from '@/context/LanguageContext';
 
+import MinimalistStatsBar from '@/components/MinimalistStatsBar';
+
 export default function Home() {
   const { t, lang } = useLanguage();
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
@@ -18,41 +20,7 @@ export default function Home() {
       <HeroCarousel />
 
       {/* KEY FIGURES & STATISTICS SECTION (Directly Under Header / Hero) */}
-      <section className="home-stats-section" style={{ paddingTop: '2rem', paddingBottom: '1rem' }}>
-        <div className="container">
-          <div className="minimalist-stats-bar">
-            {/* Stat 1: 20+ Years */}
-            <div className="minimalist-stat-item">
-              <div className="stat-big-number">{t('stats.years')}</div>
-              <div className="stat-sub-label">{t('stats.yearsLabel')}</div>
-            </div>
-
-            <div className="stat-vertical-divider" />
-
-            {/* Stat 2: 300+ Projects */}
-            <div className="minimalist-stat-item">
-              <div className="stat-big-number">{t('stats.projects')}</div>
-              <div className="stat-sub-label">{t('stats.projectsLabel')}</div>
-            </div>
-
-            <div className="stat-vertical-divider" />
-
-            {/* Stat 3: 150+ Wells */}
-            <div className="minimalist-stat-item">
-              <div className="stat-big-number">{t('stats.wells')}</div>
-              <div className="stat-sub-label">{t('stats.wellsLabel')}</div>
-            </div>
-
-            <div className="stat-vertical-divider" />
-
-            {/* Stat 4: 100% Safety */}
-            <div className="minimalist-stat-item">
-              <div className="stat-big-number">{t('stats.safety')}</div>
-              <div className="stat-sub-label">{t('stats.safetyLabel')}</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <MinimalistStatsBar />
 
       <div className="container" style={{ paddingTop: '2rem', paddingBottom: '1rem' }}>
         {/* Main Intro Card */}

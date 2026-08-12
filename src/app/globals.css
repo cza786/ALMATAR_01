@@ -4604,13 +4604,73 @@ body.rtl-mode .footer-brand p {
   align-items: center;
   justify-content: space-around;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  /* 2. Subtle Fade-In & Slide-Up (Container) */
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.minimalist-stats-bar.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.minimalist-stats-bar:hover {
+  border-color: var(--accent-gold);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.22), 0 0 25px rgba(217, 119, 6, 0.2);
 }
 
 .minimalist-stat-item {
   flex: 1;
   text-align: center;
-  padding: 0 1.25rem;
+  padding: 1.8rem 1.25rem 1.6rem 1.25rem;
+  position: relative;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  /* 2. Subtle Fade-In & Slide-Up (Staggered Entry Column) */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.minimalist-stat-item.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- GOLDEN HOVER & TAP/ACTIVE EFFECT ON STATS CARD --- */
+.minimalist-stat-item:hover,
+.minimalist-stat-item:active,
+.minimalist-stat-item.active-selected {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, rgba(217, 119, 6, 0.18) 100%);
+  border-color: var(--accent-gold);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 14px 35px rgba(217, 119, 6, 0.28), inset 0 0 15px rgba(217, 119, 6, 0.1);
+}
+
+.minimalist-stat-item:hover .card-top-accent,
+.minimalist-stat-item:active .card-top-accent,
+.minimalist-stat-item.active-selected .card-top-accent {
+  background: var(--accent-gold);
+  box-shadow: 0 0 12px var(--accent-gold);
+}
+
+.minimalist-stat-item:hover .stat-big-number,
+.minimalist-stat-item:active .stat-big-number,
+.minimalist-stat-item.active-selected .stat-big-number {
+  color: var(--accent-gold);
+  transform: scale(1.08);
+  filter: drop-shadow(0 4px 12px rgba(217, 119, 6, 0.45));
+}
+
+.minimalist-stat-item:hover .stat-sub-label,
+.minimalist-stat-item:active .stat-sub-label,
+.minimalist-stat-item.active-selected .stat-sub-label {
+  color: #b45309;
+  font-weight: 700;
 }
 
 .stat-big-number {
@@ -4621,6 +4681,36 @@ body.rtl-mode .footer-brand p {
   line-height: 1.1;
   margin-bottom: 0.4rem;
   letter-spacing: -1px;
+  font-variant-numeric: tabular-nums;
+  transition: all 0.35s ease;
+}
+
+.counter-animating {
+  color: var(--accent-gold);
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #b45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 3. Pulse / Highlight Glow on Final Value Arrival */
+@keyframes statArrivalPulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(217, 119, 6, 0));
+  }
+  40% {
+    transform: scale(1.08);
+    color: var(--accent-gold);
+    filter: drop-shadow(0 4px 15px rgba(217, 119, 6, 0.5));
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(217, 119, 6, 0));
+  }
+}
+
+.stat-pulse-glow {
+  animation: statArrivalPulse 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .stat-sub-label {
@@ -4628,6 +4718,7 @@ body.rtl-mode .footer-brand p {
   font-weight: 600;
   color: #64748b;
   letter-spacing: 0.2px;
+  transition: color 0.35s ease;
 }
 
 .stat-vertical-divider {
