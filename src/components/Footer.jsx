@@ -46,9 +46,9 @@ export default function Footer() {
           <div>
             <h4 className="footer-heading">{t('footer.contactDetails')}</h4>
             <ul className="footer-links footer-contact-list">
-              <li><span style={{ color: '#d1d5db' }}>📍 {t('contact.locationValue')}</span></li>
-              <li><a href="tel:0096352426915" style={{ color: '#d1d5db' }}>📞 Tel: 00963 52 426 915</a></li>
-              <li><a href="tel:00963939822415" style={{ color: '#d1d5db' }}>📱 Mob: 00963 93 982 2415</a></li>
+              <li><span style={{ color: '#475569' }}>📍 {t('contact.locationValue')}</span></li>
+              <li><a href="tel:0096352426915" style={{ color: '#475569' }}>📞 Tel: 00963 52 426 915</a></li>
+              <li><a href="tel:00963939822415" style={{ color: '#475569' }}>📱 Mob: 00963 93 982 2415</a></li>
               
               {/* Interactive WhatsApp Button */}
               <li style={{ marginTop: '0.6rem' }}>

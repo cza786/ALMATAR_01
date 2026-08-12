@@ -8,8 +8,6 @@ import NextPageBanner from '@/components/NextPageBanner';
 import QuoteModal from '@/components/QuoteModal';
 import { useLanguage } from '@/context/LanguageContext';
 
-import MinimalistStatsBar from '@/components/MinimalistStatsBar';
-
 export default function Home() {
   const { t, lang } = useLanguage();
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
@@ -18,9 +16,6 @@ export default function Home() {
     <div key={lang}>
       {/* Top Dynamic Hero Carousel Header */}
       <HeroCarousel />
-
-      {/* KEY FIGURES & STATISTICS SECTION (Directly Under Header / Hero) */}
-      <MinimalistStatsBar />
 
       <div className="container" style={{ paddingTop: '2rem', paddingBottom: '1rem' }}>
         {/* Main Intro Card */}
