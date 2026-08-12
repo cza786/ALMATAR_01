@@ -1,0 +1,6 @@
+# Allow search engine indexing for Googlebot and all web crawlers
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
