@@ -2320,9 +2320,9 @@ textarea.form-control {
     touch-action: pan-x pan-y !important;
     scroll-snap-type: x proximity !important;
     scroll-behavior: smooth !important;
-    height: 480px !important;
+    height: 540px !important;
     gap: 14px !important;
-    padding: 0.5rem 1.75rem 1rem 1.75rem !important;
+    padding: 0.75rem 1.75rem 1.25rem 1.75rem !important;
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
   }
@@ -2342,14 +2342,14 @@ textarea.form-control {
 
   .luxurious-card-item:hover,
   .luxurious-card-item.expanded {
-    flex: 0 0 82vw !important;
-    min-width: 280px !important;
+    flex: 0 0 88vw !important;
+    min-width: 310px !important;
   }
 
   .lux-bg-wrapper,
   .lux-card-inner {
     transform: skewX(12deg) !important;
-    padding: 1.6rem 1.3rem !important;
+    padding: 1.4rem 1.1rem 1.2rem 1.1rem !important;
   }
 
   .services-icon-panel {
@@ -3175,7 +3175,7 @@ html, body {
     margin-left: -1rem !important;
     margin-right: -1rem !important;
     padding: 0.75rem 1.75rem 1.25rem 1.75rem !important;
-    height: 480px !important;
+    height: 550px !important;
     gap: 14px !important;
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
@@ -3199,8 +3199,8 @@ html, body {
 
   .luxurious-card-item.expanded,
   .luxurious-card-item:hover {
-    flex: 0 0 82vw !important;
-    min-width: 280px !important;
+    flex: 0 0 88vw !important;
+    min-width: 320px !important;
     border-color: var(--accent-gold) !important;
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8), 0 0 35px rgba(217, 119, 6, 0.35) !important;
   }
@@ -3213,56 +3213,71 @@ html, body {
 
   .lux-card-inner {
     transform: skewX(12deg) !important;
-    padding: 1.6rem 1.3rem !important;
+    padding: 1.25rem 1.1rem 1.1rem 1.1rem !important;
+    justify-content: flex-end !important;
   }
 
   .lux-line-1 {
     gap: 0.5rem !important;
-    margin-bottom: 0.4rem !important;
+    margin-bottom: 0.35rem !important;
   }
 
   .lux-card-num {
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
   }
 
   .lux-card-tag {
-    font-size: 0.72rem !important;
+    font-size: 0.7rem !important;
     letter-spacing: 0.8px !important;
     white-space: nowrap !important;
   }
 
   .lux-card-title {
-    font-size: 1.15rem !important;
+    font-size: 1.1rem !important;
     line-height: 1.25 !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .lux-line-3 {
+    max-height: 180px !important;
+    margin-bottom: 0.6rem !important;
   }
 
   .lux-card-desc {
-    font-size: 0.82rem !important;
-    line-height: 1.45 !important;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 3 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
+    font-size: 0.8rem !important;
+    line-height: 1.4 !important;
+    display: block !important;
+    overflow: visible !important;
+    -webkit-line-clamp: unset !important;
+  }
+
+  .lux-line-4 {
+    max-height: 120px !important;
+    margin-bottom: 0.75rem !important;
   }
 
   .lux-feature-pills {
-    gap: 0.4rem !important;
+    gap: 0.35rem !important;
   }
 
   .lux-pill {
-    padding: 0.25rem 0.6rem !important;
-    font-size: 0.68rem !important;
+    padding: 0.2rem 0.55rem !important;
+    font-size: 0.66rem !important;
+  }
+
+  .lux-line-5 {
+    max-height: 60px !important;
   }
 
   .lux-action-btn {
-    padding: 0.5rem 1.1rem !important;
-    font-size: 0.82rem !important;
+    padding: 0.45rem 0.95rem !important;
+    font-size: 0.78rem !important;
   }
 }
 
 @media (max-width: 480px) {
   .luxurious-accordion-grid {
-    height: 460px !important;
+    height: 530px !important;
     gap: 12px !important;
     padding: 0.75rem 1.5rem 1.25rem 1.5rem !important;
   }
@@ -3276,8 +3291,8 @@ html, body {
 
   .luxurious-card-item.expanded,
   .luxurious-card-item:hover {
-    flex: 0 0 84vw !important;
-    min-width: 260px !important;
+    flex: 0 0 88vw !important;
+    min-width: 300px !important;
   }
 
   .lux-bg-wrapper,
@@ -3286,25 +3301,29 @@ html, body {
   }
 
   .lux-card-inner {
-    padding: 1.35rem 1.1rem !important;
+    padding: 1.15rem 0.95rem 1rem 0.95rem !important;
   }
 
   .lux-card-tag {
-    font-size: 0.68rem !important;
+    font-size: 0.66rem !important;
   }
 
   .lux-card-title {
-    font-size: 1.05rem !important;
+    font-size: 1.02rem !important;
+  }
+
+  .lux-card-desc {
+    font-size: 0.78rem !important;
   }
 
   .lux-pill {
-    font-size: 0.65rem !important;
+    font-size: 0.64rem !important;
     padding: 0.2rem 0.5rem !important;
   }
 
   .lux-action-btn {
-    padding: 0.45rem 0.9rem !important;
-    font-size: 0.78rem !important;
+    padding: 0.42rem 0.85rem !important;
+    font-size: 0.75rem !important;
   }
 }
 
