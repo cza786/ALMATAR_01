@@ -81,6 +81,7 @@ export default function SlantedPortfolioAccordion() {
                 key={item.id}
                 className={`luxurious-card-item ${isHovered ? 'expanded' : ''}`}
                 onMouseEnter={() => setHoveredIndex(index)}
+                onClick={() => setHoveredIndex(index)}
               >
                 {/* Background Image Wrapper (Inverse Skewed) */}
                 <div className="lux-bg-wrapper">
