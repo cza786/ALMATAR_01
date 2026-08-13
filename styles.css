@@ -1089,14 +1089,19 @@ button {
 }
 
 .lux-pill {
-  font-size: 0.76rem;
-  font-weight: 700;
-  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.25;
+  background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
-  padding: 0.35rem 0.85rem;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.3rem 0.75rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(4px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
 }
 
 /* Line 5: Luxurious Action Link Button */
@@ -2357,12 +2362,12 @@ textarea.form-control {
   }
 }
 
-/* PROMINENT LOGO (NO CIRCULAR FRAME/BORDER, GREATER SIZE) */
+/* PROMINENT LOGO (HIGH VISIBILITY & PROMINENT SIZE) */
 .brand-logo-white-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 76px;
+  height: 98px;
   width: auto;
   border-radius: 0 !important;
   background: transparent !important;
@@ -2382,9 +2387,9 @@ textarea.form-control {
 }
 
 .header-logo-img-prominent {
-  height: 76px;
+  height: 98px;
   width: auto;
-  max-height: 80px;
+  max-height: 105px;
   object-fit: contain;
   transform: none;
   image-rendering: -webkit-optimize-contrast;
@@ -2400,7 +2405,7 @@ textarea.form-control {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 76px;
+  height: 98px;
   width: auto;
   border-radius: 0 !important;
   background: transparent !important;
@@ -2420,9 +2425,9 @@ textarea.form-control {
 }
 
 .footer-logo-img-prominent {
-  height: 76px;
+  height: 98px;
   width: auto;
-  max-height: 80px;
+  max-height: 105px;
   object-fit: contain;
   transform: none;
   image-rendering: -webkit-optimize-contrast;
@@ -3120,8 +3125,8 @@ html, body {
   }
 
   .header-logo-img-prominent {
-    height: 44px !important;
-    max-height: 48px !important;
+    height: 64px !important;
+    max-height: 70px !important;
   }
 
   .header-quote-btn {
@@ -3252,21 +3257,34 @@ html, body {
   }
 
   .lux-line-4 {
-    max-height: 120px !important;
+    max-height: 140px !important;
     margin-bottom: 0.75rem !important;
+    opacity: 1 !important;
+    overflow: visible !important;
   }
 
   .lux-feature-pills {
-    gap: 0.35rem !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.35rem 0.45rem !important;
+    width: 100% !important;
   }
 
   .lux-pill {
-    padding: 0.2rem 0.55rem !important;
-    font-size: 0.66rem !important;
+    padding: 0.22rem 0.6rem !important;
+    font-size: 0.65rem !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+    border-radius: 12px !important;
+    white-space: normal !important;
+    text-align: center !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .lux-line-5 {
     max-height: 60px !important;
+    opacity: 1 !important;
   }
 
   .lux-action-btn {
@@ -3316,9 +3334,17 @@ html, body {
     font-size: 0.78rem !important;
   }
 
+  .lux-feature-pills {
+    gap: 0.3rem 0.4rem !important;
+  }
+
   .lux-pill {
-    font-size: 0.64rem !important;
+    font-size: 0.62rem !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
     padding: 0.2rem 0.5rem !important;
+    border-radius: 10px !important;
+    white-space: normal !important;
   }
 
   .lux-action-btn {
