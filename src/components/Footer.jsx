@@ -14,7 +14,7 @@ export default function Footer() {
           
           <div className="footer-brand">
             <Link href="/" aria-label="ALMATAR Homepage" className="footer-logo-white-badge">
-              <img src="/images/almatar_logo.png" alt="ALMATAR Logo" className="footer-logo-img-prominent" />
+              <img src="/images/almatar_logo_raw.png?v=5" alt="ALMATAR Logo" className="footer-logo-img-prominent" />
             </Link>
             <p style={{ marginTop: '1.2rem' }}>{t('footer.desc')}</p>
           </div>
