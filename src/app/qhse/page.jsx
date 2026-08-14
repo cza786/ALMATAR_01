@@ -12,7 +12,7 @@ export default function QhsePage() {
         
         {/* Header Banner */}
         <div className="static-page-banner">
-          <img src="/images/qhse_safety.png" alt="QHSE Safety Commitment" />
+          <img src="/images/qhse_safety.png?v=2" alt="QHSE Safety Commitment" />
           <div className="static-banner-overlay">
             <span className="section-eyebrow" style={{ color: 'var(--accent-green)' }}>{t('qhsePage.eyebrow')}</span>
             <h1 className="static-banner-title">{t('qhsePage.title')}</h1>

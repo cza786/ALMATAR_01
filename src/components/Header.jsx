@@ -138,7 +138,7 @@ export default function Header({ onOpenDrawer }) {
                           <div className="mega-title-line"></div>
                         </div>
                         <div className="mega-card-img-wrap">
-                          <img src="/images/banner_about_corporate.png" alt="About Us" />
+                          <img src="/images/banner_about_corporate.png?v=2" alt="About Us" />
                         </div>
                         <h4 className="mega-card-heading">{t('mega.card1Heading')}</h4>
                         <p className="mega-card-text">{t('mega.card1Text')}</p>
@@ -203,7 +203,7 @@ export default function Header({ onOpenDrawer }) {
                           <div className="mega-title-line"></div>
                         </div>
                         <div className="mega-card-img-wrap">
-                          <img src="/images/qhse_safety.png" alt="QHSE Commitment" />
+                          <img src="/images/qhse_safety.png?v=2" alt="QHSE Commitment" />
                         </div>
                         <h4 className="mega-card-heading">{t('mega.card6Heading')}</h4>
                         <p className="mega-card-text">{t('mega.card6Text')}</p>

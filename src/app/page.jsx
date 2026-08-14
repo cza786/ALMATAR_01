@@ -59,7 +59,7 @@ export default function Home() {
         title={t('nav.about')}
         subtitle={t('hero.learnMore')}
         link="/about"
-        bgImage="/images/banner_about_corporate.png"
+        bgImage="/images/banner_about_corporate.png?v=2"
       />
 
       <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />

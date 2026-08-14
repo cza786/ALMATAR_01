@@ -53,7 +53,7 @@ export default function SlantedPortfolioAccordion() {
       shortTitle: t('accordion.item4.tag'),
       description: t('accordion.item4.desc'),
       features: t('accordion.item4.feats') || ['Zero Harm Policy', '7-Point Site Inspection', 'ISO Standard Compliance'],
-      image: '/images/qhse_safety.png',
+      image: '/images/qhse_safety.png?v=2',
       link: '/qhse',
       color: '#f59e0b'
     }

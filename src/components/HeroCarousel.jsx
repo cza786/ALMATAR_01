@@ -54,7 +54,7 @@ export default function HeroCarousel() {
       tag: t('hero.slide6Tag'),
       title: t('hero.slide6Title'),
       description: t('hero.slide6Desc'),
-      image: '/images/qhse_safety.png',
+      image: '/images/qhse_safety.png?v=2',
       link: '/qhse',
       tabLabel: t('hero.tabs.qhse')
     },

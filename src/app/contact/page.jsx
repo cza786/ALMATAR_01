@@ -127,7 +127,7 @@ export default function ContactPage() {
       {/* HERO BANNER */}
       <section className="ctp-hero">
         <div className="ctp-hero-bg">
-          <img src="/images/banner_about_corporate.png" alt="Contact ALMATAR Headquarters" />
+          <img src="/images/banner_about_corporate.png?v=2" alt="Contact ALMATAR Headquarters" />
           <div className="ctp-hero-overlay" />
         </div>
         <div className="ctp-hero-content container text-center">

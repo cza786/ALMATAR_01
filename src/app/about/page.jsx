@@ -12,7 +12,7 @@ export default function AboutPage() {
         
         {/* Header Banner */}
         <div className="static-page-banner">
-          <img src="/images/banner_about_corporate.png" alt="Almatar Corporate About" />
+          <img src="/images/banner_about_corporate.png?v=2" alt="Almatar Corporate About" />
           <div className="static-banner-overlay">
             <span className="section-eyebrow" style={{ color: 'var(--accent-cyan)' }}>{t('aboutPage.eyebrow')}</span>
             <h1 className="static-banner-title">{t('aboutPage.title')}</h1>
