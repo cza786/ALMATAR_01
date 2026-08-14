@@ -5129,8 +5129,8 @@ html, body {
   }
 
   .header-logo-img-prominent {
-    height: 44px !important;
-    max-height: 48px !important;
+    height: 64px !important;
+    max-height: 70px !important;
   }
 
   .header-quote-btn {

@@ -4314,12 +4314,12 @@ body.rtl-mode .footer-brand p {
   }
 }
 
-/* PROMINENT LOGO (NO CIRCULAR FRAME/BORDER, GREATER SIZE) */
+/* PROMINENT LOGO (HIGH VISIBILITY & PROMINENT SIZE) */
 .brand-logo-white-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 76px;
+  height: 98px;
   width: auto;
   border-radius: 0 !important;
   background: transparent !important;
@@ -4339,9 +4339,9 @@ body.rtl-mode .footer-brand p {
 }
 
 .header-logo-img-prominent {
-  height: 76px;
+  height: 98px;
   width: auto;
-  max-height: 80px;
+  max-height: 105px;
   object-fit: contain;
   transform: none;
   image-rendering: -webkit-optimize-contrast;
@@ -5129,8 +5129,8 @@ html, body {
   }
 
   .header-logo-img-prominent {
-    height: 44px !important;
-    max-height: 48px !important;
+    height: 64px !important;
+    max-height: 70px !important;
   }
 
   .header-quote-btn {
