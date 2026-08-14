@@ -25,7 +25,9 @@ export default function SideDrawer({ isOpen, onClose }) {
     <div className={`side-drawer-overlay ${isOpen ? 'open' : ''}`} onClick={(e) => e.target === e.currentTarget && onClose()}>
       <aside className="side-drawer">
         <div className="drawer-header">
-          <span className="drawer-title" style={{ color: 'var(--accent-gold)', fontWeight: '800', fontSize: '1.2rem', letterSpacing: '1.5px' }}>ALMATAR</span>
+          <Link href="/" onClick={onClose} aria-label="ALMATAR Homepage">
+            <img src="/images/almatar_logo.png" alt="ALMATAR Petroleum Services" style={{ height: '48px', width: 'auto', objectFit: 'contain', display: 'block' }} />
+          </Link>
           <button className="drawer-close-btn" onClick={onClose} aria-label="Close Side Drawer">&times;</button>
         </div>
 
