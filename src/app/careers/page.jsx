@@ -1,10 +1,49 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
+import { client } from '@/sanity/lib/client';
+import { CAREERS_PAGE_QUERY, SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
+import { getImageUrl } from '@/sanity/lib/image';
 
 export default function CareersPage() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const [careersData, setCareersData] = useState(null);
+  const [settingsData, setSettingsData] = useState(null);
+
+  useEffect(() => {
+    async function loadCareersContent() {
+      try {
+        const [careersRes, settingsRes] = await Promise.all([
+          client.fetch(CAREERS_PAGE_QUERY),
+          client.fetch(SITE_SETTINGS_QUERY),
+        ]);
+        if (careersRes) setCareersData(careersRes);
+        if (settingsRes) setSettingsData(settingsRes);
+      } catch (err) {
+        console.warn('Using default careers content:', err);
+      }
+    }
+    loadCareersContent();
+  }, []);
+
+  const bannerImg = careersData?.bannerImage
+    ? getImageUrl(careersData.bannerImage, '/images/careers_engineers_hero.png')
+    : '/images/careers_engineers_hero.png';
+
+  const cultureImg = careersData?.cultureImage
+    ? getImageUrl(careersData.cultureImage, '/images/careers_team_walking.png')
+    : '/images/careers_team_walking.png';
+
+  const heroEyebrow =
+    (lang === 'ar' ? careersData?.eyebrowAr : careersData?.eyebrowEn) || t('careers.heroEyebrow');
+  const heroTitle =
+    (lang === 'ar' ? careersData?.pageTitleAr : careersData?.pageTitleEn) || t('careers.heroTitle');
+  const heroDesc =
+    (lang === 'ar' ? careersData?.pageDescAr : careersData?.pageDescEn) || t('careers.heroDesc');
+
+  const contactEmail = settingsData?.contactEmail || 'info@almatar.com';
 
   const whyIcons = [
     (
@@ -95,21 +134,23 @@ export default function CareersPage() {
     icon: benefitIcons[idx % benefitIcons.length]
   }));
 
+  const openPositions = careersData?.openPositions || [];
+
   return (
     <>
       {/* ===================== 1. HERO SECTION ===================== */}
       <section className="cr-hero">
         <div className="cr-hero-bg">
-          <img src="/images/careers_engineers_hero.png" alt="Build Your Future With ALMATAR" />
+          <img src={bannerImg} alt="Build Your Future With ALMATAR" />
           <div className="cr-hero-overlay" />
         </div>
         <div className="cr-hero-content container">
-          <span className="cr-hero-eyebrow">{t('careers.heroEyebrow')}</span>
+          <span className="cr-hero-eyebrow">{heroEyebrow}</span>
           <h1 className="cr-hero-title">
-            {t('careers.heroTitle')}
+            {heroTitle}
           </h1>
           <p className="cr-hero-desc">
-            {t('careers.heroDesc')}
+            {heroDesc}
           </p>
           <a href="#submit-cv" className="cr-hero-btn">
             {t('careers.joinTeam')} <span className="cr-btn-arrow">&rsaquo;</span>
@@ -158,13 +199,52 @@ export default function CareersPage() {
           {/* Right Column: Team Image */}
           <div className="cr-strength-img-wrap">
             <img
-              src="/images/careers_team_walking.png"
+              src={cultureImg}
               alt="Together, We Achieve More — ALMATAR Engineers Team"
               className="cr-strength-img"
             />
           </div>
         </div>
       </section>
+
+      {/* ===================== OPEN POSITIONS (IF AVAILABLE IN SANITY) ===================== */}
+      {openPositions.length > 0 && (
+        <section className="cr-why-section" style={{ background: '#f8fafc' }}>
+          <div className="container">
+            <div className="cr-section-header">
+              <span className="cr-eyebrow-gold">{lang === 'ar' ? 'الوظائف المتاحة' : 'OPEN VACANCIES'}</span>
+              <h2 className="cr-main-heading">{lang === 'ar' ? 'انضم إلى كادرنا المتخصص' : 'Current Job Opportunities'}</h2>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem', marginTop: '2rem' }}>
+              {openPositions.map((pos, i) => (
+                <div key={i} style={{ background: '#ffffff', borderRadius: '12px', padding: '1.75rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                    <span style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--accent-gold)', textTransform: 'uppercase' }}>
+                      {(lang === 'ar' ? pos.departmentAr : pos.departmentEn) || 'Engineering'}
+                    </span>
+                    <span style={{ fontSize: '0.8rem', background: '#f1f5f9', padding: '4px 10px', borderRadius: '20px', color: '#475569' }}>
+                      {(lang === 'ar' ? pos.typeAr : pos.typeEn) || 'Full-time'}
+                    </span>
+                  </div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#0f172a', marginBottom: '0.5rem' }}>
+                    {(lang === 'ar' ? pos.titleAr : pos.titleEn) || 'Engineer'}
+                  </h3>
+                  <p style={{ fontSize: '0.9rem', color: '#64748b', marginBottom: '1rem', lineHeight: '1.6' }}>
+                    {(lang === 'ar' ? pos.descriptionAr : pos.descriptionEn) || ''}
+                  </p>
+                  <a
+                    href={`mailto:${contactEmail}?subject=Application%20for%20${encodeURIComponent(pos.titleEn || 'Position')}`}
+                    className="btn-contact-header"
+                    style={{ fontSize: '0.85rem', padding: '8px 16px', display: 'inline-block' }}
+                  >
+                    {lang === 'ar' ? 'تقديم الآن عبر البريد' : 'Apply via Email'} &rarr;
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ===================== 4. EMPLOYEE BENEFITS ===================== */}
       <section className="cr-benefits-section">
@@ -206,7 +286,7 @@ export default function CareersPage() {
               </div>
             </div>
 
-            <a href="mailto:info@almatar.com?subject=Job%20Application%20-%20ALMATAR%20Careers" className="cr-cta-btn">
+            <a href={`mailto:${contactEmail}?subject=Job%20Application%20-%20ALMATAR%20Careers`} className="cr-cta-btn">
               {t('careers.submitCv')} <span className="cr-cta-btn-arrow">&rsaquo;</span>
             </a>
           </div>

@@ -12,7 +12,9 @@ export default function QuoteModal({ isOpen, onClose }) {
     serviceType: '',
     projectDescription: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   if (!isOpen) return null;
 
@@ -21,14 +23,38 @@ export default function QuoteModal({ isOpen, onClose }) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.name || !formData.phone) return;
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMsg('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMsg(data.error || 'Failed to submit quote request.');
+      }
+    } catch (err) {
+      console.error('Quote submission error:', err);
+      setErrorMsg('Network error. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleClose = () => {
     setSubmitted(false);
+    setErrorMsg('');
     setFormData({
       name: '',
       company: '',
@@ -83,6 +109,12 @@ export default function QuoteModal({ isOpen, onClose }) {
               <h2 className="quote-modal-title">{t('quote.modalTitle')}</h2>
               <p className="quote-modal-sub">{t('quote.modalSub')}</p>
             </div>
+
+            {errorMsg && (
+              <div style={{ padding: '0.75rem 1rem', background: '#fef2f2', color: '#dc2626', borderRadius: '8px', marginBottom: '1.5rem', fontSize: '0.9rem', border: '1px solid #fecaca' }}>
+                ⚠️ {errorMsg}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="quote-form-grid">
               {/* Row 1: Name & Company */}
@@ -163,8 +195,8 @@ export default function QuoteModal({ isOpen, onClose }) {
               </div>
 
               <div className="quote-form-actions">
-                <button type="submit" className="quote-submit-btn">
-                  <span>{t('quote.submitBtn')}</span>
+                <button type="submit" disabled={isSubmitting} className="quote-submit-btn">
+                  <span>{isSubmitting ? (lang === 'ar' ? 'جاري الإرسال...' : 'Submitting to Sanity...') : t('quote.submitBtn')}</span>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />

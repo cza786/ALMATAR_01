@@ -1,16 +1,42 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import HeroCarousel from '@/components/HeroCarousel';
 import SlantedPortfolioAccordion from '@/components/SlantedPortfolioAccordion';
 import NextPageBanner from '@/components/NextPageBanner';
 import QuoteModal from '@/components/QuoteModal';
 import { useLanguage } from '@/context/LanguageContext';
+import { client } from '@/sanity/lib/client';
+import { HOME_PAGE_QUERY } from '@/sanity/lib/queries';
+import { getImageUrl } from '@/sanity/lib/image';
 
 export default function Home() {
   const { t, lang } = useLanguage();
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  const [homeData, setHomeData] = useState(null);
+
+  useEffect(() => {
+    async function loadHomeContent() {
+      try {
+        const data = await client.fetch(HOME_PAGE_QUERY);
+        if (data) setHomeData(data);
+      } catch (err) {
+        console.warn('Using default home content:', err);
+      }
+    }
+    loadHomeContent();
+  }, []);
+
+  const introEyebrow =
+    (lang === 'ar' ? homeData?.introEyebrowAr : homeData?.introEyebrowEn) || t('homeIntro.eyebrow');
+  const introTitle =
+    (lang === 'ar' ? homeData?.introTitleAr : homeData?.introTitleEn) || t('homeIntro.title');
+  const introDesc =
+    (lang === 'ar' ? homeData?.introDescAr : homeData?.introDescEn) || t('homeIntro.desc');
+  const introImg = homeData?.introImage
+    ? getImageUrl(homeData.introImage, '/images/about_field_operations.png')
+    : '/images/about_field_operations.png';
 
   return (
     <div key={lang}>
@@ -22,10 +48,10 @@ export default function Home() {
         <div className="about-hero-card">
           <div className="about-split-grid">
             <div>
-              <span className="section-eyebrow">{t('homeIntro.eyebrow')}</span>
-              <h2 className="section-title">{t('homeIntro.title')}</h2>
+              <span className="section-eyebrow">{introEyebrow}</span>
+              <h2 className="section-title">{introTitle}</h2>
               <p style={{ marginTop: '1rem', color: 'var(--text-muted)', lineHeight: '1.7' }}>
-                {t('homeIntro.desc')}
+                {introDesc}
               </p>
               <div style={{ marginTop: '1.5rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                 <Link href="/about" className="btn-contact-header">
@@ -44,7 +70,7 @@ export default function Home() {
 
             <div>
               <div className="circle-img-container">
-                <img src="/images/about_field_operations.png" alt="Drilling Rig Operation" />
+                <img src={introImg} alt="Drilling Rig Operation" />
               </div>
             </div>
           </div>

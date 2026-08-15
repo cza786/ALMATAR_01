@@ -1,11 +1,39 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '../context/LanguageContext';
-import AlmatarLogo from './AlmatarLogo';
+import { client } from '@/sanity/lib/client';
+import { SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
+import { getImageUrl } from '@/sanity/lib/image';
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const [settings, setSettings] = useState(null);
+
+  useEffect(() => {
+    async function loadSettings() {
+      try {
+        const data = await client.fetch(SITE_SETTINGS_QUERY);
+        if (data) setSettings(data);
+      } catch (err) {
+        console.warn('Using default footer settings:', err);
+      }
+    }
+    loadSettings();
+  }, []);
+
+  const logoImg = settings?.logo
+    ? getImageUrl(settings.logo, '/images/almatar_logo_raw.png?v=5')
+    : '/images/almatar_logo_raw.png?v=5';
+
+  const desc =
+    (lang === 'ar' ? settings?.descriptionAr : settings?.descriptionEn) || t('footer.desc');
+  const address =
+    (lang === 'ar' ? settings?.addressAr : settings?.addressEn) || t('contact.locationValue');
+  const phone = settings?.contactPhone || '00963 93 982 2415';
+  const secondaryPhone = settings?.secondaryPhone || '00963 52 426 915';
+  const email = settings?.contactEmail || 'info@almatar.com';
 
   return (
     <footer className="site-footer">
@@ -14,9 +42,9 @@ export default function Footer() {
           
           <div className="footer-brand">
             <Link href="/" aria-label="ALMATAR Homepage" className="footer-logo-white-badge">
-              <img src="/images/almatar_logo_raw.png?v=5" alt="ALMATAR Logo" className="footer-logo-img-prominent" />
+              <img src={logoImg} alt="ALMATAR Logo" className="footer-logo-img-prominent" />
             </Link>
-            <p style={{ marginTop: '1.2rem' }}>{t('footer.desc')}</p>
+            <p style={{ marginTop: '1.2rem' }}>{desc}</p>
           </div>
 
           <div>
@@ -28,6 +56,7 @@ export default function Footer() {
               <li><Link href="/drilling-fluids">{t('nav.drillingFluids')}</Link></li>
               <li><Link href="/construction">{t('nav.construction')}</Link></li>
               <li><Link href="/qhse">{t('nav.qhse')}</Link></li>
+              <li><Link href="/careers">{t('nav.careers')}</Link></li>
               <li><Link href="/contact">{t('nav.contact')}</Link></li>
             </ul>
           </div>
@@ -46,14 +75,14 @@ export default function Footer() {
           <div>
             <h4 className="footer-heading">{t('footer.contactDetails')}</h4>
             <ul className="footer-links footer-contact-list">
-              <li><span className="footer-contact-text">📍 {t('contact.locationValue')}</span></li>
-              <li><a href="tel:0096352426915" className="footer-contact-link">📞 Tel: 00963 52 426 915</a></li>
-              <li><a href="tel:00963939822415" className="footer-contact-link">📱 Mob: 00963 93 982 2415</a></li>
+              <li><span className="footer-contact-text">📍 {address}</span></li>
+              <li><a href={`tel:${secondaryPhone.replace(/[^0-9+]/g, '')}`} className="footer-contact-link">📞 Tel: {secondaryPhone}</a></li>
+              <li><a href={`tel:${phone.replace(/[^0-9+]/g, '')}`} className="footer-contact-link">📱 Mob: {phone}</a></li>
               
               {/* Interactive WhatsApp Button */}
               <li style={{ marginTop: '0.6rem' }}>
                 <a
-                  href="https://wa.me/963939822415"
+                  href={`https://wa.me/${phone.replace(/[^0-9]/g, '')}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="interactive-contact-btn btn-whatsapp"
@@ -70,7 +99,7 @@ export default function Footer() {
               {/* Interactive Email Button */}
               <li style={{ marginTop: '0.4rem' }}>
                 <a
-                  href="mailto:info@almatar.com"
+                  href={`mailto:${email}`}
                   className="interactive-contact-btn btn-email"
                   title="Email ALMATAR"
                 >

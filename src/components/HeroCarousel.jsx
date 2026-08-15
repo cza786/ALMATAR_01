@@ -2,21 +2,38 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-
 import { useLanguage } from '../context/LanguageContext';
+import { client } from '@/sanity/lib/client';
+import { HOME_PAGE_QUERY } from '@/sanity/lib/queries';
+import { getImageUrl } from '@/sanity/lib/image';
 
 export default function HeroCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const [sanitySlides, setSanitySlides] = useState(null);
 
-  const slides = [
+  useEffect(() => {
+    async function loadHomeContent() {
+      try {
+        const homeData = await client.fetch(HOME_PAGE_QUERY);
+        if (homeData?.heroSlides?.length > 0) {
+          setSanitySlides(homeData.heroSlides);
+        }
+      } catch (err) {
+        console.warn('Using default hero carousel slides:', err);
+      }
+    }
+    loadHomeContent();
+  }, []);
+
+  const defaultSlides = [
     {
       tag: t('hero.slide1Tag'),
       title: t('hero.slide1Title'),
       description: t('hero.slide1Desc'),
       image: '/images/hero_drilling_rig.png',
       link: '/about',
-      tabLabel: t('hero.tabs.overview')
+      tabLabel: t('hero.tabs.overview'),
     },
     {
       tag: t('hero.slide2Tag'),
@@ -24,7 +41,7 @@ export default function HeroCarousel() {
       description: t('hero.slide2Desc'),
       image: '/images/service_coiled_tubing.png',
       link: '/well-services',
-      tabLabel: t('hero.tabs.wellServices')
+      tabLabel: t('hero.tabs.wellServices'),
     },
     {
       tag: t('hero.slide3Tag'),
@@ -32,7 +49,7 @@ export default function HeroCarousel() {
       description: t('hero.slide3Desc'),
       image: '/images/service_drilling_fluids.png',
       link: '/drilling-fluids',
-      tabLabel: t('hero.tabs.drillingFluids')
+      tabLabel: t('hero.tabs.drillingFluids'),
     },
     {
       tag: t('hero.slide4Tag'),
@@ -40,7 +57,7 @@ export default function HeroCarousel() {
       description: t('hero.slide4Desc'),
       image: '/images/service_construction.png',
       link: '/construction',
-      tabLabel: t('hero.tabs.construction')
+      tabLabel: t('hero.tabs.construction'),
     },
     {
       tag: t('hero.slide5Tag'),
@@ -48,7 +65,7 @@ export default function HeroCarousel() {
       description: t('hero.slide5Desc'),
       image: '/images/service_wellhead.png',
       link: '/trading',
-      tabLabel: t('hero.tabs.trading')
+      tabLabel: t('hero.tabs.trading'),
     },
     {
       tag: t('hero.slide6Tag'),
@@ -56,7 +73,7 @@ export default function HeroCarousel() {
       description: t('hero.slide6Desc'),
       image: '/images/qhse_safety.png?v=2',
       link: '/qhse',
-      tabLabel: t('hero.tabs.qhse')
+      tabLabel: t('hero.tabs.qhse'),
     },
     {
       tag: t('hero.slide7Tag'),
@@ -64,9 +81,20 @@ export default function HeroCarousel() {
       description: t('hero.slide7Desc'),
       image: '/images/careers_engineers_hero.png',
       link: '/careers',
-      tabLabel: t('hero.tabs.careers')
-    }
+      tabLabel: t('hero.tabs.careers'),
+    },
   ];
+
+  const slides = sanitySlides
+    ? sanitySlides.map((s, idx) => ({
+        tag: (lang === 'ar' ? s.badgeAr : s.badgeEn) || defaultSlides[idx % defaultSlides.length]?.tag,
+        title: (lang === 'ar' ? s.titleAr : s.titleEn) || defaultSlides[idx % defaultSlides.length]?.title,
+        description: (lang === 'ar' ? s.subtitleAr : s.subtitleEn) || defaultSlides[idx % defaultSlides.length]?.description,
+        image: s.image ? getImageUrl(s.image, defaultSlides[idx % defaultSlides.length]?.image) : defaultSlides[idx % defaultSlides.length]?.image,
+        link: s.link || defaultSlides[idx % defaultSlides.length]?.link,
+        tabLabel: (lang === 'ar' ? s.badgeAr : s.badgeEn) || defaultSlides[idx % defaultSlides.length]?.tabLabel,
+      }))
+    : defaultSlides;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -106,6 +134,7 @@ export default function HeroCarousel() {
                 key={i}
                 className={`hero-tab-item ${i === currentIndex ? 'active' : ''}`}
                 onClick={() => setCurrentIndex(i)}
+                style={{ cursor: 'pointer' }}
               >
                 <div className="tab-label-wrap">
                   <span className="tab-dot-mini"></span>
