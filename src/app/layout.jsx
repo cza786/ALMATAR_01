@@ -23,6 +23,13 @@ export default function RootLayout({ children }) {
         <link rel="shortcut icon" href="/favicon.ico?v=8" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=8" />
         <meta name="theme-color" content="#090d16" />
+        <meta property="og:title" content="ALMATAR | Integrated Oilfield & Projects Management" />
+        <meta property="og:description" content="Specialized well intervention, coiled tubing, stimulation, drilling fluids, and oilfield services." />
+        <meta property="og:image" content="/opengraph-image.png?v=9" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:image" content="/opengraph-image.png?v=9" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
