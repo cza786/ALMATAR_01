@@ -26,7 +26,7 @@ export default function SideDrawer({ isOpen, onClose }) {
       <aside className="side-drawer">
         <div className="drawer-header">
           <Link href="/" onClick={onClose} aria-label="ALMATAR Homepage">
-            <img src="/images/almatar_logo_raw.png?v=5" alt="ALMATAR Petroleum Services" style={{ height: '48px', width: 'auto', objectFit: 'contain', display: 'block' }} />
+            <img src="/images/almatar_logo_transparent.png?v=7" alt="ALMATAR Petroleum Services" style={{ height: '48px', width: 'auto', objectFit: 'contain', display: 'block' }} />
           </Link>
           <button className="drawer-close-btn" onClick={onClose} aria-label="Close Side Drawer">&times;</button>
         </div>

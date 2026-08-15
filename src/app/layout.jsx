@@ -17,10 +17,10 @@ export default function RootLayout({ children }) {
         <title>ALMATAR | Integrated Oilfield & Projects Management</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="ALMATAR Integrated Oilfield & Projects Management provides specialized well intervention, coiled tubing, stimulation, cementing, wellhead maintenance, drilling fluids, and construction services in Syria." />
-        <link rel="icon" type="image/png" sizes="32x32" href="/images/almatar_logo_raw.png?v=3" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/images/almatar_logo_raw.png?v=3" />
-        <link rel="shortcut icon" href="/favicon.ico?v=3" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/images/almatar_logo_raw.png?v=3" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/almatar_emblem_transparent.png?v=7" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/almatar_emblem_transparent.png?v=7" />
+        <link rel="shortcut icon" href="/favicon.ico?v=7" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/almatar_emblem_transparent.png?v=7" />
         <meta name="theme-color" content="#090d16" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
