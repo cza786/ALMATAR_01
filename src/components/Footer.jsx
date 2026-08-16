@@ -117,7 +117,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <div>
-            &copy; {new Date().getFullYear()} {t('footer.rights')}
+            &copy; {new Date().getFullYear()} {(lang === 'ar' ? settings?.copyrightAr : settings?.copyrightEn) || t('footer.rights')}
           </div>
           <div>
             {t('footer.location')}

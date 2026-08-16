@@ -7,6 +7,8 @@ export const SITE_SETTINGS_QUERY = groq`
     logo,
     descriptionEn,
     descriptionAr,
+    copyrightEn,
+    copyrightAr,
     contactEmail,
     contactPhone,
     secondaryPhone,

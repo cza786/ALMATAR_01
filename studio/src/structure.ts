@@ -71,14 +71,14 @@ export const structure: StructureResolver = (S) =>
 
       S.divider(),
 
-      // 4. GLOBAL SETTINGS
+      // 4. GLOBAL SETTINGS & FOOTER
       S.listItem()
-        .title('⚙️ Global Site Settings & Brand')
+        .title('⚙️ Global Site Settings & Footer')
         .child(
           S.document()
             .schemaType('siteSettings')
             .documentId('siteSettings')
-            .title('Global Site Settings')
+            .title('Global Site Settings & Footer')
         ),
 
       S.divider(),
