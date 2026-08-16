@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import NextPageBanner from '@/components/NextPageBanner';
 import { useLanguage } from '@/context/LanguageContext';
-import { client } from '@/sanity/lib/client';
 import { ABOUT_PAGE_QUERY } from '@/sanity/lib/queries';
 import { getImageUrl } from '@/sanity/lib/image';
+import { getSanityContent } from '@/sanity/lib/fetchData';
 
 export default function AboutPage() {
   const { t, lang } = useLanguage();
@@ -14,7 +14,7 @@ export default function AboutPage() {
   useEffect(() => {
     async function loadAboutContent() {
       try {
-        const data = await client.fetch(ABOUT_PAGE_QUERY);
+        const data = await getSanityContent('about', ABOUT_PAGE_QUERY);
         if (data) setAboutData(data);
       } catch (err) {
         console.warn('Using default about page content:', err);

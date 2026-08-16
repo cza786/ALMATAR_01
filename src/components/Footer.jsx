@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '../context/LanguageContext';
-import { client } from '@/sanity/lib/client';
 import { SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
 import { getImageUrl } from '@/sanity/lib/image';
+import { getSanityContent } from '@/sanity/lib/fetchData';
 
 export default function Footer() {
   const { t, lang } = useLanguage();
@@ -14,7 +14,7 @@ export default function Footer() {
   useEffect(() => {
     async function loadSettings() {
       try {
-        const data = await client.fetch(SITE_SETTINGS_QUERY);
+        const data = await getSanityContent('settings', SITE_SETTINGS_QUERY);
         if (data) setSettings(data);
       } catch (err) {
         console.warn('Using default footer settings:', err);

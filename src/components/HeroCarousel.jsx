@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '../context/LanguageContext';
-import { client } from '@/sanity/lib/client';
 import { HOME_PAGE_QUERY } from '@/sanity/lib/queries';
 import { getImageUrl } from '@/sanity/lib/image';
+import { getSanityContent } from '@/sanity/lib/fetchData';
 
 export default function HeroCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,7 +15,7 @@ export default function HeroCarousel() {
   useEffect(() => {
     async function loadHomeContent() {
       try {
-        const homeData = await client.fetch(HOME_PAGE_QUERY);
+        const homeData = await getSanityContent('home', HOME_PAGE_QUERY);
         if (homeData?.heroSlides?.length > 0) {
           setSanitySlides(homeData.heroSlides);
         }

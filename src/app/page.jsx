@@ -7,9 +7,9 @@ import SlantedPortfolioAccordion from '@/components/SlantedPortfolioAccordion';
 import NextPageBanner from '@/components/NextPageBanner';
 import QuoteModal from '@/components/QuoteModal';
 import { useLanguage } from '@/context/LanguageContext';
-import { client } from '@/sanity/lib/client';
 import { HOME_PAGE_QUERY } from '@/sanity/lib/queries';
 import { getImageUrl } from '@/sanity/lib/image';
+import { getSanityContent } from '@/sanity/lib/fetchData';
 
 export default function Home() {
   const { t, lang } = useLanguage();
@@ -19,7 +19,7 @@ export default function Home() {
   useEffect(() => {
     async function loadHomeContent() {
       try {
-        const data = await client.fetch(HOME_PAGE_QUERY);
+        const data = await getSanityContent('home', HOME_PAGE_QUERY);
         if (data) setHomeData(data);
       } catch (err) {
         console.warn('Using default home content:', err);

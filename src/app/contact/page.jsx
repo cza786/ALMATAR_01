@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import NextPageBanner from '@/components/NextPageBanner';
 import { useLanguage } from '@/context/LanguageContext';
-import { client } from '@/sanity/lib/client';
 import { CONTACT_PAGE_QUERY, SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
 import { getImageUrl } from '@/sanity/lib/image';
+import { getSanityContent } from '@/sanity/lib/fetchData';
 
 export default function ContactPage() {
   const { t, lang } = useLanguage();
@@ -27,8 +27,8 @@ export default function ContactPage() {
     async function loadSanityContent() {
       try {
         const [contactRes, settingsRes] = await Promise.all([
-          client.fetch(CONTACT_PAGE_QUERY),
-          client.fetch(SITE_SETTINGS_QUERY),
+          getSanityContent('contact', CONTACT_PAGE_QUERY),
+          getSanityContent('settings', SITE_SETTINGS_QUERY),
         ]);
         if (contactRes) setSanityData(contactRes);
         if (settingsRes) setSettingsData(settingsRes);

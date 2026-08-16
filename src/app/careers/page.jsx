@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
-import { client } from '@/sanity/lib/client';
 import { CAREERS_PAGE_QUERY, SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
 import { getImageUrl } from '@/sanity/lib/image';
+import { getSanityContent } from '@/sanity/lib/fetchData';
 
 export default function CareersPage() {
   const { t, lang } = useLanguage();
@@ -16,8 +16,8 @@ export default function CareersPage() {
     async function loadCareersContent() {
       try {
         const [careersRes, settingsRes] = await Promise.all([
-          client.fetch(CAREERS_PAGE_QUERY),
-          client.fetch(SITE_SETTINGS_QUERY),
+          getSanityContent('careers', CAREERS_PAGE_QUERY),
+          getSanityContent('settings', SITE_SETTINGS_QUERY),
         ]);
         if (careersRes) setCareersData(careersRes);
         if (settingsRes) setSettingsData(settingsRes);
