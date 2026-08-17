@@ -123,7 +123,7 @@ async function seed() {
   const slide5Img = await uploadImage('images/service_wellhead.png')
   const slide6Img = await uploadImage('images/qhse_safety.png')
   const slide7Img = await uploadImage('images/careers_engineers_hero.png')
-  const introImg = await uploadImage('images/about_field_operations.png')
+  const introImg = await uploadImage('images/almatar_logo_transparent.png')
 
   await client.createOrReplace({
     _id: 'homePage',
