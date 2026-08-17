@@ -27,6 +27,8 @@ export default function RootLayout({ children }) {
         <link rel="shortcut icon" href="/favicon.ico?v=9" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=9" />
         <meta name="theme-color" content="#090d16" />
+        <link rel="canonical" href="https://www.almatar-oil.com" />
+        <meta property="og:url" content="https://www.almatar-oil.com" />
         <meta property="og:title" content="ALMATAR | Integrated Oilfield & Projects Management" />
         <meta property="og:description" content="Specialized well intervention, coiled tubing, stimulation, drilling fluids, and oilfield services." />
         <meta property="og:image" content="/opengraph-image.png?v=9" />
@@ -41,9 +43,9 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "ALMATAR Integrated Oilfield & Projects Management",
-              "url": "https://almatar-oil.com",
-              "logo": "https://almatar-oil.com/images/almatar_logo_transparent.png",
-              "image": "https://almatar-oil.com/opengraph-image.png",
+              "url": "https://www.almatar-oil.com",
+              "logo": "https://www.almatar-oil.com/images/almatar_logo_transparent.png",
+              "image": "https://www.almatar-oil.com/opengraph-image.png",
               "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+963-93-982-2415",
