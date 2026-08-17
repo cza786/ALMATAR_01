@@ -35,8 +35,8 @@ export default function Home() {
   const introDesc =
     (lang === 'ar' ? homeData?.introDescAr : homeData?.introDescEn) || t('homeIntro.desc');
   const introImg = homeData?.introImage
-    ? getImageUrl(homeData.introImage, '/images/almatar_logo_transparent.png?v=12')
-    : '/images/almatar_logo_transparent.png?v=12';
+    ? getImageUrl(homeData.introImage, '/images/about_field_operations.png?v=15')
+    : '/images/about_field_operations.png?v=15';
 
   return (
     <div key={lang}>
@@ -69,8 +69,8 @@ export default function Home() {
             </div>
 
             <div>
-              <div className="circle-img-container logo-display" title="ALMATAR Integrated Oilfield & Projects Management">
-                <img src={introImg} alt="ALMATAR Integrated Oilfield & Projects Management" />
+              <div className="circle-img-container" title="ALMATAR Field Operations & Oilfield Engineering">
+                <img src={introImg} alt="ALMATAR Field Operations & Oilfield Engineering" />
               </div>
             </div>
           </div>
