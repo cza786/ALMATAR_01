@@ -103,9 +103,9 @@ async function seed() {
     logo: logoAsset,
     descriptionEn: 'Premier provider of technical oilfield solutions, well intervention, drilling fluids, and QHSE services across Syria and the Middle East.',
     descriptionAr: 'المزود الرائد للحلول التقنية لحقول النفط، وخدمات الآبار، وسوائل الحفر، وخدمات الصحة والسلامة والبيئة في سوريا والشرق الأوسط.',
-    contactEmail: 'info@almatar.com',
-    contactPhone: '00963 93 982 2415',
-    secondaryPhone: '00963 93 140 7723',
+    contactEmail: 'info@almatar-oil.com',
+    contactPhone: '+963 93 982 2415',
+    secondaryPhone: '+963 52 426 915',
     addressEn: 'Damascus Headquarters, Syrian Arab Republic',
     addressAr: 'المقر الرئيسي: دمشق، الجمهورية العربية السورية',
     socialLinks: [
@@ -317,9 +317,9 @@ async function seed() {
     quoteDescAr: 'يرجى تزويدنا بتفاصيل مشروعكم وسيقوم كبار مهندسينا بإعداد العرض الفني المناسب.',
     officeAddressEn: 'ALMATAR Headquarters, Damascus, Syrian Arab Republic',
     officeAddressAr: 'المقر الرئيسي لشركة المطر، دمشق، الجمهورية العربية السورية',
-    whatsappNumber: '00963 93 982 2415',
-    phoneNumbers: ['00963 93 982 2415', '00963 93 140 7723', '00963 52 426 915'],
-    emailAddresses: ['info@almatar.com', 'procurement@almatar.com'],
+    whatsappNumber: '+963 93 982 2415',
+    phoneNumbers: ['+963 93 982 2415', '+963 93 140 7723', '+963 52 426 915'],
+    emailAddresses: ['info@almatar-oil.com', 'procurement@almatar-oil.com'],
     googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106465.25997621422!2d36.2307289!3d33.5138073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1518e6dc413cc6a7%3A0x6b9f66ebd1e3940!2sDamascus%2C%20Syria!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s'
   })
   console.log('✅ Contact Page seeded successfully.')

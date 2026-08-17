@@ -43,7 +43,7 @@ export default function CareersPage() {
   const heroDesc =
     (lang === 'ar' ? careersData?.pageDescAr : careersData?.pageDescEn) || t('careers.heroDesc');
 
-  const contactEmail = settingsData?.contactEmail || 'info@almatar.com';
+  const contactEmail = settingsData?.contactEmail || 'info@almatar-oil.com';
 
   const whyIcons = [
     (

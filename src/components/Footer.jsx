@@ -31,9 +31,9 @@ export default function Footer() {
     (lang === 'ar' ? settings?.descriptionAr : settings?.descriptionEn) || t('footer.desc');
   const address =
     (lang === 'ar' ? settings?.addressAr : settings?.addressEn) || t('contact.locationValue');
-  const phone = settings?.contactPhone || '00963 93 982 2415';
-  const secondaryPhone = settings?.secondaryPhone || '00963 52 426 915';
-  const email = settings?.contactEmail || 'info@almatar.com';
+  const phone = settings?.contactPhone || '+963 93 982 2415';
+  const secondaryPhone = settings?.secondaryPhone || '+963 52 426 915';
+  const email = settings?.contactEmail || 'info@almatar-oil.com';
 
   return (
     <footer className="site-footer">
