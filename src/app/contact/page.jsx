@@ -65,13 +65,13 @@ export default function ContactPage() {
       : sanityData?.officeAddressEn || settingsData?.addressEn) || t('contact.locationValue');
 
   const whatsappNum =
-    sanityData?.whatsappNumber || '00963 93 982 2415';
+    sanityData?.whatsappNumber || '+963 93 982 2415';
   const phoneNumbers =
     sanityData?.phoneNumbers?.length > 0
       ? sanityData.phoneNumbers
       : settingsData?.contactPhone
       ? [settingsData.contactPhone, settingsData.secondaryPhone].filter(Boolean)
-      : ['00963 93 982 2415', '00963 93 140 7723'];
+      : ['+963 93 982 2415', '+963 93 140 7723'];
 
   const emailAddresses =
     sanityData?.emailAddresses?.length > 0
