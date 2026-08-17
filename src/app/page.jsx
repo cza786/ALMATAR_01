@@ -69,8 +69,13 @@ export default function Home() {
             </div>
 
             <div>
-              <div className="circle-img-container">
-                <img src={introImg} alt="Drilling Rig Operation" />
+              <div className="circle-img-wrapper">
+                <div className="circle-img-container">
+                  <img src={introImg} alt="ALMATAR Drilling & Oilfield Operations" />
+                </div>
+                <div className="circle-brand-badge" title="ALMATAR Integrated Oilfield & Projects Management">
+                  <img src="/images/almatar_logo_transparent.png?v=12" alt="ALMATAR Logo" />
+                </div>
               </div>
             </div>
           </div>

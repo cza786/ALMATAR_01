@@ -26,7 +26,7 @@ export default function Header({ onOpenDrawer }) {
             {/* Brand Logo Navigation (Most Left) */}
             <div className="brand-text-nav">
               <Link href="/" className="brand-logo-white-badge" aria-label="ALMATAR Homepage">
-                <img src="/images/almatar_logo_transparent.png?v=7" alt="ALMATAR Petroleum Services" className="header-logo-img-prominent" />
+                <img src="/images/almatar_logo_transparent.png?v=12" alt="ALMATAR Petroleum Services" className="header-logo-img-prominent" />
               </Link>
             </div>
 
