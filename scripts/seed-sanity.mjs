@@ -104,11 +104,8 @@ async function seed() {
     descriptionEn: 'Premier provider of technical oilfield solutions, well intervention, drilling fluids, and QHSE services across Syria and the Middle East.',
     descriptionAr: 'المزود الرائد للحلول التقنية لحقول النفط، وخدمات الآبار، وسوائل الحفر، وخدمات الصحة والسلامة والبيئة في سوريا والشرق الأوسط.',
     contactEmail: 'info@almatar-oil.com',
-    contactPhone: '+963 93 982 2415',
-    secondaryPhone: '+963 52 426 915',
     socialLinks: [
-      { _key: 'linkedin', platform: 'LinkedIn', url: 'https://linkedin.com' },
-      { _key: 'whatsapp', platform: 'WhatsApp', url: 'https://wa.me/963939822415' }
+      { _key: 'linkedin', platform: 'LinkedIn', url: 'https://linkedin.com' }
     ]
   })
   console.log('✅ Site Settings seeded successfully.')
@@ -255,8 +252,6 @@ async function seed() {
     quoteTitleAr: 'طلب عرض أسعار فني',
     quoteDescEn: 'Provide your project requirements below and our lead engineers will prepare a detailed proposal.',
     quoteDescAr: 'يرجى تزويدنا بتفاصيل مشروعكم وسيقوم كبار مهندسينا بإعداد العرض الفني المناسب.',
-    whatsappNumber: '+963 93 982 2415',
-    phoneNumbers: ['+963 93 982 2415', '+963 93 140 7723', '+963 52 426 915'],
     emailAddresses: ['info@almatar-oil.com', 'procurement@almatar-oil.com']
   })
   console.log('✅ Contact Page seeded successfully.')

@@ -57,8 +57,8 @@ export const translations = {
       namePlaceholder: "e.g. Eng. Ahmed Mansour",
       companyLabel: "Company / Organization",
       companyPlaceholder: "e.g. SYR OPCO / Petroleum Co.",
-      phoneLabel: "Phone Number",
-      phonePlaceholder: "+963 93 123 4567",
+      phoneLabel: "Phone / Contact Number",
+      phonePlaceholder: "e.g. +1 555 123 4567",
       serviceLabel: "Service Type",
       serviceSelectDefault: "Select a Service Category",
       servicesOptions: [
@@ -413,7 +413,7 @@ export const translations = {
       companyLabel: "اسم الشركة / الجهة",
       companyPlaceholder: "مثال: شركة الفرات / شركة النفط",
       phoneLabel: "رقم التواصل / الجوال",
-      phonePlaceholder: "+963 93 123 4567",
+      phonePlaceholder: "مثال: 4567 123 555 1+",
       serviceLabel: "نوع الخدمة المطلوبة",
       serviceSelectDefault: "اختر تصنيف الخدمة",
       servicesOptions: [

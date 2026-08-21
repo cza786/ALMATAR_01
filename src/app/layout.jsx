@@ -48,7 +48,6 @@ export default function RootLayout({ children }) {
               "image": "https://www.almatar-oil.com/opengraph-image.png",
               "contactPoint": {
                 "@type": "ContactPoint",
-                "telephone": "+963-93-982-2415",
                 "contactType": "customer service",
                 "email": "info@almatar-oil.com"
               }

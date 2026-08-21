@@ -62,20 +62,6 @@ export const siteSettingsType = defineType({
 
     // CONTACT & ADDRESS GROUP
     defineField({
-      name: 'contactPhone',
-      title: 'Mobile / WhatsApp Number (Footer & Contact)',
-      type: 'string',
-      group: 'contact',
-      initialValue: '+963 93 982 2415',
-    }),
-    defineField({
-      name: 'secondaryPhone',
-      title: 'Telephone / Landline Number (Footer & Contact)',
-      type: 'string',
-      group: 'contact',
-      initialValue: '+963 52 426 915',
-    }),
-    defineField({
       name: 'contactEmail',
       title: 'Contact Email Address',
       type: 'string',

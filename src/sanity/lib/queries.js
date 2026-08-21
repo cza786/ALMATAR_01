@@ -10,8 +10,6 @@ export const SITE_SETTINGS_QUERY = groq`
     copyrightEn,
     copyrightAr,
     contactEmail,
-    contactPhone,
-    secondaryPhone,
     socialLinks
   }
 `
@@ -109,8 +107,6 @@ export const CONTACT_PAGE_QUERY = groq`
     quoteTitleEn,
     quoteTitleAr,
     quoteDescEn,
-    whatsappNumber,
-    phoneNumbers,
     emailAddresses
   }
 `

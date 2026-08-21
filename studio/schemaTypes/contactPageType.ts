@@ -73,17 +73,6 @@ export const contactPageType = defineType({
       rows: 2,
     }),
     defineField({
-      name: 'whatsappNumber',
-      title: 'WhatsApp Direct Number',
-      type: 'string',
-    }),
-    defineField({
-      name: 'phoneNumbers',
-      title: 'Office Phone Numbers',
-      type: 'array',
-      of: [defineArrayMember({ type: 'string' })],
-    }),
-    defineField({
       name: 'emailAddresses',
       title: 'Inquiry Email Addresses',
       type: 'array',

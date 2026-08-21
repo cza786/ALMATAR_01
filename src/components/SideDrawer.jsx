@@ -171,18 +171,14 @@ export default function SideDrawer({ isOpen, onClose }) {
 
         <div className="drawer-footer">
           <div className="drawer-contact-info">
-            <p>📞 Tel: <a href="tel:+96352426915" style={{ color: 'inherit', textDecoration: 'none' }}>+963 52 426 915</a></p>
-            <p>📱 Mob: <a href="tel:+963939822415" style={{ color: 'inherit', textDecoration: 'none' }}>+963 93 982 2415</a> | <a href="tel:+963931407723" style={{ color: 'inherit', textDecoration: 'none' }}>+963 93 140 7723</a></p>
             <p>✉️ <a href="mailto:info@almatar-oil.com" style={{ color: 'inherit', textDecoration: 'none' }}>info@almatar-oil.com</a></p>
-            <div style={{ marginTop: '0.6rem' }}>
+            <div style={{ marginTop: '0.8rem' }}>
               <a
-                href="https://wa.me/963939822415"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="interactive-contact-btn btn-whatsapp"
-                style={{ display: 'inline-flex', padding: '6px 14px', fontSize: '0.8rem' }}
+                href="mailto:info@almatar-oil.com"
+                className="interactive-contact-btn btn-email"
+                style={{ display: 'inline-flex', padding: '8px 16px', fontSize: '0.85rem' }}
               >
-                <span>WhatsApp: +963 93 982 2415</span>
+                <span>✉️ {t('footer.emailBtn')}</span>
               </a>
             </div>
           </div>

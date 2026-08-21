@@ -59,15 +59,6 @@ export default function ContactPage() {
       ? 'يرجى تزويدنا بتفاصيل مشروعكم وسيقوم فريقنا الهندسي بإعداد العرض الفني المناسب.'
       : 'Provide your project details below and our technical engineering team will prepare a formal proposal.');
 
-  const whatsappNum =
-    sanityData?.whatsappNumber || '+963 93 982 2415';
-  const phoneNumbers =
-    sanityData?.phoneNumbers?.length > 0
-      ? sanityData.phoneNumbers
-      : settingsData?.contactPhone
-      ? [settingsData.contactPhone, settingsData.secondaryPhone].filter(Boolean)
-      : ['+963 93 982 2415', '+963 93 140 7723'];
-
   const emailAddresses =
     sanityData?.emailAddresses?.length > 0
       ? sanityData.emailAddresses
@@ -77,23 +68,6 @@ export default function ContactPage() {
 
   const contactCards = [
     {
-      id: 'whatsapp',
-      type: 'WHATSAPP DIRECT',
-      label: 'Interactive Chat',
-      value: whatsappNum,
-      href: `https://wa.me/${whatsappNum.replace(/[^0-9]/g, '')}`,
-      isExternal: true,
-      badge: 'FAST RESPONSE',
-    },
-    {
-      id: 'mobile',
-      type: t('contact.mobileLabel').toUpperCase(),
-      label: t('contact.mobileLabel'),
-      value: phoneNumbers,
-      href: `tel:${phoneNumbers[0]?.replace(/[^0-9+]/g, '')}`,
-      isExternal: false,
-    },
-    {
       id: 'email',
       type: t('contact.emailLabel').toUpperCase(),
       label: t('contact.emailLabel'),
@@ -101,30 +75,30 @@ export default function ContactPage() {
       href: `mailto:${emailAddresses[0] || 'info@almatar-oil.com'}`,
       isExternal: false,
     },
+    {
+      id: 'quote',
+      type: (lang === 'ar' ? 'طلب عرض أسعار فني' : 'TECHNICAL QUOTATION'),
+      label: (lang === 'ar' ? 'استجابة سريعة' : 'Engineering Proposal'),
+      value: (lang === 'ar' ? 'يرجى تزويدنا بتفاصيل مشروعكم عبر النموذج أدناه' : 'Submit your technical specifications via the form'),
+      href: '#quote-form-section',
+      isExternal: false,
+    }
   ];
 
   const iconMap = {
-    location: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-        <circle cx="12" cy="10" r="3" />
-      </svg>
-    ),
-    whatsapp: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.67-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z" />
-        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.119.555 4.109 1.524 5.834L0 24l6.326-1.654C8.007 23.279 9.946 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.848 0-3.578-.496-5.073-1.362l-.364-.21-3.766.985.1-3.668-.235-.374A9.957 9.957 0 0 1 2 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z" />
-      </svg>
-    ),
-    mobile: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 4.9 2 2 0 0 1 3.59 2.72h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17.35z" />
-      </svg>
-    ),
     email: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
         <polyline points="22,6 12,13 2,6" />
+      </svg>
+    ),
+    quote: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="16" y1="13" x2="8" y2="13" />
+        <line x1="16" y1="17" x2="8" y2="17" />
+        <polyline points="10 9 9 9 8 9" />
       </svg>
     ),
   };
@@ -212,14 +186,13 @@ export default function ContactPage() {
                       }
                     </div>
 
-                    {card.id === 'location' && (
-                      <span className="stack-action-link">🗺️ {t('contact.openMap')} &rarr;</span>
-                    )}
-                    {card.id === 'whatsapp' && (
-                      <span className="stack-action-link">💬 {t('contact.whatsappBtn')} &rarr;</span>
-                    )}
                     {card.id === 'email' && (
                       <span className="stack-action-pill">{t('contact.emailBtn')}</span>
+                    )}
+                    {card.id === 'quote' && (
+                      <span className="stack-action-pill" style={{ background: 'var(--accent-cyan)', color: '#ffffff' }}>
+                        {lang === 'ar' ? 'نموذج الطلب' : 'Request Form'} &rarr;
+                      </span>
                     )}
                   </div>
                 </a>
