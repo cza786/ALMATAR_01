@@ -343,7 +343,6 @@ export const translations = {
       benefitsEyebrow: "EMPLOYEE BENEFITS",
       benefitsItems: [
         { title: 'Competitive Compensation', desc: 'We offer competitive salaries and performance-based rewards.' },
-        { title: 'Health & Medical Coverage', desc: 'Comprehensive medical insurance for you and your family.' },
         { title: 'Training & Development', desc: 'Continuous learning opportunities to enhance your skills and grow.' },
         { title: 'Safe & Supportive Work Environment', desc: 'We are committed to providing a safe, inclusive and respectful workplace.' },
         { title: 'Career Growth Opportunities', desc: 'Clear career paths and opportunities to advance within the company.' },
@@ -699,7 +698,6 @@ export const translations = {
       benefitsEyebrow: "مزايا الموظفين",
       benefitsItems: [
         { title: 'تعويضات ومكافآت تنافسية', desc: 'نقدم رواتب مجزية وحوافز مرتبطة بالأداء والإنجاز.' },
-        { title: 'التغطية الصحية والتأمين الطبي', desc: 'تأمين طبي شامل لك ولعائلتك للحفاظ على سلامتكم.' },
         { title: 'التدريب والتطوير المستمر', desc: 'فرص تعليم مستمرة لتعزيز مهاراتك الفنية والقيادية.' },
         { title: 'بيئة عمل آمنة وداعمة', desc: 'نلتزم بتوفير مكان عمل آمن، محترم وشامل للجميع.' },
         { title: 'فرص الترقية والنمو', desc: 'مسارات مهنية واضحة وفرص حقيقية للترقي داخل الشركة.' },
