@@ -195,17 +195,6 @@ async function seed() {
         subtitleAr: 'التزام لا هوادة فيه بسلامة الكوادر، والامتثال البيئي، وسلامة الأصول التشغيلية.',
         image: slide6Img,
         link: '/qhse'
-      },
-      {
-        _key: 's7',
-        badgeEn: 'Careers',
-        badgeAr: 'الوظائف والمهن',
-        titleEn: 'Build Your Future in Oil & Gas Engineering',
-        titleAr: 'ابنِ مستقبلك المهني في هندسة النفط والغاز',
-        subtitleEn: 'Join our multidisciplinary engineering team driving energy infrastructure forward.',
-        subtitleAr: 'انضم إلى نخبة المهندسين والخبراء لقيادة مستقبل البنية التحتية للطاقة.',
-        image: slide7Img,
-        link: '/careers'
       }
     ],
     introEyebrowEn: 'EXCELLENCE & DEDICATION',
@@ -252,54 +241,7 @@ async function seed() {
   })
   console.log('✅ About Us Page seeded successfully.')
 
-  console.log('\n[4/6] 💼 Seeding Careers Page...')
-  const careersBanner = await uploadImage('images/careers_engineers_hero.png')
-  const cultureImg = await uploadImage('images/careers_team_walking.png')
-
-  await client.createOrReplace({
-    _id: 'careersPage',
-    _type: 'careersPage',
-    title: 'Careers Page',
-    bannerImage: careersBanner,
-    cultureImage: cultureImg,
-    eyebrowEn: 'JOIN OUR TEAM',
-    eyebrowAr: 'انضم إلى فريقنا',
-    pageTitleEn: 'Build Your Career at the Forefront of Energy Engineering',
-    pageTitleAr: 'ابنِ مسيرتك المهنية في طليعة هندسة الطاقة',
-    pageDescEn: 'At ALMATAR, we invest in our people, cultivate specialized engineering leadership, and foster an environment where technical excellence thrives.',
-    pageDescAr: 'في شركة المطر، نستثمر في كوادرنا البشرية ونبني قيادات هندسية متخصصة في بيئة تشجع على التميز والابتكار المستمر.',
-    openPositions: [
-      {
-        _key: 'pos1',
-        titleEn: 'Senior Well Intervention Engineer',
-        titleAr: 'مهندس أول تدخل آبار',
-        departmentEn: 'Well Services',
-        departmentAr: 'خدمات الآبار',
-        locationEn: 'Field Operations / Damascus',
-        locationAr: 'العمليات الميدانية / دمشق',
-        typeEn: 'Full-time',
-        typeAr: 'دوام كامل',
-        descriptionEn: 'Responsible for overseeing high-pressure coiled tubing and stimulation field programs.',
-        descriptionAr: 'مسؤول عن الإشراف على برامج الأنابيب الملتفة والتحفيز عالي الضغط في الحقول النفطية.'
-      },
-      {
-        _key: 'pos2',
-        titleEn: 'Drilling Fluids Chemist & Mud Specialist',
-        titleAr: 'أخصائي كيمياء وسوائل حفر',
-        departmentEn: 'Drilling Fluids',
-        departmentAr: 'سوائل الحفر',
-        locationEn: 'Central Laboratory & Rig Site',
-        locationAr: 'المخبر المركزي ومواقع الحفر',
-        typeEn: 'Full-time',
-        typeAr: 'دوام كامل',
-        descriptionEn: 'Formulation, quality testing, and rheology control for water and oil-based drilling fluid systems.',
-        descriptionAr: 'تصميم واختبار جودة وضبط لزوجة أنظمة سوائل الحفر المائية والزيتية.'
-      }
-    ]
-  })
-  console.log('✅ Careers Page seeded successfully.')
-
-  console.log('\n[5/6] 📞 Seeding Contact Page...')
+  console.log('\n[4/5] 📞 Seeding Contact Page...')
   await client.createOrReplace({
     _id: 'contactPage',
     _type: 'contactPage',

@@ -4,7 +4,6 @@ const SINGLETONS = [
   'siteSettings',
   'homePage',
   'aboutPage',
-  'careersPage',
   'contactPage',
 ]
 
@@ -46,14 +45,6 @@ export const structure: StructureResolver = (S) =>
                     .schemaType('aboutPage')
                     .documentId('aboutPage')
                     .title('About Us Page')
-                ),
-              S.listItem()
-                .title('💼 Careers Page')
-                .child(
-                  S.document()
-                    .schemaType('careersPage')
-                    .documentId('careersPage')
-                    .title('Careers Page')
                 ),
               S.listItem()
                 .title('📞 Contact Page & Locations')

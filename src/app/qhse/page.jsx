@@ -55,10 +55,10 @@ export default function QhsePage() {
 
       {/* Next Page Navigation Banner */}
       <NextPageBanner
-        title={t('nav.careers')}
+        title={t('nav.contact')}
         subtitle={t('hero.learnMore')}
-        link="/careers"
-        bgImage="/images/careers_engineers_hero.png"
+        link="/contact"
+        bgImage="/images/service_site_camp.png"
       />
     </>
   );

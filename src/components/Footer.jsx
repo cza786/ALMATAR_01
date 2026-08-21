@@ -56,7 +56,6 @@ export default function Footer() {
               <li><Link href="/drilling-fluids">{t('nav.drillingFluids')}</Link></li>
               <li><Link href="/construction">{t('nav.construction')}</Link></li>
               <li><Link href="/qhse">{t('nav.qhse')}</Link></li>
-              <li><Link href="/careers">{t('nav.careers')}</Link></li>
               <li><Link href="/contact">{t('nav.contact')}</Link></li>
             </ul>
           </div>

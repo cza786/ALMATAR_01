@@ -60,7 +60,6 @@ export default function Header({ onOpenDrawer }) {
 
               <Link href="/trading" className={`nav-link ${isActive('/trading') ? 'active' : ''}`}>{t('nav.trading')}</Link>
               <Link href="/qhse" className={`nav-link ${isActive('/qhse') ? 'active' : ''}`}>{t('nav.qhse')}</Link>
-              <Link href="/careers" className={`nav-link ${isActive('/careers') ? 'active' : ''}`}>{t('nav.careers')}</Link>
               <Link href="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`}>{t('nav.contact')}</Link>
             </nav>
 
@@ -209,20 +208,7 @@ export default function Header({ onOpenDrawer }) {
                         <p className="mega-card-text">{t('mega.card6Text')}</p>
                       </Link>
 
-                      {/* Card 7: Careers */}
-                      <Link href="/careers" className="mega-card" onClick={() => setIsMegaOpen(false)}>
-                        <div className="mega-card-header">
-                          <span className="mega-card-title">{t('mega.card7Title')}</span>
-                          <div className="mega-title-line"></div>
-                        </div>
-                        <div className="mega-card-img-wrap">
-                          <img src="/images/careers_engineers_hero.png" alt="Careers at AlMatar" />
-                        </div>
-                        <h4 className="mega-card-heading">{t('mega.card7Heading')}</h4>
-                        <p className="mega-card-text">{t('mega.card7Text')}</p>
-                      </Link>
-
-                      {/* Card 8: Contact Us */}
+                      {/* Card 7: Contact Us */}
                       <Link href="/contact" className="mega-card" onClick={() => setIsMegaOpen(false)}>
                         <div className="mega-card-header">
                           <span className="mega-card-title">{t('mega.card8Title')}</span>

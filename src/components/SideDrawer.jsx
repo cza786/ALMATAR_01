@@ -156,15 +156,6 @@ export default function SideDrawer({ isOpen, onClose }) {
             </div>
           )}
 
-          {/* Careers */}
-          {('careers'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
-            <div className="drawer-nav-item">
-              <Link href="/careers" className={`drawer-nav-link ${pathname === '/careers' ? 'active' : ''}`} onClick={onClose}>
-                <span>{t('nav.careers')}</span>
-                <span className="drawer-arrow">&rsaquo;</span>
-              </Link>
-            </div>
-          )}
 
           {/* Contact */}
           {('contact'.includes(searchTerm.toLowerCase()) || !searchTerm) && (

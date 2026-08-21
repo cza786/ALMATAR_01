@@ -75,14 +75,6 @@ export default function HeroCarousel() {
       link: '/qhse',
       tabLabel: t('hero.tabs.qhse'),
     },
-    {
-      tag: t('hero.slide7Tag'),
-      title: t('hero.slide7Title'),
-      description: t('hero.slide7Desc'),
-      image: '/images/careers_engineers_hero.png',
-      link: '/careers',
-      tabLabel: t('hero.tabs.careers'),
-    },
   ];
 
   const slides = sanitySlides
