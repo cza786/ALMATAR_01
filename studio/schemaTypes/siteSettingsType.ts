@@ -82,20 +82,6 @@ export const siteSettingsType = defineType({
       group: 'contact',
       initialValue: 'info@almatar-oil.com',
     }),
-    defineField({
-      name: 'addressEn',
-      title: 'Headquarters Address (English)',
-      type: 'string',
-      group: 'contact',
-      initialValue: 'Damascus, Syrian Arab Republic',
-    }),
-    defineField({
-      name: 'addressAr',
-      title: 'Headquarters Address (Arabic)',
-      type: 'string',
-      group: 'contact',
-      initialValue: 'دمشق، الجمهورية العربية السورية',
-    }),
 
     // SOCIAL LINKS GROUP
     defineField({

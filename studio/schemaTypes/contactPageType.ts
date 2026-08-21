@@ -73,16 +73,6 @@ export const contactPageType = defineType({
       rows: 2,
     }),
     defineField({
-      name: 'officeAddressEn',
-      title: 'Headquarters Address (English)',
-      type: 'string',
-    }),
-    defineField({
-      name: 'officeAddressAr',
-      title: 'Headquarters Address (Arabic)',
-      type: 'string',
-    }),
-    defineField({
       name: 'whatsappNumber',
       title: 'WhatsApp Direct Number',
       type: 'string',
@@ -98,11 +88,6 @@ export const contactPageType = defineType({
       title: 'Inquiry Email Addresses',
       type: 'array',
       of: [defineArrayMember({ type: 'string' })],
-    }),
-    defineField({
-      name: 'googleMapsEmbedUrl',
-      title: 'Google Maps Embed URL',
-      type: 'url',
     }),
   ],
 })

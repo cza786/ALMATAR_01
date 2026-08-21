@@ -29,8 +29,6 @@ export default function Footer() {
 
   const desc =
     (lang === 'ar' ? settings?.descriptionAr : settings?.descriptionEn) || t('footer.desc');
-  const address =
-    (lang === 'ar' ? settings?.addressAr : settings?.addressEn) || t('contact.locationValue');
   const phone = settings?.contactPhone || '+963 93 982 2415';
   const secondaryPhone = settings?.secondaryPhone || '+963 52 426 915';
   const email = settings?.contactEmail || 'info@almatar-oil.com';
@@ -74,7 +72,6 @@ export default function Footer() {
           <div>
             <h4 className="footer-heading">{t('footer.contactDetails')}</h4>
             <ul className="footer-links footer-contact-list">
-              <li><span className="footer-contact-text">📍 {address}</span></li>
               <li><a href={`tel:${secondaryPhone.replace(/[^0-9+]/g, '')}`} className="footer-contact-link">📞 Tel: {secondaryPhone}</a></li>
               <li><a href={`tel:${phone.replace(/[^0-9+]/g, '')}`} className="footer-contact-link">📱 Mob: {phone}</a></li>
               

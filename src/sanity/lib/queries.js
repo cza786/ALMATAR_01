@@ -12,8 +12,6 @@ export const SITE_SETTINGS_QUERY = groq`
     contactEmail,
     contactPhone,
     secondaryPhone,
-    addressEn,
-    addressAr,
     socialLinks
   }
 `
@@ -111,13 +109,9 @@ export const CONTACT_PAGE_QUERY = groq`
     quoteTitleEn,
     quoteTitleAr,
     quoteDescEn,
-    quoteDescAr,
-    officeAddressEn,
-    officeAddressAr,
     whatsappNumber,
     phoneNumbers,
-    emailAddresses,
-    googleMapsEmbedUrl
+    emailAddresses
   }
 `
 
