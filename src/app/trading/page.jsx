@@ -1,10 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import NextPageBanner from '@/components/NextPageBanner';
+import QuoteModal from '@/components/QuoteModal';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function TradingPage() {
   const { t } = useLanguage();
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const whatWeTradeItems = t('trading.items') || [];
 
@@ -103,6 +106,13 @@ export default function TradingPage() {
           <p className="tr-hero-desc">
             {t('trading.heroDesc')}
           </p>
+          <button type="button" className="trading-quote-cta" onClick={() => setIsQuoteOpen(true)}>
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+            </svg>
+            <span>{t('quoteBtn')}</span>
+          </button>
         </div>
       </section>
 
@@ -192,6 +202,7 @@ export default function TradingPage() {
         link="/qhse"
         bgImage="/images/qhse_inspection_team.png"
       />
+      <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
     </>
   );
 }

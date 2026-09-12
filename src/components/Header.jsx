@@ -6,12 +6,10 @@ import { usePathname } from 'next/navigation';
 
 import { useLanguage } from '../context/LanguageContext';
 import AlmatarLogo from './AlmatarLogo';
-import QuoteModal from './QuoteModal';
 
 export default function Header({ onOpenDrawer }) {
   const pathname = usePathname();
   const [isMegaOpen, setIsMegaOpen] = useState(false);
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const { lang, toggleLanguage, t } = useLanguage();
 
   const isActive = (path) => pathname === path;
@@ -59,26 +57,12 @@ export default function Header({ onOpenDrawer }) {
               </div>
 
               <Link href="/trading" className={`nav-link ${isActive('/trading') ? 'active' : ''}`}>{t('nav.trading')}</Link>
-              <Link href="/qhse" className={`nav-link ${isActive('/qhse') ? 'active' : ''}`}>{t('nav.qhse')}</Link>
+              <Link href="/qhse" className={`nav-link ${isActive('/qhse') ? 'active' : ''}`}>QHSE</Link>
               <Link href="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`}>{t('nav.contact')}</Link>
             </nav>
 
-            {/* Header Actions: Request Quote + Language Switcher + Mega Menu Box */}
+            {/* Header Actions: Language Switcher + Mega Menu Box */}
             <div className="header-actions">
-              
-              {/* Request a Quote Form Trigger Button */}
-              <button
-                onClick={() => setIsQuoteOpen(true)}
-                className="btn-contact-header header-quote-btn"
-                title={t('quoteBtn')}
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ marginRight: '6px' }}>
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                </svg>
-                <span>{t('quoteBtn')}</span>
-              </button>
-
               {/* Arabic / English Toggle Switcher Icon Button */}
               <button
                 onClick={toggleLanguage}
@@ -238,7 +222,6 @@ export default function Header({ onOpenDrawer }) {
 
           </div>
         </div>
-        <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
       </header>
     </>
   );

@@ -5,7 +5,6 @@ import Link from 'next/link';
 import HeroCarousel from '@/components/HeroCarousel';
 import SlantedPortfolioAccordion from '@/components/SlantedPortfolioAccordion';
 import NextPageBanner from '@/components/NextPageBanner';
-import QuoteModal from '@/components/QuoteModal';
 import { useLanguage } from '@/context/LanguageContext';
 import { HOME_PAGE_QUERY } from '@/sanity/lib/queries';
 import { getImageUrl } from '@/sanity/lib/image';
@@ -13,7 +12,6 @@ import { getSanityContent } from '@/sanity/lib/fetchData';
 
 export default function Home() {
   const { t, lang } = useLanguage();
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [homeData, setHomeData] = useState(null);
 
   useEffect(() => {
@@ -58,13 +56,6 @@ export default function Home() {
                   <span>{t('homeIntro.readVision')}</span>
                   <span style={{ marginInlineStart: '6px' }}>&rarr;</span>
                 </Link>
-                <button
-                  onClick={() => setIsQuoteOpen(true)}
-                  className="btn-contact-header"
-                  style={{ background: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)', boxShadow: '0 4px 15px rgba(2, 132, 199, 0.35)' }}
-                >
-                  {t('quoteBtn')}
-                </button>
               </div>
             </div>
 
@@ -88,7 +79,6 @@ export default function Home() {
         bgImage="/images/banner_about_corporate.png?v=2"
       />
 
-      <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
     </div>
   );
 }

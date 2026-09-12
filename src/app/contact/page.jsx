@@ -6,6 +6,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { CONTACT_PAGE_QUERY, SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
 import { getImageUrl } from '@/sanity/lib/image';
 import { getSanityContent } from '@/sanity/lib/fetchData';
+import { isValidSyrianPhone, normalizeSyrianPhone, SYRIAN_PHONE_PREFIX } from '@/lib/syrianPhone';
 
 export default function ContactPage() {
   const { t, lang } = useLanguage();
@@ -15,7 +16,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
-    phone: '',
+    phone: SYRIAN_PHONE_PREFIX,
     serviceType: '',
     projectDescription: '',
   });
@@ -105,12 +106,18 @@ export default function ContactPage() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]: name === 'phone' ? normalizeSyrianPhone(value, prev.phone) : value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) return;
+    if (!formData.name.trim() || !formData.company.trim() || !isValidSyrianPhone(formData.phone) || !formData.serviceType || !formData.projectDescription.trim()) {
+      setSubmitError(lang === 'ar' ? 'يرجى تعبئة جميع الحقول المطلوبة وإدخال رقم هاتف سوري صالح.' : 'Please complete all required fields and enter a valid Syrian phone number.');
+      return;
+    }
     setIsSubmitting(true);
     setSubmitError('');
 
@@ -217,7 +224,7 @@ export default function ContactPage() {
                       className="btn-contact-header"
                       onClick={() => {
                         setSubmitted(false);
-                        setFormData({ name: '', company: '', phone: '', serviceType: '', projectDescription: '' });
+                        setFormData({ name: '', company: '', phone: SYRIAN_PHONE_PREFIX, serviceType: '', projectDescription: '' });
                       }}
                       style={{ marginTop: '1.5rem', cursor: 'pointer' }}
                     >
@@ -262,12 +269,13 @@ export default function ContactPage() {
 
                         <div className="quote-form-group">
                           <label htmlFor="split-quote-company" className="light-form-label">
-                            {t('quote.companyLabel')}
+                            {t('quote.companyLabel')} <span className="required-star">*</span>
                           </label>
                           <input
                             type="text"
                             id="split-quote-company"
                             name="company"
+                            required
                             placeholder={t('quote.companyPlaceholder')}
                             value={formData.company}
                             onChange={handleInputChange}
@@ -290,17 +298,21 @@ export default function ContactPage() {
                             placeholder={t('quote.phonePlaceholder')}
                             value={formData.phone}
                             onChange={handleInputChange}
+                            pattern="\\+963\\s\\d{8,9}"
+                            maxLength={14}
+                            inputMode="tel"
                             className="light-form-input"
                           />
                         </div>
 
                         <div className="quote-form-group">
                           <label htmlFor="split-quote-service" className="light-form-label">
-                            {t('quote.serviceLabel')}
+                            {t('quote.serviceLabel')} <span className="required-star">*</span>
                           </label>
                           <select
                             id="split-quote-service"
                             name="serviceType"
+                            required
                             value={formData.serviceType}
                             onChange={handleInputChange}
                             className="light-form-select"
@@ -315,12 +327,13 @@ export default function ContactPage() {
 
                       {/* Row 3: Project Description */}
                       <div className="quote-form-group full-width">
-                        <label htmlFor="split-quote-desc" className="light-form-label">
-                          {t('quote.descLabel')}
+                          <label htmlFor="split-quote-desc" className="light-form-label">
+                            {t('quote.descLabel')} <span className="required-star">*</span>
                         </label>
                         <textarea
                           id="split-quote-desc"
                           name="projectDescription"
+                          required
                           rows="4"
                           placeholder={t('quote.descPlaceholder')}
                           value={formData.projectDescription}

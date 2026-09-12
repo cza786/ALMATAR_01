@@ -1,26 +1,64 @@
 import { NextResponse } from 'next/server'
 import { serverClient } from '@/sanity/lib/serverClient'
+import { isValidSyrianPhone } from '@/lib/syrianPhone'
 
 export async function POST(request) {
   try {
     const body = await request.json()
     const { name, company, phone, serviceType, projectDescription } = body
 
-    if (!name || !phone) {
+    if (!name?.trim() || !company?.trim() || !phone || !serviceType?.trim() || !projectDescription?.trim()) {
       return NextResponse.json(
-        { error: 'Name and phone number are required.' },
+        { error: 'All form fields are required.' },
         { status: 400 }
       )
+    }
+
+    if (!isValidSyrianPhone(phone)) {
+      return NextResponse.json(
+        { error: 'A valid Syrian phone number starting with +963 is required.' },
+        { status: 400 }
+      )
+    }
+
+    const resendApiKey = process.env.RESEND_API_KEY
+    if (!resendApiKey) {
+      throw new Error('Email delivery is not configured. Please set RESEND_API_KEY.')
+    }
+
+    const emailResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: process.env.CONTACT_FROM_EMAIL || 'ALMATAR Website <onboarding@resend.dev>',
+        to: ['info@almatar.com'],
+        subject: `New quote request from ${name.trim()}`,
+        text: [
+          `Name: ${name.trim()}`,
+          `Company: ${company.trim()}`,
+          `Phone: ${phone.trim()}`,
+          `Service type: ${serviceType.trim()}`,
+          `Project description: ${projectDescription.trim()}`,
+        ].join('\n'),
+      }),
+    })
+
+    if (!emailResponse.ok) {
+      const emailError = await emailResponse.text()
+      throw new Error(`Email delivery failed: ${emailError}`)
     }
 
     // Create document in Sanity
     const submission = await serverClient.create({
       _type: 'contactSubmission',
       name: name.trim(),
-      company: company?.trim() || 'Direct Inquiry',
+      company: company.trim(),
       phone: phone.trim(),
-      serviceType: serviceType || 'General Inquiry',
-      projectDescription: projectDescription?.trim() || '',
+      serviceType: serviceType.trim(),
+      projectDescription: projectDescription.trim(),
       submittedAt: new Date().toISOString(),
       status: 'new',
     })

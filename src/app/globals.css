@@ -4457,6 +4457,40 @@ body.rtl-mode .footer-brand p {
   font-size: 0.82rem;
 }
 
+.trading-quote-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  min-width: 270px;
+  min-height: 58px;
+  margin-top: 1.75rem;
+  padding: 1.15rem 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #fff;
+  box-shadow: 0 12px 32px rgba(217, 119, 6, 0.42);
+  font: inherit;
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.trading-quote-cta:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 34px rgba(217, 119, 6, 0.5);
+  filter: brightness(1.08);
+}
+
+.trading-quote-cta:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 4px;
+}
+
 @media (max-width: 992px) {
   .header-quote-btn span {
     display: none;

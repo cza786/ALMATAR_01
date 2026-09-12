@@ -2,13 +2,14 @@
 
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { isValidSyrianPhone, normalizeSyrianPhone, SYRIAN_PHONE_PREFIX } from '../lib/syrianPhone';
 
 export default function QuoteModal({ isOpen, onClose }) {
   const { t, lang } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     company: '',
-    phone: '',
+    phone: SYRIAN_PHONE_PREFIX,
     serviceType: '',
     projectDescription: ''
   });
@@ -20,12 +21,18 @@ export default function QuoteModal({ isOpen, onClose }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]: name === 'phone' ? normalizeSyrianPhone(value, prev.phone) : value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) return;
+    if (!formData.name.trim() || !formData.company.trim() || !isValidSyrianPhone(formData.phone) || !formData.serviceType || !formData.projectDescription.trim()) {
+      setErrorMsg(lang === 'ar' ? 'يرجى تعبئة جميع الحقول المطلوبة وإدخال رقم هاتف سوري صالح.' : 'Please complete all required fields and enter a valid Syrian phone number.');
+      return;
+    }
     setIsSubmitting(true);
     setErrorMsg('');
 
@@ -58,7 +65,7 @@ export default function QuoteModal({ isOpen, onClose }) {
     setFormData({
       name: '',
       company: '',
-      phone: '',
+      phone: SYRIAN_PHONE_PREFIX,
       serviceType: '',
       projectDescription: ''
     });
@@ -134,11 +141,12 @@ export default function QuoteModal({ isOpen, onClose }) {
                 </div>
 
                 <div className="quote-form-group">
-                  <label htmlFor="quote-company">{t('quote.companyLabel')}</label>
+                  <label htmlFor="quote-company">{t('quote.companyLabel')} <span className="required-star">*</span></label>
                   <input
                     type="text"
                     id="quote-company"
                     name="company"
+                    required
                     placeholder={t('quote.companyPlaceholder')}
                     value={formData.company}
                     onChange={handleChange}
@@ -159,15 +167,19 @@ export default function QuoteModal({ isOpen, onClose }) {
                     placeholder={t('quote.phonePlaceholder')}
                     value={formData.phone}
                     onChange={handleChange}
+                    pattern="\\+963\\s\\d{8,9}"
+                    maxLength={14}
+                    inputMode="tel"
                     className="quote-form-input"
                   />
                 </div>
 
                 <div className="quote-form-group">
-                  <label htmlFor="quote-service">{t('quote.serviceLabel')}</label>
+                  <label htmlFor="quote-service">{t('quote.serviceLabel')} <span className="required-star">*</span></label>
                   <select
                     id="quote-service"
                     name="serviceType"
+                    required
                     value={formData.serviceType}
                     onChange={handleChange}
                     className="quote-form-select"
@@ -182,10 +194,11 @@ export default function QuoteModal({ isOpen, onClose }) {
 
               {/* Row 3: Project Description */}
               <div className="quote-form-group full-width">
-                <label htmlFor="quote-desc">{t('quote.descLabel')}</label>
+                <label htmlFor="quote-desc">{t('quote.descLabel')} <span className="required-star">*</span></label>
                 <textarea
                   id="quote-desc"
                   name="projectDescription"
+                  required
                   rows="4"
                   placeholder={t('quote.descPlaceholder')}
                   value={formData.projectDescription}

@@ -91,21 +91,6 @@ export default function Footer() {
                 </a>
               </li>
 
-              {/* Direct Link to Quote Form */}
-              <li style={{ marginTop: '0.4rem' }}>
-                <Link
-                  href="/contact"
-                  className="interactive-contact-btn"
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.08)',
-                    borderColor: 'rgba(255, 255, 255, 0.15)',
-                    color: '#ffffff'
-                  }}
-                  title="Request Technical Quote"
-                >
-                  <span>📋 {t('quoteBtn')}</span>
-                </Link>
-              </li>
             </ul>
           </div>
 

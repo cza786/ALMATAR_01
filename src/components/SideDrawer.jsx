@@ -150,7 +150,7 @@ export default function SideDrawer({ isOpen, onClose }) {
           {('qhse'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
             <div className="drawer-nav-item">
               <Link href="/qhse" className={`drawer-nav-link ${pathname === '/qhse' ? 'active' : ''}`} onClick={onClose}>
-                <span>{t('nav.qhse')}</span>
+                <span>QHSE</span>
                 <span className="drawer-arrow">&rsaquo;</span>
               </Link>
             </div>
