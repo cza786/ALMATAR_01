@@ -30,6 +30,7 @@ export default function Footer() {
   const desc =
     (lang === 'ar' ? settings?.descriptionAr : settings?.descriptionEn) || t('footer.desc');
   const email = settings?.contactEmail || 'info@almatar-oil.com';
+  const qhseLabel = t('nav.qhse').replace(/\s+safety$/i, '');
 
   return (
     <footer className="site-footer">
@@ -51,7 +52,7 @@ export default function Footer() {
               <li><Link href="/well-services">{t('nav.wellServices')}</Link></li>
               <li><Link href="/drilling-fluids">{t('nav.drillingFluids')}</Link></li>
               <li><Link href="/construction">{t('nav.construction')}</Link></li>
-              <li><Link href="/qhse">{t('nav.qhse')}</Link></li>
+              <li><Link href="/qhse">{qhseLabel}</Link></li>
               <li><Link href="/contact">{t('nav.contact')}</Link></li>
             </ul>
           </div>
@@ -63,7 +64,7 @@ export default function Footer() {
               <li><Link href="/drilling-fluids">• {t('nav.drillingFluids')}</Link></li>
               <li><Link href="/construction">• {t('nav.construction')}</Link></li>
               <li><Link href="/trading">• {t('nav.trading')}</Link></li>
-              <li><Link href="/qhse">• {t('nav.qhse')}</Link></li>
+              <li><Link href="/qhse">• {qhseLabel}</Link></li>
             </ul>
           </div>
 

@@ -4728,6 +4728,88 @@ body.rtl-mode .footer-brand p {
   }
 }
 
+/* QHSE card: keep the complete copy readable on narrow screens. */
+@media (max-width: 600px) {
+  .home-service-card .lux-bg-wrapper {
+    transform: none !important;
+    left: auto !important;
+    width: 100% !important;
+  }
+
+  .home-service-card .lux-card-inner {
+    transform: none !important;
+  }
+
+  .home-service-card-qhse {
+    min-height: 362px;
+    background: #111a2b;
+  }
+
+  .home-service-card-qhse .lux-bg-wrapper {
+    display: none;
+  }
+
+  .home-service-card-qhse .lux-card-inner {
+    justify-content: flex-start;
+    padding: 2.35rem 1.15rem 1.35rem;
+  }
+
+  .home-service-card-qhse .lux-line-1 {
+    gap: 0.65rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .home-service-card-qhse .lux-card-num {
+    font-size: 0.95rem;
+  }
+
+  .home-service-card-qhse .lux-card-tag {
+    font-size: 0.82rem !important;
+    letter-spacing: 1.35px !important;
+  }
+
+  .home-service-card-qhse .lux-line-2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .home-service-card-qhse .lux-card-title {
+    font-size: 1.1rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .home-service-card-qhse .lux-line-3 {
+    margin-bottom: 0.85rem;
+  }
+
+  .home-service-card-qhse .lux-card-desc {
+    font-size: 0.8rem !important;
+    line-height: 1.48 !important;
+  }
+
+  .home-service-card-qhse .lux-line-4 {
+    margin-bottom: 1rem;
+  }
+
+  .home-service-card-qhse .lux-feature-pills {
+    gap: 0.45rem 0.5rem !important;
+  }
+
+  .home-service-card-qhse .lux-pill {
+    font-size: 0.68rem !important;
+    line-height: 1.2 !important;
+    padding: 0.3rem 0.55rem !important;
+    white-space: nowrap !important;
+  }
+
+  .home-service-card-qhse .lux-action-btn {
+    width: 215px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    padding: 0.65rem 1.35rem 0.65rem 1.5rem !important;
+    font-size: 0.85rem !important;
+  }
+}
+
 /* Vehicle and Equipment Usage Policy — reference layout */
 .vehicle-policy-page { background: #fff; color: #15243a; padding-bottom: 2rem; }
 .vehicle-policy-hero { height: 250px; position: relative; overflow: hidden; }

@@ -77,7 +77,7 @@ export default function SlantedPortfolioAccordion() {
               <Link
                 key={item.id}
                 href={item.link}
-                className="home-service-card"
+                className={`home-service-card home-service-card-${item.id}`}
               >
                 {/* Background Image Wrapper (Inverse Skewed) */}
                 <div className="lux-bg-wrapper">
