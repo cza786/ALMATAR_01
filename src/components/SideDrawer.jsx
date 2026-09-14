@@ -9,6 +9,7 @@ import { useLanguage } from '../context/LanguageContext';
 export default function SideDrawer({ isOpen, onClose }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [isServicesOpen, setIsServicesOpen] = useState(true); // Collapsible state
+  const [isPoliciesOpen, setIsPoliciesOpen] = useState(false);
   const pathname = usePathname();
   const { lang, toggleLanguage, t } = useLanguage();
 
@@ -153,6 +154,71 @@ export default function SideDrawer({ isOpen, onClose }) {
                 <span>QHSE</span>
                 <span className="drawer-arrow">&rsaquo;</span>
               </Link>
+            </div>
+          )}
+
+          {/* Policies */}
+          {('policies'.includes(searchTerm.toLowerCase()) || 'employee security'.includes(searchTerm.toLowerCase()) || 'substance abuse'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
+            <div className="drawer-nav-item">
+              <div
+                className={`drawer-nav-link ${pathname.startsWith('/policies') ? 'active' : ''}`}
+                onClick={() => setIsPoliciesOpen(!isPoliciesOpen)}
+                style={{ cursor: 'pointer', userSelect: 'none' }}
+              >
+                <span style={{ fontWeight: 700 }}>Policies</span>
+                <span className={`drawer-arrow ${isPoliciesOpen ? 'expanded' : ''}`}>
+                  {isPoliciesOpen ? '▾' : '›'}
+                </span>
+              </div>
+              {isPoliciesOpen && (
+                <div className="drawer-sub-container">
+                  <div className="drawer-nav-sub-item">
+                    <Link href="/policies/employee-security" className="drawer-nav-link sub-link" onClick={onClose}>
+                      <span>• Employee Security and Site Safety</span>
+                    </Link>
+                  </div>
+                  <div className="drawer-nav-sub-item">
+                    <Link href="/policies/anti-bribery" className="drawer-nav-link sub-link" onClick={onClose}>
+                      <span>• Anti-Bribery and Gifts Policy</span>
+                    </Link>
+                  </div>
+                  <div className="drawer-nav-sub-item">
+                    <Link href="/policies/conflict-of-interest" className="drawer-nav-link sub-link" onClick={onClose}>
+                      <span>Conflict of Interest Policy</span>
+                    </Link>
+                  </div>
+                  <div className="drawer-nav-sub-item">
+                    <Link href="/policies/substance-and-abuse-policy" className="drawer-nav-link sub-link" onClick={onClose}>
+                      <span>• Substance Abuse Policy</span>
+                    </Link>
+                  </div>
+                  <div className="drawer-nav-sub-item">
+                    <Link href="/policies/incident-reporting-and-crisis-management" className="drawer-nav-link sub-link" onClick={onClose}>
+                      <span>• Incident Reporting and Crisis Management</span>
+                    </Link>
+                  </div>
+                  <div className="drawer-nav-sub-item">
+                    <Link href="/policies/confidentiality-and-data-protection" className="drawer-nav-link sub-link" onClick={onClose}>
+                      <span>• Confidentiality and Data Protection</span>
+                    </Link>
+                  </div>
+                  <div className="drawer-nav-sub-item">
+                    <Link href="/policies/employment-affairs-workplace-conduct" className="drawer-nav-link sub-link" onClick={onClose}>
+                      <span>• Employment Affairs and Workplace Conduct</span>
+                    </Link>
+                  </div>
+                  <div className="drawer-nav-sub-item">
+                    <Link href="/policies/procurement-and-supply-chain" className="drawer-nav-link sub-link" onClick={onClose}>
+                      <span>• Procurement and Supply Chain</span>
+                    </Link>
+                  </div>
+                  <div className="drawer-nav-sub-item">
+                    <Link href="/policies/quality" className="drawer-nav-link sub-link" onClick={onClose}>
+                      <span>• Quality Policy</span>
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 

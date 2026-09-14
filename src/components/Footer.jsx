@@ -76,6 +76,15 @@ export default function Footer() {
                 </a>
               </li>
 
+              <li className="footer-address-item">
+                <strong>Head Office</strong>
+                <span>Syria – Al-Hasakah – Qamishli, Western District, Abu Ubaidah Al-Jarrah Street.</span>
+              </li>
+              <li className="footer-address-item">
+                <strong>Company Office</strong>
+                <span>Syria – Al-Hasakah – Al-Qahtaniyah, Main Street.</span>
+              </li>
+
               {/* Interactive Email Button */}
               <li style={{ marginTop: '0.8rem' }}>
                 <a

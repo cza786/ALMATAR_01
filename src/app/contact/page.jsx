@@ -83,6 +83,22 @@ export default function ContactPage() {
       value: (lang === 'ar' ? 'يرجى تزويدنا بتفاصيل مشروعكم عبر النموذج أدناه' : 'Submit your technical specifications via the form'),
       href: '#quote-form-section',
       isExternal: false,
+    },
+    {
+      id: 'head-office',
+      type: 'HEAD OFFICE',
+      label: 'Head Office',
+      value: 'Syria – Al-Hasakah – Qamishli, Western District, Abu Ubaidah Al-Jarrah Street.',
+      href: '#contact-addresses',
+      isExternal: false,
+    },
+    {
+      id: 'company-office',
+      type: 'COMPANY OFFICE',
+      label: 'Company Office',
+      value: 'Syria – Al-Hasakah – Al-Qahtaniyah, Main Street.',
+      href: '#contact-addresses',
+      isExternal: false,
     }
   ];
 
@@ -91,6 +107,19 @@ export default function ContactPage() {
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
         <polyline points="22,6 12,13 2,6" />
+      </svg>
+    ),
+    'head-office': (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </svg>
+    ),
+    'company-office': (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 21h18" />
+        <path d="M5 21V5l7-3 7 3v16" />
+        <path d="M9 21v-5h6v5M8 8h1M15 8h1M8 11h1M15 11h1" />
       </svg>
     ),
     quote: (
@@ -171,7 +200,7 @@ export default function ContactPage() {
             
             {/* LEFT COLUMN: VERTICAL STACK OF 4 CONTACT CARDS */}
             <div className="ctp-cards-stack">
-              {contactCards.map((card) => (
+              {contactCards.filter((card) => card.id !== 'quote').map((card) => (
                 <a
                   key={card.id}
                   href={card.href}
@@ -208,6 +237,18 @@ export default function ContactPage() {
 
             {/* RIGHT COLUMN: REQUEST A QUOTATION FORM CARD */}
             <div className="ctp-form-column">
+              <div id="contact-addresses" className="contact-address-panel">
+                <h2 className="quote-modal-title">Our Addresses</h2>
+                <div className="contact-address-item">
+                  <h3>Head Office</h3>
+                  <p>Syria – Al-Hasakah – Qamishli, Western District, Abu Ubaidah Al-Jarrah Street.</p>
+                </div>
+                <div className="contact-address-item">
+                  <h3>Company Office</h3>
+                  <p>Syria – Al-Hasakah – Al-Qahtaniyah, Main Street.</p>
+                </div>
+              </div>
+              <div>
               <div className="quote-modal-card split-form-card">
                 
                 {submitted ? (
@@ -358,6 +399,7 @@ export default function ContactPage() {
                   </>
                 )}
 
+              </div>
               </div>
             </div>
 

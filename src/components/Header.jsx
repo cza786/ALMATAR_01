@@ -58,6 +58,33 @@ export default function Header({ onOpenDrawer }) {
 
               <Link href="/trading" className={`nav-link ${isActive('/trading') ? 'active' : ''}`}>{t('nav.trading')}</Link>
               <Link href="/qhse" className={`nav-link ${isActive('/qhse') ? 'active' : ''}`}>QHSE</Link>
+              {/* Policies Dropdown Item */}
+              <div className="nav-item-dropdown">
+                <Link href="/policies/employee-security" className={`nav-link dropdown-toggle-link ${pathname.startsWith('/policies') ? 'active' : ''}`}>
+                  <span>Policies</span>
+                  <svg className="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7 10l5 5 5-5z"/>
+                  </svg>
+                </Link>
+                <div className="nav-dropdown-menu policies-dropdown-menu">
+                  <div className="dropdown-header-bar">
+                    <span className="dropdown-header-text">Policies</span>
+                    <span className="dropdown-icon-indicator">&#9662;</span>
+                  </div>
+                  <div className="dropdown-links-list">
+                    <Link href="/policies/employee-security" className="dropdown-link-item">&#8226; Employee Security and Site Safety</Link>
+                    <Link href="/policies/anti-bribery" className="dropdown-link-item">&#8226; Anti-Bribery and Gifts Policy</Link>
+                    <Link href="/policies/conflict-of-interest" className="dropdown-link-item">&#8226; Conflict of Interest Policy</Link>
+                    <Link href="/policies/vehicle-and-equipment" className="dropdown-link-item">&#8226; Vehicle and Equipment Usage</Link>
+                    <Link href="/policies/substance-and-abuse-policy" className="dropdown-link-item">&#8226; Substance Abuse Policy</Link>
+                    <Link href="/policies/incident-reporting-and-crisis-management" className="dropdown-link-item">&#8226; Incident Reporting and Crisis Management</Link>
+                    <Link href="/policies/confidentiality-and-data-protection" className="dropdown-link-item">&#8226; Confidentiality and Data Protection</Link>
+                    <Link href="/policies/employment-affairs-workplace-conduct" className="dropdown-link-item">&#8226; Employment Affairs and Workplace Conduct</Link>
+                    <Link href="/policies/procurement-and-supply-chain" className="dropdown-link-item">&#8226; Procurement and Supply Chain</Link>
+                    <Link href="/policies/quality" className="dropdown-link-item">&#8226; Quality Policy</Link>
+                  </div>
+                </div>
+              </div>
               <Link href="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`}>{t('nav.contact')}</Link>
             </nav>
 

@@ -1,11 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function SlantedPortfolioAccordion() {
-  const [hoveredIndex, setHoveredIndex] = useState(0);
   const { t } = useLanguage();
 
   const services = [
@@ -64,24 +62,22 @@ export default function SlantedPortfolioAccordion() {
       <div className="container position-relative" style={{ zIndex: 5 }}>
         
         {/* Section Header */}
-        <div className="section-header text-center" style={{ marginBottom: '2.5rem' }}>
+        <div className="section-header home-portfolio-header" style={{ marginBottom: '2.5rem' }}>
           <span className="section-eyebrow" style={{ color: 'var(--accent-gold)' }}>{t('accordion.eyebrow')}</span>
           <h2 className="section-title" style={{ color: '#ffffff' }}>{t('accordion.title')}</h2>
-          <p className="section-subtitle" style={{ color: '#9ca3af', maxWidth: '720px', margin: '0.6rem auto 0 auto' }}>
+          <p className="section-subtitle" style={{ color: '#9ca3af', maxWidth: '720px', margin: '0.6rem 0 0' }}>
             {t('accordion.subtitle')}
           </p>
         </div>
 
         {/* Slanted Diagonal Accordion Container */}
-        <div className="luxurious-accordion-grid">
-          {services.map((item, index) => {
-            const isHovered = index === hoveredIndex;
+        <div className="home-service-cards">
+          {services.map((item) => {
             return (
-              <div
+              <Link
                 key={item.id}
-                className={`luxurious-card-item ${isHovered ? 'expanded' : ''}`}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onClick={() => setHoveredIndex(index)}
+                href={item.link}
+                className="home-service-card"
               >
                 {/* Background Image Wrapper (Inverse Skewed) */}
                 <div className="lux-bg-wrapper">
@@ -119,14 +115,14 @@ export default function SlantedPortfolioAccordion() {
 
                   {/* Line 5: Luxurious Action Link Button (Animated Line 5) */}
                   <div className="lux-line-5">
-                    <Link href={item.link} className="lux-action-btn">
+                    <span className="lux-action-btn">
                       <span>{t('accordion.explore')}</span>
                       <span className="lux-arrow">&rarr;</span>
-                    </Link>
+                    </span>
                   </div>
 
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
