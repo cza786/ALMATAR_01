@@ -6,10 +6,11 @@ import { useLanguage } from '../context/LanguageContext';
 export default function NextPageBanner({ title, subtitle, link, bgImage }) {
   const { t } = useLanguage();
   const displaySubtitle = subtitle || t('hero.learnMore') || "Learn more";
+  const destination = link || '/well-services';
 
   return (
     <section className="next-page-banner-section">
-      <Link href={link} className="next-page-banner-wrapper" aria-label={`Navigate to ${title}`}>
+      <Link href={destination} className="next-page-banner-wrapper" aria-label={`Navigate to ${title}`}>
         <div className="next-page-bg">
           <img src={bgImage} alt={title} />
           <div className="next-page-overlay"></div>
@@ -26,4 +27,3 @@ export default function NextPageBanner({ title, subtitle, link, bgImage }) {
     </section>
   );
 }
-

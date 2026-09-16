@@ -1,0 +1,889 @@
+/* ==========================================================================
+   WELLHEAD & XMAS TREE SERVICES PAGE STYLES (INCH-PERFECT DESIGN)
+   ========================================================================== */
+.wellhead-page {
+  width: 100%;
+  background-color: #ffffff;
+  color: #0c1e38;
+  font-family: inherit;
+  overflow-x: hidden;
+}
+
+/* 1. HERO SECTION */
+.wellhead-hero {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #061527;
+}
+
+.wellhead-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.wellhead-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(8, 24, 46, 0.88) 0%, rgba(8, 24, 46, 0.6) 50%, rgba(8, 24, 46, 0.15) 100%);
+}
+
+.wellhead-hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(1360px, calc(100% - 4rem));
+  margin: 0 auto;
+  color: #ffffff;
+}
+
+.wellhead-kicker {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #D9531E;
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+}
+
+.wellhead-hero-title {
+  font-size: clamp(2.2rem, 4.2vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.05;
+  margin: 0 0 1rem 0;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.wellhead-hero-tagline {
+  font-size: clamp(0.78rem, 1.2vw, 0.92rem);
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #e2e8f0;
+  margin-bottom: 1.8rem;
+  max-width: 650px;
+}
+
+.wellhead-orange-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: #D9531E;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 0.85rem 1.4rem;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.wellhead-orange-btn:hover {
+  background-color: #b84112;
+  color: #ffffff;
+}
+
+.wellhead-orange-btn .arrow {
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.wellhead-orange-btn:hover .arrow {
+  transform: translateX(4px);
+}
+
+.wellhead-hero-vertical-tag {
+  position: absolute;
+  top: 1.8rem;
+  right: max(2rem, 4vw);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  opacity: 0.9;
+  text-transform: uppercase;
+}
+
+/* 2. SERVICES NAV STRIP */
+.wellhead-nav-strip {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.wellhead-nav-container {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  width: 100%;
+}
+
+.wellhead-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.85rem 0.3rem;
+  border-right: 1px solid #e2e8f0;
+  text-decoration: none;
+  color: #4a5568;
+  text-align: center;
+  min-height: 84px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.wellhead-nav-item:last-child {
+  border-right: none;
+}
+
+.wellhead-nav-icon {
+  color: #D9531E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wellhead-nav-label {
+  font-size: 0.54rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #1a202c;
+  text-transform: uppercase;
+}
+
+.wellhead-nav-item:hover {
+  background-color: #f7fafc;
+}
+
+.wellhead-nav-item.active {
+  background-color: #eaf2f9;
+  border-bottom: 3px solid #D9531E;
+}
+
+.wellhead-nav-item.active .wellhead-nav-label {
+  color: #0c1e38;
+  font-weight: 900;
+}
+
+/* COMMON SECTION HEADINGS & LABELS */
+.section-label-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-label-group .orange-bar {
+  color: #D9531E;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+.section-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #0c1e38;
+  text-transform: uppercase;
+}
+
+.section-label.light-text {
+  color: #ffffff;
+}
+
+.wellhead-section-heading {
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight: 900;
+  color: #0c1e38;
+  line-height: 1.15;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.3px;
+}
+
+/* 3. TECHNICAL OVERVIEW SECTION */
+.wellhead-overview-section {
+  width: min(1360px, calc(100% - 4rem));
+  margin: 3.5rem auto;
+}
+
+.wellhead-overview-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr 1.1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.wellhead-overview-text {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #4a5568;
+  margin-bottom: 2rem;
+}
+
+.wellhead-three-badges {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  border-top: 1px solid #edf2f7;
+  padding-top: 1.5rem;
+}
+
+.badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+}
+
+.badge-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafbfc;
+}
+
+.badge-item span {
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: #0c1e38;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* CENTER DIAGRAM & CALLOUTS */
+.wellhead-diagram-center {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.diagram-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.wellhead-diagram-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.callout {
+  position: absolute;
+  font-size: 0.55rem;
+  font-weight: 800;
+  color: #D9531E;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.1;
+  pointer-events: none;
+}
+
+.callout .callout-sub {
+  display: block;
+  font-size: 0.5rem;
+  color: #4a5568;
+}
+
+.callout-line {
+  position: absolute;
+  height: 1px;
+  background-color: #D9531E;
+  opacity: 0.8;
+}
+
+.callout-top-left { top: 7%; left: -2%; }
+.callout-mid-left { top: 22%; left: -5%; }
+.callout-low-left { top: 44%; left: -5%; }
+
+.callout-top-right { top: 12%; right: -2%; }
+.callout-mid-right { top: 26%; right: -5%; }
+.callout-tubing-right { top: 62%; right: -5%; }
+.callout-casing-right { top: 82%; right: -5%; }
+
+/* RIGHT KEY COMPONENTS */
+.key-components-heading {
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #0c1e38;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.key-components-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.component-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.comp-num-badge {
+  min-width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #D9531E;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.comp-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.comp-name {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #0c1e38;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.comp-desc {
+  font-size: 0.64rem;
+  color: #718096;
+  margin: 0.15rem 0 0 0;
+  line-height: 1.3;
+}
+
+/* 4. OUR SERVICE CAPABILITIES */
+.wellhead-capabilities-section {
+  width: min(1360px, calc(100% - 4rem));
+  margin: 3.5rem auto;
+}
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.capability-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.4rem 0.6rem;
+  background-color: #ffffff;
+  border: 1px solid #edf2f7;
+  border-radius: 4px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.capability-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  border-color: #cbd5e0;
+}
+
+.cap-icon-wrap {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+}
+
+.cap-title {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #0c1e38;
+  margin: 0 0 0.4rem 0;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.cap-desc {
+  font-size: 0.6rem;
+  color: #718096;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* 5. DARK BANNER */
+.wellhead-dark-banner {
+  width: 100%;
+  background-color: #0A192F;
+  color: #ffffff;
+  padding: 3rem 0;
+}
+
+.dark-banner-container {
+  width: min(1360px, calc(100% - 4rem));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.dark-banner-title {
+  font-size: clamp(1.4rem, 2.2vw, 2.1rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.dark-banner-center p {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: #cbd5e0;
+  margin: 0;
+}
+
+.dark-banner-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.dark-value-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.dark-value-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-value-item span {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+/* 6. SERVICE LIFECYCLE */
+.wellhead-lifecycle-section {
+  width: min(1360px, calc(100% - 4rem));
+  margin: 4rem auto;
+}
+
+.lifecycle-content-grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 2.5rem;
+  margin-top: 2rem;
+  align-items: stretch;
+}
+
+.lifecycle-steps-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.85rem;
+}
+
+.lifecycle-step-node {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-header-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.step-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #D9531E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff6f3;
+  flex-shrink: 0;
+}
+
+.step-arrow {
+  color: #cbd5e0;
+  font-size: 1.1rem;
+}
+
+.step-num {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 900;
+  color: #D9531E;
+  margin-bottom: 0.2rem;
+}
+
+.step-title {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #0c1e38;
+  margin: 0 0 0.35rem 0;
+  text-transform: uppercase;
+}
+
+.step-desc {
+  font-size: 0.6rem;
+  color: #718096;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.lifecycle-right-card {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+.lifecycle-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lifecycle-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(12, 30, 56, 0.2) 0%, rgba(12, 30, 56, 0.85) 100%);
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-end;
+}
+
+.lifecycle-card-overlay h3 {
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: 0.5px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* 7. DUAL CARDS SECTION */
+.wellhead-dual-section {
+  width: min(1360px, calc(100% - 4rem));
+  margin: 4rem auto;
+}
+
+.dual-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.dual-card {
+  background-color: #f8fafc;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.dual-card-img-wrap {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.dual-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dual-card-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.dual-card-heading {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #0c1e38;
+  margin: 0.25rem 0 1rem 0;
+  line-height: 1.2;
+}
+
+.dual-card-desc {
+  font-size: 0.82rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.wellhead-orange-btn.inline-btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.hse-four-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.hse-pillar-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.hse-icon-box {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.hse-pillar-info h4 {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #0c1e38;
+  margin: 0 0 0.15rem 0;
+  text-transform: uppercase;
+}
+
+.hse-pillar-info p {
+  font-size: 0.6rem;
+  color: #718096;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* 8. BY THE NUMBERS & BOTTOM CTA */
+.wellhead-stats-cta-section {
+  width: min(1360px, calc(100% - 4rem));
+  margin: 4rem auto 2rem auto;
+}
+
+.by-the-numbers-container {
+  margin-bottom: 3.5rem;
+}
+
+.numbers-heading {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #0c1e38;
+  margin: 0.2rem 0 1.5rem 0;
+  text-transform: uppercase;
+}
+
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 1.5rem;
+}
+
+.num-stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.stat-icon {
+  margin-bottom: 0.2rem;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #0c1e38;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.58rem;
+  font-weight: 800;
+  color: #718096;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.bottom-cta-banner {
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #c84915;
+  color: #ffffff;
+  padding: 3.5rem 2.5rem;
+}
+
+.cta-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+  filter: saturate(1.2);
+}
+
+.cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(184, 65, 18, 0.92) 0%, rgba(184, 65, 18, 0.75) 100%);
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.cta-title {
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  font-weight: 900;
+  margin: 0 0 0.6rem 0;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.cta-sub {
+  font-size: 0.82rem;
+  color: #f7fafc;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
+}
+
+.cta-white-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: #ffffff;
+  color: #c84915;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 0.85rem 1.4rem;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.cta-white-btn:hover {
+  background-color: #f7fafc;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1200px) {
+  .wellhead-nav-container { grid-template-columns: repeat(5, 1fr); }
+  .capabilities-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 992px) {
+  .wellhead-overview-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .capabilities-grid { grid-template-columns: repeat(3, 1fr); }
+  .dark-banner-container { grid-template-columns: 1fr; gap: 1.5rem; }
+  .lifecycle-content-grid { grid-template-columns: 1fr; }
+  .lifecycle-steps-row { grid-template-columns: repeat(3, 1fr); }
+  .dual-cards-grid { grid-template-columns: 1fr; }
+  .numbers-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .wellhead-nav-container { grid-template-columns: repeat(3, 1fr); }
+  .capabilities-grid { grid-template-columns: repeat(2, 1fr); }
+  .lifecycle-steps-row { grid-template-columns: 1fr; }
+  .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .wellhead-nav-container { grid-template-columns: repeat(2, 1fr); }
+  .capabilities-grid { grid-template-columns: 1fr; }
+  .hse-four-pillars { grid-template-columns: 1fr; }
+}
+
+/* Reference palette: brushed gold replaces the former orange accent. */
+.wellhead-kicker,
+.wellhead-nav-icon,
+.section-label-group .orange-bar,
+.callout,
+.step-num {
+  color: #b8862b;
+}
+
+.wellhead-orange-btn,
+.comp-num-badge,
+.bottom-cta-banner {
+  background-color: #b8862b;
+}
+
+.wellhead-orange-btn:hover {
+  background-color: #8f651d;
+}
+
+.wellhead-nav-item.active,
+.step-icon-circle {
+  border-color: #b8862b;
+}
+
+.callout-line {
+  background-color: #b8862b;
+}
+
+.cta-overlay {
+  background: linear-gradient(90deg, rgba(143, 101, 29, 0.92) 0%, rgba(143, 101, 29, 0.75) 100%);
+}
+
+.cta-white-btn {
+  color: #b8862b;
+}
+
+/* Keep the wellhead service hero compact on every screen size. */
+.wellhead-hero {
+  height: 320px;
+}
+
+@media (max-width: 800px) {
+  .wellhead-hero {
+    height: 300px;
+  }
+}

@@ -1,72 +1,21 @@
 'use client';
-
 import NextPageBanner from '@/components/NextPageBanner';
-import { useLanguage } from '@/context/LanguageContext';
 
-export default function ConstructionPage() {
-  const { t } = useLanguage();
+const base='/images/policies-photo/services/almatar_total_field_all_photos/';
+const services=[['02_heavy_haulage_transport.jpg','HEAVY HAULAGE & SPECIALIZED TRANSPORT'],['03_rig_and_site_mobilization.jpg','RIG & SITE MOBILIZATION'],['04_lifting_and_cranes.jpg','LIFTING AND CRANES'],['05_temporary_roads_site_preparation.jpg','TEMPORARY ROADS & SITE PREPARATION'],['06_modular_camps_facilities.jpg','MODULAR CAMPS & FACILITIES'],['07_certified_engineers_operators.jpg','CERTIFIED ENGINEERS & OPERATORS'],['08_catering_support.jpg','CATERING SUPPORT'],['09_500_bbl_frac_tank_rental.jpg','500 BBL FRAC TANK RENTAL'],['10_acid_storage_containment.jpg','ACID STORAGE & CONTAINMENT']];
+const rail=['WELL INTERVENTION SERVICES','COILED TUBING & NITROGEN PUMPING','STIMULATION & FRACTURING','ZONAL ISOLATION & CEMENTING','WELLHEAD & XMAS TREE SERVICES','SLICKLINE SERVICES','WELL TESTING & FLARING','DRILLING AND WORKOVER SERVICES','TOTAL FIELD CONSTRUCTION & MANPOWER LOGISTICS'];
+const process=['PLANNING & ROUTE SURVEY','EQUIPMENT PREPARATION & MOBILIZATION','SITE SETUP & CONSTRUCTION','OPERATIONS SUPPORT','DEMOBILIZATION & SITE RESTORATION'];
 
-  return (
-    <>
-      <div className="container" style={{ paddingTop: '2rem' }}>
-        
-        {/* Header Banner */}
-        <div className="static-page-banner">
-          <img src="/images/service_construction.png" alt="Construction & Logistics" />
-          <div className="static-banner-overlay">
-            <span className="section-eyebrow" style={{ color: 'var(--accent-cyan)' }}>{t('constructionPage.eyebrow')}</span>
-            <h1 className="static-banner-title">{t('constructionPage.title')}</h1>
-          </div>
-        </div>
-
-        <div className="about-hero-card">
-          <h2 className="section-title">{t('constructionPage.title')}</h2>
-          <p style={{ marginTop: '1rem', color: 'var(--text-muted)', lineHeight: '1.7' }}>
-            {t('constructionPage.card1Desc')}
-          </p>
-
-          <div className="cards-grid" style={{ marginTop: '2rem' }}>
-            <div className="solid-card">
-              <div className="card-img-wrap">
-                <img src="/images/service_heavy_logistics.png" alt="Logistics & Heavy Transportations" />
-              </div>
-              <div className="card-body">
-                <h3 className="card-title">🚛 {t('constructionPage.card1Title')}</h3>
-                <p className="card-text">{t('constructionPage.card1Desc')}</p>
-              </div>
-            </div>
-
-            <div className="solid-card">
-              <div className="card-img-wrap">
-                <img src="/images/service_manpower_supply.png" alt="Manpower Supply" />
-              </div>
-              <div className="card-body">
-                <h3 className="card-title">👷 {t('constructionPage.card2Title')}</h3>
-                <p className="card-text">{t('constructionPage.card2Desc')}</p>
-              </div>
-            </div>
-
-            <div className="solid-card">
-              <div className="card-img-wrap">
-                <img src="/images/frac_tanks.png" alt="FRAC Tanks & Containment" />
-              </div>
-              <div className="card-body">
-                <h3 className="card-title">🛢️ {t('constructionPage.card3Title')}</h3>
-                <p className="card-text">{t('constructionPage.card3Desc')}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      {/* Next Page Navigation Banner */}
-      <NextPageBanner
-        title={t('nav.trading')}
-        subtitle={t('hero.learnMore')}
-        link="/trading"
-        bgImage="/images/service_drilling_fluids.png"
-      />
-    </>
-  );
-}
+export default function ConstructionPage(){
+  return <div className="total-field-page tf-construction">
+  <section className="tf-hero"><img src={`${base}01_hero_total_field_construction.jpg`} alt="Total field construction and manpower logistics"/><div className="tf-hero-copy"><span>BUILDING SOLUTIONS ON THE GROUND</span><h1>TOTAL FIELD<br/>CONSTRUCTION &amp;<br/>MANPOWER LOGISTICS</h1><p>End-to-end field construction, heavy equipment transportation, site mobilization, certified technical manpower, camp management, catering services, 500 BBL frac tanks and containment solutions for onshore operations.</p><a href="#capabilities">REQUEST TECHNICAL SUPPORT&nbsp; →</a><a className="tf-outline-button" href="#capabilities">OUR CAPABILITIES</a></div><span className="tf-hero-side">PEOPLE<br/>EQUIPMENT<br/>INFRASTRUCTURE<br/>RESULTS</span></section>
+  <section className="tf-strip">{rail.map((item,i)=><span className={i===8?'active':''} key={item}>♧<b>{item}</b></span>)}</section>
+  <section className="tf-section tf-intro"><div><small>FROM BASE TO FIELD</small><h2>INTEGRATED FIELD DELIVERY</h2><p>We provide complete field construction and manpower logistics solutions to support your operations in the most challenging environments. From heavy transport to camp management, our integrated approach ensures safe, efficient and reliable project delivery.</p></div><div className="tf-intro-cards"><article><b>▣</b><h3>HEAVY LOGISTICS &amp;<br/>FLEET TRANSPORT</h3><p>Safe and reliable transportation of equipment and materials to remote locations.</p></article><article><b>♧</b><h3>TECHNICAL MANPOWER<br/>&amp; SITE CATERING</h3><p>Certified personnel, camp management and catering services.</p></article><article><b>△</b><h3>500 BBL FRAC TANKS<br/>&amp; CONTAINMENT</h3><p>Rental and installation of tanks with complete containment solutions.</p></article></div></section>
+  <section className="tf-section tf-process"><small>LOGISTICS FROM START TO SITE</small><h2>OUR MOBILIZATION PROCESS</h2><p>A streamlined logistics chain from our base to your remote field location.</p><div className="tf-route">{[['06_modular_camps_facilities.jpg','ALMATAR WAREHOUSE / BASE'],['02_heavy_haulage_transport.jpg','EQUIPMENT PREPARATION & LOADING'],['03_rig_and_site_mobilization.jpg','TRANSPORTATION & ROUTE MANAGEMENT'],['04_lifting_and_cranes.jpg','SITE MOBILIZATION & OFFLOADING'],['01_hero_total_field_construction.jpg','REMOTE OILFIELD SITE']].map(([img,title])=><article key={title}><img src={`${base}${img}`} alt={title}/><strong>{title}</strong></article>)}</div></section>
+  <section id="capabilities" className="tf-section"><small>OUR CAPABILITIES</small><h2>COMPLETE SOLUTIONS FOR FIELD OPERATIONS</h2><div className="tf-capabilities">{services.map(([image,title])=><article key={title}><img src={`${base}${image}`} alt={title}/><h3>{title}</h3><p>Complete field support with safe, reliable and certified solutions for demanding operations.</p></article>)}<article className="tf-cta"><h3>TAILORED SOLUTIONS<br/>FOR YOUR PROJECT</h3><a href="/contact">DISCUSS YOUR REQUIREMENTS →</a></article></div></section>
+  <section className="tf-process tf-process-steps tf-section"><small>PROJECT LIFECYCLE</small><h2>FROM PLANNING TO DEMOBILIZATION</h2><div>{process.map((x,i)=><article key={x}><b>{String(i+1).padStart(2,'0')}</b><strong>{x}</strong><p>Detailed planning, execution and support for safe project delivery.</p></article>)}</div></section>
+  <section className="tf-feature-grid"><article><img src={`${base}11_heavy_equipment_clean.png`} alt="Heavy equipment real capabilities"/><h2>HEAVY EQUIPMENT.<br/>REAL CAPABILITIES.</h2></article><article><img src={`${base}12_modular_camps_clean.png`} alt="Modular camps in the field"/><h2>MODULAR CAMPS.<br/>A HOME IN THE FIELD.</h2></article></section>
+  <section className="tf-feature-grid tf-people"><article><img src={`${base}13_disciplined_crews_clean.png`} alt="Disciplined crews"/><div><small>OUR PEOPLE</small><h2>DISCIPLINED CREWS.<br/>PROVEN PERFORMANCE.</h2><p>Our success is built on our people. We provide certified engineers, operators and field personnel with the right skills, experience and mindset to deliver in demanding environments.</p></div></article><article><img src={`${base}14_safety_people_environment_clean.png`} alt="Safety, people and environment"/><div><small>HSE &amp; ENVIRONMENT</small><h2>SAFETY. PEOPLE. ENVIRONMENT.<br/>ALWAYS FIRST.</h2><p>We maintain the highest standards of HSE in all our construction and logistics operations, ensuring safe lifting, camp operations and environmental containment.</p></div></article></section>
+  <section className="tf-stats"><b>50+<small>FLEET UNITS<br/>Available for deployment</small></b><b>200+<small>TECHNICAL PERSONNEL<br/>Engineers, operators &amp; support staff</small></b><b>NATIONWIDE<small>RESPONSE COVERAGE<br/>Rapid mobilization to any field location</small></b><b>500 BBL<small>TANK CAPACITY<br/>Frac tanks with full containment</small></b></section>
+  <NextPageBanner title="LET’S MOBILIZE YOUR NEXT FIELD PROJECT" subtitle="Reliable logistics. Skilled people. Complete field support. Wherever you operate." link="/contact" bgImage={`${base}01_hero_total_field_construction.jpg`}/>
+</div>}

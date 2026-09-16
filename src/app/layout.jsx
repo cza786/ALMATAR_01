@@ -6,6 +6,8 @@ import Header from '../components/Header';
 import SideDrawer from '../components/SideDrawer';
 import Footer from '../components/Footer';
 
+import ScrollAnimation from '../components/ScrollAnimation';
+
 import { LanguageProvider } from '../context/LanguageContext';
 
 export default function RootLayout({ children }) {
@@ -60,6 +62,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <LanguageProvider>
+          <ScrollAnimation />
           <Header onOpenDrawer={() => setIsDrawerOpen(true)} />
           <SideDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
           <main>{children}</main>

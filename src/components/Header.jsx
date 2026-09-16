@@ -31,11 +31,13 @@ export default function Header({ onOpenDrawer }) {
             {/* Desktop Navigation Bar */}
             <nav className="main-nav" aria-label="Main Navigation">
               <Link href="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>{t('nav.home')}</Link>
-              <Link href="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`}>{t('nav.about')}</Link>
+              <Link href="/about" className={`nav-link ${isActive('/about') || isActive('/our-team') ? 'active' : ''}`}>
+                {t('nav.about')}
+              </Link>
               
               {/* Services Dropdown Item */}
               <div className="nav-item-dropdown">
-                <Link href="/well-services" className={`nav-link dropdown-toggle-link ${isActive('/well-services') || isActive('/drilling-fluids') || isActive('/construction') ? 'active' : ''}`}>
+                <Link href="/services" className={`nav-link dropdown-toggle-link ${isActive('/services') || isActive('/well-services') || isActive('/drilling-fluids') || isActive('/construction') ? 'active' : ''}`}>
                   <span>{t('nav.services')}</span>
                   <svg className="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M7 10l5 5 5-5z"/>
@@ -60,7 +62,7 @@ export default function Header({ onOpenDrawer }) {
               <Link href="/qhse" className={`nav-link ${isActive('/qhse') ? 'active' : ''}`}>QHSE</Link>
               {/* Policies Dropdown Item */}
               <div className="nav-item-dropdown">
-                <Link href="/policies/employee-security" className={`nav-link dropdown-toggle-link ${pathname.startsWith('/policies') ? 'active' : ''}`}>
+                <Link href="/policies" className={`nav-link dropdown-toggle-link ${pathname.startsWith('/policies') ? 'active' : ''}`}>
                   <span>Policies</span>
                   <svg className="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M7 10l5 5 5-5z"/>
@@ -72,16 +74,16 @@ export default function Header({ onOpenDrawer }) {
                     <span className="dropdown-icon-indicator">&#9662;</span>
                   </div>
                   <div className="dropdown-links-list">
-                    <Link href="/policies/employee-security" className="dropdown-link-item">&#8226; Employee Security and Site Safety</Link>
-                    <Link href="/policies/anti-bribery" className="dropdown-link-item">&#8226; Anti-Bribery and Gifts Policy</Link>
-                    <Link href="/policies/conflict-of-interest" className="dropdown-link-item">&#8226; Conflict of Interest Policy</Link>
-                    <Link href="/policies/vehicle-and-equipment" className="dropdown-link-item">&#8226; Vehicle and Equipment Usage</Link>
-                    <Link href="/policies/substance-and-abuse-policy" className="dropdown-link-item">&#8226; Substance Abuse Policy</Link>
-                    <Link href="/policies/incident-reporting-and-crisis-management" className="dropdown-link-item">&#8226; Incident Reporting and Crisis Management</Link>
-                    <Link href="/policies/confidentiality-and-data-protection" className="dropdown-link-item">&#8226; Confidentiality and Data Protection</Link>
-                    <Link href="/policies/employment-affairs-workplace-conduct" className="dropdown-link-item">&#8226; Employment Affairs and Workplace Conduct</Link>
-                    <Link href="/policies/procurement-and-supply-chain" className="dropdown-link-item">&#8226; Procurement and Supply Chain</Link>
-                    <Link href="/policies/quality" className="dropdown-link-item">&#8226; Quality Policy</Link>
+                    <Link href="/images/policies-photo/pdfs/employee-security-and-site-safety-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Employee Security and Site Safety</Link>
+                    <Link href="/images/policies-photo/pdfs/anti-bribery-and-gifts-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Anti-Bribery and Gifts Policy</Link>
+                    <Link href="/images/policies-photo/pdfs/conflict-of-interest-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Conflict of Interest Policy</Link>
+                    <Link href="/images/policies-photo/pdfs/vehicle-and equipment-usage-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Vehicle and Equipment Usage</Link>
+                    <Link href="/images/policies-photo/pdfs/substance-abuse-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Substance Abuse Policy</Link>
+                    <Link href="/images/policies-photo/pdfs/incident-reporting-and-crisis-management-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Incident Reporting and Crisis Management</Link>
+                    <Link href="/images/policies-photo/pdfs/Confidentiality-and-data-protection-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Confidentiality and Data Protection</Link>
+                    <Link href="/images/policies-photo/pdfs/employment-affairs-and-workplace-conduct-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Employment Affairs and Workplace Conduct</Link>
+                    <Link href="/images/policies-photo/pdfs/procurement-and-supply-chain-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Procurement and Supply Chain</Link>
+                    <Link href="/images/policies-photo/pdfs/quality-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Quality Policy</Link>
                   </div>
                 </div>
               </div>

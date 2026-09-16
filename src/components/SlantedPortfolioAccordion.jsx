@@ -1,10 +1,19 @@
 'use client';
 
 import Link from 'next/link';
+import { useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function SlantedPortfolioAccordion() {
   const { t } = useLanguage();
+  const cardsRef = useRef(null);
+
+  const scrollCards = (direction) => {
+    cardsRef.current?.scrollBy({
+      left: direction * cardsRef.current.clientWidth,
+      behavior: 'smooth'
+    });
+  };
 
   const services = [
     {
@@ -71,7 +80,17 @@ export default function SlantedPortfolioAccordion() {
         </div>
 
         {/* Slanted Diagonal Accordion Container */}
-        <div className="home-service-cards">
+        <div className="home-service-carousel">
+          <button
+            type="button"
+            className="home-service-carousel-arrow home-service-carousel-arrow-left"
+            aria-label="Show previous service"
+            onClick={() => scrollCards(-1)}
+          >
+            &larr;
+          </button>
+
+          <div className="home-service-cards" ref={cardsRef}>
           {services.map((item) => {
             return (
               <Link
@@ -125,6 +144,16 @@ export default function SlantedPortfolioAccordion() {
               </Link>
             );
           })}
+          </div>
+
+          <button
+            type="button"
+            className="home-service-carousel-arrow home-service-carousel-arrow-right"
+            aria-label="Show next service"
+            onClick={() => scrollCards(1)}
+          >
+            &rarr;
+          </button>
         </div>
 
       </div>
