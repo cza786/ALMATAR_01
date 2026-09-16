@@ -1,18 +1,40 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { useLanguage } from '../context/LanguageContext';
 import AlmatarLogo from './AlmatarLogo';
 
+const policyDocuments = [
+  { title: 'Quality, Health, Safety & Environment (QHSE)', pdf: '/images/policies-photo/pdfs/health-safety-and-environment.pdf' },
+  { title: 'Employee Security and Site Safety', pdf: '/images/policies-photo/pdfs/employee-security-and-site-safety-policy.pdf' },
+  { title: 'Anti-Bribery and Gifts Policy', pdf: '/images/policies-photo/pdfs/anti-bribery-and-gifts-policy.pdf' },
+  { title: 'Conflict of Interest Policy', pdf: '/images/policies-photo/pdfs/conflict-of-interest-policy.pdf' },
+  { title: 'Vehicle and Equipment Usage', pdf: '/images/policies-photo/pdfs/vehicle-and equipment-usage-policy.pdf' },
+  { title: 'Substance Abuse Policy', pdf: '/images/policies-photo/pdfs/substance-abuse-policy.pdf' },
+  { title: 'Incident Reporting and Crisis Management', pdf: '/images/policies-photo/pdfs/incident-reporting-and-crisis-management-policy.pdf' },
+  { title: 'Confidentiality and Data Protection', pdf: '/images/policies-photo/pdfs/Confidentiality-and-data-protection-policy.pdf' },
+  { title: 'Employment Affairs and Workplace Conduct', pdf: '/images/policies-photo/pdfs/employment-affairs-and-workplace-conduct-policy.pdf' },
+  { title: 'Procurement and Supply Chain', pdf: '/images/policies-photo/pdfs/procurement-and-supply-chain-policy.pdf' },
+  { title: 'Quality Policy', pdf: '/images/policies-photo/pdfs/quality-policy.pdf' },
+];
+
 export default function Header({ onOpenDrawer }) {
   const pathname = usePathname();
   const [isMegaOpen, setIsMegaOpen] = useState(false);
+  const [selectedPolicy, setSelectedPolicy] = useState(null);
   const { lang, toggleLanguage, t } = useLanguage();
 
   const isActive = (path) => pathname === path;
+
+  useEffect(() => {
+    if (!selectedPolicy) return undefined;
+    const closeOnEscape = (event) => event.key === 'Escape' && setSelectedPolicy(null);
+    document.addEventListener('keydown', closeOnEscape);
+    return () => document.removeEventListener('keydown', closeOnEscape);
+  }, [selectedPolicy]);
 
   return (
     <>
@@ -31,9 +53,23 @@ export default function Header({ onOpenDrawer }) {
             {/* Desktop Navigation Bar */}
             <nav className="main-nav" aria-label="Main Navigation">
               <Link href="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>{t('nav.home')}</Link>
-              <Link href="/about" className={`nav-link ${isActive('/about') || isActive('/our-team') ? 'active' : ''}`}>
-                {t('nav.about')}
-              </Link>
+              <div className="nav-item-dropdown">
+                <Link href="/about" className={`nav-link dropdown-toggle-link ${isActive('/about') || isActive('/our-team') ? 'active' : ''}`}>
+                  <span>{t('nav.about')}</span>
+                  <svg className="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M7 10l5 5 5-5z" />
+                  </svg>
+                </Link>
+                <div className="nav-dropdown-menu">
+                  <div className="dropdown-header-bar">
+                    <span className="dropdown-header-text">{t('nav.about')}</span>
+                    <span className="dropdown-icon-indicator">&#9662;</span>
+                  </div>
+                  <div className="dropdown-links-list">
+                    <Link href="/our-team" className="dropdown-link-item">&#8226; Our Team</Link>
+                  </div>
+                </div>
+              </div>
               
               {/* Services Dropdown Item */}
               <div className="nav-item-dropdown">
@@ -74,16 +110,11 @@ export default function Header({ onOpenDrawer }) {
                     <span className="dropdown-icon-indicator">&#9662;</span>
                   </div>
                   <div className="dropdown-links-list">
-                    <Link href="/images/policies-photo/pdfs/employee-security-and-site-safety-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Employee Security and Site Safety</Link>
-                    <Link href="/images/policies-photo/pdfs/anti-bribery-and-gifts-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Anti-Bribery and Gifts Policy</Link>
-                    <Link href="/images/policies-photo/pdfs/conflict-of-interest-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Conflict of Interest Policy</Link>
-                    <Link href="/images/policies-photo/pdfs/vehicle-and equipment-usage-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Vehicle and Equipment Usage</Link>
-                    <Link href="/images/policies-photo/pdfs/substance-abuse-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Substance Abuse Policy</Link>
-                    <Link href="/images/policies-photo/pdfs/incident-reporting-and-crisis-management-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Incident Reporting and Crisis Management</Link>
-                    <Link href="/images/policies-photo/pdfs/Confidentiality-and-data-protection-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Confidentiality and Data Protection</Link>
-                    <Link href="/images/policies-photo/pdfs/employment-affairs-and-workplace-conduct-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Employment Affairs and Workplace Conduct</Link>
-                    <Link href="/images/policies-photo/pdfs/procurement-and-supply-chain-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Procurement and Supply Chain</Link>
-                    <Link href="/images/policies-photo/pdfs/quality-policy.pdf" target="_blank" rel="noreferrer" className="dropdown-link-item">&#8226; Quality Policy</Link>
+                    {policyDocuments.map((policy) => (
+                      <button key={policy.pdf} type="button" className="dropdown-link-item policy-dropdown-button" onClick={() => setSelectedPolicy(policy)}>
+                        &#8226; {policy.title}
+                      </button>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -252,6 +283,23 @@ export default function Header({ onOpenDrawer }) {
           </div>
         </div>
       </header>
+
+      {selectedPolicy && (
+        <div className="policy-preview-overlay" onClick={() => setSelectedPolicy(null)} role="presentation">
+          <div className="policy-preview-modal" onClick={(event) => event.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="policy-preview-title">
+            <div className="policy-preview-header">
+              <h2 id="policy-preview-title">{selectedPolicy.title}</h2>
+              <button type="button" className="policy-preview-close" onClick={() => setSelectedPolicy(null)} aria-label="Close policy preview">×</button>
+            </div>
+            <div className="policy-preview-document">
+              <iframe src={`${selectedPolicy.pdf}#toolbar=0&navpanes=0`} title={selectedPolicy.title} />
+            </div>
+            <div className="policy-preview-footer">
+              <a href={selectedPolicy.pdf} target="_blank" rel="noreferrer">Open PDF in a new tab&nbsp; →</a>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

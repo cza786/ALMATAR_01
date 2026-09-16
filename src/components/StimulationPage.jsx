@@ -32,7 +32,7 @@ function Icon({ children }) { return <span className="stim-icon" aria-hidden="tr
 export default function StimulationPage() {
   return (
     <div className="stimulation-page">
-      <div className="stim-art stim-hero"><img src={`${root}01_hero_stimulation_fracturing.jpg`} alt="Stimulation and fracturing operations" /></div>
+      <div className="stim-art stim-hero"><img src={`${root}01_hero_stimulation_fracturing.jpg`} alt="Stimulation and fracturing operations" /><div className="stim-hero-copy"><span>ENGINEERED STIMULATION</span><h1>STIMULATION &amp; FRACTURING</h1></div></div>
 
       <section className="stim-section stim-capability-intro">
         <div className="stim-intro-copy">
