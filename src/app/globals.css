@@ -9517,3 +9517,69 @@ html, body {
 .careers-page-button { display: inline-flex; align-items: center; gap: 1.6rem; padding: .8rem 1.15rem; color: #fff; background: #e9a733; border-radius: 3px; font-size: .8rem; font-weight: 700; text-decoration: none; }
 .careers-page-button span { font-size: 1.2rem; font-weight: 400; }
 @media (max-width: 600px) { .careers-page-hero { height: 330px; }.careers-page-hero h1 { font-size: 2.35rem; }.careers-page-hero p { font-size: .85rem; }.careers-page-content { padding: 3rem 0 4rem; } }
+
+/* Home service cards: full-bleed hero image with the reference overlay treatment. */
+.home-service-card {
+  position: relative;
+  display: block;
+  min-height: 433px;
+  height: 433px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #111a2b;
+}
+
+.home-service-card .lux-bg-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.home-service-card .lux-bg-img {
+  filter: brightness(.54) saturate(.82);
+  transition: transform .5s ease, filter .4s ease;
+}
+
+.home-service-card .lux-gradient-overlay {
+  background: linear-gradient(180deg, rgba(5, 15, 28, .25), rgba(5, 15, 28, .84));
+}
+
+.home-service-card:hover .lux-bg-img,
+.home-service-card:focus-visible .lux-bg-img {
+  filter: brightness(.68) saturate(.9);
+  transform: scale(1.05);
+}
+
+.home-service-card .lux-card-inner {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  padding: 1.45rem 1.25rem 1.3rem;
+  transform: none;
+  justify-content: flex-start;
+}
+
+.home-service-card .lux-line-1 { margin-bottom: 1rem; }
+.home-service-card .lux-card-num { color: #f59e0b; font-size: 1rem; }
+.home-service-card .lux-card-tag { color: #fff !important; font-size: .72rem; letter-spacing: 1.2px; }
+.home-service-card .lux-line-2 { margin-bottom: 0; }
+.home-service-card .lux-card-title { max-width: 270px; font-size: clamp(1.15rem, 1.7vw, 1.5rem); line-height: 1.15; }
+.home-service-card .lux-line-3,
+.home-service-card .lux-line-4 { display: none; }
+.home-service-card .lux-line-5 { display: block; max-height: none; margin-top: auto; opacity: 1; overflow: visible; }
+.home-service-card .lux-action-btn { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; padding: 0; border: 2px solid rgba(255, 255, 255, .95); border-radius: 50%; background: transparent; color: #fff; }
+.home-service-card .lux-action-btn > span:first-child { display: none; }
+.home-service-card .lux-arrow { font-size: 1.25rem; line-height: 1; }
+
+@media (max-width: 600px) {
+  .home-service-card { min-height: 430px; height: 430px; }
+  .home-service-card .lux-card-inner { padding: 1.35rem 1.15rem 1.25rem; }
+  .home-service-card .lux-card-title { font-size: 1.35rem; }
+}

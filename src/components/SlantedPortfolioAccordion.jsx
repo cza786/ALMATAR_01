@@ -48,7 +48,7 @@ export default function SlantedPortfolioAccordion() {
       shortTitle: t('accordion.item3.tag'),
       description: t('accordion.item3.desc'),
       features: t('accordion.item3.feats') || ['Heavy Transport Fleet', 'FRAC Tank Rentals', 'Modular Site Camps'],
-      image: '/images/policies-photo/services/almatar_total_field_all_photos/01_hero_total_field_construction.webp',
+      image: '/images/policies-photo/services/almatar_total_field_all_photos/03_rig_and_site_mobilization-hd.webp',
       link: '/construction',
       color: '#10b981'
     },
