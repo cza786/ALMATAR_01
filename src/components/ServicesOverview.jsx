@@ -2,15 +2,15 @@ import Link from 'next/link';
 import NextPageBanner from './NextPageBanner';
 
 const services = [
-  { title: 'Well Intervention Services', href: '/well-services', icon: 'intervention' },
-  { title: 'Coiled Tubing & Nitrogen Pumping', href: '/well-services', icon: 'coiled' },
-  { title: 'Stimulation & Fracturing', href: '/stimulation-fracturing', icon: 'stimulation' },
-  { title: 'Zonal Isolation & Cementing', href: '/zonal-isolation-cementing', icon: 'cementing' },
-  { title: 'Wellhead & Xmas Tree Services', href: '/wellhead-xmas-tree', icon: 'wellhead' },
-  { title: 'Slickline Services', href: '/slickline-services', icon: 'slickline' },
-  { title: 'Well Testing & Flaring', href: '/well-testing', icon: 'testing' },
-  { title: 'Drilling and Workover Services', href: '/drilling-workover', icon: 'drilling' },
-  { title: 'Total Field Construction & Manpower Logistics', href: '/construction', icon: 'construction' },
+  { title: 'Well Intervention Services', href: '/well-services', image: '/images/policies-photo/services/drilling_workover/well-intervention-hero-clear.webp' },
+  { title: 'Coiled Tubing & Nitrogen Pumping', href: '/well-services#coiled-tubing', image: '/images/policies-photo/services/almatar_coiled_tubing_photos/01_clean_hero_coiled_tubing.webp' },
+  { title: 'Stimulation & Fracturing', href: '/stimulation-fracturing', image: '/images/policies-photo/services/almatar_stimulation_all_photos/01_hero_stimulation_fracturing.webp' },
+  { title: 'Zonal Isolation & Cementing', href: '/zonal-isolation-cementing', image: '/images/policies-photo/services/almatar_zonal_isolation_photos/01_hero_cementing_operation.webp' },
+  { title: 'Wellhead & Xmas Tree Services', href: '/wellhead-xmas-tree', image: '/images/policies-photo/services/almatar_wellhead_text_free_separate_photos/01_wellhead_hero_workers.webp' },
+  { title: 'Slickline Services', href: '/slickline-services', image: '/images/policies-photo/services/almatar_clean_photos/01_hero_slickline_scene.webp' },
+  { title: 'Well Testing & Flaring', href: '/well-testing', image: '/images/policies-photo/services/almatar_well_testing_clean_photos/01_hero_well_testing_scene.webp' },
+  { title: 'Drilling and Workover Services', href: '/drilling-workover', image: '/images/banner_drilling_hero.webp' },
+  { title: 'Total Field Construction & Manpower Logistics', href: '/construction', image: '/images/policies-photo/services/almatar_total_field_all_photos/01_hero_total_field_construction.webp' },
 ];
 
 function ServiceIcon({ type }) {
@@ -55,8 +55,8 @@ export default function ServicesOverview({ standalone = false }) {
         <div className="services-overview-grid">
           {services.map((service) => (
               <Link className="services-overview-card" href={service.href} key={service.title}>
-                <span className="services-overview-icon"><ServiceIcon type={service.icon} /></span>
-                <span className="services-overview-title">{service.title}</span>
+                <span className="services-overview-image"><img src={service.image} alt="" loading="lazy" /></span>
+                <span className="services-overview-card-body"><span className="services-overview-title">{service.title}</span></span>
                 <span className="services-overview-arrow" aria-hidden="true">→</span>
               </Link>
           ))}

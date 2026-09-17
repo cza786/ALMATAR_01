@@ -2193,15 +2193,19 @@ body.rtl-mode .footer-brand p {
 .services-overview-eyebrow { color: #bc7a35; font-size: .68rem; font-weight: 800; letter-spacing: 2px; }
 .services-overview-heading h2 { margin: .45rem 0 .35rem; font-family: Outfit, sans-serif; font-size: clamp(1.75rem, 3vw, 2.5rem); letter-spacing: -.03em; }
 .services-overview-heading p { margin: 0; color: #6b7a8c; font-size: .9rem; }
-.services-overview-grid { display: grid; grid-template-columns: repeat(5, 1fr); border-left: 1px solid #edf0f2; border-top: 1px solid #edf0f2; }
+.services-overview-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
 .services-overview-grid .services-overview-card:nth-child(6) { grid-column-start: 2; }
-.services-overview-card { min-height: 154px; padding: 1.55rem 1.25rem 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; text-align: center; color: #17253a; text-decoration: none; border-right: 1px solid #edf0f2; border-bottom: 1px solid #edf0f2; transition: background .2s ease, color .2s ease, transform .2s ease; }
-.services-overview-card:hover, .services-overview-card:focus-visible { background: #fff9f3; color: #a96222; transform: translateY(-2px); z-index: 1; box-shadow: 0 8px 22px rgba(92, 58, 21, .1); }
-.services-overview-card:focus-visible { outline: 2px solid #bc7a35; outline-offset: -3px; }
-.services-overview-icon { color: #bc7a35; height: 42px; display: grid; place-items: center; margin-bottom: .75rem; }
+.services-overview-card { min-height: 285px; padding: 0; display: flex; flex-direction: column; position: relative; overflow: hidden; text-align: left; color: #fff; text-decoration: none; border: 1px solid rgba(148, 163, 184, .28); border-radius: 12px; background: #111a2b; box-shadow: 0 10px 24px rgba(0, 0, 0, .16); transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+.services-overview-card:hover, .services-overview-card:focus-visible { color: #fff; transform: translateY(-4px); z-index: 1; border-color: #c18427; box-shadow: 0 16px 30px rgba(0, 0, 0, .25); }
+.services-overview-card:focus-visible { outline: 2px solid #bc7a35; outline-offset: 3px; }
+.services-overview-image { display: block; position: relative; height: 125px; flex: 0 0 125px; overflow: hidden; background: #263449; }
+.services-overview-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 15, 28, .08), rgba(5, 15, 28, .62)); }
+.services-overview-image img { display: block; width: 100%; height: 100%; object-fit: cover; filter: brightness(.78) saturate(.85); transition: transform .35s ease, filter .35s ease; }
+.services-overview-card:hover .services-overview-image img, .services-overview-card:focus-visible .services-overview-image img { transform: scale(1.05); filter: brightness(.9) saturate(.95); }
+.services-overview-card-body { display: flex; flex: 1; align-items: flex-end; position: relative; padding: 1rem 1rem 1.2rem; }
 .services-overview-title { max-width: 220px; font-size: .72rem; font-weight: 800; line-height: 1.35; letter-spacing: .04em; text-transform: uppercase; }
 .services-overview-arrow { position: absolute; right: .85rem; bottom: .65rem; color: #c3cbd3; font-size: 1rem; opacity: 0; transition: opacity .2s ease, color .2s ease; }
-.services-overview-card:hover .services-overview-arrow, .services-overview-card:focus-visible .services-overview-arrow { opacity: 1; color: #bc7a35; }
+.services-overview-card:hover .services-overview-arrow, .services-overview-card:focus-visible .services-overview-arrow { opacity: 1; color: #f0aa37; transform: translateX(3px); }
 .services-overview-standalone { min-height: calc(100vh - 180px); padding-top: 3rem; background: #f7f9fb; }
 .services-overview-standalone .services-overview-inner { padding-top: 2rem; }
 
@@ -2219,7 +2223,9 @@ body.rtl-mode .footer-brand p {
   .services-overview-grid { grid-template-columns: repeat(2, 1fr); }
   .services-overview-grid .services-overview-card { grid-column: span 1; grid-column-start: auto; }
   .services-overview-grid .services-overview-card:nth-child(6) { grid-column-start: auto; }
-  .services-overview-card { min-height: 135px; padding-inline: .65rem; }
+  .services-overview-card { min-height: 245px; }
+  .services-overview-image { height: 105px; flex-basis: 105px; }
+  .services-overview-card-body { padding: .85rem .7rem 1rem; }
   .services-overview-title { font-size: .63rem; }
   .services-hub-hero { height: 350px; }
   .services-hub-hero-overlay { padding: 4rem 1.25rem 1.5rem; }
