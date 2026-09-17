@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start -p 3000",
     "export": "next build && next export",
+    "images:webp": "node scripts/convert-images-to-webp.mjs",
     "studio:dev": "npm --prefix studio run dev",
     "studio:build": "npm --prefix studio run build",
     "seed": "node scripts/seed-sanity.mjs"
@@ -14,11 +15,12 @@
   "dependencies": {
     "@portabletext/react": "^3.2.4",
     "@sanity/image-url": "^2.1.1",
-    "@vercel/analytics": "^2.0.1",
-    "@vercel/speed-insights": "^2.0.0",
     "next": "^14.2.5",
     "next-sanity": "^9.12.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
   }
 }

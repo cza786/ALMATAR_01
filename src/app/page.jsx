@@ -33,8 +33,8 @@ export default function Home() {
   const introDesc =
     (lang === 'ar' ? homeData?.introDescAr : homeData?.introDescEn) || t('homeIntro.desc');
   const introImg = homeData?.introImage
-    ? getImageUrl(homeData.introImage, '/images/about_field_operations.png?v=15')
-    : '/images/about_field_operations.png?v=15';
+    ? getImageUrl(homeData.introImage, '/images/about_field_operations.webp?v=15')
+    : '/images/about_field_operations.webp?v=15';
 
   return (
     <div key={lang}>
@@ -76,7 +76,7 @@ export default function Home() {
         title={t('nav.about')}
         subtitle={t('hero.learnMore')}
         link="/about"
-        bgImage="/images/banner_about_corporate.png?v=2"
+        bgImage="/images/banner_about_corporate.webp?v=2"
       />
 
     </div>

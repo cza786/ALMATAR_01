@@ -92,10 +92,10 @@ export default function SlicklineServicesPage() {
   const galleryRef = useRef(null);
 
   const galleryImages = [
-    { src: `${imgFolder}03_field_worker_valve.png`, title: 'Field Operations', subtitle: 'Technician operating wellhead valve under pressure control' },
-    { src: `${imgFolder}04_service_truck_rig.png`, title: 'Mobilization Unit', subtitle: 'Heavy-duty slickline service truck deployed at onshore rig site' },
-    { src: `${imgFolder}05_worker_tool_closeup.png`, title: 'Precision Tooling', subtitle: 'Field engineer inspecting downhole tool assembly before run-in' },
-    { src: `${imgFolder}06_two_workers_rig.png`, title: 'Team Execution', subtitle: 'Experienced crew conducting safe wireline intervention' },
+    { src: `${imgFolder}03_field_worker_valve.webp`, title: 'Field Operations', subtitle: 'Technician operating wellhead valve under pressure control' },
+    { src: `${imgFolder}04_service_truck_rig.webp`, title: 'Mobilization Unit', subtitle: 'Heavy-duty slickline service truck deployed at onshore rig site' },
+    { src: `${imgFolder}05_worker_tool_closeup.webp`, title: 'Precision Tooling', subtitle: 'Field engineer inspecting downhole tool assembly before run-in' },
+    { src: `${imgFolder}06_two_workers_rig.webp`, title: 'Team Execution', subtitle: 'Experienced crew conducting safe wireline intervention' },
   ];
 
   const processSteps = [
@@ -237,7 +237,7 @@ export default function SlicklineServicesPage() {
 
           <div className="slickline-hero-image-wrap">
             <img
-              src={`${imgFolder}01_hero_slickline_scene.png`}
+              src={`${imgFolder}01_hero_slickline_scene.webp`}
               alt="ALMATAR Slickline Operations Unit"
               className="slickline-hero-img"
             />
@@ -258,7 +258,7 @@ export default function SlicklineServicesPage() {
             <div className="slickline-depth-card">
               <div className="depth-img-wrap">
                 <img
-                  src={`${imgFolder}02_rig_depth_scene_clean.png`}
+                  src={`${imgFolder}02_rig_depth_scene_clean.webp`}
                   alt="Onshore Rig Slickline Depth Scale"
                   className="depth-bg-img"
                 />
@@ -833,7 +833,7 @@ export default function SlicklineServicesPage() {
       <section className="slickline-cta-banner-section">
         <div className="slickline-banner-wrap">
           <img
-            src={`${imgFolder}07_pumpjack_scene.png`}
+            src={`${imgFolder}07_pumpjack_scene.webp`}
             alt="Pumpjack Field Scene"
             className="banner-bg-img"
           />

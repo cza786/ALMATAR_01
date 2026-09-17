@@ -6,11 +6,8 @@ import { client } from './client';
  */
 export async function getSanityContent(type, fallbackGroqQuery) {
   try {
-    // 1. Try server-side proxy route (no CORS, no-cache, always fresh)
-    const res = await fetch(`/api/sanity?type=${type}`, {
-      cache: 'no-store',
-      headers: { 'Pragma': 'no-cache', 'Cache-Control': 'no-cache' },
-    });
+    // 1. Use the cached server-side proxy route to avoid exposing Sanity credentials.
+    const res = await fetch(`/api/sanity?type=${type}`);
     if (res.ok) {
       const json = await res.json();
       if (json.data) return json.data;

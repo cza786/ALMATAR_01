@@ -6,11 +6,10 @@ import {
   CAREERS_PAGE_QUERY,
   CONTACT_PAGE_QUERY,
   SITE_SETTINGS_QUERY,
-  SERVICES_QUERY,
+  ALL_SERVICES_QUERY,
 } from '@/sanity/lib/queries';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 300;
 
 const QUERIES = {
   home: HOME_PAGE_QUERY,
@@ -18,7 +17,7 @@ const QUERIES = {
   careers: CAREERS_PAGE_QUERY,
   contact: CONTACT_PAGE_QUERY,
   settings: SITE_SETTINGS_QUERY,
-  services: SERVICES_QUERY,
+  services: ALL_SERVICES_QUERY,
 };
 
 export async function GET(request) {
@@ -32,7 +31,7 @@ export async function GET(request) {
         { data },
         {
           headers: {
-            'Cache-Control': 'no-store, max-age=0, must-revalidate',
+            'Cache-Control': 'public, max-age=60, s-maxage=300, stale-while-revalidate=86400',
           },
         }
       );
@@ -45,14 +44,14 @@ export async function GET(request) {
       serverClient.fetch(CAREERS_PAGE_QUERY),
       serverClient.fetch(CONTACT_PAGE_QUERY),
       serverClient.fetch(SITE_SETTINGS_QUERY),
-      serverClient.fetch(SERVICES_QUERY),
+      serverClient.fetch(ALL_SERVICES_QUERY),
     ]);
 
     return NextResponse.json(
       { home, about, careers, contact, settings, services },
       {
         headers: {
-          'Cache-Control': 'no-store, max-age=0, must-revalidate',
+          'Cache-Control': 'public, max-age=60, s-maxage=300, stale-while-revalidate=86400',
         },
       }
     );

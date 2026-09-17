@@ -5,6 +5,7 @@ export const serverClient = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: false,
+  // Public pages use published content; the CDN is faster and appropriate here.
+  useCdn: true,
   token: process.env.SANITY_API_READ_TOKEN,
 })

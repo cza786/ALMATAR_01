@@ -41,8 +41,8 @@ export default function ContactPage() {
   }, []);
 
   const bannerImgUrl = sanityData?.bannerImage
-    ? getImageUrl(sanityData.bannerImage, '/images/banner_about_corporate.png?v=2')
-    : '/images/banner_about_corporate.png?v=2';
+    ? getImageUrl(sanityData.bannerImage, '/images/banner_about_corporate.webp?v=2')
+    : '/images/banner_about_corporate.webp?v=2';
 
   const heroEyebrow =
     (lang === 'ar' ? sanityData?.eyebrowAr : sanityData?.eyebrowEn) || t('contact.eyebrow');
@@ -412,7 +412,7 @@ export default function ContactPage() {
         title={t('nav.home')}
         subtitle={t('hero.learnMore')}
         link="/"
-        bgImage="/images/hero_drilling_rig.png"
+        bgImage="/images/hero_drilling_rig.webp"
       />
     </>
   );

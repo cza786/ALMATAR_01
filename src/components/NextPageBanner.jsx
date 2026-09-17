@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function NextPageBanner({ title, subtitle, link, bgImage }) {
@@ -12,7 +13,14 @@ export default function NextPageBanner({ title, subtitle, link, bgImage }) {
     <section className="next-page-banner-section">
       <Link href={destination} className="next-page-banner-wrapper" aria-label={`Navigate to ${title}`}>
         <div className="next-page-bg">
-          <img src={bgImage} alt={title} />
+          <Image
+            src={bgImage}
+            alt=""
+            fill
+            sizes="100vw"
+            className="next-page-bg-image"
+            loading="lazy"
+          />
           <div className="next-page-overlay"></div>
         </div>
         

@@ -41,7 +41,7 @@ export default function OurTeamPage() {
   return (
     <div className="our-team-page">
       <section className="team-hero">
-        <img src="/images/careers_engineers_hero.png" alt="AL-MATAR field engineers" />
+        <img src="/images/careers_engineers_hero.webp" alt="AL-MATAR field engineers" />
         <div className="team-hero-overlay">
           <div className="team-hero-copy">
             <span className="team-eyebrow"><i /> ABOUT US</span>

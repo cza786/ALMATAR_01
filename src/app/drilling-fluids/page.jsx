@@ -12,7 +12,7 @@ export default function DrillingFluidsPage() {
         
         {/* Header Banner */}
         <div className="static-page-banner">
-          <img src="/images/banner_drilling_hero.png" alt="Drilling and Fluid Chemistry" />
+          <img src="/images/banner_drilling_hero.webp" alt="Drilling and Fluid Chemistry" />
           <div className="static-banner-overlay">
             <span className="section-eyebrow" style={{ color: 'var(--accent-cyan)' }}>{t('drillingFluidsPage.eyebrow')}</span>
             <h1 className="static-banner-title">{t('drillingFluidsPage.title')}</h1>
@@ -22,7 +22,7 @@ export default function DrillingFluidsPage() {
         <div className="cards-grid">
           <div className="solid-card">
             <div className="card-img-wrap">
-              <img src="/images/service_directional_drilling.png" alt="Drilling & Workover" />
+              <img src="/images/service_directional_drilling.webp" alt="Drilling & Workover" />
             </div>
             <div className="card-body">
               <h3 className="card-title">{t('drillingFluidsPage.card1Title')}</h3>
@@ -38,7 +38,7 @@ export default function DrillingFluidsPage() {
 
           <div className="solid-card">
             <div className="card-img-wrap">
-              <img src="/images/service_drilling_fluids.png" alt="Drilling Fluid Chemistry" />
+              <img src="/images/service_drilling_fluids.webp" alt="Drilling Fluid Chemistry" />
             </div>
             <div className="card-body">
               <h3 className="card-title">{t('drillingFluidsPage.card2Title')}</h3>
@@ -60,7 +60,7 @@ export default function DrillingFluidsPage() {
         title={t('nav.construction')}
         subtitle={t('hero.learnMore')}
         link="/construction"
-        bgImage="/images/service_heavy_logistics.png"
+        bgImage="/images/service_heavy_logistics.webp"
       />
     </>
   );

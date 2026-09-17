@@ -1,18 +1,7 @@
-'use client';
-
-import { useState } from 'react';
 import './globals.css';
-import Header from '../components/Header';
-import SideDrawer from '../components/SideDrawer';
-import Footer from '../components/Footer';
-
-import ScrollAnimation from '../components/ScrollAnimation';
-
-import { LanguageProvider } from '../context/LanguageContext';
+import SiteShell from '../components/SiteShell';
 
 export default function RootLayout({ children }) {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
   return (
     <html lang="en">
       <head>
@@ -33,11 +22,11 @@ export default function RootLayout({ children }) {
         <meta property="og:url" content="https://www.almatar-oil.com" />
         <meta property="og:title" content="ALMATAR | Integrated Oilfield & Projects Management" />
         <meta property="og:description" content="Specialized well intervention, coiled tubing, stimulation, drilling fluids, and oilfield services." />
-        <meta property="og:image" content="/opengraph-image.png?v=9" />
+        <meta property="og:image" content="/opengraph-image.webp?v=9" />
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:image" content="/opengraph-image.png?v=9" />
+        <meta name="twitter:image" content="/opengraph-image.webp?v=9" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -46,8 +35,8 @@ export default function RootLayout({ children }) {
               "@type": "Organization",
               "name": "ALMATAR Integrated Oilfield & Projects Management",
               "url": "https://www.almatar-oil.com",
-              "logo": "https://www.almatar-oil.com/images/almatar_logo_transparent.png",
-              "image": "https://www.almatar-oil.com/opengraph-image.png",
+              "logo": "https://www.almatar-oil.com/images/almatar_logo_transparent.webp",
+              "image": "https://www.almatar-oil.com/opengraph-image.webp",
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
@@ -61,13 +50,7 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet" />
       </head>
       <body>
-        <LanguageProvider>
-          <ScrollAnimation />
-          <Header onOpenDrawer={() => setIsDrawerOpen(true)} />
-          <SideDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
-          <main>{children}</main>
-          <Footer />
-        </LanguageProvider>
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );

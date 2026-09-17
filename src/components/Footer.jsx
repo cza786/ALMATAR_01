@@ -24,8 +24,8 @@ export default function Footer() {
   }, []);
 
   const logoImg = settings?.logo
-    ? getImageUrl(settings.logo, '/images/almatar_logo_raw.png?v=5')
-    : '/images/almatar_logo_raw.png?v=5';
+    ? getImageUrl(settings.logo, '/images/almatar_logo_raw.webp?v=5')
+    : '/images/almatar_logo_raw.webp?v=5';
 
   const desc =
     (lang === 'ar' ? settings?.descriptionAr : settings?.descriptionEn) || t('footer.desc');

@@ -12,7 +12,7 @@ export default function QhsePage() {
         
         {/* Header Banner */}
         <div className="static-page-banner">
-          <img src="/images/qhse_safety.png?v=2" alt="QHSE Safety Commitment" />
+          <img src="/images/qhse_safety.webp?v=2" alt="QHSE Safety Commitment" />
           <div className="static-banner-overlay">
             <span className="section-eyebrow" style={{ color: 'var(--accent-green)' }}>{t('qhsePage.eyebrow')}</span>
             <h1 className="static-banner-title">{t('qhsePage.title')}</h1>
@@ -29,7 +29,7 @@ export default function QhsePage() {
             </div>
             <div>
               <div className="circle-img-container">
-                <img src="/images/qhse_inspection_team.png" alt="QHSE Safety Inspection Team" />
+                <img src="/images/qhse_inspection_team.webp" alt="QHSE Safety Inspection Team" />
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@ export default function QhsePage() {
         title={t('nav.contact')}
         subtitle={t('hero.learnMore')}
         link="/contact"
-        bgImage="/images/service_site_camp.png"
+        bgImage="/images/service_site_camp.webp"
       />
     </>
   );

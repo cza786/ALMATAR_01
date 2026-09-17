@@ -46,7 +46,7 @@ export default function Header({ onOpenDrawer }) {
             {/* Brand Logo Navigation (Most Left) */}
             <div className="brand-text-nav">
               <Link href="/" className="brand-logo-white-badge" aria-label="ALMATAR Homepage">
-                <img src="/images/almatar_logo_transparent.png?v=12" alt="ALMATAR Petroleum Services" className="header-logo-img-prominent" />
+                <img src="/images/almatar_logo_transparent.webp?v=12" alt="ALMATAR Petroleum Services" className="header-logo-img-prominent" />
               </Link>
             </div>
 
@@ -181,7 +181,7 @@ export default function Header({ onOpenDrawer }) {
                           <div className="mega-title-line"></div>
                         </div>
                         <div className="mega-card-img-wrap">
-                          <img src="/images/banner_about_corporate.png?v=2" alt="About Us" />
+                          <img src="/images/banner_about_corporate.webp?v=2" alt="About Us" />
                         </div>
                         <h4 className="mega-card-heading">{t('mega.card1Heading')}</h4>
                         <p className="mega-card-text">{t('mega.card1Text')}</p>
@@ -194,7 +194,7 @@ export default function Header({ onOpenDrawer }) {
                           <div className="mega-title-line"></div>
                         </div>
                         <div className="mega-card-img-wrap">
-                          <img src="/images/banner_well_services_hero.png" alt="Well Services" />
+                          <img src="/images/banner_well_services_hero.webp" alt="Well Services" />
                         </div>
                         <h4 className="mega-card-heading">{t('mega.card2Heading')}</h4>
                         <p className="mega-card-text">{t('mega.card2Text')}</p>
@@ -207,7 +207,7 @@ export default function Header({ onOpenDrawer }) {
                           <div className="mega-title-line"></div>
                         </div>
                         <div className="mega-card-img-wrap">
-                          <img src="/images/service_drilling_fluids.png" alt="Drilling & Fluids" />
+                          <img src="/images/service_drilling_fluids.webp" alt="Drilling & Fluids" />
                         </div>
                         <h4 className="mega-card-heading">{t('mega.card3Heading')}</h4>
                         <p className="mega-card-text">{t('mega.card3Text')}</p>
@@ -220,7 +220,7 @@ export default function Header({ onOpenDrawer }) {
                           <div className="mega-title-line"></div>
                         </div>
                         <div className="mega-card-img-wrap">
-                          <img src="/images/service_construction.png" alt="Construction & Logistics" />
+                          <img src="/images/service_construction.webp" alt="Construction & Logistics" />
                         </div>
                         <h4 className="mega-card-heading">{t('mega.card4Heading')}</h4>
                         <p className="mega-card-text">{t('mega.card4Text')}</p>
@@ -233,7 +233,7 @@ export default function Header({ onOpenDrawer }) {
                           <div className="mega-title-line"></div>
                         </div>
                         <div className="mega-card-img-wrap">
-                          <img src="/images/service_wellhead.png" alt="Oilfield Trading" />
+                          <img src="/images/service_wellhead.webp" alt="Oilfield Trading" />
                         </div>
                         <h4 className="mega-card-heading">{t('mega.card5Heading')}</h4>
                         <p className="mega-card-text">{t('mega.card5Text')}</p>
@@ -246,7 +246,7 @@ export default function Header({ onOpenDrawer }) {
                           <div className="mega-title-line"></div>
                         </div>
                         <div className="mega-card-img-wrap">
-                          <img src="/images/qhse_safety.png?v=2" alt="QHSE Commitment" />
+                          <img src="/images/qhse_safety.webp?v=2" alt="QHSE Commitment" />
                         </div>
                         <h4 className="mega-card-heading">{t('mega.card6Heading')}</h4>
                         <p className="mega-card-text">{t('mega.card6Text')}</p>
@@ -259,7 +259,7 @@ export default function Header({ onOpenDrawer }) {
                           <div className="mega-title-line"></div>
                         </div>
                         <div className="mega-card-img-wrap">
-                          <img src="/images/service_site_camp.png" alt="Contact Us" />
+                          <img src="/images/service_site_camp.webp" alt="Contact Us" />
                         </div>
                         <h4 className="mega-card-heading">{t('mega.card8Heading')}</h4>
                         <p className="mega-card-text">{t('mega.card8Text')}</p>

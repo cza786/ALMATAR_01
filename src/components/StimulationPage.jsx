@@ -32,7 +32,7 @@ function Icon({ children }) { return <span className="stim-icon" aria-hidden="tr
 export default function StimulationPage() {
   return (
     <div className="stimulation-page">
-      <div className="stim-art stim-hero"><img src={`${root}01_hero_stimulation_fracturing.jpg`} alt="Stimulation and fracturing operations" /><div className="stim-hero-copy"><span>ENGINEERED STIMULATION</span><h1>STIMULATION &amp; FRACTURING</h1></div></div>
+      <div className="stim-art stim-hero"><img src={`${root}01_hero_stimulation_fracturing.webp`} alt="Stimulation and fracturing operations" /><div className="stim-hero-copy"><span>ENGINEERED STIMULATION</span><h1>STIMULATION &amp; FRACTURING</h1></div></div>
 
       <section className="stim-section stim-capability-intro">
         <div className="stim-intro-copy">
@@ -47,7 +47,7 @@ export default function StimulationPage() {
       </section>
 
       <section className="stim-reservoir">
-        <div className="stim-reservoir-art"><img src={`${root}02_reservoir_cross_section.png`} alt="Reservoir stimulation cross section" /></div>
+        <div className="stim-reservoir-art"><img src={`${root}02_reservoir_cross_section.webp`} alt="Reservoir stimulation cross section" /></div>
         <div className="stim-reservoir-copy"><h2>From Surface to Reservoir</h2><p className="stim-kicker">A CONTROLLED PROCESS FOR MEASURABLE RESULTS</p><p>Stimulation treatments create new flow paths or clean existing ones, allowing hydrocarbons to move more freely from the reservoir to the wellbore. Our integrated approach ensures precise placement of fluids, effective fracture propagation and controlled execution at every stage.</p><div className="stim-chart"><div className="stim-chart-legend"><span>Treatment Pressure</span><span>Slurry Rate</span><span>Proppant Concentration</span></div><span className="chart-orange" /><span className="chart-navy" /><span className="chart-gray" /><div className="stim-chart-stages"><span>Breakdown</span><span>Fracture Propagation</span><span>Proppant Placement</span><span>Flush</span><span>Flowback</span></div></div></div>
       </section>
 

@@ -24,7 +24,7 @@ export default function SlantedPortfolioAccordion() {
       shortTitle: t('accordion.item1.tag'),
       description: t('accordion.item1.desc'),
       features: t('accordion.item1.feats') || ['Zone I & II Coiled Tubing', 'High Pressure Pumping', 'Wellhead Maintenance'],
-      image: '/images/service_coiled_tubing.png',
+      image: '/images/service_coiled_tubing.webp',
       link: '/well-services',
       color: 'var(--accent-gold)'
     },
@@ -36,7 +36,7 @@ export default function SlantedPortfolioAccordion() {
       shortTitle: t('accordion.item2.tag'),
       description: t('accordion.item2.desc'),
       features: t('accordion.item2.feats') || ['Directional Drilling', 'Water & Oil-Based Mud', 'Laboratory Analysis'],
-      image: '/images/service_drilling_fluids.png',
+      image: '/images/service_drilling_fluids.webp',
       link: '/drilling-fluids',
       color: 'var(--accent-cyan)'
     },
@@ -48,7 +48,7 @@ export default function SlantedPortfolioAccordion() {
       shortTitle: t('accordion.item3.tag'),
       description: t('accordion.item3.desc'),
       features: t('accordion.item3.feats') || ['Heavy Transport Fleet', 'FRAC Tank Rentals', 'Modular Site Camps'],
-      image: '/images/service_construction.png',
+      image: '/images/service_construction.webp',
       link: '/construction',
       color: '#10b981'
     },
@@ -60,7 +60,7 @@ export default function SlantedPortfolioAccordion() {
       shortTitle: t('accordion.item4.tag'),
       description: t('accordion.item4.desc'),
       features: t('accordion.item4.feats') || ['Zero Harm Policy', '7-Point Site Inspection', 'ISO Standard Compliance'],
-      image: '/images/qhse_safety.png?v=2',
+      image: '/images/qhse_safety.webp?v=2',
       link: '/qhse',
       color: '#f59e0b'
     }

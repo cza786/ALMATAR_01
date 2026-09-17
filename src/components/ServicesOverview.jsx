@@ -33,7 +33,7 @@ export default function ServicesOverview({ standalone = false }) {
     <>
       {standalone && (
         <section className="services-hub-hero" aria-labelledby="services-hub-title">
-          <img src="/images/banner_well_services_hero.png" alt="ALMATAR oilfield services" />
+          <img src="/images/banner_well_services_hero.webp" alt="ALMATAR oilfield services" />
           <div className="services-hub-hero-overlay">
             <div className="services-hub-hero-copy">
               <span className="services-overview-eyebrow">ALMATAR PETROLEUM SERVICES</span>

@@ -198,7 +198,7 @@ export default function WellheadXmasTreePage() {
       {/* 1. HERO SECTION */}
       <section className="wellhead-hero">
         <img
-          src={`${imgBase}01_wellhead_hero_workers.png`}
+          src={`${imgBase}01_wellhead_hero_workers.webp`}
           alt="Wellhead & Xmas Tree Services"
           className="wellhead-hero-img"
         />
@@ -278,7 +278,7 @@ export default function WellheadXmasTreePage() {
           <div className="wellhead-diagram-center">
             <div className="diagram-wrapper">
               <img
-                src={`${imgBase}02_xmas_tree_wellhead.png`}
+                src={`${imgBase}02_xmas_tree_wellhead.webp`}
                 alt="Wellhead and Xmas Tree Technical Diagram"
                 className="wellhead-diagram-img"
               />
@@ -480,7 +480,7 @@ export default function WellheadXmasTreePage() {
 
           <div className="lifecycle-right-card">
             <img
-              src={`${imgBase}03_engineer_rigs_sunset.png`}
+              src={`${imgBase}03_engineer_rigs_sunset.webp`}
               alt="Reliable wellhead solutions"
               className="lifecycle-card-img"
             />
@@ -498,7 +498,7 @@ export default function WellheadXmasTreePage() {
           <div className="dual-card field-card">
             <div className="dual-card-img-wrap">
               <img
-                src={`${imgBase}04_workers_wellhead.png`}
+                src={`${imgBase}04_workers_wellhead.webp`}
                 alt="In The Field Experience"
               />
             </div>
@@ -658,7 +658,7 @@ export default function WellheadXmasTreePage() {
         {/* Burnt Orange Bottom CTA Banner */}
         <div className="bottom-cta-banner">
           <img
-            src={`${imgBase}07_workers_oilfield_sunset.png`}
+            src={`${imgBase}07_workers_oilfield_sunset.webp`}
             alt="Operations Moving"
             className="cta-bg-img"
           />

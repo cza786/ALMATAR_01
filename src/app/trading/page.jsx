@@ -97,7 +97,7 @@ export default function TradingPage() {
       {/* ===================== HERO SECTION ===================== */}
       <section className="tr-hero">
         <div className="tr-hero-bg">
-          <img src="/images/trading_hero_industrial.png" alt="ALMATAR Trading" />
+          <img src="/images/trading_hero_industrial.webp" alt="ALMATAR Trading" />
           <div className="tr-hero-overlay" />
         </div>
         <div className="tr-hero-content container">
@@ -145,7 +145,7 @@ export default function TradingPage() {
             {/* CENTER COL: Image */}
             <div className="tr-img-col">
               <img
-                src="/images/service_wellhead.png"
+                src="/images/service_wellhead.webp"
                 alt="Industrial gauges and pipes – ALMATAR Trading"
                 className="tr-center-img"
               />
@@ -200,7 +200,7 @@ export default function TradingPage() {
         title={t('nav.qhse')}
         subtitle={t('hero.learnMore')}
         link="/qhse"
-        bgImage="/images/qhse_inspection_team.png"
+        bgImage="/images/qhse_inspection_team.webp"
       />
       <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
     </>

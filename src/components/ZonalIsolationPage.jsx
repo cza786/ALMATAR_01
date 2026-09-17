@@ -47,7 +47,7 @@ export default function ZonalIsolationPage() {
           <Link href="/contact" className="zonal-orange-btn">Request Technical Support <span>→</span></Link>
           <small>Home&nbsp; › &nbsp;Our Services&nbsp; › &nbsp;Zonal Isolation &amp; Cementing</small>
         </div>
-        <img src={`${root}01_hero_cementing_operation.jpg`} alt="Zonal isolation and cementing operation"/>
+        <img src={`${root}01_hero_cementing_operation.webp`} alt="Zonal isolation and cementing operation"/>
       </section>
 
       <section className="zonal-integrity">
@@ -62,7 +62,7 @@ export default function ZonalIsolationPage() {
           </div>
         </div>
         <div className="zonal-diagram">
-          <img src={`${root}02_wellbore_cementing_diagram.jpg`} alt="Wellbore cementing diagram"/>
+          <img src={`${root}02_wellbore_cementing_diagram.webp`} alt="Wellbore cementing diagram"/>
         </div>
         <div className="zonal-integrity-side">
           <h2>ISOLATING TODAY<br/>FOR A SAFER TOMORROW</h2>
@@ -160,7 +160,7 @@ export default function ZonalIsolationPage() {
           <div><Icon>⚙</Icon><h3>Quality Materials</h3><p>We use qualified cement systems and follow industry best practices.</p></div>
         </div>
         <div className="zonal-worker">
-          <img src={`${root}05_hse_field_worker.jpg`} alt="ALMATAR field worker"/>
+          <img src={`${root}05_hse_field_worker.webp`} alt="ALMATAR field worker"/>
         </div>
       </section>
 

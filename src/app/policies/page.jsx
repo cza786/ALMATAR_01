@@ -47,7 +47,7 @@ function PoliciesContent() {
   return (
     <div className="policies-page">
       <section className="policies-hero">
-        <img src="/images/hero_drilling_rig.png" alt="Oilfield drilling operations" />
+        <img src="/images/hero_drilling_rig.webp" alt="Oilfield drilling operations" />
         <div className="policies-hero-overlay">
           <div className="policies-hero-copy">
             <h1>Policies</h1>
