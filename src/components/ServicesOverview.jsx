@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import NextPageBanner from './NextPageBanner';
 
 const services = [
   { title: 'Well Intervention Services', href: '/well-services', icon: 'intervention' },
@@ -62,6 +63,15 @@ export default function ServicesOverview({ standalone = false }) {
         </div>
       </div>
       </section>
+      {standalone && (
+        <NextPageBanner
+          className="services-next-banner"
+          title="Well Intervention Services"
+          subtitle="Learn more"
+          link="/well-services"
+          bgImage="/images/banner_well_services_hero.webp"
+        />
+      )}
     </>
   );
 }

@@ -13,7 +13,7 @@ const images = {
 
 for (const [name, source] of Object.entries(images)) {
   await sharp(path.resolve(source))
-    .resize({ width: 1600, withoutEnlargement: true })
+    .resize({ width: 1200, height: 1765, fit: 'cover', position: 'attention' })
     .webp({ quality: 86, effort: 6, smartSubsample: true })
     .toFile(path.join(outputDir, name));
   console.log(`Created ${name}`);
