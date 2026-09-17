@@ -8,6 +8,7 @@
     "start": "next start -p 3000",
     "export": "next build && next export",
     "images:webp": "node scripts/convert-images-to-webp.mjs",
+    "images:drilling-cards": "node scripts/create-drilling-card-images.mjs",
     "studio:dev": "npm --prefix studio run dev",
     "studio:build": "npm --prefix studio run build",
     "seed": "node scripts/seed-sanity.mjs"
