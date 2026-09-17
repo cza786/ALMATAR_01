@@ -195,9 +195,9 @@ export const translations = {
       commit2Desc: "Adhering to strict environmental protection laws and international quality assurance frameworks."
     },
     accordion: {
-      eyebrow: "CORE OPERATIONAL CAPABILITIES",
-      title: "SPECIALIZED OILFIELD PORTFOLIO",
-      subtitle: "Hover across any operational card to smoothly reveal its full engineering capabilities, technical specifications, and service options.",
+      eyebrow: "OUR SERVICES",
+      title: "INTEGRATED OILFIELD SERVICES",
+      subtitle: "Specialized solutions for every stage of your oilfield operation.",
       explore: "Explore Capability",
       item1: {
         tag: "WELL SERVICES",

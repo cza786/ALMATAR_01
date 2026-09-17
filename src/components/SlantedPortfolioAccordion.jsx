@@ -16,54 +16,15 @@ export default function SlantedPortfolioAccordion() {
   };
 
   const services = [
-    {
-      id: 'well-services',
-      number: '01',
-      tag: t('accordion.item1.tag'),
-      title: t('accordion.item1.title'),
-      shortTitle: t('accordion.item1.tag'),
-      description: t('accordion.item1.desc'),
-      features: t('accordion.item1.feats') || ['Zone I & II Coiled Tubing', 'High Pressure Pumping', 'Wellhead Maintenance'],
-      image: '/images/policies-photo/services/drilling_workover/well-intervention-hero-clear.webp',
-      link: '/well-services',
-      color: 'var(--accent-gold)'
-    },
-    {
-      id: 'drilling-fluids',
-      number: '02',
-      tag: t('accordion.item2.tag'),
-      title: t('accordion.item2.title'),
-      shortTitle: t('accordion.item2.tag'),
-      description: t('accordion.item2.desc'),
-      features: t('accordion.item2.feats') || ['Directional Drilling', 'Water & Oil-Based Mud', 'Laboratory Analysis'],
-      image: '/images/banner_drilling_hero.webp',
-      link: '/drilling-fluids',
-      color: 'var(--accent-cyan)'
-    },
-    {
-      id: 'construction',
-      number: '03',
-      tag: t('accordion.item3.tag'),
-      title: t('accordion.item3.title'),
-      shortTitle: t('accordion.item3.tag'),
-      description: t('accordion.item3.desc'),
-      features: t('accordion.item3.feats') || ['Heavy Transport Fleet', 'FRAC Tank Rentals', 'Modular Site Camps'],
-      image: '/images/policies-photo/services/almatar_total_field_all_photos/03_rig_and_site_mobilization-hd.webp',
-      link: '/construction',
-      color: '#10b981'
-    },
-    {
-      id: 'qhse',
-      number: '04',
-      tag: t('accordion.item4.tag'),
-      title: t('accordion.item4.title'),
-      shortTitle: t('accordion.item4.tag'),
-      description: t('accordion.item4.desc'),
-      features: t('accordion.item4.feats') || ['Zero Harm Policy', '7-Point Site Inspection', 'ISO Standard Compliance'],
-      image: '/images/qhse_safety.webp',
-      link: '/qhse',
-      color: '#f59e0b'
-    }
+    ['well-intervention', '01', 'WELL INTERVENTION SERVICES', 'Well Intervention Services', '/images/policies-photo/services/drilling_workover/well-intervention-hero-clear.webp', '/well-services', 'var(--accent-gold)'],
+    ['coiled-tubing', '02', 'COILED TUBING & NITROGEN PUMPING', 'Coiled Tubing & Nitrogen Pumping', '/images/policies-photo/services/almatar_coiled_tubing_photos/01_clean_hero_coiled_tubing.webp', '/well-services#coiled-tubing', 'var(--accent-gold)'],
+    ['stimulation', '03', 'STIMULATION & FRACTURING', 'Stimulation & Fracturing', '/images/policies-photo/services/almatar_stimulation_all_photos/01_hero_stimulation_fracturing.webp', '/stimulation-fracturing', '#10b981'],
+    ['zonal-isolation', '04', 'ZONAL ISOLATION & CEMENTING', 'Zonal Isolation & Cementing', '/images/policies-photo/services/almatar_zonal_isolation_photos/01_hero_cementing_operation.webp', '/zonal-isolation-cementing', '#10b981'],
+    ['wellhead', '05', 'WELLHEAD & XMAS TREE SERVICES', 'Wellhead & Xmas Tree Services', '/images/policies-photo/services/almatar_wellhead_text_free_separate_photos/01_wellhead_hero_workers.webp', '/wellhead-xmas-tree', '#f59e0b'],
+    ['slickline', '06', 'SLICKLINE SERVICES', 'Slickline Services', '/images/policies-photo/services/almatar_clean_photos/01_hero_slickline_scene.webp', '/slickline-services', '#f59e0b'],
+    ['well-testing', '07', 'WELL TESTING & FLARING', 'Well Testing & Flaring', '/images/policies-photo/services/almatar_well_testing_clean_photos/01_hero_well_testing_scene.webp', '/well-testing', '#06b6d4'],
+    ['drilling-workover', '08', 'DRILLING & WORKOVER SERVICES', 'Drilling & Workover Services', '/images/banner_drilling_hero.webp', '/drilling-workover', 'var(--accent-cyan)'],
+    ['construction', '09', 'TOTAL FIELD CONSTRUCTION & MANPOWER LOGISTICS', 'Total Field Construction & Manpower Logistics', '/images/policies-photo/services/almatar_total_field_all_photos/03_rig_and_site_mobilization-hd.webp', '/construction', '#10b981'],
   ];
 
   return (
@@ -91,16 +52,16 @@ export default function SlantedPortfolioAccordion() {
           </button>
 
           <div className="home-service-cards" ref={cardsRef}>
-          {services.map((item) => {
+          {services.map(([id, number, tag, title, image, link, color]) => {
             return (
               <Link
-                key={item.id}
-                href={item.link}
-                className={`home-service-card home-service-card-${item.id}`}
+                key={id}
+                href={link}
+                className={`home-service-card home-service-card-${id}`}
               >
                 {/* Background Image Wrapper (Inverse Skewed) */}
                 <div className="lux-bg-wrapper">
-                  <img src={item.image} alt={item.title} className="lux-bg-img" />
+                  <img src={image} alt={title} className="lux-bg-img" loading="lazy" />
                   <div className="lux-gradient-overlay"></div>
                 </div>
 
@@ -109,28 +70,20 @@ export default function SlantedPortfolioAccordion() {
                   
                   {/* Line 1: Number & Eyebrow Tag */}
                   <div className="lux-line-1">
-                    <span className="lux-card-num">{item.number}</span>
-                    <span className="lux-card-tag" style={{ color: item.color }}>{item.tag}</span>
+                    <span className="lux-card-num">{number}</span>
+                    <span className="lux-card-tag" style={{ color }}>{tag}</span>
                   </div>
 
                   {/* Line 2: Main Title */}
                   <div className="lux-line-2">
-                    <h3 className="lux-card-title">{item.title}</h3>
+                    <h3 className="lux-card-title">{title}</h3>
                   </div>
 
                   {/* Line 3: Description */}
-                  <div className="lux-line-3">
-                    <p className="lux-card-desc">{item.description}</p>
-                  </div>
+                  <div className="lux-line-3" aria-hidden="true" />
 
                   {/* Line 4: Feature Badges (Animated Line 4) */}
-                  <div className="lux-line-4">
-                    <div className="lux-feature-pills">
-                      {item.features.map((feat, fIdx) => (
-                        <span key={fIdx} className="lux-pill">{feat}</span>
-                      ))}
-                    </div>
-                  </div>
+                  <div className="lux-line-4" aria-hidden="true" />
 
                   {/* Line 5: Luxurious Action Link Button (Animated Line 5) */}
                   <div className="lux-line-5">
