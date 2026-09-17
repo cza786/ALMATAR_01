@@ -8,18 +8,16 @@ import { useLanguage } from '../context/LanguageContext';
 
 export default function SideDrawer({ isOpen, onClose }) {
   const [searchTerm, setSearchTerm] = useState('');
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(true); // Collapsible state
   const [isPoliciesOpen, setIsPoliciesOpen] = useState(false);
   const pathname = usePathname();
   const { lang, toggleLanguage, t } = useLanguage();
 
-  const serviceSubItems = [
-    { href: '/well-services#well-intervention', label: `• ${t('drawer.subItems.wellIntervention')}` },
-    { href: '/well-services#coiled-tubing', label: `• ${t('drawer.subItems.coiledTubing')}` },
-    { href: '/well-services#stimulation-tanks', label: `• ${t('drawer.subItems.stimulationTanks')}` },
-    { href: '/wellhead-xmas-tree', label: `• ${t('drawer.subItems.wellheadXmasTree')}` },
-    { href: '/slickline-services', label: `• ${t('drawer.subItems.slickline')}` },
-    { href: '/well-services#surface-testing', label: `• ${t('drawer.subItems.surfaceTesting')}` }
+  const desktopServiceSubItems = [
+    { href: '/well-services', label: t('nav.wellServices') },
+    { href: '/drilling-fluids', label: t('nav.drillingFluids') },
+    { href: '/construction', label: t('nav.construction') },
   ];
 
   return (
@@ -79,10 +77,25 @@ export default function SideDrawer({ isOpen, onClose }) {
           {/* About */}
           {('about'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
             <div className="drawer-nav-item">
-              <Link href="/about" className={`drawer-nav-link ${pathname === '/about' ? 'active' : ''}`} onClick={onClose}>
-                <span>{t('nav.about')}</span>
-                <span className="drawer-arrow">&rsaquo;</span>
-              </Link>
+              <div
+                className={`drawer-nav-link ${pathname === '/about' ? 'active' : ''}`}
+                onClick={() => setIsAboutOpen(!isAboutOpen)}
+                style={{ cursor: 'pointer', userSelect: 'none' }}
+              >
+                <span style={{ fontWeight: 700 }}>{t('nav.about')}</span>
+                <span className={`drawer-arrow ${isAboutOpen ? 'expanded' : ''}`}>
+                  {isAboutOpen ? '▾' : '›'}
+                </span>
+              </div>
+              {isAboutOpen && (
+                <div className="drawer-sub-container">
+                  <div className="drawer-nav-sub-item">
+                    <Link href="/our-team" className="drawer-nav-link sub-link" onClick={onClose}>
+                      <span>• Our Team</span>
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -102,14 +115,14 @@ export default function SideDrawer({ isOpen, onClose }) {
             {/* Collapsible Sub-menu items */}
             {isServicesOpen && (
               <div className="drawer-sub-container">
-                {serviceSubItems.map((sub, idx) => (
-                  <div key={idx} className="drawer-nav-sub-item">
+                {desktopServiceSubItems.map((sub) => (
+                  <div key={sub.href} className="drawer-nav-sub-item">
                     <Link
                       href={sub.href}
                       className="drawer-nav-link sub-link"
                       onClick={onClose}
                     >
-                      <span>{sub.label}</span>
+                      <span>• {sub.label}</span>
                     </Link>
                   </div>
                 ))}
@@ -190,6 +203,11 @@ export default function SideDrawer({ isOpen, onClose }) {
                   <div className="drawer-nav-sub-item">
                     <Link href="/images/policies-photo/pdfs/conflict-of-interest-policy.pdf" target="_blank" rel="noreferrer" className="drawer-nav-link sub-link" onClick={onClose}>
                       <span>Conflict of Interest Policy</span>
+                    </Link>
+                  </div>
+                  <div className="drawer-nav-sub-item">
+                    <Link href="/images/policies-photo/pdfs/vehicle-and equipment-usage-policy.pdf" target="_blank" rel="noreferrer" className="drawer-nav-link sub-link" onClick={onClose}>
+                      <span>• Vehicle and Equipment Usage</span>
                     </Link>
                   </div>
                   <div className="drawer-nav-sub-item">
