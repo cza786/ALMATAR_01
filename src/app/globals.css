@@ -9088,3 +9088,213 @@ html, body {
     min-height: 560px;
   }
 }
+
+/* ==========================================================================\n+   RESPONSIVE SPACING + TYPE REFINEMENT\n+   Shared final pass for service pages and the About page.\n+   ========================================================================== */
+
+:where(.about-page-new, .well-testing-page, .total-field-page, .zonal-page,
+  .stimulation-page, .well-intervention-page, .wellhead-page, .slickline-page-root) {
+  overflow-x: clip;
+}
+
+:where(.about-new-container, .wt-contained, .tf-section, .slickline-overview-container,
+  .slickline-perf-container, .slickline-process-container, .slickline-gallery-container,
+  .slickline-benefits-container, .slickline-hse-container) {
+  width: min(100% - 2rem, 87.5rem);
+  margin-inline: auto;
+}
+
+/* Keep hero proportions deliberate, but content-driven rather than viewport-driven. */
+:where(.wt-hero, .tf-hero, .zonal-hero, .stim-hero, .wi-hero, .wellhead-hero) {
+  height: clamp(21rem, 32vw, 30rem);
+  min-height: 0;
+}
+
+:where(.wt-hero h1, .tf-hero h1, .zonal-hero h1, .wi-hero-overlay h1,
+  .wellhead-hero-title, .slickline-hero-title, .stim-hero h1) {
+  font-size: clamp(2rem, 4vw, 3.75rem);
+  line-height: 1.08;
+}
+
+:where(.wt-section, .stim-section, .zonal-section, .wi-capabilities,
+  .wt-process, .wt-gallery, .wt-benefits, .wt-hse, .slickline-process-section,
+  .slickline-gallery-section, .slickline-benefits-section, .slickline-hse-section) {
+  padding-block: clamp(2.5rem, 5vw, 4.75rem);
+}
+
+:where(.wt-overview, .tf-intro, .zonal-integrity, .zonal-field, .zonal-hse,
+  .stim-reservoir, .stim-designed, .stim-hse, .wi-lifecycle, .wi-performance,
+  .slickline-overview-grid, .slickline-perf-grid) {
+  min-height: 0;
+  gap: clamp(1.5rem, 3.5vw, 4rem);
+}
+
+:where(.wt-overview-copy, .stim-reservoir-copy, .wi-performance > div,
+  .about-qhse-copy) {
+  padding-block: clamp(1.75rem, 4vw, 3.75rem);
+}
+
+:where(.wt-overview h2, .wt-section h2, .wt-performance h2, .wt-process h2,
+  .wt-gallery h2, .wt-benefits h2, .wt-hse h2, .stim-section h2, .stim-reservoir h2,
+  .zonal-integrity h2, .zonal-section h2, .wi-lifecycle-copy h2, .wi-heading h2,
+  .wi-performance h2, .wi-sustainability h2, .about-intro-copy h2,
+  .about-section-heading h2) {
+  font-size: clamp(1.5rem, 2.7vw, 2.35rem);
+  line-height: 1.12;
+}
+
+:where(.wt-overview-copy > p, .wt-lead, .wt-performance p, .wt-gallery > p,
+  .wt-hse p, .wt-cta p, .stim-section p, .stim-reservoir-copy > p:not(.stim-kicker),
+  .zonal-integrity p, .zonal-section p, .wi-lifecycle-copy p, .wi-heading p,
+  .wi-performance p, .about-intro-copy p, .about-qhse-copy p) {
+  font-size: clamp(.84rem, 1vw, 1.05rem);
+  line-height: 1.65;
+}
+
+:where(.wt-cap-grid, .stim-capability-grid, .zonal-capability-grid, .wi-cap-grid,
+  .about-values-grid, .about-client-grid) {
+  gap: clamp(.75rem, 1.5vw, 1.5rem);
+  margin-top: clamp(1.25rem, 2.5vw, 2.25rem);
+}
+
+:where(.wt-cap-grid article, .stim-card, .zonal-capability-grid article,
+  .wi-cap-grid article, .about-value-card) {
+  min-height: 0;
+}
+
+.tf-people article {
+  min-height: 0;
+}
+
+.tf-people article > img,
+.tf-people article img {
+  height: clamp(13rem, 24vw, 21rem);
+  min-height: 0;
+  object-fit: cover;
+}
+
+.tf-people article > div {
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.about-new-hero { height: clamp(22rem, 34vw, 31rem); }
+.about-new-hero-overlay { padding: clamp(2.5rem, 6vw, 5rem) max(1rem, 5vw); }
+.about-new-hero h1 { font-size: clamp(2rem, 4.4vw, 4rem); line-height: 1.08; }
+.about-intro-section { gap: clamp(1.5rem, 4vw, 4rem); padding-block: clamp(2.5rem, 5vw, 4.5rem); }
+.about-intro-image img { height: clamp(14rem, 25vw, 22rem); }
+.about-vision-mission { margin-top: 0; padding-block: clamp(2.5rem, 5vw, 4rem); }
+.about-values { padding-block: clamp(2.5rem, 5vw, 4rem); }
+.about-qhse-copy { padding-inline: clamp(1.25rem, 5vw, 5rem); }
+.about-clients { padding-block: clamp(2.5rem, 5vw, 4rem); }
+
+@media (max-width: 1024px) {
+  :where(.wt-overview, .zonal-integrity) { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .wt-toolstring, .zonal-integrity-side { display: none; }
+  :where(.tf-intro, .stim-reservoir, .wi-lifecycle, .wi-performance) { gap: 2rem; }
+  :where(.wt-cap-grid, .zonal-capability-grid, .wi-cap-grid) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .about-values-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .about-client-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767px) {
+  :where(.about-new-container, .wt-contained, .tf-section, .slickline-overview-container,
+    .slickline-perf-container, .slickline-process-container, .slickline-gallery-container,
+    .slickline-benefits-container, .slickline-hse-container) {
+    width: min(100% - 2rem, 42rem);
+  }
+
+  :where(.wt-hero, .tf-hero, .zonal-hero, .stim-hero, .wi-hero, .wellhead-hero) {
+    height: auto;
+    min-height: 20rem;
+  }
+
+  :where(.wt-overview, .tf-intro, .zonal-integrity, .zonal-field, .zonal-hse,
+    .stim-capability-intro, .stim-reservoir, .stim-designed, .stim-hse,
+    .wi-lifecycle, .wi-performance, .slickline-overview-grid, .slickline-perf-grid) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  :where(.wt-section, .stim-section, .zonal-section, .wi-capabilities,
+    .wt-process, .wt-gallery, .wt-benefits, .wt-hse, .slickline-process-section,
+    .slickline-gallery-section, .slickline-benefits-section, .slickline-hse-section) {
+    padding-block: 2.5rem;
+  }
+
+  :where(.wt-cap-grid, .stim-capability-grid, .zonal-capability-grid, .wi-cap-grid,
+    .about-values-grid, .about-client-grid) { grid-template-columns: 1fr; }
+  :where(.wt-cap-grid article, .stim-card, .zonal-capability-grid article,
+    .wi-cap-grid article, .about-value-card) { padding: 1rem; }
+  :where(.wt-overview-copy, .stim-reservoir-copy, .wi-performance > div,
+    .about-qhse-copy) { padding-block: 0; }
+  .tf-people article > img, .tf-people article img { height: clamp(13rem, 60vw, 20rem); }
+  .about-new-hero { height: 24rem; }
+  .about-new-hero-overlay { padding: 2.5rem 1rem 1.5rem; }
+  .about-new-hero h1 { font-size: clamp(2rem, 10vw, 2.75rem); }
+  .about-intro-section { padding-block: 2.5rem; }
+  .about-intro-image img { height: 14rem; }
+  .about-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about-stat { min-height: 0; padding: .9rem .75rem; }
+  .about-qhse { grid-template-columns: 1fr; }
+  .about-qhse-image { min-height: 0; height: 13rem; }
+  .about-qhse-points { gap: .6rem; }
+  .slickline-hero-container { grid-template-columns: 1fr; gap: 1.5rem; }
+  .slickline-hero-image-wrap { order: -1; }
+}
+
+@media (max-width: 420px) {
+  :where(.wt-hero h1, .tf-hero h1, .zonal-hero h1, .wi-hero-overlay h1,
+    .wellhead-hero-title, .slickline-hero-title, .stim-hero h1) { font-size: 2rem; }
+  .about-stats { grid-template-columns: 1fr; }
+  .about-stat { border-right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-values-grid .about-value-card { opacity: 1; transform: none; transition: none; }
+}
+
+/* Drilling & Workover capabilities: one horizontal, left-to-right track. */
+.drilling-page .tf-capabilities {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: clamp(.75rem, 1.25vw, 1rem);
+  padding: .15rem .1rem .75rem;
+  scroll-snap-type: x proximity;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--reference-gold, #b8862b) #e8edf2;
+}
+
+.drilling-page .tf-capabilities::-webkit-scrollbar { height: .45rem; }
+.drilling-page .tf-capabilities::-webkit-scrollbar-track { background: #e8edf2; }
+.drilling-page .tf-capabilities::-webkit-scrollbar-thumb {
+  background: var(--reference-gold, #b8862b);
+  border-radius: 999px;
+}
+
+.drilling-page .tf-capabilities > article {
+  flex: 0 0 clamp(16.5rem, 23vw, 19.5rem);
+  width: clamp(16.5rem, 23vw, 19.5rem);
+  scroll-snap-align: start;
+}
+
+.drilling-page .tf-capabilities > article img,
+.drilling-page .tf-capabilities > article:nth-child(odd) img {
+  width: 100%;
+  height: clamp(11rem, 16vw, 13rem);
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .drilling-page .tf-capabilities > article {
+    flex-basis: min(82vw, 20rem);
+    width: min(82vw, 20rem);
+  }
+
+  .drilling-page .tf-capabilities > article img,
+  .drilling-page .tf-capabilities > article:nth-child(odd) img {
+    height: clamp(11rem, 52vw, 14rem);
+  }
+}
