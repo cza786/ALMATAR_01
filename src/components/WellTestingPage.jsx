@@ -72,7 +72,7 @@ export default function WellTestingPage() {
 
   return <div className="well-testing-page">
     <section className="wt-hero">
-      <img src={`${base}01_hero_well_testing_scene.webp`} alt="ALMATAR well testing operation" />
+      <img src="/images/service_well_testing.webp" alt="ALMATAR well testing separator and field equipment" />
       <div className="wt-hero-overlay" />
       <div className="wt-hero-copy"><Eyebrow>OUR SERVICES</Eyebrow><h1>WELL TESTING<br />&amp; FLARING</h1><p>Reliable well testing solutions for accurate measurement, production evaluation and safe, controlled field operations.</p><Link href="/contact" className="wt-button">Request Technical Support <b>→</b></Link></div>
       <div className="wt-hero-side">PEOPLE<br />EXPERIENCE<br />SOLUTIONS<br />LASTING VALUE</div>

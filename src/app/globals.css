@@ -9708,3 +9708,45 @@ html, body {
   .services-overview-standalone .services-overview-card { min-height: 230px; }
   .services-overview-standalone .services-overview-image { height: 100px; flex-basis: 100px; }
 }
+
+/* Well testing hero: compact layout with a clean equipment photo. */
+.well-testing-page .wt-hero {
+  height: clamp(18rem, 25vw, 22rem);
+}
+
+.well-testing-page .wt-hero > img {
+  object-position: center 48%;
+}
+
+.well-testing-page .wt-hero-copy {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.well-testing-page .wt-hero h1 {
+  margin-block: 10px 12px;
+}
+
+.well-testing-page .wt-hero p {
+  margin-bottom: 0;
+}
+
+.well-testing-page .wt-hero-side {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 767px) {
+  .well-testing-page .wt-hero {
+    height: 19rem;
+    min-height: 0;
+  }
+
+  .well-testing-page .wt-hero-copy {
+    top: 50%;
+  }
+
+  .well-testing-page .wt-hero-side {
+    display: none;
+  }
+}
