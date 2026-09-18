@@ -34,7 +34,7 @@ export async function POST(request) {
       },
       body: JSON.stringify({
         from: process.env.CONTACT_FROM_EMAIL || 'ALMATAR Website <onboarding@resend.dev>',
-        to: ['info@almatar.com'],
+        to: ['info@almatar-oil.com'],
         subject: `New quote request from ${name.trim()}`,
         text: [
           `Name: ${name.trim()}`,

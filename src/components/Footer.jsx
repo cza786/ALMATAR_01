@@ -29,8 +29,11 @@ export default function Footer() {
 
   const desc =
     (lang === 'ar' ? settings?.descriptionAr : settings?.descriptionEn) || t('footer.desc');
-  const email = settings?.contactEmail || 'info@almatar-oil.com';
+  const email = 'info@almatar-oil.com';
   const qhseLabel = t('nav.qhse').replace(/\s+safety$/i, '');
+  const copyright = lang === 'ar'
+    ? 'جميع الحقوق محفوظة © شركة المطار (Al Matar Company).'
+    : 'Al Matar Company. All Rights Reserved.';
 
   return (
     <footer className="site-footer">
@@ -78,12 +81,12 @@ export default function Footer() {
               </li>
 
               <li className="footer-address-item">
-                <strong>Head Office</strong>
-                <span>Syria – Al-Hasakah – Qamishli, Western District, Abu Ubaidah Al-Jarrah Street.</span>
+                <strong>{t('footer.headOffice')}</strong>
+                <span>{t('footer.headOfficeAddress')}</span>
               </li>
               <li className="footer-address-item">
-                <strong>Company Office</strong>
-                <span>Syria – Al-Hasakah – Al-Qahtaniyah, Main Street.</span>
+                <strong>{t('footer.companyOffice')}</strong>
+                <span>{t('footer.companyOfficeAddress')}</span>
               </li>
 
               {/* Interactive Email Button */}
@@ -97,7 +100,7 @@ export default function Footer() {
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                     <polyline points="22,6 12,13 2,6"/>
                   </svg>
-                  <span>{t('footer.emailBtn')}</span>
+                  <span>{email}</span>
                 </a>
               </li>
 
@@ -108,7 +111,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <div>
-            &copy; {new Date().getFullYear()} {(lang === 'ar' ? settings?.copyrightAr : settings?.copyrightEn) || t('footer.rights')}
+            &copy; {new Date().getFullYear()} {copyright}
           </div>
           <div>
             {t('footer.location')}

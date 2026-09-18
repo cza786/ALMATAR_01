@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function ServiceIntroCard({ eyebrow, title, description, image, imageAlt, href = '/about' }) {
+export default function ServiceIntroCard({ eyebrow, title, description, image, imageAlt, href = '/about', buttonLabel = 'READ COMPANY VISION & MISSION' }) {
   return (
     <section className="service-intro-wrap" aria-labelledby="service-intro-title">
       <div className="service-intro-card">
@@ -9,7 +9,7 @@ export default function ServiceIntroCard({ eyebrow, title, description, image, i
           <h2 id="service-intro-title">{title}</h2>
           <p>{description}</p>
           <Link href={href} className="service-intro-button">
-            <span>READ COMPANY VISION &amp; MISSION</span>
+            <span>{buttonLabel}</span>
             <span aria-hidden="true">→</span>
           </Link>
         </div>

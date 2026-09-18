@@ -63,8 +63,6 @@ export default function ContactPage() {
   const emailAddresses =
     sanityData?.emailAddresses?.length > 0
       ? sanityData.emailAddresses
-      : settingsData?.contactEmail
-      ? [settingsData.contactEmail]
       : ['info@almatar-oil.com'];
 
   const contactCards = [
@@ -86,17 +84,17 @@ export default function ContactPage() {
     },
     {
       id: 'head-office',
-      type: 'HEAD OFFICE',
-      label: 'Head Office',
-      value: 'Syria – Al-Hasakah – Qamishli, Western District, Abu Ubaidah Al-Jarrah Street.',
+      type: t('footer.headOffice').toUpperCase(),
+      label: t('footer.headOffice'),
+      value: t('footer.headOfficeAddress'),
       href: '#contact-addresses',
       isExternal: false,
     },
     {
       id: 'company-office',
-      type: 'COMPANY OFFICE',
-      label: 'Company Office',
-      value: 'Syria – Al-Hasakah – Al-Qahtaniyah, Main Street.',
+      type: t('footer.companyOffice').toUpperCase(),
+      label: t('footer.companyOffice'),
+      value: t('footer.companyOfficeAddress'),
       href: '#contact-addresses',
       isExternal: false,
     }
@@ -238,14 +236,14 @@ export default function ContactPage() {
             {/* RIGHT COLUMN: REQUEST A QUOTATION FORM CARD */}
             <div className="ctp-form-column">
               <div id="contact-addresses" className="contact-address-panel">
-                <h2 className="quote-modal-title">Our Addresses</h2>
+                <h2 className="quote-modal-title">{t('contact.addressesTitle')}</h2>
                 <div className="contact-address-item">
-                  <h3>Head Office</h3>
-                  <p>Syria – Al-Hasakah – Qamishli, Western District, Abu Ubaidah Al-Jarrah Street.</p>
+                  <h3>{t('footer.headOffice')}</h3>
+                  <p>{t('footer.headOfficeAddress')}</p>
                 </div>
                 <div className="contact-address-item">
-                  <h3>Company Office</h3>
-                  <p>Syria – Al-Hasakah – Al-Qahtaniyah, Main Street.</p>
+                  <h3>{t('footer.companyOffice')}</h3>
+                  <p>{t('footer.companyOfficeAddress')}</p>
                 </div>
               </div>
               <div>
