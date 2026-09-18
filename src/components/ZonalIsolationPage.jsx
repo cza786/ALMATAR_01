@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import ServiceIntroCard from './ServiceIntroCard';
 
 const root = '/images/policies-photo/services/almatar_zonal_isolation_photos/';
 const services = [
@@ -49,6 +50,14 @@ export default function ZonalIsolationPage() {
         </div>
         <img src={`${root}01_hero_cementing_operation.webp`} alt="Zonal isolation and cementing operation"/>
       </section>
+
+      <ServiceIntroCard
+        eyebrow="ENGINEERING &amp; INTEGRITY"
+        title="Integrated Zonal Isolation Solutions"
+        description="ALMATAR delivers engineered cementing and wellbore isolation services that protect production, assets and the environment throughout the life of the well."
+        image={`${root}02_wellbore_cementing_diagram.webp`}
+        imageAlt="Wellbore cementing diagram"
+      />
 
       <section className="zonal-integrity">
         <div className="zonal-integrity-copy">

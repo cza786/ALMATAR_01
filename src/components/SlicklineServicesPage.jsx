@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import ServiceIntroCard from './ServiceIntroCard';
 import { useLanguage } from '../context/LanguageContext';
 
 const imgFolder = '/images/policies-photo/services/almatar_clean_photos/';
@@ -249,6 +250,14 @@ export default function SlicklineServicesPage() {
           </div>
         </div>
       </section>
+
+      <ServiceIntroCard
+        eyebrow="PRECISION &amp; PERFORMANCE"
+        title="Integrated Slickline Solutions"
+        description="ALMATAR provides safe, efficient and cost-effective slickline services that support well integrity, production optimization and reservoir management."
+        image={`${imgFolder}01_hero_slickline_scene.webp`}
+        imageAlt="ALMATAR slickline operations"
+      />
 
       {/* 3. TECHNICAL OVERVIEW & CAPABILITIES SECTION */}
       <section className="slickline-overview-section">

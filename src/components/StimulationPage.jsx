@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ServiceIntroCard from './ServiceIntroCard';
 
 const root = '/images/policies-photo/services/almatar_stimulation_all_photos/';
 
@@ -33,6 +34,14 @@ export default function StimulationPage() {
   return (
     <div className="stimulation-page">
       <div className="stim-art stim-hero"><img src={`${root}01_hero_stimulation_fracturing.webp`} alt="Stimulation and fracturing operations" /><div className="stim-hero-copy"><span>ENGINEERED STIMULATION</span><h1>STIMULATION &amp; FRACTURING</h1></div></div>
+
+      <ServiceIntroCard
+        eyebrow="EXCELLENCE &amp; DEDICATION"
+        title="Integrated Stimulation Solutions"
+        description="ALMATAR delivers engineered stimulation and fracturing services designed to restore reservoir productivity, improve connectivity and maximize hydrocarbon recovery safely."
+        image={`${root}02_reservoir_cross_section.webp`}
+        imageAlt="Reservoir stimulation cross section"
+      />
 
       <section className="stim-section stim-capability-intro">
         <div className="stim-intro-copy">

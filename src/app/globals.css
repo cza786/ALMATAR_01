@@ -4654,6 +4654,49 @@ body.rtl-mode .footer-brand p {
   .about-client-copy p { font-size: .68rem; }
 }
 
+/* Keep the About hero full-bleed and intentionally compact. */
+.about-new-hero {
+  width: 100%;
+  height: clamp(17rem, 25vw, 20rem);
+}
+
+.about-new-hero-overlay {
+  padding: clamp(2rem, 4vw, 3rem) max(1rem, 5vw);
+}
+
+.about-new-hero h1 {
+  font-size: clamp(1.9rem, 3.6vw, 3.25rem);
+  line-height: 1;
+}
+
+.about-new-hero p {
+  font-size: .9rem;
+}
+
+@media (max-width: 800px) {
+  .about-new-hero {
+    height: 17rem;
+  }
+
+  .about-new-hero-overlay {
+    padding: 2.5rem 1.2rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-new-hero {
+    height: 16rem;
+  }
+
+  .about-new-hero-overlay {
+    padding: 2.2rem .9rem 1rem;
+  }
+
+  .about-new-hero h1 {
+    font-size: clamp(1.8rem, 9vw, 2.35rem);
+  }
+}
+
 /* Our team page */
 .our-team-page { color: #102950; background: #fff; font-family: Inter, Arial, sans-serif; }
 .team-hero { height: 365px; position: relative; overflow: hidden; color: #fff; }
@@ -9748,5 +9791,207 @@ html, body {
 
   .well-testing-page .wt-hero-side {
     display: none;
+  }
+}
+
+/* Strong left-side hero shading for the zonal isolation page. */
+.zonal-hero {
+  background: #082b4c;
+}
+
+.zonal-hero-copy {
+  color: #fff;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 24, 45, .98) 0%,
+    rgba(7, 40, 70, .94) 58%,
+    rgba(7, 40, 70, .18) 100%
+  );
+}
+
+.zonal-hero-copy > p:not(.zonal-kicker),
+.zonal-hero-copy small {
+  color: #eef4f8;
+}
+
+.zonal-hero > img {
+  filter: brightness(.72) saturate(.9);
+}
+
+@media (max-width: 800px) {
+  .zonal-hero > img {
+    opacity: .52;
+    filter: brightness(.65) saturate(.9);
+  }
+
+  .zonal-hero-copy {
+    background: linear-gradient(
+      90deg,
+      rgba(4, 24, 45, .94) 0%,
+      rgba(7, 40, 70, .78) 68%,
+      rgba(7, 40, 70, .48) 100%
+    );
+  }
+}
+
+/* Shared service-page hero and intro-card layout. */
+:where(
+  .zonal-page > .zonal-hero,
+  .well-intervention-page > .wi-hero,
+  .stimulation-page > .stim-hero,
+  .well-testing-page > .wt-hero,
+  .wellhead-page > .wellhead-hero,
+  .slickline-page-root > .slickline-hero-section,
+  .total-field-page > .tf-hero
+) {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  border-radius: 0;
+}
+
+.service-intro-wrap {
+  width: 100%;
+  padding: 2rem 0 1rem;
+  background: var(--bg-silver, #e3e7ed);
+}
+
+.service-intro-card {
+  width: min(1275px, calc(100% - 5rem));
+  min-height: 300px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, .65fr);
+  align-items: center;
+  gap: 2rem;
+  padding: 2.5rem 2.5rem;
+  border: 1px solid #d89a52;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(31, 46, 68, .16);
+  box-sizing: border-box;
+}
+
+.service-intro-copy {
+  min-width: 0;
+}
+
+.service-intro-eyebrow {
+  color: #d97706;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+}
+
+.service-intro-copy h2 {
+  max-width: 650px;
+  margin: .7rem 0 1rem;
+  color: #1e293b;
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -.035em;
+}
+
+.service-intro-copy p {
+  max-width: 650px;
+  margin: 0;
+  color: #64748b;
+  font-size: .96rem;
+  line-height: 1.7;
+}
+
+.service-intro-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: .8rem 1.35rem;
+  border-radius: 999px;
+  background: #d97706;
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .2px;
+  text-decoration: none;
+  box-shadow: 0 6px 14px rgba(217, 119, 6, .3);
+  transition: transform .2s ease, background .2s ease;
+}
+
+.service-intro-button:hover,
+.service-intro-button:focus-visible {
+  background: #b45309;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.service-intro-button > span:last-child {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.service-intro-image {
+  width: 260px;
+  height: 260px;
+  justify-self: center;
+  overflow: hidden;
+  border: 6px solid #d9e0e8;
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, .16);
+}
+
+.service-intro-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 800px) {
+  .service-intro-card {
+    width: min(100% - 2rem, 42rem);
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.75rem 1.25rem;
+  }
+
+  .service-intro-image {
+    width: 190px;
+    height: 190px;
+    order: -1;
+  }
+
+  .service-intro-copy h2 {
+    font-size: clamp(1.75rem, 7vw, 2.35rem);
+  }
+}
+
+/* Make legacy category-page heroes and intro cards use the same full-bleed rhythm. */
+.drilling-fluids-page .static-page-banner {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  border-radius: 0;
+}
+
+.drilling-fluids-page .service-intro-wrap {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+@media (max-width: 480px) {
+  .service-intro-wrap {
+    padding-top: 1.25rem;
+  }
+
+  .service-intro-card {
+    border-radius: 10px;
+  }
+
+  .service-intro-copy p {
+    font-size: .86rem;
+    line-height: 1.55;
+  }
+
+  .service-intro-button {
+    font-size: .65rem;
   }
 }

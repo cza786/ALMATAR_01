@@ -1,4 +1,5 @@
 import NextPageBanner from './NextPageBanner';
+import ServiceIntroCard from './ServiceIntroCard';
 
 const base = '/images/policies-photo/services/drilling_workover/';
 const caps = [
@@ -14,6 +15,7 @@ export default function DrillingWorkoverPage() {
   return (
     <div className="total-field-page drilling-page">
       <section className="tf-hero"><img src={`${base}01_drilling_workover_hero.webp`} alt="Drilling and workover services" /><div className="tf-hero-copy"><span>RELIABLE OPERATIONS. LONG-TERM VALUE.</span><h1>DRILLING AND<br />WORKOVER SERVICES</h1><p>Safe, efficient and technically advanced drilling and workover solutions to unlock the full potential of your assets.</p><a href="#drilling-capabilities">REQUEST TECHNICAL SUPPORT　→</a></div><span className="tf-hero-side">PEOPLE<br />TECHNOLOGY<br />PERFORMANCE</span></section>
+      <ServiceIntroCard eyebrow="ENGINEERING EXCELLENCE" title="Integrated Drilling &amp; Workover Solutions" description="ALMATAR delivers safe, efficient and cost-effective drilling and workover operations using proven techniques, experienced crews and modern equipment." image={`${base}02_integrated_drilling_rig.webp`} imageAlt="Integrated drilling rig" />
       <section className="tf-strip">{['WELL INTERVENTION SERVICES', 'COILED TUBING & NITROGEN PUMPING', 'STIMULATION & FRACTURING', 'ZONAL ISOLATION & CEMENTING', 'WELLHEAD & XMAS TREE SERVICES', 'SLICKLINE SERVICES', 'WELL TESTING & FLARING', 'DRILLING AND WORKOVER SERVICES', 'TOTAL FIELD CONSTRUCTION & MANPOWER LOGISTICS'].map((x, i) => <span className={i === 7 ? 'active' : ''} key={x}>♧<b>{x}</b></span>)}</section>
       <section className="tf-section tf-intro"><div><small>ENGINEERING EXCELLENCE</small><h2>Integrated Drilling &amp;<br />Workover Solutions</h2><p>AL-MATAR delivers safe, efficient and cost-effective drilling and workover operations using proven techniques, experienced crews and modern equipment. Our solutions are designed to meet complex well objectives while ensuring well integrity, reservoir productivity and long-term value.</p></div><div className="tf-intro-image"><img src={`${base}02_integrated_drilling_rig.webp`} alt="Integrated drilling rig" /></div></section>
       <section id="drilling-capabilities" className="tf-section"><small>OUR CAPABILITIES</small><h2>Comprehensive Drilling &amp; Workover Capabilities</h2><div className="tf-capabilities">{caps.map(([img, kicker, title]) => <article key={title}><img src={`${base}${img}`} alt={title} loading="lazy" /><div className="drilling-capability-overlay"><small>{kicker}</small><h3>{title}</h3><span className="drilling-capability-arrow" aria-hidden="true">→</span></div></article>)}</div></section>

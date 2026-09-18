@@ -1,6 +1,7 @@
 'use client';
 
 import NextPageBanner from '@/components/NextPageBanner';
+import ServiceIntroCard from '@/components/ServiceIntroCard';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function DrillingFluidsPage() {
@@ -8,7 +9,7 @@ export default function DrillingFluidsPage() {
 
   return (
     <>
-      <div className="container" style={{ paddingTop: '2rem' }}>
+      <div className="container drilling-fluids-page" style={{ paddingTop: '2rem' }}>
         
         {/* Header Banner */}
         <div className="static-page-banner">
@@ -18,6 +19,14 @@ export default function DrillingFluidsPage() {
             <h1 className="static-banner-title">{t('drillingFluidsPage.title')}</h1>
           </div>
         </div>
+
+        <ServiceIntroCard
+          eyebrow="PRECISION &amp; PERFORMANCE"
+          title="Integrated Drilling &amp; Fluid Chemistry Solutions"
+          description="ALMATAR combines directional drilling expertise, engineered fluid systems and laboratory analysis to deliver precise, reliable and efficient well construction."
+          image="/images/service_drilling_fluids.webp"
+          imageAlt="Drilling fluid chemistry operations"
+        />
 
         <div className="cards-grid">
           <div className="solid-card">

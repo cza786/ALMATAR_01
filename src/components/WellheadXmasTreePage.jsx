@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import ServiceIntroCard from './ServiceIntroCard';
 import '@/app/wellhead.css';
 
 const imgBase = '/images/policies-photo/services/almatar_wellhead_text_free_separate_photos/';
@@ -224,6 +225,14 @@ export default function WellheadXmasTreePage() {
           <span>PROGRESS</span>
         </div>
       </section>
+
+      <ServiceIntroCard
+        eyebrow="PRESSURE CONTROL &amp; INTEGRITY"
+        title="Reliable Wellhead Solutions"
+        description="ALMATAR delivers wellhead and Xmas tree installation, inspection, maintenance and repair services for safe, compliant and reliable production operations."
+        image={`${imgBase}01_wellhead_hero_workers.webp`}
+        imageAlt="Wellhead service team"
+      />
 
       {/* 3. TECHNICAL OVERVIEW & DIAGRAM SECTION */}
       <section className="wellhead-overview-section">

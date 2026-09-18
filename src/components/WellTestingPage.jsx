@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import ServiceIntroCard from './ServiceIntroCard';
 
 const base = '/images/policies-photo/services/almatar_well_testing_clean_photos/';
 
@@ -77,6 +78,14 @@ export default function WellTestingPage() {
       <div className="wt-hero-copy"><Eyebrow>OUR SERVICES</Eyebrow><h1>WELL TESTING<br />&amp; FLARING</h1><p>Reliable well testing solutions for accurate measurement, production evaluation and safe, controlled field operations.</p><Link href="/contact" className="wt-button">Request Technical Support <b>→</b></Link></div>
       <div className="wt-hero-side">PEOPLE<br />EXPERIENCE<br />SOLUTIONS<br />LASTING VALUE</div>
     </section>
+
+    <ServiceIntroCard
+      eyebrow="MEASUREMENT &amp; CONTROL"
+      title="Reliable Well Testing Solutions"
+      description="ALMATAR provides accurate measurement, production evaluation and controlled field testing services supported by experienced teams and dependable equipment."
+      image="/images/service_well_testing.webp"
+      imageAlt="Well testing field equipment"
+    />
 
     <section className="wt-overview wt-contained">
       <div className="wt-depth"><img src={`${base}02_realtime_monitoring_worker.webp`} alt="Field monitoring" /><div className="wt-depth-label">REAL-TIME<br />VISIBILITY</div></div>

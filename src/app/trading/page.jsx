@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import NextPageBanner from '@/components/NextPageBanner';
+import ServiceIntroCard from '@/components/ServiceIntroCard';
 import QuoteModal from '@/components/QuoteModal';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -115,6 +116,14 @@ export default function TradingPage() {
           </button>
         </div>
       </section>
+
+      <ServiceIntroCard
+        eyebrow="SUPPLY &amp; PARTNERSHIP"
+        title="Integrated Oilfield Supply Solutions"
+        description="ALMATAR sources high-specification equipment, drilling chemicals and API-certified products through trusted international partner networks."
+        image="/images/trading_supply_chain_dark.webp"
+        imageAlt="ALMATAR oilfield supply chain"
+      />
 
       {/* ===================== MAIN CONTENT SECTION ===================== */}
       <section className="tr-main-section">

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ServiceIntroCard from './ServiceIntroCard';
 
 const base = '/images/policies-photo/services/drilling_workover/';
 
@@ -25,6 +26,14 @@ export default function WellInterventionPage() {
         <span className="wi-hero-side">EXPERTISE<br />INNOVATION<br />RESULTS</span>
       </div>
     </section>
+
+    <ServiceIntroCard
+      eyebrow="EXCELLENCE &amp; DEDICATION"
+      title="Integrated Well Intervention Solutions"
+      description="ALMATAR delivers field-proven intervention services, advanced equipment and experienced technical teams to maximize well productivity safely and sustainably."
+      image={`${base}intervention-lifecycle-clear.webp`}
+      imageAlt="Well intervention lifecycle"
+    />
 
     <section className="wi-lifecycle">
       <div className="wi-lifecycle-copy"><h2>THE INTERVENTION<br />LIFECYCLE</h2><Rule /><p>A disciplined, end-to-end approach to maximise<br />well value at stages of the asset life.</p>
