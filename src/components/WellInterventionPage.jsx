@@ -103,7 +103,7 @@ export default function WellInterventionPage() {
   const { lang } = useLanguage();
   const copy = content[lang] || content.en;
 
-  return <div className="well-intervention-page">
+  return <div className="well-intervention-page" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
     <section className="wi-hero">
       <img src={`${base}well-intervention-hero-clear.webp`} alt={copy.imageAlt} />
       <div className="wi-hero-overlay">

@@ -8,17 +8,17 @@ import { useLanguage } from '../context/LanguageContext';
 import AlmatarLogo from './AlmatarLogo';
 
 const policyDocuments = [
-  { title: 'Quality, Health, Safety & Environment (QHSE)', pdf: '/images/policies-photo/pdfs/health-safety-and-environment.pdf' },
-  { title: 'Employee Security and Site Safety', pdf: '/images/policies-photo/pdfs/employee-security-and-site-safety-policy.pdf' },
-  { title: 'Anti-Bribery and Gifts Policy', pdf: '/images/policies-photo/pdfs/anti-bribery-and-gifts-policy.pdf' },
-  { title: 'Conflict of Interest Policy', pdf: '/images/policies-photo/pdfs/conflict-of-interest-policy.pdf' },
-  { title: 'Vehicle and Equipment Usage', pdf: '/images/policies-photo/pdfs/vehicle-and equipment-usage-policy.pdf' },
-  { title: 'Substance Abuse Policy', pdf: '/images/policies-photo/pdfs/substance-abuse-policy.pdf' },
-  { title: 'Incident Reporting and Crisis Management', pdf: '/images/policies-photo/pdfs/incident-reporting-and-crisis-management-policy.pdf' },
-  { title: 'Confidentiality and Data Protection', pdf: '/images/policies-photo/pdfs/Confidentiality-and-data-protection-policy.pdf' },
-  { title: 'Employment Affairs and Workplace Conduct', pdf: '/images/policies-photo/pdfs/employment-affairs-and-workplace-conduct-policy.pdf' },
-  { title: 'Procurement and Supply Chain', pdf: '/images/policies-photo/pdfs/procurement-and-supply-chain-policy.pdf' },
-  { title: 'Quality Policy', pdf: '/images/policies-photo/pdfs/quality-policy.pdf' },
+  { title: { en: 'Quality, Health, Safety & Environment (QHSE)', ar: 'الجودة والصحة والسلامة والبيئة (QHSE)' }, pdf: '/images/policies-photo/pdfs/health-safety-and-environment.pdf' },
+  { title: { en: 'Employee Security and Site Safety', ar: 'أمن الموظفين وسلامة الموقع' }, pdf: '/images/policies-photo/pdfs/employee-security-and-site-safety-policy.pdf' },
+  { title: { en: 'Anti-Bribery and Gifts Policy', ar: 'سياسة مكافحة الرشوة والهدايا' }, pdf: '/images/policies-photo/pdfs/anti-bribery-and-gifts-policy.pdf' },
+  { title: { en: 'Conflict of Interest Policy', ar: 'سياسة تعارض المصالح' }, pdf: '/images/policies-photo/pdfs/conflict-of-interest-policy.pdf' },
+  { title: { en: 'Vehicle and Equipment Usage', ar: 'استخدام المركبات والمعدات' }, pdf: '/images/policies-photo/pdfs/vehicle-and equipment-usage-policy.pdf' },
+  { title: { en: 'Substance Abuse Policy', ar: 'سياسة إساءة استخدام المواد' }, pdf: '/images/policies-photo/pdfs/substance-abuse-policy.pdf' },
+  { title: { en: 'Incident Reporting and Crisis Management', ar: 'الإبلاغ عن الحوادث وإدارة الأزمات' }, pdf: '/images/policies-photo/pdfs/incident-reporting-and-crisis-management-policy.pdf' },
+  { title: { en: 'Confidentiality and Data Protection', ar: 'السرية وحماية البيانات' }, pdf: '/images/policies-photo/pdfs/Confidentiality-and-data-protection-policy.pdf' },
+  { title: { en: 'Employment Affairs and Workplace Conduct', ar: 'شؤون الموظفين وسلوكيات مكان العمل' }, pdf: '/images/policies-photo/pdfs/employment-affairs-and-workplace-conduct-policy.pdf' },
+  { title: { en: 'Procurement and Supply Chain', ar: 'المشتريات وسلسلة التوريد' }, pdf: '/images/policies-photo/pdfs/procurement-and-supply-chain-policy.pdf' },
+  { title: { en: 'Quality Policy', ar: 'سياسة الجودة' }, pdf: '/images/policies-photo/pdfs/quality-policy.pdf' },
 ];
 
 export default function Header({ onOpenDrawer }) {
@@ -113,7 +113,7 @@ export default function Header({ onOpenDrawer }) {
                   <div className="dropdown-links-list">
                     {policyDocuments.map((policy) => (
                       <button key={policy.pdf} type="button" className="dropdown-link-item policy-dropdown-button" onClick={() => setSelectedPolicy(policy)}>
-                        &#8226; {policy.title}
+                        &#8226; {policy.title[lang] || policy.title.en}
                       </button>
                     ))}
                   </div>
@@ -289,11 +289,11 @@ export default function Header({ onOpenDrawer }) {
         <div className="policy-preview-overlay" onClick={() => setSelectedPolicy(null)} role="presentation">
           <div className="policy-preview-modal" onClick={(event) => event.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="policy-preview-title">
             <div className="policy-preview-header">
-              <h2 id="policy-preview-title">{selectedPolicy.title}</h2>
+              <h2 id="policy-preview-title">{selectedPolicy.title[lang] || selectedPolicy.title.en}</h2>
               <button type="button" className="policy-preview-close" onClick={() => setSelectedPolicy(null)} aria-label="Close policy preview">×</button>
             </div>
             <div className="policy-preview-document">
-              <iframe src={`${selectedPolicy.pdf}#toolbar=0&navpanes=0`} title={selectedPolicy.title} />
+              <iframe src={`${selectedPolicy.pdf}#toolbar=0&navpanes=0`} title={selectedPolicy.title[lang] || selectedPolicy.title.en} />
             </div>
             <div className="policy-preview-footer">
               <a href={selectedPolicy.pdf} target="_blank" rel="noreferrer">Open PDF in a new tab&nbsp; →</a>

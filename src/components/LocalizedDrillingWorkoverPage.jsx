@@ -34,7 +34,7 @@ export default function LocalizedDrillingWorkoverPage() {
   const text = copy[lang] || copy.en;
   const localeIndex = lang === 'ar' ? 1 : 0;
 
-  return <div className="total-field-page drilling-page">
+  return <div className="total-field-page drilling-page" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
     <section className="tf-hero"><img src={`${base}01_drilling_workover_hero.webp`} alt={text.introTitle} /><div className="tf-hero-copy"><span>{text.heroEyebrow}</span><h1>{text.heroTitle}</h1><p>{text.heroDescription}</p><a href="#drilling-capabilities">{text.heroButton} →</a></div><span className="tf-hero-side">{text.heroSide}</span></section>
     <ServiceIntroCard eyebrow={text.introEyebrow} title={text.introTitle} description={text.introDescription} image={`${base}02_integrated_drilling_rig.webp`} imageAlt={text.introTitle} />
     <section className="tf-section tf-intro"><div><small>{text.introEyebrow}</small><h2>{text.introTitle}</h2><p>{text.introDescription}</p></div><div className="tf-intro-image"><img src={`${base}02_integrated_drilling_rig.webp`} alt={text.introTitle} /></div></section>

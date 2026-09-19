@@ -26,7 +26,7 @@ const routeImages = ['06_modular_camps_facilities.webp', '02_heavy_haulage_trans
 
 export default function LocalizedConstructionPage() {
   const { lang } = useLanguage(); const text = content[lang] || content.en; const index = lang === 'ar' ? 1 : 0;
-  return <div className="total-field-page tf-construction">
+  return <div className="total-field-page tf-construction" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
     <section className="tf-hero"><img src={`${base}01_hero_total_field_construction.webp`} alt={text.introTitle} /><div className="tf-hero-copy"><span>{text.heroEyebrow}</span><h1>{text.heroTitle}</h1><p>{text.heroDescription}</p><a href="#capabilities">{text.heroSupport} →</a><a className="tf-outline-button" href="#capabilities">{text.heroCapabilities}</a></div><span className="tf-hero-side">{text.heroSide}</span></section>
     <ServiceIntroCard eyebrow={text.introEyebrow} title={text.introTitle} description={text.introDescription} image={`${base}02_heavy_haulage_transport-hd.webp`} imageAlt={text.introTitle} />
     <section className="tf-section tf-intro"><div><small>{text.fromBase}</small><h2>{text.deliveryTitle}</h2><p>{text.deliveryDescription}</p></div><div className="tf-intro-cards">{text.introCards.map(([title, description], itemIndex) => <article key={title}><b>{['▣', '♧', '△'][itemIndex]}</b><h3>{title.split('\n').map((line) => <span key={line}>{line}<br /></span>)}</h3><p>{description}</p></article>)}</div></section>
