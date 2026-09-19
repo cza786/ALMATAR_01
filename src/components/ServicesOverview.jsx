@@ -1,17 +1,45 @@
+'use client';
+
 import Link from 'next/link';
 import NextPageBanner from './NextPageBanner';
+import { useLanguage } from '@/context/LanguageContext';
 
 const services = [
-  { title: 'Well Intervention Services', href: '/well-services', image: '/images/policies-photo/services/drilling_workover/well-intervention-hero-clear.webp' },
-  { title: 'Coiled Tubing & Nitrogen Pumping', href: '/well-services#coiled-tubing', image: '/images/policies-photo/services/almatar_coiled_tubing_photos/01_clean_hero_coiled_tubing.webp' },
-  { title: 'Stimulation & Fracturing', href: '/stimulation-fracturing', image: '/images/policies-photo/services/almatar_stimulation_all_photos/01_hero_stimulation_fracturing.webp' },
-  { title: 'Zonal Isolation & Cementing', href: '/zonal-isolation-cementing', image: '/images/policies-photo/services/almatar_zonal_isolation_photos/01_hero_cementing_operation.webp' },
-  { title: 'Wellhead & Xmas Tree Services', href: '/wellhead-xmas-tree', image: '/images/policies-photo/services/almatar_wellhead_text_free_separate_photos/01_wellhead_hero_workers.webp' },
-  { title: 'Slickline Services', href: '/slickline-services', image: '/images/policies-photo/services/almatar_clean_photos/01_hero_slickline_scene.webp' },
-  { title: 'Well Testing & Flaring', href: '/well-testing', image: '/images/policies-photo/services/almatar_well_testing_clean_photos/01_hero_well_testing_scene.webp' },
-  { title: 'Drilling and Workover Services', href: '/drilling-workover', image: '/images/banner_drilling_hero.webp' },
-  { title: 'Total Field Construction & Manpower Logistics', href: '/construction', image: '/images/policies-photo/services/almatar_total_field_all_photos/01_hero_total_field_construction.webp' },
+  { title: { en: 'Well Intervention Services', ar: 'خدمات التدخل في الآبار' }, href: '/well-services', icon: 'intervention' },
+  { title: { en: 'Coiled Tubing & Nitrogen Pumping', ar: 'الأنابيب الملتفة وضخ النيتروجين' }, href: '/well-services#coiled-tubing', icon: 'coiled' },
+  { title: { en: 'Stimulation & Fracturing', ar: 'تنشيط الآبار والتكسير' }, href: '/stimulation-fracturing', icon: 'stimulation' },
+  { title: { en: 'Zonal Isolation & Cementing', ar: 'العزل الطبقي والتسميت' }, href: '/zonal-isolation-cementing', icon: 'cementing' },
+  { title: { en: 'Wellhead & Xmas Tree Services', ar: 'خدمات رؤوس الآبار وشجرة الميلاد' }, href: '/wellhead-xmas-tree', icon: 'wellhead' },
+  { title: { en: 'Slickline Services', ar: 'خدمات السلك الأملس' }, href: '/slickline-services', icon: 'slickline' },
+  { title: { en: 'Well Testing & Flaring', ar: 'اختبار الآبار وحرق الغاز' }, href: '/well-testing', icon: 'testing' },
+  { title: { en: 'Drilling and Workover Services', ar: 'خدمات الحفر وصيانة الآبار' }, href: '/drilling-workover', icon: 'drilling' },
+  { title: { en: 'Total Field Construction & Manpower Logistics', ar: 'الإنشاءات الحقلية واللوجستيات والكوادر' }, href: '/construction', icon: 'construction' },
 ];
+
+const copy = {
+  en: {
+    heroEyebrow: 'ALMATAR PETROLEUM SERVICES',
+    heroTitle: <>Integrated Oilfield<br />Services</>,
+    heroDescription: 'Reliable technical solutions, experienced people and field-ready support for every stage of your operation.',
+    heroSide: <>PEOPLE<br />EXPERTISE<br />PERFORMANCE</>,
+    eyebrow: 'OUR CAPABILITIES',
+    title: 'Integrated Field Services',
+    description: 'Specialized solutions for every stage of your oilfield operation.',
+    nextTitle: 'Well Intervention Services',
+    nextSubtitle: 'Learn more',
+  },
+  ar: {
+    heroEyebrow: 'شركة المطار للخدمات البترولية',
+    heroTitle: <>خدمات متكاملة<br />لحقول النفط</>,
+    heroDescription: 'حلول فنية موثوقة وكوادر خبيرة ودعم ميداني جاهز لكل مرحلة من مراحل عملياتكم.',
+    heroSide: <>الكوادر<br />الخبرة<br />الأداء</>,
+    eyebrow: 'قدراتنا',
+    title: 'خدمات حقلية متكاملة',
+    description: 'حلول متخصصة لكل مرحلة من مراحل عمليات حقول النفط.',
+    nextTitle: 'خدمات التدخل في الآبار',
+    nextSubtitle: 'تعرّف على المزيد',
+  },
+};
 
 function ServiceIcon({ type }) {
   const common = { width: 34, height: 34, viewBox: '0 0 34 34', fill: 'none', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true };
@@ -30,6 +58,9 @@ function ServiceIcon({ type }) {
 }
 
 export default function ServicesOverview({ standalone = false }) {
+  const { lang } = useLanguage();
+  const text = copy[lang] || copy.en;
+
   return (
     <>
       {standalone && (
@@ -37,26 +68,26 @@ export default function ServicesOverview({ standalone = false }) {
           <img src="/images/banner_well_services_hero.webp" alt="ALMATAR oilfield services" />
           <div className="services-hub-hero-overlay">
             <div className="services-hub-hero-copy">
-              <span className="services-overview-eyebrow">ALMATAR PETROLEUM SERVICES</span>
-              <h1 id="services-hub-title">Integrated Oilfield<br />Services</h1>
-              <p>Reliable technical solutions, experienced people and field-ready support for every stage of your operation.</p>
+              <span className="services-overview-eyebrow">{text.heroEyebrow}</span>
+              <h1 id="services-hub-title">{text.heroTitle}</h1>
+              <p>{text.heroDescription}</p>
             </div>
-            <span className="services-hub-hero-side">PEOPLE<br />EXPERTISE<br />PERFORMANCE</span>
+            <span className="services-hub-hero-side">{text.heroSide}</span>
           </div>
         </section>
       )}
       <section className={`services-overview ${standalone ? 'services-overview-standalone' : ''}`} aria-labelledby="services-overview-title">
       <div className="services-overview-inner">
         <div className="services-overview-heading">
-          <span className="services-overview-eyebrow">OUR CAPABILITIES</span>
-          <h2 id="services-overview-title">Integrated Field Services</h2>
-          <p>Specialized solutions for every stage of your oilfield operation.</p>
+          <span className="services-overview-eyebrow">{text.eyebrow}</span>
+          <h2 id="services-overview-title">{text.title}</h2>
+          <p>{text.description}</p>
         </div>
         <div className="services-overview-grid">
           {services.map((service) => (
-              <Link className="services-overview-card" href={service.href} key={service.title}>
-                <span className="services-overview-image"><img src={service.image} alt="" loading="lazy" /></span>
-                <span className="services-overview-card-body"><span className="services-overview-title">{service.title}</span></span>
+              <Link className="services-overview-card" href={service.href} key={service.href}>
+                <span className="services-overview-icon"><ServiceIcon type={service.icon} /></span>
+                <span className="services-overview-title">{service.title[lang] || service.title.en}</span>
                 <span className="services-overview-arrow" aria-hidden="true">→</span>
               </Link>
           ))}
@@ -66,8 +97,8 @@ export default function ServicesOverview({ standalone = false }) {
       {standalone && (
         <NextPageBanner
           className="services-next-banner"
-          title="Well Intervention Services"
-          subtitle="Learn more"
+          title={text.nextTitle}
+          subtitle={text.nextSubtitle}
           link="/well-services"
           bgImage="/images/banner_well_services_hero.webp"
         />

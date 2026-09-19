@@ -89,21 +89,22 @@ function NavIcon({ type }) {
 
 export default function SlicklineServicesPage() {
   const { lang, t } = useLanguage();
+  const tr = (english, arabic) => (lang === 'ar' ? arabic : english);
   const [galleryIndex, setGalleryIndex] = useState(0);
   const galleryRef = useRef(null);
 
   const galleryImages = [
-    { src: `${imgFolder}03_field_worker_valve.webp`, title: 'Field Operations', subtitle: 'Technician operating wellhead valve under pressure control' },
-    { src: `${imgFolder}04_service_truck_rig.webp`, title: 'Mobilization Unit', subtitle: 'Heavy-duty slickline service truck deployed at onshore rig site' },
-    { src: `${imgFolder}05_worker_tool_closeup.webp`, title: 'Precision Tooling', subtitle: 'Field engineer inspecting downhole tool assembly before run-in' },
-    { src: `${imgFolder}06_two_workers_rig.webp`, title: 'Team Execution', subtitle: 'Experienced crew conducting safe wireline intervention' },
+    { src: `${imgFolder}03_field_worker_valve.webp`, title: tr('Field Operations', 'العمليات الميدانية'), subtitle: tr('Technician operating wellhead valve under pressure control', 'فني يشغّل صمام رأس البئر تحت التحكم بالضغط') },
+    { src: `${imgFolder}04_service_truck_rig.webp`, title: tr('Mobilization Unit', 'وحدة التجهيز'), subtitle: tr('Heavy-duty slickline service truck deployed at onshore rig site', 'شاحنة خدمات سلك أملس ثقيلة مجهزة في موقع حفر بري') },
+    { src: `${imgFolder}05_worker_tool_closeup.webp`, title: tr('Precision Tooling', 'معدات دقيقة'), subtitle: tr('Field engineer inspecting downhole tool assembly before run-in', 'مهندس ميداني يفحص تجميعة الأدوات تحت سطح الأرض قبل التشغيل') },
+    { src: `${imgFolder}06_two_workers_rig.webp`, title: tr('Team Execution', 'تنفيذ الفريق'), subtitle: tr('Experienced crew conducting safe wireline intervention', 'طاقم خبير ينفذ تدخلاً آمناً بالسلك') },
   ];
 
   const processSteps = [
     {
       num: 1,
-      title: 'Planning & Engineering',
-      desc: 'Well analysis, tool selection and job planning.',
+      title: tr('Planning & Engineering', 'التخطيط والهندسة'),
+      desc: tr('Well analysis, tool selection and job planning.', 'تحليل البئر واختيار الأدوات والتخطيط للعمل.'),
       icon: (
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9531E" strokeWidth="2">
           <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
@@ -113,8 +114,8 @@ export default function SlicklineServicesPage() {
     },
     {
       num: 2,
-      title: 'Mobilization',
-      desc: 'Equipment and experienced crew deployment.',
+      title: tr('Mobilization', 'التجهيز والنقل'),
+      desc: tr('Equipment and experienced crew deployment.', 'تجهيز المعدات والكوادر الخبيرة.'),
       icon: (
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9531E" strokeWidth="2">
           <rect x="1" y="3" width="15" height="13" />
@@ -126,8 +127,8 @@ export default function SlicklineServicesPage() {
     },
     {
       num: 3,
-      title: 'Execution',
-      desc: 'Safe and efficient slickline operations.',
+      title: tr('Execution', 'التنفيذ'),
+      desc: tr('Safe and efficient slickline operations.', 'عمليات سلك أملس آمنة وفعالة.'),
       icon: (
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9531E" strokeWidth="2">
           <path d="M12 2L4 22h16L12 2zM12 2v20" />
@@ -136,8 +137,8 @@ export default function SlicklineServicesPage() {
     },
     {
       num: 4,
-      title: 'Data & Analysis',
-      desc: 'Accurate data acquisition and interpretation.',
+      title: tr('Data & Analysis', 'البيانات والتحليل'),
+      desc: tr('Accurate data acquisition and interpretation.', 'جمع البيانات بدقة وتحليلها.'),
       icon: (
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9531E" strokeWidth="2">
           <line x1="18" y1="20" x2="18" y2="10" />
@@ -148,8 +149,8 @@ export default function SlicklineServicesPage() {
     },
     {
       num: 5,
-      title: 'Reporting',
-      desc: 'Detailed job report and recommendations.',
+      title: tr('Reporting', 'إعداد التقارير'),
+      desc: tr('Detailed job report and recommendations.', 'تقرير عمل تفصيلي وتوصيات.'),
       icon: (
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D9531E" strokeWidth="2">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -220,18 +221,18 @@ export default function SlicklineServicesPage() {
           <div className="slickline-hero-content">
             <div className="section-label-group">
               <span className="orange-bar">—</span>
-              <span className="section-label">OUR SERVICES</span>
+              <span className="section-label">{tr('OUR SERVICES', 'خدماتنا')}</span>
             </div>
-            <h1 className="slickline-hero-title">SLICKLINE SERVICES</h1>
+            <h1 className="slickline-hero-title">{tr('SLICKLINE SERVICES', 'خدمات السلك الأملس')}</h1>
             <p className="slickline-hero-lead">
-              Reliable downhole solutions for well measurement, mechanical intervention and reservoir monitoring.
+              {tr('Reliable downhole solutions for well measurement, mechanical intervention and reservoir monitoring.', 'حلول موثوقة تحت سطح الأرض لقياس الآبار والتدخل الميكانيكي ومراقبة المكمن.')}
             </p>
             <p className="slickline-hero-desc">
-              ALMATAR provides safe, efficient and cost-effective slickline services to support well integrity, production optimization and reservoir management across onshore operations.
+              {tr('ALMATAR provides safe, efficient and cost-effective slickline services to support well integrity, production optimization and reservoir management across onshore operations.', 'تقدم المطار خدمات السلك الأملس الآمنة والفعالة وذات الجدوى الاقتصادية لدعم سلامة الآبار وتحسين الإنتاج وإدارة المكامن في العمليات البرية.')}
             </p>
             <div className="slickline-hero-actions">
               <Link href="/contact" className="slickline-cta-btn">
-                Request Technical Support <span className="btn-arrow">→</span>
+                {tr('Request Technical Support', 'اطلب الدعم الفني')} <span className="btn-arrow">→</span>
               </Link>
             </div>
           </div>
@@ -239,24 +240,24 @@ export default function SlicklineServicesPage() {
           <div className="slickline-hero-image-wrap">
             <img
               src={`${imgFolder}01_hero_slickline_scene.webp`}
-              alt="ALMATAR Slickline Operations Unit"
+              alt={tr('ALMATAR Slickline Operations Unit', 'وحدة عمليات السلك الأملس التابعة للمطار')}
               className="slickline-hero-img"
             />
             <div className="slickline-badge-overlay">
-              <span className="badge-line">PROVEN EXPERIENCE.</span>
-              <span className="badge-line">SOLUTIONS.</span>
-              <span className="badge-highlight">LASTING VALUE.</span>
+              <span className="badge-line">{tr('PROVEN EXPERIENCE.', 'خبرة مثبتة.')}</span>
+              <span className="badge-line">{tr('SOLUTIONS.', 'حلول.')}</span>
+              <span className="badge-highlight">{tr('LASTING VALUE.', 'قيمة مستدامة.')}</span>
             </div>
           </div>
         </div>
       </section>
 
       <ServiceIntroCard
-        eyebrow="PRECISION &amp; PERFORMANCE"
-        title="Integrated Slickline Solutions"
-        description="ALMATAR provides safe, efficient and cost-effective slickline services that support well integrity, production optimization and reservoir management."
+        eyebrow={tr('PRECISION & PERFORMANCE', 'الدقة والأداء')}
+        title={tr('Integrated Slickline Solutions', 'حلول متكاملة للسلك الأملس')}
+        description={tr('ALMATAR provides safe, efficient and cost-effective slickline services that support well integrity, production optimization and reservoir management.', 'تقدم المطار خدمات سلك أملس آمنة وفعالة وذات جدوى اقتصادية تدعم سلامة الآبار وتحسين الإنتاج وإدارة المكامن.')}
         image={`${imgFolder}01_hero_slickline_scene.webp`}
-        imageAlt="ALMATAR slickline operations"
+        imageAlt={tr('ALMATAR slickline operations', 'عمليات السلك الأملس في المطار')}
       />
 
       {/* 3. TECHNICAL OVERVIEW & CAPABILITIES SECTION */}
@@ -285,7 +286,7 @@ export default function SlicklineServicesPage() {
                   <div className="ruler-line" />
                 </div>
                 <div className="depth-banner">
-                  <span>PRECISION AT EVERY DEPTH</span>
+                  <span>{tr('PRECISION AT EVERY DEPTH', 'دقة في كل عمق')}</span>
                 </div>
               </div>
             </div>
@@ -294,11 +295,11 @@ export default function SlicklineServicesPage() {
             <div className="slickline-overview-center">
               <div className="section-label-group">
                 <span className="orange-bar">—</span>
-                <span className="section-label">TECHNICAL OVERVIEW</span>
+                <span className="section-label">{tr('TECHNICAL OVERVIEW', 'نظرة فنية')}</span>
               </div>
-              <h2 className="slickline-sec-title">PROVEN SOLUTIONS DOWNHOLE</h2>
+              <h2 className="slickline-sec-title">{tr('PROVEN SOLUTIONS DOWNHOLE', 'حلول مثبتة تحت سطح الأرض')}</h2>
               <p className="slickline-body-text">
-                Our slickline services use a single-stranded steel wireline to run mechanical tools into the well for measurement, monitoring and light intervention. We deliver reliable data and efficient mechanical solutions to keep your wells performing.
+                {tr('Our slickline services use a single-stranded steel wireline to run mechanical tools into the well for measurement, monitoring and light intervention. We deliver reliable data and efficient mechanical solutions to keep your wells performing.', 'تستخدم خدمات السلك الأملس لدينا سلكاً فولاذياً أحادي الجديلة لتشغيل الأدوات الميكانيكية داخل البئر للقياس والمراقبة والتدخل الخفيف. نوفر بيانات موثوقة وحلولاً ميكانيكية فعالة للحفاظ على أداء آباركم.')}
               </p>
 
               {/* 4 Feature Badges Grid */}
@@ -310,7 +311,7 @@ export default function SlicklineServicesPage() {
                       <path d="M9 12l2 2 4-4" />
                     </svg>
                   </div>
-                  <span>Reliable Operations</span>
+                  <span>{tr('Reliable Operations', 'عمليات موثوقة')}</span>
                 </div>
                 <div className="feature-quad-item">
                   <div className="quad-icon">
@@ -320,7 +321,7 @@ export default function SlicklineServicesPage() {
                       <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
                     </svg>
                   </div>
-                  <span>Experienced Field Teams</span>
+                  <span>{tr('Experienced Field Teams', 'فرق ميدانية خبيرة')}</span>
                 </div>
                 <div className="feature-quad-item">
                   <div className="quad-icon">
@@ -328,7 +329,7 @@ export default function SlicklineServicesPage() {
                       <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                     </svg>
                   </div>
-                  <span>Fit for Onshore Conditions</span>
+                  <span>{tr('Fit for Onshore Conditions', 'ملائمة للظروف البرية')}</span>
                 </div>
                 <div className="feature-quad-item">
                   <div className="quad-icon">
@@ -337,7 +338,7 @@ export default function SlicklineServicesPage() {
                       <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                     </svg>
                   </div>
-                  <span>Cost-Effective Solutions</span>
+                  <span>{tr('Cost-Effective Solutions', 'حلول فعالة من حيث التكلفة')}</span>
                 </div>
               </div>
 
@@ -345,9 +346,9 @@ export default function SlicklineServicesPage() {
               <div className="slickline-caps-wrapper">
                 <div className="section-label-group">
                   <span className="orange-bar">—</span>
-                  <span className="section-label">OUR SLICKLINE CAPABILITIES</span>
+                  <span className="section-label">{tr('OUR SLICKLINE CAPABILITIES', 'قدراتنا في السلك الأملس')}</span>
                 </div>
-                <p className="slickline-caps-sub">A complete range of mechanical and measurement solutions.</p>
+                <p className="slickline-caps-sub">{tr('A complete range of mechanical and measurement solutions.', 'مجموعة متكاملة من الحلول الميكانيكية وحلول القياس.')}</p>
 
                 <div className="slickline-caps-grid">
                   <div className="cap-card">
@@ -359,8 +360,8 @@ export default function SlicklineServicesPage() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="cap-title">Well Measurement</h4>
-                      <p className="cap-desc">Accurate depth, fluid level and wellbore surveys.</p>
+                      <h4 className="cap-title">{tr('Well Measurement', 'قياس الآبار')}</h4>
+                      <p className="cap-desc">{tr('Accurate depth, fluid level and wellbore surveys.', 'مسوحات دقيقة للعمق ومستوى السوائل وتجويف البئر.')}</p>
                     </div>
                   </div>
 
@@ -371,8 +372,8 @@ export default function SlicklineServicesPage() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="cap-title">Pressure &amp; Temperature</h4>
-                      <p className="cap-desc">Downhole pressure and temperature surveys.</p>
+                      <h4 className="cap-title">{tr('Pressure & Temperature', 'الضغط ودرجة الحرارة')}</h4>
+                      <p className="cap-desc">{tr('Downhole pressure and temperature surveys.', 'مسوحات الضغط ودرجة الحرارة تحت سطح الأرض.')}</p>
                     </div>
                   </div>
 
@@ -384,8 +385,8 @@ export default function SlicklineServicesPage() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="cap-title">Setting &amp; Retrieving Plugs</h4>
-                      <p className="cap-desc">Installation and recovery of bridge plugs, dummy plugs and other downhole equipment.</p>
+                      <h4 className="cap-title">{tr('Setting & Retrieving Plugs', 'تركيب واسترجاع السدادات')}</h4>
+                      <p className="cap-desc">{tr('Installation and recovery of bridge plugs, dummy plugs and other downhole equipment.', 'تركيب واسترجاع سدادات الجسر والسدادات الوهمية والمعدات الأخرى تحت سطح الأرض.')}</p>
                     </div>
                   </div>
 
@@ -396,8 +397,8 @@ export default function SlicklineServicesPage() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="cap-title">Shifting Sleeves</h4>
-                      <p className="cap-desc">Operation of sliding sleeves and circulation devices.</p>
+                      <h4 className="cap-title">{tr('Shifting Sleeves', 'تشغيل الجلب المنزلقة')}</h4>
+                      <p className="cap-desc">{tr('Operation of sliding sleeves and circulation devices.', 'تشغيل الجلب المنزلقة وأجهزة التدوير.')}</p>
                     </div>
                   </div>
 
@@ -411,8 +412,8 @@ export default function SlicklineServicesPage() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="cap-title">Fishing &amp; Retrieval</h4>
-                      <p className="cap-desc">Recovery of lost tools and downhole equipment.</p>
+                      <h4 className="cap-title">{tr('Fishing & Retrieval', 'الصيد والاسترجاع')}</h4>
+                      <p className="cap-desc">{tr('Recovery of lost tools and downhole equipment.', 'استرجاع الأدوات والمعدات المفقودة تحت سطح الأرض.')}</p>
                     </div>
                   </div>
 
@@ -424,8 +425,8 @@ export default function SlicklineServicesPage() {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="cap-title">Downhole Mechanical Operations</h4>
-                      <p className="cap-desc">Various mechanical tasks to support well integrity and production.</p>
+                      <h4 className="cap-title">{tr('Downhole Mechanical Operations', 'عمليات ميكانيكية تحت سطح الأرض')}</h4>
+                      <p className="cap-desc">{tr('Various mechanical tasks to support well integrity and production.', 'مهام ميكانيكية متنوعة لدعم سلامة البئر والإنتاج.')}</p>
                     </div>
                   </div>
                 </div>
@@ -434,7 +435,7 @@ export default function SlicklineServicesPage() {
 
             {/* Right Column: Typical Slickline Toolstring Schematic */}
             <div className="slickline-toolstring-card">
-              <h3 className="toolstring-title">TYPICAL SLICKLINE TOOLSTRING</h3>
+              <h3 className="toolstring-title">{tr('TYPICAL SLICKLINE TOOLSTRING', 'سلسلة أدوات السلك الأملس النموذجية')}</h3>
               <div className="toolstring-diagram-wrap">
                 {/* SVG Vector Toolstring Diagram */}
                 <svg viewBox="0 0 320 620" className="toolstring-svg" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -498,32 +499,32 @@ export default function SlicklineServicesPage() {
                 {/* Diagram Labels Column */}
                 <div className="toolstring-labels-col">
                   <div className="label-block" style={{ top: '65px' }}>
-                    <h5 className="lbl-title">Rope Socket</h5>
-                    <p className="lbl-sub">(Attachment to slickline)</p>
+                    <h5 className="lbl-title">{tr('Rope Socket', 'وصلة السلك')}</h5>
+                    <p className="lbl-sub">{tr('(Attachment to slickline)', '(تثبيت بالسلك الأملس)')}</p>
                   </div>
 
                   <div className="label-block" style={{ top: '155px' }}>
-                    <h5 className="lbl-title">Stem</h5>
-                    <p className="lbl-sub">(Accelerator / Weight Bar)</p>
+                    <h5 className="lbl-title">{tr('Stem', 'الساق')}</h5>
+                    <p className="lbl-sub">{tr('(Accelerator / Weight Bar)', '(مسرّع / قضيب وزن)')}</p>
                   </div>
 
                   <div className="label-block" style={{ top: '260px' }}>
-                    <h5 className="lbl-title">Jars</h5>
-                    <p className="lbl-sub">(Mechanical or Hydraulic)</p>
+                    <h5 className="lbl-title">{tr('Jars', 'أدوات الطرق')}</h5>
+                    <p className="lbl-sub">{tr('(Mechanical or Hydraulic)', '(ميكانيكية أو هيدروليكية)')}</p>
                   </div>
 
                   <div className="label-block" style={{ top: '345px' }}>
-                    <h5 className="lbl-title">Pulling Tool</h5>
-                    <p className="lbl-sub">(for plugs, nipples, etc.)</p>
+                    <h5 className="lbl-title">{tr('Pulling Tool', 'أداة السحب')}</h5>
+                    <p className="lbl-sub">{tr('(for plugs, nipples, etc.)', '(للسدادات والحلمات وغيرها)')}</p>
                   </div>
 
                   <div className="label-block" style={{ top: '450px' }}>
-                    <h5 className="lbl-title">Gauge / Logging Tool</h5>
-                    <p className="lbl-sub">(Pressure, Temperature, etc.)</p>
+                    <h5 className="lbl-title">{tr('Gauge / Logging Tool', 'أداة القياس / التسجيل')}</h5>
+                    <p className="lbl-sub">{tr('(Pressure, Temperature, etc.)', '(الضغط ودرجة الحرارة وغيرها)')}</p>
                   </div>
 
                   <div className="label-block" style={{ top: '535px' }}>
-                    <h5 className="lbl-title">Tool End Sub</h5>
+                    <h5 className="lbl-title">{tr('Tool End Sub', 'وصلة نهاية الأداة')}</h5>
                   </div>
                 </div>
               </div>
@@ -539,29 +540,29 @@ export default function SlicklineServicesPage() {
             <div className="slickline-perf-copy">
               <div className="section-label-group">
                 <span className="orange-bar">—</span>
-                <span className="section-label">PRECISION AT DEPTH</span>
+                <span className="section-label">{tr('PRECISION AT DEPTH', 'دقة في الأعماق')}</span>
               </div>
-              <h2 className="slickline-sec-title">MAXIMIZING WELL PERFORMANCE</h2>
+              <h2 className="slickline-sec-title">{tr('MAXIMIZING WELL PERFORMANCE', 'تعظيم أداء البئر')}</h2>
               <p className="slickline-body-text">
-                Slickline operations provide critical data and mechanical solutions that help you make informed decisions, reduce downtime and extend the life of your wells.
+                {tr('Slickline operations provide critical data and mechanical solutions that help you make informed decisions, reduce downtime and extend the life of your wells.', 'توفر عمليات السلك الأملس بيانات مهمة وحلولاً ميكانيكية تساعدكم على اتخاذ قرارات مدروسة وتقليل التوقف وإطالة عمر آباركم.')}
               </p>
 
               <div className="slickline-bullets-list">
                 <div className="bullet-item">
                   <div className="check-badge">✓</div>
-                  <span>Accurate and reliable well data</span>
+                  <span>{tr('Accurate and reliable well data', 'بيانات دقيقة وموثوقة للآبار')}</span>
                 </div>
                 <div className="bullet-item">
                   <div className="check-badge">✓</div>
-                  <span>Supports production optimization</span>
+                  <span>{tr('Supports production optimization', 'يدعم تحسين الإنتاج')}</span>
                 </div>
                 <div className="bullet-item">
                   <div className="check-badge">✓</div>
-                  <span>Minimizes operational time and cost</span>
+                  <span>{tr('Minimizes operational time and cost', 'يقلل وقت وتكلفة التشغيل')}</span>
                 </div>
                 <div className="bullet-item">
                   <div className="check-badge">✓</div>
-                  <span>Applicable to a wide range of well types</span>
+                  <span>{tr('Applicable to a wide range of well types', 'مناسب لمجموعة واسعة من أنواع الآبار')}</span>
                 </div>
               </div>
             </div>
@@ -593,28 +594,28 @@ export default function SlicklineServicesPage() {
                   {/* Surface */}
                   <line x1="235" y1="20" x2="340" y2="20" stroke="#D9531E" strokeWidth="1.5" />
                   <circle cx="340" cy="20" r="3" fill="#D9531E" />
-                  <text x="350" y="24" fontSize="13" fontWeight="bold" fill="#0B192C">Surface</text>
+                  <text x="350" y="24" fontSize="13" fontWeight="bold" fill="#0B192C">{tr('Surface', 'السطح')}</text>
 
                   {/* Casing */}
                   <line x1="225" y1="90" x2="340" y2="90" stroke="#D9531E" strokeWidth="1.5" />
                   <circle cx="340" cy="90" r="3" fill="#D9531E" />
-                  <text x="350" y="94" fontSize="13" fontWeight="bold" fill="#0B192C">Casing</text>
+                  <text x="350" y="94" fontSize="13" fontWeight="bold" fill="#0B192C">{tr('Casing', 'التغليف')}</text>
 
                   {/* Slickline Toolstring */}
                   <line x1="210" y1="160" x2="340" y2="160" stroke="#D9531E" strokeWidth="1.5" />
                   <circle cx="340" cy="160" r="3" fill="#D9531E" />
-                  <text x="350" y="164" fontSize="13" fontWeight="bold" fill="#0B192C">Slickline Toolstring</text>
+                  <text x="350" y="164" fontSize="13" fontWeight="bold" fill="#0B192C">{tr('Slickline Toolstring', 'سلسلة أدوات السلك الأملس')}</text>
 
                   {/* Downhole Tool */}
                   <line x1="217" y1="260" x2="340" y2="260" stroke="#D9531E" strokeWidth="1.5" />
                   <circle cx="340" cy="260" r="3" fill="#D9531E" />
-                  <text x="350" y="254" fontSize="13" fontWeight="bold" fill="#0B192C">Downhole Tool</text>
-                  <text x="350" y="270" fontSize="11" fill="#64748B">(Gauge / Plug / etc.)</text>
+                  <text x="350" y="254" fontSize="13" fontWeight="bold" fill="#0B192C">{tr('Downhole Tool', 'أداة تحت سطح الأرض')}</text>
+                  <text x="350" y="270" fontSize="11" fill="#64748B">{tr('(Gauge / Plug / etc.)', '(مقياس / سدادة / إلخ)')}</text>
 
                   {/* Target Zone */}
                   <line x1="225" y1="315" x2="340" y2="315" stroke="#D9531E" strokeWidth="1.5" />
                   <circle cx="340" cy="315" r="3" fill="#D9531E" />
-                  <text x="350" y="319" fontSize="13" fontWeight="bold" fill="#D9531E">Target Zone</text>
+                  <text x="350" y="319" fontSize="13" fontWeight="bold" fill="#D9531E">{tr('Target Zone', 'المنطقة المستهدفة')}</text>
                 </svg>
               </div>
             </div>
@@ -628,9 +629,9 @@ export default function SlicklineServicesPage() {
           <div className="process-header">
             <div className="section-label-group">
               <span className="orange-bar">—</span>
-              <span className="section-label">OUR OPERATION PROCESS</span>
+              <span className="section-label">{tr('OUR OPERATION PROCESS', 'منهج عملنا')}</span>
             </div>
-            <h2 className="slickline-sec-title">FROM PLANNING TO RESULTS</h2>
+            <h2 className="slickline-sec-title">{tr('FROM PLANNING TO RESULTS', 'من التخطيط إلى النتائج')}</h2>
           </div>
 
           {/* Desktop Stepper (Grid of 5 cards) */}
@@ -701,10 +702,10 @@ export default function SlicklineServicesPage() {
             <div>
               <div className="section-label-group">
                 <span className="orange-bar">—</span>
-                <span className="section-label">FIELD OPERATIONS</span>
+                <span className="section-label">{tr('FIELD OPERATIONS', 'العمليات الميدانية')}</span>
               </div>
-              <h2 className="slickline-sec-title">IN ACTION</h2>
-              <p className="gallery-sub">Delivering reliable slickline services across onshore fields in Syria and the region.</p>
+              <h2 className="slickline-sec-title">{tr('IN ACTION', 'قيد التنفيذ')}</h2>
+              <p className="gallery-sub">{tr('Delivering reliable slickline services across onshore fields in Syria and the region.', 'نقدم خدمات سلك أملس موثوقة عبر الحقول البرية في سوريا والمنطقة.')}</p>
             </div>
             <div className="gallery-controls">
               <button className="gallery-arrow-btn" onClick={prevGallery} aria-label="Previous image">
@@ -737,9 +738,9 @@ export default function SlicklineServicesPage() {
         <div className="slickline-benefits-container">
           <div className="section-label-group">
             <span className="orange-bar">—</span>
-            <span className="section-label">KEY BENEFITS</span>
+            <span className="section-label">{tr('KEY BENEFITS', 'الفوائد الرئيسية')}</span>
           </div>
-          <h2 className="slickline-sec-title">A SMARTER APPROACH TO WELL INTERVENTION</h2>
+          <h2 className="slickline-sec-title">{tr('A SMARTER APPROACH TO WELL INTERVENTION', 'نهج أذكى للتدخل في الآبار')}</h2>
 
           <div className="benefits-cards-grid">
             <div className="benefit-card">
@@ -749,8 +750,8 @@ export default function SlicklineServicesPage() {
                   <line x1="4" y1="22" x2="4" y2="15" />
                 </svg>
               </div>
-              <h3 className="benefit-title">Minimal Footprint</h3>
-              <p className="benefit-desc">Smaller equipment footprint and reduced site preparation requirements.</p>
+              <h3 className="benefit-title">{tr('Minimal Footprint', 'متطلبات موقع أقل')}</h3>
+              <p className="benefit-desc">{tr('Smaller equipment footprint and reduced site preparation requirements.', 'مساحة أصغر للمعدات ومتطلبات أقل لتجهيز الموقع.')}</p>
             </div>
 
             <div className="benefit-card">
@@ -760,8 +761,8 @@ export default function SlicklineServicesPage() {
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
               </div>
-              <h3 className="benefit-title">Fast Deployment</h3>
-              <p className="benefit-desc">Quick mobilization and rapid rig-up for efficient operations.</p>
+              <h3 className="benefit-title">{tr('Fast Deployment', 'تجهيز سريع')}</h3>
+              <p className="benefit-desc">{tr('Quick mobilization and rapid rig-up for efficient operations.', 'تجهيز سريع وتركيب فوري لعمليات فعالة.')}</p>
             </div>
 
             <div className="benefit-card">
@@ -772,8 +773,8 @@ export default function SlicklineServicesPage() {
                   <circle cx="12" cy="12" r="2" />
                 </svg>
               </div>
-              <h3 className="benefit-title">Precise Intervention</h3>
-              <p className="benefit-desc">Accurate depth control and precise downhole tool positioning.</p>
+              <h3 className="benefit-title">{tr('Precise Intervention', 'تدخل دقيق')}</h3>
+              <p className="benefit-desc">{tr('Accurate depth control and precise downhole tool positioning.', 'تحكم دقيق بالعمق وتموضع دقيق للأدوات تحت سطح الأرض.')}</p>
             </div>
 
             <div className="benefit-card">
@@ -783,8 +784,8 @@ export default function SlicklineServicesPage() {
                   <polyline points="17 6 23 6 23 12" />
                 </svg>
               </div>
-              <h3 className="benefit-title">Reduced Downtime</h3>
-              <p className="benefit-desc">Swift resolution of well issues to return wells to production faster.</p>
+              <h3 className="benefit-title">{tr('Reduced Downtime', 'تقليل وقت التوقف')}</h3>
+              <p className="benefit-desc">{tr('Swift resolution of well issues to return wells to production faster.', 'حل سريع لمشكلات الآبار لإعادتها إلى الإنتاج بسرعة أكبر.')}</p>
             </div>
           </div>
         </div>
@@ -795,11 +796,11 @@ export default function SlicklineServicesPage() {
         <div className="slickline-hse-container">
           <div className="section-label-group">
             <span className="orange-bar">—</span>
-            <span className="section-label">HSE &amp; WELL CONTROL</span>
+            <span className="section-label">{tr('HSE & WELL CONTROL', 'الصحة والسلامة والبيئة والتحكم بالآبار')}</span>
           </div>
-          <h2 className="slickline-sec-title">SAFETY DRIVES EVERY OPERATION</h2>
+          <h2 className="slickline-sec-title">{tr('SAFETY DRIVES EVERY OPERATION', 'السلامة تقود كل عملية')}</h2>
           <p className="slickline-hse-sub">
-            We are committed to the highest standards of HSE, ensuring safe operations for our people, our clients and the environment.
+            {tr('We are committed to the highest standards of HSE, ensuring safe operations for our people, our clients and the environment.', 'نلتزم بأعلى معايير الصحة والسلامة والبيئة، لضمان عمليات آمنة لكوادرنا وعملائنا والبيئة.')}
           </p>
 
           <div className="hse-cards-grid">
@@ -809,8 +810,8 @@ export default function SlicklineServicesPage() {
                   <path d="M12 2a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-1V7a5 5 0 0 0-5-5z" />
                 </svg>
               </div>
-              <h3 className="hse-title">Trained &amp; Certified Personnel</h3>
-              <p className="hse-desc">Experienced field teams following strict well control &amp; safety procedures.</p>
+              <h3 className="hse-title">{tr('Trained & Certified Personnel', 'كوادر مدرّبة ومعتمدة')}</h3>
+              <p className="hse-desc">{tr('Experienced field teams following strict well control & safety procedures.', 'فرق ميدانية خبيرة تتبع إجراءات صارمة للتحكم بالآبار والسلامة.')}</p>
             </div>
 
             <div className="hse-card">
@@ -820,8 +821,8 @@ export default function SlicklineServicesPage() {
                   <path d="M9 12l2 2 4-4" />
                 </svg>
               </div>
-              <h3 className="hse-title">Well Control Focus</h3>
-              <p className="hse-desc">Proven pressure control practices to mitigate risks and protect wellhead integrity.</p>
+              <h3 className="hse-title">{tr('Well Control Focus', 'تركيز على التحكم بالآبار')}</h3>
+              <p className="hse-desc">{tr('Proven pressure control practices to mitigate risks and protect wellhead integrity.', 'ممارسات مثبتة للتحكم بالضغط للحد من المخاطر وحماية سلامة رأس البئر.')}</p>
             </div>
 
             <div className="hse-card">
@@ -831,8 +832,8 @@ export default function SlicklineServicesPage() {
                   <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
                 </svg>
               </div>
-              <h3 className="hse-title">Protecting People &amp; Environment</h3>
-              <p className="hse-desc">Safe, environmentally sound slickline operations for a sustainable future.</p>
+              <h3 className="hse-title">{tr('Protecting People & Environment', 'حماية الكوادر والبيئة')}</h3>
+              <p className="hse-desc">{tr('Safe, environmentally sound slickline operations for a sustainable future.', 'عمليات سلك أملس آمنة وسليمة بيئياً لمستقبل مستدام.')}</p>
             </div>
           </div>
         </div>
@@ -843,21 +844,21 @@ export default function SlicklineServicesPage() {
         <div className="slickline-banner-wrap">
           <img
             src={`${imgFolder}07_pumpjack_scene.webp`}
-            alt="Pumpjack Field Scene"
+            alt={tr('Pumpjack Field Scene', 'مشهد حقل نفطي بمضخة')}
             className="banner-bg-img"
           />
           <div className="banner-overlay" />
           <div className="banner-content">
             <div className="section-label-group light">
               <span className="orange-bar">—</span>
-              <span className="section-label">LET'S WORK TOGETHER</span>
+              <span className="section-label">{tr("LET'S WORK TOGETHER", 'لنعمل معاً')}</span>
             </div>
-            <h2 className="banner-title">NEED SLICKLINE SUPPORT FOR YOUR WELLS?</h2>
+            <h2 className="banner-title">{tr('NEED SLICKLINE SUPPORT FOR YOUR WELLS?', 'هل تحتاجون إلى دعم السلك الأملس لآباركم؟')}</h2>
             <p className="banner-sub">
-              Get in touch with our technical team to discuss your requirements and find the right solution for your operation.
+              {tr('Get in touch with our technical team to discuss your requirements and find the right solution for your operation.', 'تواصلوا مع فريقنا الفني لمناقشة متطلباتكم وإيجاد الحل المناسب لعملياتكم.')}
             </p>
             <Link href="/contact" className="banner-cta-btn">
-              Request Technical Support <span className="btn-arrow">→</span>
+              {tr('Request Technical Support', 'اطلب الدعم الفني')} <span className="btn-arrow">→</span>
             </Link>
           </div>
         </div>

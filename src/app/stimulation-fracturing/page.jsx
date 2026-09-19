@@ -1,4 +1,4 @@
-import StimulationPage from '@/components/StimulationPage';
+import StimulationPage from '@/components/LocalizedStimulationPage';
 
 export default function StimulationFracturingPage() {
   return <StimulationPage />;

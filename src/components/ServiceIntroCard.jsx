@@ -1,6 +1,12 @@
-import Link from 'next/link';
+'use client';
 
-export default function ServiceIntroCard({ eyebrow, title, description, image, imageAlt, href = '/about', buttonLabel = 'READ COMPANY VISION & MISSION' }) {
+import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
+
+export default function ServiceIntroCard({ eyebrow, title, description, image, imageAlt, href = '/about', buttonLabel }) {
+  const { lang } = useLanguage();
+  const defaultButtonLabel = lang === 'ar' ? 'اقرأ رؤيتنا ورسالتنا' : 'READ COMPANY VISION & MISSION';
+
   return (
     <section className="service-intro-wrap" aria-labelledby="service-intro-title">
       <div className="service-intro-card">
@@ -9,7 +15,7 @@ export default function ServiceIntroCard({ eyebrow, title, description, image, i
           <h2 id="service-intro-title">{title}</h2>
           <p>{description}</p>
           <Link href={href} className="service-intro-button">
-            <span>{buttonLabel}</span>
+            <span>{buttonLabel || defaultButtonLabel}</span>
             <span aria-hidden="true">→</span>
           </Link>
         </div>

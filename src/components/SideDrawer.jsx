@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import { useLanguage } from '../context/LanguageContext';
 
@@ -12,6 +12,7 @@ export default function SideDrawer({ isOpen, onClose }) {
   const [isServicesOpen, setIsServicesOpen] = useState(true); // Collapsible state
   const [isPoliciesOpen, setIsPoliciesOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const { lang, toggleLanguage, t } = useLanguage();
 
   const desktopServiceSubItems = [
@@ -82,7 +83,7 @@ export default function SideDrawer({ isOpen, onClose }) {
                 onClick={() => setIsAboutOpen(!isAboutOpen)}
                 style={{ cursor: 'pointer', userSelect: 'none' }}
               >
-                <span style={{ fontWeight: 700 }}>{t('nav.about')}</span>
+                <span style={{ fontWeight: 700, cursor: 'pointer' }} onClick={(event) => { event.stopPropagation(); router.push('/about'); onClose(); }}>{t('nav.about')}</span>
                 <span className={`drawer-arrow ${isAboutOpen ? 'expanded' : ''}`}>
                   {isAboutOpen ? '▾' : '›'}
                 </span>
@@ -102,11 +103,11 @@ export default function SideDrawer({ isOpen, onClose }) {
           {/* Collapsible Services Portfolio Item */}
           <div className="drawer-nav-item">
             <div
-              className={`drawer-nav-link ${pathname === '/well-services' ? 'active' : ''}`}
+              className={`drawer-nav-link ${pathname === '/services' || pathname === '/well-services' ? 'active' : ''}`}
               onClick={() => setIsServicesOpen(!isServicesOpen)}
               style={{ cursor: 'pointer', userSelect: 'none' }}
             >
-              <span style={{ fontWeight: 700 }}>{t('nav.portfolio')}</span>
+              <span style={{ fontWeight: 700, cursor: 'pointer' }} onClick={(event) => { event.stopPropagation(); router.push('/services'); onClose(); }}>{t('nav.portfolio')}</span>
               <span className={`drawer-arrow ${isServicesOpen ? 'expanded' : ''}`}>
                 {isServicesOpen ? '▾' : '›'}
               </span>
@@ -188,7 +189,7 @@ export default function SideDrawer({ isOpen, onClose }) {
                 onClick={() => setIsPoliciesOpen(!isPoliciesOpen)}
                 style={{ cursor: 'pointer', userSelect: 'none' }}
               >
-                <span style={{ fontWeight: 700 }}>Policies</span>
+                <span style={{ fontWeight: 700, cursor: 'pointer' }} onClick={(event) => { event.stopPropagation(); router.push('/policies'); onClose(); }}>Policies</span>
                 <span className={`drawer-arrow ${isPoliciesOpen ? 'expanded' : ''}`}>
                   {isPoliciesOpen ? '▾' : '›'}
                 </span>

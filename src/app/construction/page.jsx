@@ -1,13 +1,11 @@
-'use client';
-import NextPageBanner from '@/components/NextPageBanner';
-import ServiceIntroCard from '@/components/ServiceIntroCard';
+import ConstructionPage from '@/components/LocalizedConstructionPage';
 
 const base='/images/policies-photo/services/almatar_total_field_all_photos/';
 const services=[['02_heavy_haulage_transport-hd.webp','HEAVY HAULAGE & SPECIALIZED TRANSPORT'],['03_rig_and_site_mobilization-hd.webp','RIG & SITE MOBILIZATION'],['04_lifting_and_cranes-hd.webp','LIFTING AND CRANES'],['05_temporary_roads_site_preparation-hd.webp','TEMPORARY ROADS & SITE PREPARATION'],['06_modular_camps_facilities.webp','MODULAR CAMPS & FACILITIES'],['07_certified_engineers_operators.webp','CERTIFIED ENGINEERS & OPERATORS'],['08_catering_support.webp','CATERING SUPPORT'],['09_500_bbl_frac_tank_rental.webp','500 BBL FRAC TANK RENTAL'],['10_acid_storage_containment.webp','ACID STORAGE & CONTAINMENT']];
 const rail=['WELL INTERVENTION SERVICES','COILED TUBING & NITROGEN PUMPING','STIMULATION & FRACTURING','ZONAL ISOLATION & CEMENTING','WELLHEAD & XMAS TREE SERVICES','SLICKLINE SERVICES','WELL TESTING & FLARING','DRILLING AND WORKOVER SERVICES','TOTAL FIELD CONSTRUCTION & MANPOWER LOGISTICS'];
 const process=['PLANNING & ROUTE SURVEY','EQUIPMENT PREPARATION & MOBILIZATION','SITE SETUP & CONSTRUCTION','OPERATIONS SUPPORT','DEMOBILIZATION & SITE RESTORATION'];
 
-export default function ConstructionPage(){
+function LegacyConstructionPage(){
   return <div className="total-field-page tf-construction">
   <section className="tf-hero"><img src={`${base}01_hero_total_field_construction.webp`} alt="Total field construction and manpower logistics"/><div className="tf-hero-copy"><span>BUILDING SOLUTIONS ON THE GROUND</span><h1>TOTAL FIELD<br/>CONSTRUCTION &amp;<br/>MANPOWER LOGISTICS</h1><p>End-to-end field construction, heavy equipment transportation, site mobilization, certified technical manpower, camp management, catering services, 500 BBL frac tanks and containment solutions for onshore operations.</p><a href="#capabilities">REQUEST TECHNICAL SUPPORT&nbsp; →</a><a className="tf-outline-button" href="#capabilities">OUR CAPABILITIES</a></div><span className="tf-hero-side">PEOPLE<br/>EQUIPMENT<br/>INFRASTRUCTURE<br/>RESULTS</span></section>
   <ServiceIntroCard eyebrow="FIELD DELIVERY &amp; SUPPORT" title="Integrated Field Construction Solutions" description="ALMATAR provides complete construction, logistics, manpower and site-support services for safe, efficient and reliable onshore field delivery." image={`${base}02_heavy_haulage_transport-hd.webp`} imageAlt="Heavy field logistics equipment" />
@@ -21,3 +19,5 @@ export default function ConstructionPage(){
   <section className="tf-stats"><b>50+<small>FLEET UNITS<br/>Available for deployment</small></b><b>200+<small>TECHNICAL PERSONNEL<br/>Engineers, operators &amp; support staff</small></b><b>NATIONWIDE<small>RESPONSE COVERAGE<br/>Rapid mobilization to any field location</small></b><b>500 BBL<small>TANK CAPACITY<br/>Frac tanks with full containment</small></b></section>
   <NextPageBanner title="LET’S MOBILIZE YOUR NEXT FIELD PROJECT" subtitle="Reliable logistics. Skilled people. Complete field support. Wherever you operate." link="/contact" bgImage={`${base}01_hero_total_field_construction.webp`}/>
 </div>}
+
+export default ConstructionPage;

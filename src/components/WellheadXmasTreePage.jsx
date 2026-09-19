@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import ServiceIntroCard from './ServiceIntroCard';
+import { useLanguage } from '@/context/LanguageContext';
 import '@/app/wellhead.css';
 
 const imgBase = '/images/policies-photo/services/almatar_wellhead_text_free_separate_photos/';
@@ -71,6 +72,34 @@ const lifecycleSteps = [
   { num: '03', title: 'EXECUTION', desc: 'Carry out service with expert team', icon: 'execute' },
   { num: '04', title: 'TESTING', desc: 'Verify integrity and performance', icon: 'test' },
   { num: '05', title: 'CERTIFICATION', desc: 'Document and ensure compliance', icon: 'badge' },
+];
+
+const arabicKeyComponents = [
+  { num: 1, name: 'صمام الخنق', desc: 'يتحكم بمعدل تدفق الإنتاج' },
+  { num: 2, name: 'الصمام الرئيسي العلوي', desc: 'صمام العزل الأساسي' },
+  { num: 3, name: 'الصمام الرئيسي السفلي', desc: 'صمام العزل الثانوي' },
+  { num: 4, name: 'الصمام الجانبي', desc: 'يوجّه الإنتاج إلى خط الجريان' },
+  { num: 5, name: 'رأس أنابيب الإنتاج', desc: 'يربط سلسلة أنابيب الإنتاج' },
+  { num: 6, name: 'رأس التغليف', desc: 'يربط سلاسل التغليف' },
+  { num: 7, name: 'مراقبة الضغط', desc: 'بيانات ضغط البئر الفورية' },
+];
+
+const arabicCapabilities = [
+  { title: 'التركيب والتشغيل', desc: 'تركيب متكامل لرؤوس الآبار وشجرة الميلاد بإشراف خبراء.', icon: 'wrenches' },
+  { title: 'الفحص والتقييم', desc: 'فحص تفصيلي وتقييم للحالة وإصدار التقارير.', icon: 'search' },
+  { title: 'الصيانة الوقائية', desc: 'صيانة مخططة لضمان الموثوقية وإطالة عمر الخدمة.', icon: 'maintenance' },
+  { title: 'إصلاح الصمامات واستبدالها', desc: 'إصلاح وتجديد واستبدال جميع أنواع صمامات رؤوس الآبار.', icon: 'valve' },
+  { title: 'اختبار الضغط', desc: 'اختبارات هيدروستاتيكية ووظيفية للتحقق من السلامة.', icon: 'gauge' },
+  { title: 'كشف التسرب والمعالجة', desc: 'حلول متقدمة للكشف والمعالجة لمنع التسربات.', icon: 'leak' },
+  { title: 'دعم طوارئ رؤوس الآبار', desc: 'استجابة سريعة لمشكلات رؤوس الآبار وحالات التحكم بالضغط.', icon: 'siren' },
+];
+
+const arabicLifecycleSteps = [
+  { num: '01', title: 'الفحص', desc: 'تقييم الحالة وتحديد الاحتياجات', icon: 'clipboard' },
+  { num: '02', title: 'التخطيط', desc: 'إعداد خطة صيانة مخصصة', icon: 'plan' },
+  { num: '03', title: 'التنفيذ', desc: 'تنفيذ الخدمة بفريق خبير', icon: 'execute' },
+  { num: '04', title: 'الاختبار', desc: 'التحقق من السلامة والأداء', icon: 'test' },
+  { num: '05', title: 'الاعتماد', desc: 'توثيق الامتثال وضمانه', icon: 'badge' },
 ];
 
 function NavIcon({ type }) {
@@ -194,44 +223,50 @@ function CapIcon({ type }) {
 }
 
 export default function WellheadXmasTreePage() {
+  const { lang } = useLanguage();
+  const tr = (english, arabic) => (lang === 'ar' ? arabic : english);
+  const pageComponents = lang === 'ar' ? arabicKeyComponents : keyComponents;
+  const pageCapabilities = lang === 'ar' ? arabicCapabilities : capabilities;
+  const pageLifecycleSteps = lang === 'ar' ? arabicLifecycleSteps : lifecycleSteps;
+
   return (
     <div className="wellhead-page">
       {/* 1. HERO SECTION */}
       <section className="wellhead-hero">
         <img
           src={`${imgBase}01_wellhead_hero_workers.webp`}
-          alt="Wellhead & Xmas Tree Services"
+          alt={tr('Wellhead & Xmas Tree Services', 'خدمات رؤوس الآبار وشجرة الميلاد')}
           className="wellhead-hero-img"
         />
         <div className="wellhead-hero-overlay" />
         
         <div className="wellhead-hero-content">
-          <span className="wellhead-kicker">OUR SERVICES</span>
+          <span className="wellhead-kicker">{tr('OUR SERVICES', 'خدماتنا')}</span>
           <h1 className="wellhead-hero-title">
-            WELLHEAD &amp;<br />
-            XMAS TREE SERVICES
+            {tr('WELLHEAD &', 'رؤوس الآبار و')}<br />
+            {tr('XMAS TREE SERVICES', 'شجرة الميلاد')}
           </h1>
           <p className="wellhead-hero-tagline">
-            SAFE PRESSURE CONTROL. RELIABLE OPERATIONS. LONG-TERM INTEGRITY.
+            {tr('SAFE PRESSURE CONTROL. RELIABLE OPERATIONS. LONG-TERM INTEGRITY.', 'تحكم آمن بالضغط. عمليات موثوقة. سلامة طويلة الأمد.')}
           </p>
           <Link href="/contact" className="wellhead-orange-btn">
-            REQUEST TECHNICAL SUPPORT <span className="arrow">→</span>
+            {tr('REQUEST TECHNICAL SUPPORT', 'اطلب الدعم الفني')} <span className="arrow">→</span>
           </Link>
         </div>
 
         <div className="wellhead-hero-vertical-tag">
-          <span>ENERGY</span>
-          <span>PEOPLE</span>
-          <span>PROGRESS</span>
+          <span>{tr('ENERGY', 'الطاقة')}</span>
+          <span>{tr('PEOPLE', 'الكوادر')}</span>
+          <span>{tr('PROGRESS', 'التقدم')}</span>
         </div>
       </section>
 
       <ServiceIntroCard
-        eyebrow="PRESSURE CONTROL &amp; INTEGRITY"
-        title="Reliable Wellhead Solutions"
-        description="ALMATAR delivers wellhead and Xmas tree installation, inspection, maintenance and repair services for safe, compliant and reliable production operations."
+        eyebrow={tr('PRESSURE CONTROL & INTEGRITY', 'التحكم بالضغط وسلامة البئر')}
+        title={tr('Reliable Wellhead Solutions', 'حلول موثوقة لرؤوس الآبار')}
+        description={tr('ALMATAR delivers wellhead and Xmas tree installation, inspection, maintenance and repair services for safe, compliant and reliable production operations.', 'تقدم المطار خدمات تركيب وفحص وصيانة وإصلاح رؤوس الآبار وشجرة الميلاد لضمان عمليات إنتاج آمنة ومتوافقة وموثوقة.')}
         image={`${imgBase}01_wellhead_hero_workers.webp`}
-        imageAlt="Wellhead service team"
+        imageAlt={tr('Wellhead service team', 'فريق خدمات رؤوس الآبار')}
       />
 
       {/* 3. TECHNICAL OVERVIEW & DIAGRAM SECTION */}
@@ -241,13 +276,13 @@ export default function WellheadXmasTreePage() {
           <div className="wellhead-overview-left">
             <div className="section-label-group">
               <span className="orange-bar">—</span>
-              <span className="section-label">TECHNICAL OVERVIEW</span>
+              <span className="section-label">{tr('TECHNICAL OVERVIEW', 'نظرة فنية')}</span>
             </div>
             <h2 className="wellhead-section-heading">
-              WELLHEAD &amp; XMAS TREE SYSTEM
+              {tr('WELLHEAD & XMAS TREE SYSTEM', 'نظام رأس البئر وشجرة الميلاد')}
             </h2>
             <p className="wellhead-overview-text">
-              The wellhead and Xmas tree provide critical pressure control, enabling safe and efficient production operations. We deliver installation, maintenance, inspection and repair services to ensure long-term integrity and reliable performance in compliance with international standards.
+              {tr('The wellhead and Xmas tree provide critical pressure control, enabling safe and efficient production operations. We deliver installation, maintenance, inspection and repair services to ensure long-term integrity and reliable performance in compliance with international standards.', 'يوفر رأس البئر وشجرة الميلاد تحكماً أساسياً بالضغط يتيح عمليات إنتاج آمنة وفعالة. نقدم خدمات التركيب والصيانة والفحص والإصلاح لضمان سلامة طويلة الأمد وأداء موثوق وفق المعايير الدولية.')}
             </p>
 
             <div className="wellhead-three-badges">
@@ -258,7 +293,7 @@ export default function WellheadXmasTreePage() {
                     <path d="M9 12l2 2 4-4" />
                   </svg>
                 </div>
-                <span>SAFETY<br />FOCUSED</span>
+                <span>{tr('SAFETY', 'السلامة')}<br />{tr('FOCUSED', 'أولاً')}</span>
               </div>
 
               <div className="badge-item">
@@ -268,7 +303,7 @@ export default function WellheadXmasTreePage() {
                     <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
                   </svg>
                 </div>
-                <span>RELIABLE<br />OPERATIONS</span>
+                <span>{tr('RELIABLE', 'عمليات')}<br />{tr('OPERATIONS', 'موثوقة')}</span>
               </div>
 
               <div className="badge-item">
@@ -278,7 +313,7 @@ export default function WellheadXmasTreePage() {
                     <polyline points="17 6 23 6 23 12" />
                   </svg>
                 </div>
-                <span>MAXIMUM<br />UPTIME</span>
+                <span>{tr('MAXIMUM', 'أقصى')}<br />{tr('UPTIME', 'جاهزية')}</span>
               </div>
             </div>
           </div>
@@ -288,47 +323,47 @@ export default function WellheadXmasTreePage() {
             <div className="diagram-wrapper">
               <img
                 src={`${imgBase}02_xmas_tree_wellhead.webp`}
-                alt="Wellhead and Xmas Tree Technical Diagram"
+                alt={tr('Wellhead and Xmas Tree Technical Diagram', 'مخطط فني لرأس البئر وشجرة الميلاد')}
                 className="wellhead-diagram-img"
               />
 
               {/* Technical Callouts overlay */}
               <div className="callout callout-top-left">
-                <span className="callout-title">PRESSURE GAUGE</span>
-                <span className="callout-sub">(ANNULUS)</span>
+                <span className="callout-title">{tr('PRESSURE GAUGE', 'مقياس الضغط')}</span>
+                <span className="callout-sub">{tr('(ANNULUS)', '(الحيز الحلقي)')}</span>
                 <div className="callout-line line-top-left" />
               </div>
 
               <div className="callout callout-mid-left">
-                <span className="callout-title">UPPER MASTER</span>
-                <span className="callout-title">VALVE</span>
+                <span className="callout-title">{tr('UPPER MASTER', 'الصمام الرئيسي')}</span>
+                <span className="callout-title">{tr('VALVE', 'العلوي')}</span>
                 <div className="callout-line line-mid-left" />
               </div>
 
               <div className="callout callout-low-left">
-                <span className="callout-title">LOWER MASTER</span>
-                <span className="callout-title">VALVE</span>
+                <span className="callout-title">{tr('LOWER MASTER', 'الصمام الرئيسي')}</span>
+                <span className="callout-title">{tr('VALVE', 'السفلي')}</span>
                 <div className="callout-line line-low-left" />
               </div>
 
               <div className="callout callout-top-right">
-                <span className="callout-title">CHOKE VALVE</span>
+                <span className="callout-title">{tr('CHOKE VALVE', 'صمام الخنق')}</span>
                 <div className="callout-line line-top-right" />
               </div>
 
               <div className="callout callout-mid-right">
-                <span className="callout-title">WING VALVE</span>
-                <span className="callout-sub">(PRODUCTION)</span>
+                <span className="callout-title">{tr('WING VALVE', 'الصمام الجانبي')}</span>
+                <span className="callout-sub">{tr('(PRODUCTION)', '(الإنتاج)')}</span>
                 <div className="callout-line line-mid-right" />
               </div>
 
               <div className="callout callout-tubing-right">
-                <span className="callout-title">TUBING HEAD</span>
+                <span className="callout-title">{tr('TUBING HEAD', 'رأس أنابيب الإنتاج')}</span>
                 <div className="callout-line line-tubing-right" />
               </div>
 
               <div className="callout callout-casing-right">
-                <span className="callout-title">CASING HEAD</span>
+                <span className="callout-title">{tr('CASING HEAD', 'رأس التغليف')}</span>
                 <div className="callout-line line-casing-right" />
               </div>
             </div>
@@ -336,9 +371,9 @@ export default function WellheadXmasTreePage() {
 
           {/* Right Column: Key Components */}
           <div className="wellhead-overview-right">
-            <h3 className="key-components-heading">KEY COMPONENTS</h3>
+            <h3 className="key-components-heading">{tr('KEY COMPONENTS', 'المكونات الأساسية')}</h3>
             <div className="key-components-list">
-              {keyComponents.map((comp) => (
+              {pageComponents.map((comp) => (
                 <div key={comp.num} className="component-row">
                   <div className="comp-num-badge">{comp.num}</div>
                   <div className="comp-info">
@@ -356,11 +391,11 @@ export default function WellheadXmasTreePage() {
       <section className="wellhead-capabilities-section">
         <div className="section-label-group">
           <span className="orange-bar">—</span>
-          <span className="section-label">OUR SERVICE CAPABILITIES</span>
+          <span className="section-label">{tr('OUR SERVICE CAPABILITIES', 'قدراتنا الخدمية')}</span>
         </div>
 
         <div className="capabilities-grid">
-          {capabilities.map((cap, i) => (
+          {pageCapabilities.map((cap, i) => (
             <div key={i} className="capability-card">
               <div className="cap-icon-wrap">
                 <CapIcon type={cap.icon} />
@@ -378,17 +413,17 @@ export default function WellheadXmasTreePage() {
           <div className="dark-banner-left">
             <div className="section-label-group light">
               <span className="orange-bar">—</span>
-              <span className="section-label light-text">PRESSURE CONTROL &amp; INTEGRITY</span>
+              <span className="section-label light-text">{tr('PRESSURE CONTROL & INTEGRITY', 'التحكم بالضغط وسلامة البئر')}</span>
             </div>
             <h2 className="dark-banner-title">
-              PROVEN SOLUTIONS<br />
-              FOR A SAFER TOMORROW
+              {tr('PROVEN SOLUTIONS', 'حلول مثبتة')}<br />
+              {tr('FOR A SAFER TOMORROW', 'لغدٍ أكثر أماناً')}
             </h2>
           </div>
 
           <div className="dark-banner-center">
             <p>
-              We ensure wellhead integrity through engineering expertise, industry best practices and a commitment to operational safety. Our services minimize risk, prevent downtime and maximize the value of your assets.
+              {tr('We ensure wellhead integrity through engineering expertise, industry best practices and a commitment to operational safety. Our services minimize risk, prevent downtime and maximize the value of your assets.', 'نضمن سلامة رؤوس الآبار بفضل الخبرة الهندسية وأفضل الممارسات الصناعية والالتزام بالسلامة التشغيلية. تقلل خدماتنا المخاطر وتمنع التوقف وتعظم قيمة أصولكم.')}
             </p>
           </div>
 
@@ -400,7 +435,7 @@ export default function WellheadXmasTreePage() {
                   <path d="M9 12l2 2 4-4" />
                 </svg>
               </div>
-              <span>RISK REDUCTION</span>
+              <span>{tr('RISK REDUCTION', 'خفض المخاطر')}</span>
             </div>
 
             <div className="dark-value-item">
@@ -410,7 +445,7 @@ export default function WellheadXmasTreePage() {
                   <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
                 </svg>
               </div>
-              <span>OPERATIONAL EXCELLENCE</span>
+              <span>{tr('OPERATIONAL EXCELLENCE', 'تميز تشغيلي')}</span>
             </div>
 
             <div className="dark-value-item">
@@ -422,7 +457,7 @@ export default function WellheadXmasTreePage() {
                   <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
               </div>
-              <span>LONG-TERM ASSET VALUE</span>
+              <span>{tr('LONG-TERM ASSET VALUE', 'قيمة الأصول طويلة الأمد')}</span>
             </div>
           </div>
         </div>
@@ -432,15 +467,15 @@ export default function WellheadXmasTreePage() {
       <section className="wellhead-lifecycle-section">
         <div className="section-label-group">
           <span className="orange-bar">—</span>
-          <span className="section-label">SERVICE LIFECYCLE</span>
+          <span className="section-label">{tr('SERVICE LIFECYCLE', 'دورة حياة الخدمة')}</span>
         </div>
         <h2 className="wellhead-section-heading">
-          FROM INSPECTION TO LONG-TERM PERFORMANCE
+          {tr('FROM INSPECTION TO LONG-TERM PERFORMANCE', 'من الفحص إلى الأداء طويل الأمد')}
         </h2>
 
         <div className="lifecycle-content-grid">
           <div className="lifecycle-steps-row">
-            {lifecycleSteps.map((step, idx) => (
+            {pageLifecycleSteps.map((step, idx) => (
               <div key={idx} className="lifecycle-step-node">
                 <div className="step-header-row">
                   <div className="step-icon-circle">
@@ -474,7 +509,7 @@ export default function WellheadXmasTreePage() {
                       </svg>
                     )}
                   </div>
-                  {idx < lifecycleSteps.length - 1 && (
+                  {idx < pageLifecycleSteps.length - 1 && (
                     <span className="step-arrow">→</span>
                   )}
                 </div>
@@ -490,11 +525,11 @@ export default function WellheadXmasTreePage() {
           <div className="lifecycle-right-card">
             <img
               src={`${imgBase}03_engineer_rigs_sunset.webp`}
-              alt="Reliable wellhead solutions"
+              alt={tr('Reliable wellhead solutions', 'حلول موثوقة لرؤوس الآبار')}
               className="lifecycle-card-img"
             />
             <div className="lifecycle-card-overlay">
-              <h3>RELIABLE WELLHEAD SOLUTIONS FOR SUSTAINABLE PRODUCTION</h3>
+              <h3>{tr('RELIABLE WELLHEAD SOLUTIONS FOR SUSTAINABLE PRODUCTION', 'حلول موثوقة لرؤوس الآبار من أجل إنتاج مستدام')}</h3>
             </div>
           </div>
         </div>
@@ -508,20 +543,20 @@ export default function WellheadXmasTreePage() {
             <div className="dual-card-img-wrap">
               <img
                 src={`${imgBase}04_workers_wellhead.webp`}
-                alt="In The Field Experience"
+                alt={tr('In The Field Experience', 'خبرة العمل الميداني')}
               />
             </div>
             <div className="dual-card-body">
               <div className="section-label-group">
                 <span className="orange-bar">—</span>
-                <span className="section-label">IN THE FIELD</span>
+                <span className="section-label">{tr('IN THE FIELD', 'في الميدان')}</span>
               </div>
-              <h3 className="dual-card-heading">EXPERIENCE THAT DELIVERS</h3>
+              <h3 className="dual-card-heading">{tr('EXPERIENCE THAT DELIVERS', 'خبرة تحقق النتائج')}</h3>
               <p className="dual-card-desc">
-                Our teams operate in challenging environments, delivering reliable wellhead services across onshore and offshore locations. We combine technical expertise with a strong safety culture to keep your operations running.
+                {tr('Our teams operate in challenging environments, delivering reliable wellhead services across onshore and offshore locations. We combine technical expertise with a strong safety culture to keep your operations running.', 'تعمل فرقنا في البيئات الصعبة، وتقدم خدمات موثوقة لرؤوس الآبار في المواقع البرية والبحرية. نجمع بين الخبرة الفنية وثقافة السلامة الراسخة للحفاظ على استمرارية عملياتكم.')}
               </p>
               <Link href="/projects" className="wellhead-orange-btn inline-btn">
-                OUR PROJECTS <span className="arrow">→</span>
+                {tr('OUR PROJECTS', 'مشاريعنا')} <span className="arrow">→</span>
               </Link>
             </div>
           </div>
@@ -531,9 +566,9 @@ export default function WellheadXmasTreePage() {
             <div className="dual-card-body">
               <div className="section-label-group">
                 <span className="orange-bar">—</span>
-                <span className="section-label">HSE &amp; QUALITY</span>
+                <span className="section-label">{tr('HSE & QUALITY', 'الصحة والسلامة والبيئة والجودة')}</span>
               </div>
-              <h3 className="dual-card-heading">PEOPLE. PROCESS. A SAFER TOMORROW.</h3>
+              <h3 className="dual-card-heading">{tr('PEOPLE. PROCESS. A SAFER TOMORROW.', 'الكوادر. العمليات. غد أكثر أماناً.')}</h3>
 
               <div className="hse-four-pillars">
                 <div className="hse-pillar-item">
@@ -543,8 +578,8 @@ export default function WellheadXmasTreePage() {
                     </svg>
                   </div>
                   <div className="hse-pillar-info">
-                    <h4>ZERO HARM</h4>
-                    <p>Our people come first, always.</p>
+                    <h4>{tr('ZERO HARM', 'صفر ضرر')}</h4>
+                    <p>{tr('Our people come first, always.', 'كوادرنا تأتي أولاً دائماً.')}</p>
                   </div>
                 </div>
 
@@ -556,8 +591,8 @@ export default function WellheadXmasTreePage() {
                     </svg>
                   </div>
                   <div className="hse-pillar-info">
-                    <h4>ENVIRONMENTAL RESPONSIBILITY</h4>
-                    <p>Minimizing our footprint.</p>
+                    <h4>{tr('ENVIRONMENTAL RESPONSIBILITY', 'المسؤولية البيئية')}</h4>
+                    <p>{tr('Minimizing our footprint.', 'تقليل أثرنا البيئي.')}</p>
                   </div>
                 </div>
 
@@ -569,8 +604,8 @@ export default function WellheadXmasTreePage() {
                     </svg>
                   </div>
                   <div className="hse-pillar-info">
-                    <h4>COMPLIANCE</h4>
-                    <p>With international standards.</p>
+                    <h4>{tr('COMPLIANCE', 'الامتثال')}</h4>
+                    <p>{tr('With international standards.', 'للمعايير الدولية.')}</p>
                   </div>
                 </div>
 
@@ -581,8 +616,8 @@ export default function WellheadXmasTreePage() {
                     </svg>
                   </div>
                   <div className="hse-pillar-info">
-                    <h4>CONTINUOUS IMPROVEMENT</h4>
-                    <p>Safer, smarter operations.</p>
+                    <h4>{tr('CONTINUOUS IMPROVEMENT', 'التحسين المستمر')}</h4>
+                    <p>{tr('Safer, smarter operations.', 'عمليات أكثر أماناً وذكاءً.')}</p>
                   </div>
                 </div>
               </div>
@@ -598,9 +633,9 @@ export default function WellheadXmasTreePage() {
           <div className="numbers-header">
             <div className="section-label-group">
               <span className="orange-bar">—</span>
-              <span className="section-label">BY THE NUMBERS</span>
+              <span className="section-label">{tr('BY THE NUMBERS', 'بالأرقام')}</span>
             </div>
-            <h3 className="numbers-heading">TRUSTED PARTNER IN OILFIELD SERVICES</h3>
+            <h3 className="numbers-heading">{tr('TRUSTED PARTNER IN OILFIELD SERVICES', 'شريك موثوق في خدمات حقول النفط')}</h3>
           </div>
 
           <div className="numbers-grid">
@@ -613,7 +648,7 @@ export default function WellheadXmasTreePage() {
                 </svg>
               </div>
               <div className="stat-value">10+</div>
-              <div className="stat-label">YEARS OF EXPERIENCE</div>
+              <div className="stat-label">{tr('YEARS OF EXPERIENCE', 'سنوات من الخبرة')}</div>
             </div>
 
             <div className="num-stat-card">
@@ -626,7 +661,7 @@ export default function WellheadXmasTreePage() {
                 </svg>
               </div>
               <div className="stat-value">200+</div>
-              <div className="stat-label">SKILLED PROFESSIONALS</div>
+              <div className="stat-label">{tr('SKILLED PROFESSIONALS', 'كوادر محترفة')}</div>
             </div>
 
             <div className="num-stat-card">
@@ -636,7 +671,7 @@ export default function WellheadXmasTreePage() {
                 </svg>
               </div>
               <div className="stat-value">100+</div>
-              <div className="stat-label">PROJECTS DELIVERED</div>
+              <div className="stat-label">{tr('PROJECTS DELIVERED', 'مشروع تم تسليمه')}</div>
             </div>
 
             <div className="num-stat-card">
@@ -647,8 +682,8 @@ export default function WellheadXmasTreePage() {
                   <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                 </svg>
               </div>
-              <div className="stat-value">MULTIPLE REGIONS</div>
-              <div className="stat-label">ONSHORE &amp; OFFSHORE</div>
+              <div className="stat-value">{tr('MULTIPLE REGIONS', 'مناطق متعددة')}</div>
+              <div className="stat-label">{tr('ONSHORE & OFFSHORE', 'عمليات برية وبحرية')}</div>
             </div>
 
             <div className="num-stat-card">
@@ -658,8 +693,8 @@ export default function WellheadXmasTreePage() {
                   <path d="M9 12l2 2 4-4" />
                 </svg>
               </div>
-              <div className="stat-value">ZERO</div>
-              <div className="stat-label">MAJOR HSE INCIDENTS</div>
+              <div className="stat-value">{tr('ZERO', 'صفر')}</div>
+              <div className="stat-label">{tr('MAJOR HSE INCIDENTS', 'حوادث جسيمة في الصحة والسلامة والبيئة')}</div>
             </div>
           </div>
         </div>
@@ -668,18 +703,18 @@ export default function WellheadXmasTreePage() {
         <div className="bottom-cta-banner">
           <img
             src={`${imgBase}07_workers_oilfield_sunset.webp`}
-            alt="Operations Moving"
+            alt={tr('Operations Moving', 'عمليات مستمرة')}
             className="cta-bg-img"
           />
           <div className="cta-overlay" />
 
           <div className="cta-content">
-            <h2 className="cta-title">LET'S KEEP YOUR OPERATIONS MOVING</h2>
+            <h2 className="cta-title">{tr("LET'S KEEP YOUR OPERATIONS MOVING", 'لنحافظ على استمرارية عملياتكم')}</h2>
             <p className="cta-sub">
-              Get in touch with our technical team for expert support on wellhead and Xmas tree services.
+              {tr('Get in touch with our technical team for expert support on wellhead and Xmas tree services.', 'تواصلوا مع فريقنا الفني للحصول على دعم متخصص لخدمات رؤوس الآبار وشجرة الميلاد.')}
             </p>
             <Link href="/contact" className="cta-white-btn">
-              REQUEST TECHNICAL SUPPORT <span className="arrow">→</span>
+              {tr('REQUEST TECHNICAL SUPPORT', 'اطلب الدعم الفني')} <span className="arrow">→</span>
             </Link>
           </div>
         </div>
