@@ -30,6 +30,17 @@ const fallbackContent = {
   },
 };
 
+const hasArabicText = (value) => /[\u0600-\u06FF]/.test(value || '');
+
+function getLocalizedContent({ lang, arabicValue, englishValue, fallback }) {
+  if (lang === 'ar') {
+    // Avoid showing an English value accidentally entered in an Arabic CMS field.
+    return hasArabicText(arabicValue) ? arabicValue : fallback;
+  }
+
+  return englishValue || fallback;
+}
+
 export default function CareersPage() {
   const { lang } = useLanguage();
   const [sanityData, setSanityData] = useState(null);
@@ -56,12 +67,27 @@ export default function CareersPage() {
   const bannerImage = sanityData?.bannerImage
     ? getImageUrl(sanityData.bannerImage, '/images/careers_engineers_hero.webp')
     : '/images/careers_engineers_hero.webp';
-  const heroEyebrow = (lang === 'ar' ? sanityData?.eyebrowAr : sanityData?.eyebrowEn) || copy.heroEyebrow;
-  const heroTitle = (lang === 'ar' ? sanityData?.pageTitleAr : sanityData?.pageTitleEn) || copy.heroTitle;
-  const heroDesc = (lang === 'ar' ? sanityData?.pageDescAr : sanityData?.pageDescEn) || copy.heroDesc;
+  const heroEyebrow = getLocalizedContent({
+    lang,
+    arabicValue: sanityData?.eyebrowAr,
+    englishValue: sanityData?.eyebrowEn,
+    fallback: copy.heroEyebrow,
+  });
+  const heroTitle = getLocalizedContent({
+    lang,
+    arabicValue: sanityData?.pageTitleAr,
+    englishValue: sanityData?.pageTitleEn,
+    fallback: copy.heroTitle,
+  });
+  const heroDesc = getLocalizedContent({
+    lang,
+    arabicValue: sanityData?.pageDescAr,
+    englishValue: sanityData?.pageDescEn,
+    fallback: copy.heroDesc,
+  });
 
   return (
-    <main className="careers-page">
+    <main className="careers-page" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       <section className="careers-page-hero">
         <img src={bannerImage} alt={copy.imageAlt} />
         <div className="careers-page-hero-overlay">

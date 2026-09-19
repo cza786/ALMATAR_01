@@ -9746,6 +9746,9 @@ html, body {
 .careers-page-content p { max-width: 650px; margin: 0 0 1.5rem; color: #4b6078; line-height: 1.7; }
 .careers-page-button { display: inline-flex; align-items: center; gap: 1.6rem; padding: .8rem 1.15rem; color: #fff; background: #e9a733; border-radius: 3px; font-size: .8rem; font-weight: 700; text-decoration: none; }
 .careers-page-button span { font-size: 1.2rem; font-weight: 400; }
+.careers-page[dir='rtl'] { text-align: right; }
+.careers-page[dir='rtl'] .careers-page-hero-overlay { background: linear-gradient(270deg, rgba(4, 22, 42, .86), rgba(4, 22, 42, .2) 78%); }
+.careers-page[dir='rtl'] .careers-page-button span { transform: scaleX(-1); }
 @media (max-width: 600px) { .careers-page-hero { height: 330px; }.careers-page-hero h1 { font-size: 2.35rem; }.careers-page-hero p { font-size: .85rem; }.careers-page-content { padding: 3rem 0 4rem; } }
 
 /* Home service cards: full-bleed hero image with the reference overlay treatment. */
