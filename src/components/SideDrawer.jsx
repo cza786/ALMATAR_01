@@ -2,17 +2,16 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 import { useLanguage } from '../context/LanguageContext';
 
 export default function SideDrawer({ isOpen, onClose }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [isAboutOpen, setIsAboutOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(true); // Collapsible state
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isPoliciesOpen, setIsPoliciesOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
   const { lang, toggleLanguage, t } = useLanguage();
 
   const desktopServiceSubItems = [
@@ -78,18 +77,14 @@ export default function SideDrawer({ isOpen, onClose }) {
           {/* About */}
           {('about'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
             <div className="drawer-nav-item">
-              <div
-                className={`drawer-nav-link ${pathname === '/about' ? 'active' : ''}`}
-                onClick={() => setIsAboutOpen(!isAboutOpen)}
-                style={{ cursor: 'pointer', userSelect: 'none' }}
-              >
-                <span style={{ fontWeight: 700, cursor: 'pointer' }} onClick={(event) => { event.stopPropagation(); router.push('/about'); onClose(); }}>{t('nav.about')}</span>
-                <span className={`drawer-arrow ${isAboutOpen ? 'expanded' : ''}`}>
-                  {isAboutOpen ? '▾' : '›'}
-                </span>
+              <div className={`drawer-nav-split ${pathname === '/about' ? 'active' : ''}`}>
+                <Link href="/about" className="drawer-nav-primary" onClick={onClose}>{t('nav.about')}</Link>
+                <button type="button" className={`drawer-submenu-trigger ${isAboutOpen ? 'expanded' : ''}`} onClick={() => setIsAboutOpen(!isAboutOpen)} aria-expanded={isAboutOpen} aria-controls="drawer-about-menu" aria-label={`Open ${t('nav.about')} menu`}>
+                  <span className="drawer-arrow">⌄</span>
+                </button>
               </div>
               {isAboutOpen && (
-                <div className="drawer-sub-container">
+                <div className="drawer-sub-container" id="drawer-about-menu">
                   <div className="drawer-nav-sub-item">
                     <Link href="/our-team" className="drawer-nav-link sub-link" onClick={onClose}>
                       <span>• {t('nav.ourTeam')}</span>
@@ -102,20 +97,16 @@ export default function SideDrawer({ isOpen, onClose }) {
 
           {/* Collapsible Services Portfolio Item */}
           <div className="drawer-nav-item">
-            <div
-              className={`drawer-nav-link ${pathname === '/services' || pathname === '/well-services' ? 'active' : ''}`}
-              onClick={() => setIsServicesOpen(!isServicesOpen)}
-              style={{ cursor: 'pointer', userSelect: 'none' }}
-            >
-              <span style={{ fontWeight: 700, cursor: 'pointer' }} onClick={(event) => { event.stopPropagation(); router.push('/services'); onClose(); }}>{t('nav.portfolio')}</span>
-              <span className={`drawer-arrow ${isServicesOpen ? 'expanded' : ''}`}>
-                {isServicesOpen ? '▾' : '›'}
-              </span>
+            <div className={`drawer-nav-split ${pathname === '/services' || pathname === '/well-services' || pathname === '/drilling-fluids' || pathname === '/construction' ? 'active' : ''}`}>
+              <Link href="/services" className="drawer-nav-primary" onClick={onClose}>{t('nav.services')}</Link>
+              <button type="button" className={`drawer-submenu-trigger ${isServicesOpen ? 'expanded' : ''}`} onClick={() => setIsServicesOpen(!isServicesOpen)} aria-expanded={isServicesOpen} aria-controls="drawer-services-menu" aria-label={`Open ${t('nav.services')} menu`}>
+                <span className="drawer-arrow">⌄</span>
+              </button>
             </div>
 
             {/* Collapsible Sub-menu items */}
             {isServicesOpen && (
-              <div className="drawer-sub-container">
+              <div className="drawer-sub-container" id="drawer-services-menu">
                 {desktopServiceSubItems.map((sub) => (
                   <div key={sub.href} className="drawer-nav-sub-item">
                     <Link
@@ -130,26 +121,6 @@ export default function SideDrawer({ isOpen, onClose }) {
               </div>
             )}
           </div>
-
-          {/* Drilling & Fluids */}
-          {('drilling'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
-            <div className="drawer-nav-item">
-              <Link href="/drilling-fluids" className={`drawer-nav-link ${pathname === '/drilling-fluids' ? 'active' : ''}`} onClick={onClose}>
-                <span>{t('nav.drillingFluids')}</span>
-                <span className="drawer-arrow">&rsaquo;</span>
-              </Link>
-            </div>
-          )}
-
-          {/* Construction */}
-          {('construction'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
-            <div className="drawer-nav-item">
-              <Link href="/construction" className={`drawer-nav-link ${pathname === '/construction' ? 'active' : ''}`} onClick={onClose}>
-                <span>{t('nav.construction')}</span>
-                <span className="drawer-arrow">&rsaquo;</span>
-              </Link>
-            </div>
-          )}
 
           {/* Trading */}
           {('trading'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
@@ -184,18 +155,14 @@ export default function SideDrawer({ isOpen, onClose }) {
           {/* Policies */}
           {('policies'.includes(searchTerm.toLowerCase()) || 'employee security'.includes(searchTerm.toLowerCase()) || 'substance abuse'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
             <div className="drawer-nav-item">
-              <div
-                className={`drawer-nav-link ${pathname.startsWith('/policies') ? 'active' : ''}`}
-                onClick={() => setIsPoliciesOpen(!isPoliciesOpen)}
-                style={{ cursor: 'pointer', userSelect: 'none' }}
-              >
-                <span style={{ fontWeight: 700, cursor: 'pointer' }} onClick={(event) => { event.stopPropagation(); router.push('/policies'); onClose(); }}>{t('nav.policies')}</span>
-                <span className={`drawer-arrow ${isPoliciesOpen ? 'expanded' : ''}`}>
-                  {isPoliciesOpen ? '▾' : '›'}
-                </span>
+              <div className={`drawer-nav-split ${pathname.startsWith('/policies') ? 'active' : ''}`}>
+                <Link href="/policies" className="drawer-nav-primary" onClick={onClose}>{t('nav.policies')}</Link>
+                <button type="button" className={`drawer-submenu-trigger ${isPoliciesOpen ? 'expanded' : ''}`} onClick={() => setIsPoliciesOpen(!isPoliciesOpen)} aria-expanded={isPoliciesOpen} aria-controls="drawer-policies-menu" aria-label={`Open ${t('nav.policies')} menu`}>
+                  <span className="drawer-arrow">⌄</span>
+                </button>
               </div>
               {isPoliciesOpen && (
-                <div className="drawer-sub-container">
+                <div className="drawer-sub-container" id="drawer-policies-menu">
                   <div className="drawer-nav-sub-item">
                     <Link href="/images/policies-photo/pdfs/health-safety-and-environment.pdf" target="_blank" rel="noreferrer" className="drawer-nav-link sub-link" onClick={onClose}>
                       <span>• Quality, Health, Safety &amp; Environment (QHSE)</span>

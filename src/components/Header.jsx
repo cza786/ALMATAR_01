@@ -24,6 +24,7 @@ const policyDocuments = [
 export default function Header({ onOpenDrawer }) {
   const pathname = usePathname();
   const [isMegaOpen, setIsMegaOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
   const [selectedPolicy, setSelectedPolicy] = useState(null);
   const { lang, toggleLanguage, t } = useLanguage();
 
@@ -35,6 +36,12 @@ export default function Header({ onOpenDrawer }) {
     document.addEventListener('keydown', closeOnEscape);
     return () => document.removeEventListener('keydown', closeOnEscape);
   }, [selectedPolicy]);
+
+  useEffect(() => {
+    const closeOnEscape = (event) => event.key === 'Escape' && setOpenDropdown(null);
+    document.addEventListener('keydown', closeOnEscape);
+    return () => document.removeEventListener('keydown', closeOnEscape);
+  }, []);
 
   return (
     <>
@@ -53,14 +60,16 @@ export default function Header({ onOpenDrawer }) {
             {/* Desktop Navigation Bar */}
             <nav className="main-nav" aria-label="Main Navigation">
               <Link href="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>{t('nav.home')}</Link>
-              <div className="nav-item-dropdown">
-                <Link href="/about" className={`nav-link dropdown-toggle-link ${isActive('/about') || isActive('/our-team') ? 'active' : ''}`}>
+              <div className={`nav-item-dropdown ${openDropdown === 'about' ? 'is-open' : ''}`}>
+                <Link href="/about" className={`nav-link ${isActive('/about') || isActive('/our-team') ? 'active' : ''}`}>
                   <span>{t('nav.about')}</span>
+                </Link>
+                <button type="button" className="nav-dropdown-trigger" onClick={() => setOpenDropdown(openDropdown === 'about' ? null : 'about')} aria-expanded={openDropdown === 'about'} aria-controls="about-dropdown" aria-label={`Open ${t('nav.about')} menu`}>
                   <svg className="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M7 10l5 5 5-5z" />
                   </svg>
-                </Link>
-                <div className="nav-dropdown-menu">
+                </button>
+                <div className="nav-dropdown-menu" id="about-dropdown">
                   <div className="dropdown-header-bar">
                     <span className="dropdown-header-text">{t('nav.about')}</span>
                     <span className="dropdown-icon-indicator">&#9662;</span>
@@ -72,16 +81,18 @@ export default function Header({ onOpenDrawer }) {
               </div>
               
               {/* Services Dropdown Item */}
-              <div className="nav-item-dropdown">
-                <Link href="/services" className={`nav-link dropdown-toggle-link ${isActive('/services') || isActive('/well-services') || isActive('/drilling-fluids') || isActive('/construction') ? 'active' : ''}`}>
+              <div className={`nav-item-dropdown ${openDropdown === 'services' ? 'is-open' : ''}`}>
+                <Link href="/services" className={`nav-link ${isActive('/services') || isActive('/well-services') || isActive('/drilling-fluids') || isActive('/construction') ? 'active' : ''}`}>
                   <span>{t('nav.services')}</span>
+                </Link>
+                <button type="button" className="nav-dropdown-trigger" onClick={() => setOpenDropdown(openDropdown === 'services' ? null : 'services')} aria-expanded={openDropdown === 'services'} aria-controls="services-dropdown" aria-label={`Open ${t('nav.services')} menu`}>
                   <svg className="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M7 10l5 5 5-5z"/>
                   </svg>
-                </Link>
+                </button>
                 
                 {/* Dropdown Menu */}
-                <div className="nav-dropdown-menu">
+                <div className="nav-dropdown-menu" id="services-dropdown">
                   <div className="dropdown-header-bar">
                     <span className="dropdown-header-text">{t('nav.portfolio')}</span>
                     <span className="dropdown-icon-indicator">&#9662;</span>
@@ -98,14 +109,16 @@ export default function Header({ onOpenDrawer }) {
               <Link href="/qhse" className={`nav-link ${isActive('/qhse') ? 'active' : ''}`}>{t('nav.qhse')}</Link>
               <Link href="/careers" className={`nav-link ${isActive('/careers') ? 'active' : ''}`}>{t('nav.careers')}</Link>
               {/* Policies Dropdown Item */}
-              <div className="nav-item-dropdown">
-                <Link href="/policies" className={`nav-link dropdown-toggle-link ${pathname.startsWith('/policies') ? 'active' : ''}`}>
+              <div className={`nav-item-dropdown ${openDropdown === 'policies' ? 'is-open' : ''}`}>
+                <Link href="/policies" className={`nav-link ${pathname.startsWith('/policies') ? 'active' : ''}`}>
                   <span>{t('nav.policies')}</span>
+                </Link>
+                <button type="button" className="nav-dropdown-trigger" onClick={() => setOpenDropdown(openDropdown === 'policies' ? null : 'policies')} aria-expanded={openDropdown === 'policies'} aria-controls="policies-dropdown" aria-label={`Open ${t('nav.policies')} menu`}>
                   <svg className="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M7 10l5 5 5-5z"/>
                   </svg>
-                </Link>
-                <div className="nav-dropdown-menu policies-dropdown-menu">
+                </button>
+                <div className="nav-dropdown-menu policies-dropdown-menu" id="policies-dropdown">
                   <div className="dropdown-header-bar">
                     <span className="dropdown-header-text">{t('nav.policies')}</span>
                     <span className="dropdown-icon-indicator">&#9662;</span>

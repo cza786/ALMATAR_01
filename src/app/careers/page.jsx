@@ -25,8 +25,7 @@ const fallbackContent = {
     ],
     cards: [
       { title: 'Why work with us', text: 'Discover the values that make ALMATAR a great place to build your career.' },
-      { title: 'Open positions', text: 'Explore current opportunities across our operations.' },
-      { title: 'Graduate opportunities', text: 'Kickstart your career with our graduate development path.' },
+      { title: 'Open positions', text: 'Applications are currently closed.' },
     ],
   },
   ar: {
@@ -46,8 +45,7 @@ const fallbackContent = {
     ],
     cards: [
       { title: 'لماذا العمل معنا', text: 'اكتشف القيم التي تجعل المطار مكاناً رائعاً لبناء مسيرتك.' },
-      { title: 'الوظائف الشاغرة', text: 'استكشف الفرص المتاحة حالياً ضمن عملياتنا.' },
-      { title: 'فرص الخريجين', text: 'ابدأ مسيرتك مع مسار تطوير الخريجين لدينا.' },
+      { title: 'الوظائف الشاغرة', text: 'التقديمات مغلقة حالياً.' },
     ],
   },
 };
@@ -72,6 +70,7 @@ function CareerIcon({ name }) {
 export default function CareersPage() {
   const { lang } = useLanguage();
   const [sanityData, setSanityData] = useState(null);
+  const [isClosedNoticeOpen, setIsClosedNoticeOpen] = useState(false);
   const copy = fallbackContent[lang] || fallbackContent.en;
 
   useEffect(() => {
@@ -88,7 +87,11 @@ export default function CareersPage() {
   const heroTitle = getLocalizedContent({ lang, arabicValue: sanityData?.pageTitleAr, englishValue: sanityData?.pageTitleEn, fallback: copy.heroTitle });
   const heroDesc = getLocalizedContent({ lang, arabicValue: sanityData?.pageDescAr, englishValue: sanityData?.pageDescEn, fallback: copy.heroDesc });
   const eyebrow = getLocalizedContent({ lang, arabicValue: sanityData?.eyebrowAr, englishValue: sanityData?.eyebrowEn, fallback: copy.eyebrow });
-  const cardIcons = ['people', 'positions', 'graduate'];
+  const cardIcons = ['people', 'positions'];
+  const closedButtonLabel = lang === 'ar' ? 'التقديمات مغلقة' : 'Applications Closed';
+  const closedNotice = lang === 'ar'
+    ? { title: 'التقديمات مغلقة', text: 'لا يوجد فتح للتقديمات حالياً. يرجى العودة للموقع للتحقق من الفرص القادمة.', close: 'إغلاق' }
+    : { title: 'Applications are currently closed', text: 'There are no open positions at the moment. Please check back for future opportunities.', close: 'Close' };
 
   return (
     <main className="careers-page careers-showcase" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
@@ -117,20 +120,38 @@ export default function CareersPage() {
         </div>
 
         <div className="careers-showcase-actions">
-          <Link href="/contact" className="careers-apply-button">{copy.apply}<span aria-hidden="true">→</span></Link>
+          <button type="button" className="careers-apply-button careers-closed-button" onClick={() => setIsClosedNoticeOpen(true)}>{closedButtonLabel}<span aria-hidden="true">→</span></button>
           <Link href="#career-pathways" className="careers-journey-link">{copy.journey}<span aria-hidden="true">↓</span></Link>
         </div>
       </section>
 
       <section className="careers-pathways" id="career-pathways" aria-label="Career pathways">
         {copy.cards.map((card, index) => (
-          <Link href="/contact" className="careers-pathway-card" key={card.title}>
-            <span className="careers-pathway-icon"><CareerIcon name={cardIcons[index]} /></span>
-            <span className="careers-pathway-content"><strong>{card.title}</strong><small>{card.text}</small></span>
-            <span className="careers-card-arrow" aria-hidden="true">→</span>
-          </Link>
+          index === 0 ? (
+            <Link href="/about" className="careers-pathway-card" key={card.title}>
+              <span className="careers-pathway-icon"><CareerIcon name={cardIcons[index]} /></span>
+              <span className="careers-pathway-content"><strong>{card.title}</strong><small>{card.text}</small></span>
+              <span className="careers-card-arrow" aria-hidden="true">→</span>
+            </Link>
+          ) : (
+            <button type="button" className="careers-pathway-card" key={card.title} onClick={() => setIsClosedNoticeOpen(true)}>
+              <span className="careers-pathway-icon"><CareerIcon name={cardIcons[index]} /></span>
+              <span className="careers-pathway-content"><strong>{card.title}</strong><small>{card.text}</small></span>
+              <span className="careers-card-arrow" aria-hidden="true">→</span>
+            </button>
+          )
         ))}
       </section>
+
+      {isClosedNoticeOpen && (
+        <div className="careers-notice-backdrop" role="presentation" onClick={() => setIsClosedNoticeOpen(false)}>
+          <section className="careers-closed-notice" role="dialog" aria-modal="true" aria-labelledby="applications-closed-title" onClick={(event) => event.stopPropagation()}>
+            <h2 id="applications-closed-title">{closedNotice.title}</h2>
+            <p>{closedNotice.text}</p>
+            <button type="button" onClick={() => setIsClosedNoticeOpen(false)}>{closedNotice.close}</button>
+          </section>
+        </div>
+      )}
 
       <p className="careers-footer-line"><span />{lang === 'ar' ? 'معاً نحو غدٍ أقوى' : 'Together towards a stronger tomorrow'}</p>
     </main>
