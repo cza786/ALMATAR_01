@@ -120,7 +120,10 @@ export default function HeroCarousel() {
       {/* Bottom Tabs Grid with Progress Indicators */}
       <div className="hero-nav-bar">
         <div className="container">
-          <div className="hero-tabs-grid">
+          <div
+            className="hero-tabs-grid"
+            style={{ gridTemplateColumns: `repeat(${slides.length}, minmax(0, 1fr))` }}
+          >
             {slides.map((slide, i) => (
               <button
                 type="button"
