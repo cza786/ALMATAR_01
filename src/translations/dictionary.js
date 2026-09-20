@@ -8,7 +8,7 @@ export const translations = {
       drillingFluids: "Drilling & Fluids Chemistry",
       construction: "Field Construction & Logistics",
       trading: "Trading",
-      qhse: "QHSE Safety",
+      qhse: "QHSE",
       careers: "Careers",
       contact: "Contact",
       portfolio: "Services Portfolio",
