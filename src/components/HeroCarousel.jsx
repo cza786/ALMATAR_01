@@ -122,11 +122,13 @@ export default function HeroCarousel() {
         <div className="container">
           <div className="hero-tabs-grid">
             {slides.map((slide, i) => (
-              <div
+              <button
+                type="button"
                 key={i}
                 className={`hero-tab-item ${i === currentIndex ? 'active' : ''}`}
                 onClick={() => setCurrentIndex(i)}
-                style={{ cursor: 'pointer' }}
+                aria-label={`Show ${slide.tabLabel}`}
+                aria-current={i === currentIndex ? 'true' : undefined}
               >
                 <div className="tab-label-wrap">
                   <span className="tab-dot-mini"></span>
@@ -135,7 +137,7 @@ export default function HeroCarousel() {
                 <div className="progress-track">
                   {i === currentIndex && <div className="progress-fill"></div>}
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>

@@ -59,7 +59,7 @@ export default function SideDrawer({ isOpen, onClose }) {
               <line x1="2" y1="12" x2="22" y2="12"></line>
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
-            <span>{lang === 'en' ? 'التحويل إلى العربية (Arabic)' : 'Switch to English'}</span>
+            <span>{t('drawer.switchLang')}</span>
           </button>
         </div>
 
@@ -92,7 +92,7 @@ export default function SideDrawer({ isOpen, onClose }) {
                 <div className="drawer-sub-container">
                   <div className="drawer-nav-sub-item">
                     <Link href="/our-team" className="drawer-nav-link sub-link" onClick={onClose}>
-                      <span>• Our Team</span>
+                      <span>• {t('nav.ourTeam')}</span>
                     </Link>
                   </div>
                 </div>
@@ -165,7 +165,7 @@ export default function SideDrawer({ isOpen, onClose }) {
           {('qhse'.includes(searchTerm.toLowerCase()) || !searchTerm) && (
             <div className="drawer-nav-item">
               <Link href="/qhse" className={`drawer-nav-link ${pathname === '/qhse' ? 'active' : ''}`} onClick={onClose}>
-                <span>QHSE</span>
+                <span>{t('nav.qhse')}</span>
                 <span className="drawer-arrow">&rsaquo;</span>
               </Link>
             </div>
@@ -189,7 +189,7 @@ export default function SideDrawer({ isOpen, onClose }) {
                 onClick={() => setIsPoliciesOpen(!isPoliciesOpen)}
                 style={{ cursor: 'pointer', userSelect: 'none' }}
               >
-                <span style={{ fontWeight: 700, cursor: 'pointer' }} onClick={(event) => { event.stopPropagation(); router.push('/policies'); onClose(); }}>Policies</span>
+                <span style={{ fontWeight: 700, cursor: 'pointer' }} onClick={(event) => { event.stopPropagation(); router.push('/policies'); onClose(); }}>{t('nav.policies')}</span>
                 <span className={`drawer-arrow ${isPoliciesOpen ? 'expanded' : ''}`}>
                   {isPoliciesOpen ? '▾' : '›'}
                 </span>

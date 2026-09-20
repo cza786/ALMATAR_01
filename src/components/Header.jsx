@@ -66,7 +66,7 @@ export default function Header({ onOpenDrawer }) {
                     <span className="dropdown-icon-indicator">&#9662;</span>
                   </div>
                   <div className="dropdown-links-list">
-                    <Link href="/our-team" className="dropdown-link-item">&#8226; Our Team</Link>
+                    <Link href="/our-team" className="dropdown-link-item">&#8226; {t('nav.ourTeam')}</Link>
                   </div>
                 </div>
               </div>
@@ -95,19 +95,19 @@ export default function Header({ onOpenDrawer }) {
               </div>
 
               <Link href="/trading" className={`nav-link ${isActive('/trading') ? 'active' : ''}`}>{t('nav.trading')}</Link>
-              <Link href="/qhse" className={`nav-link ${isActive('/qhse') ? 'active' : ''}`}>QHSE</Link>
+              <Link href="/qhse" className={`nav-link ${isActive('/qhse') ? 'active' : ''}`}>{t('nav.qhse')}</Link>
               <Link href="/careers" className={`nav-link ${isActive('/careers') ? 'active' : ''}`}>{t('nav.careers')}</Link>
               {/* Policies Dropdown Item */}
               <div className="nav-item-dropdown">
                 <Link href="/policies" className={`nav-link dropdown-toggle-link ${pathname.startsWith('/policies') ? 'active' : ''}`}>
-                  <span>Policies</span>
+                  <span>{t('nav.policies')}</span>
                   <svg className="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M7 10l5 5 5-5z"/>
                   </svg>
                 </Link>
                 <div className="nav-dropdown-menu policies-dropdown-menu">
                   <div className="dropdown-header-bar">
-                    <span className="dropdown-header-text">Policies</span>
+                    <span className="dropdown-header-text">{t('nav.policies')}</span>
                     <span className="dropdown-icon-indicator">&#9662;</span>
                   </div>
                   <div className="dropdown-links-list">

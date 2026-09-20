@@ -37,36 +37,35 @@ export default function Home() {
     : '/images/about_field_operations.webp?v=15';
 
   return (
-    <div key={lang}>
+    <main className="home-page" key={lang}>
       {/* Top Dynamic Hero Carousel Header */}
       <HeroCarousel />
 
-      <div className="container" style={{ paddingTop: '2rem', paddingBottom: '1rem' }}>
-        {/* Main Intro Card */}
-        <div className="about-hero-card">
-          <div className="about-split-grid">
-            <div>
+      <section id="about-almatar" className="home-intro-section">
+        <div className="container">
+          <div className="home-intro-panel">
+            <div className="home-intro-copy">
               <span className="section-eyebrow">{introEyebrow}</span>
               <h2 className="section-title">{introTitle}</h2>
-              <p style={{ marginTop: '1rem', color: 'var(--text-muted)', lineHeight: '1.7' }}>
+              <p className="home-intro-description">
                 {introDesc}
               </p>
-              <div style={{ marginTop: '1.5rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <Link href="/about" className="btn-contact-header">
-                  <span>{t('homeIntro.readVision')}</span>
-                  <span style={{ marginInlineStart: '6px' }}>&rarr;</span>
-                </Link>
-              </div>
+              <Link href="/about" className="home-intro-link">
+                <span>{t('homeIntro.readVision')}</span>
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
             </div>
 
-            <div>
-              <div className="circle-img-container" title="ALMATAR Field Operations & Oilfield Engineering">
-                <img src={introImg} alt="ALMATAR Field Operations & Oilfield Engineering" />
-              </div>
+            <div className="home-intro-visual">
+              <img
+                src={introImg}
+                alt="ALMATAR Field Operations & Oilfield Engineering"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Slanted Diagonal Flex Accordion Portfolio Section */}
       <SlantedPortfolioAccordion />
@@ -79,6 +78,6 @@ export default function Home() {
         bgImage="/images/banner_about_corporate.webp?v=2"
       />
 
-    </div>
+    </main>
   );
 }

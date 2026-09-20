@@ -32,10 +32,10 @@ export default function SlantedPortfolioAccordion() {
       <div className="container position-relative" style={{ zIndex: 5 }}>
         
         {/* Section Header */}
-        <div className="section-header home-portfolio-header" style={{ marginBottom: '2.5rem' }}>
-          <span className="section-eyebrow" style={{ color: 'var(--accent-gold)' }}>{t('accordion.eyebrow')}</span>
-          <h2 className="section-title" style={{ color: '#ffffff' }}>{t('accordion.title')}</h2>
-          <p className="section-subtitle" style={{ color: '#9ca3af', maxWidth: '720px', margin: '0.6rem 0 0' }}>
+        <div className="section-header home-portfolio-header">
+          <span className="section-eyebrow">{t('accordion.eyebrow')}</span>
+          <h2 className="section-title">{t('accordion.title')}</h2>
+          <p className="section-subtitle">
             {t('accordion.subtitle')}
           </p>
         </div>

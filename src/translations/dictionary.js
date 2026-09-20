@@ -12,6 +12,8 @@ export const translations = {
       careers: "Careers",
       contact: "Contact",
       portfolio: "Services Portfolio",
+      ourTeam: "Our Team",
+      policies: "Policies",
     },
     hero: {
       slide1Tag: "INTEGRATED OILFIELD MANAGEMENT",
@@ -372,6 +374,8 @@ export const translations = {
       careers: "الوظائف",
       contact: "اتصل بنا",
       portfolio: "حقيبة الخدمات",
+      ourTeam: "فريقنا",
+      policies: "السياسات",
     },
     hero: {
       slide1Tag: "إدارة حقول النفط المتكاملة",
