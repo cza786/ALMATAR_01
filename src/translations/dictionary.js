@@ -301,6 +301,7 @@ export const translations = {
       emailBtn: "info@almatar-oil.com"
     },
     trading: {
+      heroEyebrow: "SUPPLY & PARTNERSHIP",
       heroTitle: "OILFIELD TRADING & SUPPLY",
       heroDesc: "ALMATAR is engaged in the trading and supply of high-quality materials and equipment for the oil and gas industry. We partner with trusted global manufacturers to deliver reliable products that meet international standards.",
       whatWeTrade: "WHAT WE TRADE",
@@ -663,6 +664,7 @@ export const translations = {
       emailBtn: "info@almatar-oil.com"
     },
     trading: {
+      heroEyebrow: "التوريد والشراكات",
       heroTitle: "تجارة وتوريد معدات النفط والغاز",
       heroDesc: "تنشط شركة المطار في تجارة وتوريد المواد والمعدات عالية الجودة لقطاع النفط والغاز في سوريا بالتعاون مع مصنعين عالميين موثوقين لتلبية أرفع المعايير الدولية.",
       whatWeTrade: "المواد والمعدات التي نتداولها",

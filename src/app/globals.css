@@ -10992,3 +10992,132 @@ body.rtl-mode .home-intro-link span:last-child {
 @media (max-width: 560px) {
   .careers-showcase { padding: 1rem 1rem 1.25rem; }.careers-showcase-shell { padding: 1.35rem; }.careers-showcase h1 { font-size: clamp(2.7rem, 15vw, 4rem); }.careers-showcase h2 { font-size: 1.1rem; }.careers-showcase-lead, .careers-showcase-body { font-size: .82rem; }.careers-pillars { grid-template-columns: 1fr; gap: .85rem; margin-top: 1.25rem; }.careers-pillar { align-items: center; }.careers-pillar h3 { font-size: .7rem; }.careers-pillar p { font-size: .67rem; }.careers-showcase-visual, .careers-showcase-visual img { min-height: 245px; }.careers-showcase-actions { gap: 1rem; }.careers-apply-button { flex: 1; }.careers-pathway-card { min-height: 82px; }.careers-footer-line { margin-top: 1.1rem; font-size: .48rem; }
 }
+
+/* Trading hero: cinematic left-aligned composition. */
+.tr-hero {
+  isolation: isolate;
+  display: block;
+  min-height: 28rem;
+  height: clamp(28rem, 26vw, 31rem);
+  background: #081828;
+}
+
+.tr-hero-bg img {
+  object-position: center 52%;
+}
+
+.tr-hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(4, 21, 39, .91) 0%,
+    rgba(4, 21, 39, .8) 35%,
+    rgba(4, 21, 39, .48) 61%,
+    rgba(4, 21, 39, .18) 100%
+  );
+}
+
+.tr-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: min(52rem, calc(100% - clamp(3rem, 12vw, 14rem)));
+  height: 100%;
+  max-width: 52rem;
+  margin-inline-start: clamp(1.5rem, 6vw, 7rem);
+  padding: 3rem 0;
+}
+
+.tr-hero-eyebrow {
+  margin: 0 0 1rem;
+  color: #e2a439;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .19em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.tr-hero-title {
+  max-width: 50rem;
+  margin: 0;
+  color: #fff;
+  font-size: clamp(3rem, 4.65vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -.045em;
+  line-height: .98;
+  text-transform: none;
+}
+
+.tr-hero-accent-line { display: none; }
+
+.tr-hero-desc {
+  max-width: 39rem;
+  margin: 1.25rem 0 0;
+  color: #edf3f7;
+  font-size: clamp(.95rem, 1.14vw, 1.14rem);
+  line-height: 1.55;
+}
+
+.trading-quote-cta {
+  align-self: flex-start;
+  min-width: 0;
+  min-height: 0;
+  margin-top: 1.6rem;
+  padding: .78rem 1.15rem;
+  border-color: rgba(255, 255, 255, .62);
+  border-radius: 0;
+  background: rgba(5, 32, 57, .36);
+  box-shadow: none;
+  font-size: .72rem;
+  letter-spacing: .09em;
+}
+
+.trading-quote-cta:hover {
+  color: #fff;
+  background: #c7871c;
+  box-shadow: 0 10px 22px rgba(4, 21, 39, .28);
+  filter: none;
+  transform: translateY(-2px);
+}
+
+.tr-hero-trust-mark {
+  position: absolute;
+  z-index: 2;
+  inset-inline-end: clamp(2.5rem, 9vw, 10rem);
+  top: 50%;
+  display: grid;
+  width: clamp(6rem, 7vw, 8.2rem);
+  aspect-ratio: 1;
+  place-items: center;
+  color: #e6ac41;
+  border: 1px solid rgba(230, 172, 65, .88);
+  border-radius: 50%;
+  background: rgba(4, 24, 44, .3);
+  transform: translateY(-8%);
+}
+
+.tr-hero-trust-mark::before,
+.tr-hero-trust-mark::after {
+  content: '';
+  position: absolute;
+  width: 1.2rem;
+  height: 1px;
+  background: #e6ac41;
+}
+
+.tr-hero-trust-mark::before { inset-inline-start: -1.45rem; }
+.tr-hero-trust-mark::after { inset-inline-end: -1.45rem; }
+
+@media (max-width: 760px) {
+  .tr-hero { height: auto; min-height: 34rem; }
+  .tr-hero-bg img { object-position: 62% center; }
+  .tr-hero-overlay { background: rgba(4, 21, 39, .76); }
+  .tr-hero-content { width: min(100% - 2.5rem, 40rem); margin-inline: auto; padding: 3.25rem 0; }
+  .tr-hero-title { font-size: clamp(2.65rem, 10vw, 4.15rem); }
+  .tr-hero-trust-mark { display: none; }
+}
+
+.tr-hero:dir(rtl) .tr-hero-content { margin-inline-start: auto; margin-inline-end: clamp(1.5rem, 6vw, 7rem); }
+.tr-hero:dir(rtl) .tr-hero-eyebrow { letter-spacing: 0; }

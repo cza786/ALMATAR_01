@@ -7,7 +7,7 @@ import QuoteModal from '@/components/QuoteModal';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function TradingPage() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   const whatWeTradeItems = t('trading.items') || [];
@@ -96,14 +96,14 @@ export default function TradingPage() {
   return (
     <>
       {/* ===================== HERO SECTION ===================== */}
-      <section className="tr-hero">
+      <section className="tr-hero" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
         <div className="tr-hero-bg">
           <img src="/images/trading_hero_industrial.webp" alt="ALMATAR Trading" />
           <div className="tr-hero-overlay" />
         </div>
-        <div className="tr-hero-content container">
+        <div className="tr-hero-content">
+          <p className="tr-hero-eyebrow">{t('trading.heroEyebrow')}</p>
           <h1 className="tr-hero-title">{t('trading.heroTitle')}</h1>
-          <div className="tr-hero-accent-line" />
           <p className="tr-hero-desc">
             {t('trading.heroDesc')}
           </p>
@@ -114,6 +114,12 @@ export default function TradingPage() {
             </svg>
             <span>{t('quoteBtn')}</span>
           </button>
+        </div>
+        <div className="tr-hero-trust-mark" aria-label="Quality-assured oilfield supply">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+            <path d="m9 12 2 2 4-4" />
+          </svg>
         </div>
       </section>
 
