@@ -6,7 +6,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { CONTACT_PAGE_QUERY, SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
 import { getImageUrl } from '@/sanity/lib/image';
 import { getSanityContent } from '@/sanity/lib/fetchData';
-import { isValidSyrianPhone, normalizeSyrianPhone, SYRIAN_PHONE_PREFIX } from '@/lib/syrianPhone';
+import { isValidSyrianPhone, normalizeSyrianPhone, SYRIAN_PHONE_PREFIX, SYRIAN_PHONE_PATTERN } from '@/lib/syrianPhone';
 
 export default function ContactPage() {
   const { t, lang } = useLanguage();
@@ -337,7 +337,7 @@ export default function ContactPage() {
                             placeholder={t('quote.phonePlaceholder')}
                             value={formData.phone}
                             onChange={handleInputChange}
-                            pattern="\\+963\\s\\d{8,9}"
+                            pattern={SYRIAN_PHONE_PATTERN.source}
                             maxLength={14}
                             inputMode="tel"
                             className="light-form-input"

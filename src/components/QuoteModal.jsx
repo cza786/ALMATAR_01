@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { isValidSyrianPhone, normalizeSyrianPhone, SYRIAN_PHONE_PREFIX } from '../lib/syrianPhone';
+import { isValidSyrianPhone, normalizeSyrianPhone, SYRIAN_PHONE_PREFIX, SYRIAN_PHONE_PATTERN } from '../lib/syrianPhone';
 
 export default function QuoteModal({ isOpen, onClose }) {
   const { t, lang } = useLanguage();
@@ -167,7 +167,7 @@ export default function QuoteModal({ isOpen, onClose }) {
                     placeholder={t('quote.phonePlaceholder')}
                     value={formData.phone}
                     onChange={handleChange}
-                    pattern="\\+963\\s\\d{8,9}"
+                    pattern={SYRIAN_PHONE_PATTERN.source}
                     maxLength={14}
                     inputMode="tel"
                     className="quote-form-input"
