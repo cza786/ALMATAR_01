@@ -10284,6 +10284,29 @@ body.rtl-mode .home-intro-link span:last-child {
   .drilling-page .tf-capabilities > article { min-height: 28rem; }
 }
 
+/* On small screens, show one capability card at a time in a swipeable row. */
+@media (max-width: 767px) {
+  .drilling-page .tf-capabilities {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: .9rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: .15rem .1rem .75rem;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+  }
+
+  .drilling-page .tf-capabilities > article {
+    flex: 0 0 calc(100vw - 2.5rem);
+    width: calc(100vw - 2.5rem);
+    min-height: 28rem;
+    aspect-ratio: .68;
+    scroll-snap-align: start;
+  }
+}
+
 .careers-page { color: #102950; background: #fff; }
 .careers-page-hero { position: relative; height: 390px; overflow: hidden; color: #fff; }
 .careers-page-hero > img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; filter: brightness(.54); }
