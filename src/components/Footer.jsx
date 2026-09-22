@@ -32,7 +32,7 @@ export default function Footer() {
   const email = 'info@almatar-oil.com';
   const qhseLabel = t('nav.qhse').replace(/\s+safety$/i, '');
   const copyright = lang === 'ar'
-    ? 'جميع الحقوق محفوظة © شركة المطار (Al Matar Company).'
+    ? 'جميع الحقوق محفوظة © شركة المطر (Al Matar Company).'
     : 'Al Matar Company. All Rights Reserved.';
 
   return (

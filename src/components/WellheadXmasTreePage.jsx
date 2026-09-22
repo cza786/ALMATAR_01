@@ -264,7 +264,7 @@ export default function WellheadXmasTreePage() {
       <ServiceIntroCard
         eyebrow={tr('PRESSURE CONTROL & INTEGRITY', 'التحكم بالضغط وسلامة البئر')}
         title={tr('Reliable Wellhead Solutions', 'حلول موثوقة لرؤوس الآبار')}
-        description={tr('ALMATAR delivers wellhead and Xmas tree installation, inspection, maintenance and repair services for safe, compliant and reliable production operations.', 'تقدم المطار خدمات تركيب وفحص وصيانة وإصلاح رؤوس الآبار وشجرة الميلاد لضمان عمليات إنتاج آمنة ومتوافقة وموثوقة.')}
+        description={tr('ALMATAR delivers wellhead and Xmas tree installation, inspection, maintenance and repair services for safe, compliant and reliable production operations.', 'تقدم المطر خدمات تركيب وفحص وصيانة وإصلاح رؤوس الآبار وشجرة الميلاد لضمان عمليات إنتاج آمنة ومتوافقة وموثوقة.')}
         image={`${imgBase}01_wellhead_hero_workers.webp`}
         imageAlt={tr('Wellhead service team', 'فريق خدمات رؤوس الآبار')}
       />

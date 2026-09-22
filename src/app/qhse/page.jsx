@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import NextPageBanner from '@/components/NextPageBanner';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -27,6 +28,7 @@ const policyContent = {
     dateLabel: 'Date',
     document: 'View the official policy document',
     documentHint: 'PDF · Incident reporting and crisis management',
+    openPdf: 'Open PDF in a new tab',
     nextTitle: 'Talk to our QHSE team',
     nextSubtitle: 'Get in touch',
   },
@@ -36,7 +38,7 @@ const policyContent = {
     shortTitle: 'بلّغ مبكراً. سلامة الأفراد أولاً.',
     policy: 'السياسة رقم (9)',
     codeLabel: 'الرمز المرجعي',
-    intro: 'تلتزم شركة المطار بضمان استجابة سريعة ومنظمة وفعالة لأي حالة طوارئ أو حادث أو فشل في المعدات أو حادث أمني. تعد سلامة الحياة البشرية الأولوية المطلقة في أي وضع أزمة. وتأتي المعدات والممتلكات، رغم قيمتها، في المرتبة الثانية بعد سلامة موظفينا ومقاولينا من الباطن وأي أفراد موجودين في مواقع عملنا.',
+    intro: 'تلتزم شركة المطر بضمان استجابة سريعة ومنظمة وفعالة لأي حالة طوارئ أو حادث أو فشل في المعدات أو حادث أمني. تعد سلامة الحياة البشرية الأولوية المطلقة في أي وضع أزمة. وتأتي المعدات والممتلكات، رغم قيمتها، في المرتبة الثانية بعد سلامة موظفينا ومقاولينا من الباطن وأي أفراد موجودين في مواقع عملنا.',
     timelineTitle: 'الإبلاغ والاستجابة الفورية',
     timeline: [
       ['خلال ساعة واحدة', 'يجب الإبلاغ عن أي حادث في مكان العمل إلى مدير الحفارة، حتى لو كان إصابة بسيطة أو شبه حادث أو فشل في المعدات أو حادثاً أمنياً.'],
@@ -47,12 +49,13 @@ const policyContent = {
     investigationTitle: 'التعلّم والوقاية',
     investigation: 'يتولى مدير الحفارة التحقيق في الحوادث الكبيرة لتحديد السبب الجذري. ويركز التحقيق على إصلاح العملية وتنفيذ تدابير وقائية، وليس فقط على معاقبة الفرد، ما لم يتم تحديد إهمال جسيم أو سوء سلوك متعمد.',
     notice: 'قد يعرّض أي انتهاك لهذه السياسة، بما في ذلك عدم الإبلاغ عن حادث أو تقديم معلومات كاذبة، الموظف لإجراءات تأديبية.',
-    signatureCompany: 'شركة المطار لخدمات حقول النفط',
+    signatureCompany: 'شركة المطر لخدمات حقول النفط',
     signatureRole: 'رئيس مجلس الإدارة والمدير التنفيذي',
     signatureName: 'سليمان مطر يوسف',
     dateLabel: 'التاريخ',
     document: 'عرض وثيقة السياسة الرسمية',
     documentHint: 'PDF · الإبلاغ عن الحوادث وإدارة الأزمات',
+    openPdf: 'فتح ملف PDF في علامة تبويب جديدة',
     nextTitle: 'تواصل مع فريق الجودة والصحة والسلامة والبيئة',
     nextSubtitle: 'تواصل معنا',
   },
@@ -71,11 +74,25 @@ function PolicyIcon({ type }) {
 export default function QhsePage() {
   const { lang } = useLanguage();
   const content = policyContent[lang] || policyContent.en;
+  const [isDocumentOpen, setIsDocumentOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isDocumentOpen) return undefined;
+
+    const onKeyDown = (event) => event.key === 'Escape' && setIsDocumentOpen(false);
+    document.addEventListener('keydown', onKeyDown);
+    document.body.classList.add('policies-modal-open');
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.classList.remove('policies-modal-open');
+    };
+  }, [isDocumentOpen]);
 
   return (
     <main className="qhse-policy-page" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       <section className="qhse-policy-hero">
-        <img src="/images/qhse_safety.webp?v=2" alt={lang === 'ar' ? 'التزام شركة المطار بالسلامة' : 'ALMATAR safety commitment'} />
+        <img src="/images/qhse_safety.webp?v=2" alt={lang === 'ar' ? 'التزام شركة المطر بالسلامة' : 'ALMATAR safety commitment'} />
         <div className="qhse-policy-hero-overlay">
           <div>
             <span className="qhse-policy-eyebrow">{content.eyebrow}</span>
@@ -138,13 +155,33 @@ export default function QhsePage() {
             <strong>{content.signatureRole}</strong>
             <b>{content.signatureName}</b>
           </div>
-          <a href="/images/policies-photo/pdfs/incident-reporting-and-crisis-management-policy.pdf" target="_blank" rel="noreferrer" className="qhse-document-link">
+          <button type="button" className="qhse-document-link" onClick={() => setIsDocumentOpen(true)}>
             <PolicyIcon type="report" />
             <span><strong>{content.document}</strong><small>{content.documentHint}</small></span>
             <em>→</em>
-          </a>
+          </button>
         </footer>
       </section>
+
+      {isDocumentOpen && (
+        <div className="policies-modal-backdrop" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && setIsDocumentOpen(false)}>
+          <section className="policies-modal" role="dialog" aria-modal="true" aria-labelledby="qhse-pdf-modal-title">
+            <div className="policies-modal-heading">
+              <h2 id="qhse-pdf-modal-title">{content.title}</h2>
+              <button type="button" className="policies-modal-close" onClick={() => setIsDocumentOpen(false)} aria-label="Close policy document">×</button>
+            </div>
+            <div className="policies-pdf-frame">
+              <iframe
+                src="/images/policies-photo/pdfs/incident-reporting-and-crisis-management-policy.pdf#toolbar=0&navpanes=0"
+                title={content.title}
+              />
+            </div>
+            <a className="policies-open-pdf" href="/images/policies-photo/pdfs/incident-reporting-and-crisis-management-policy.pdf" target="_blank" rel="noreferrer">
+              {content.openPdf} <span>→</span>
+            </a>
+          </section>
+        </div>
+      )}
 
       <NextPageBanner
         title={content.nextTitle}

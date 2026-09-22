@@ -31,12 +31,12 @@ const fallbackContent = {
   ar: {
     eyebrow: 'الناس يصنعون التقدم',
     heroTitle: 'انضم إلينا',
-    heroSubtitle: 'ابنِ مستقبلك مع المطار',
-    heroDesc: 'في المطار، ستكون جزءاً من فريق دولي متنامٍ وديناميكي يحقق أثراً حقيقياً في قطاع خدمات حقول النفط.',
+    heroSubtitle: 'ابنِ مستقبلك مع المطر',
+    heroDesc: 'في المطر، ستكون جزءاً من فريق دولي متنامٍ وديناميكي يحقق أثراً حقيقياً في قطاع خدمات حقول النفط.',
     body: 'نوفّر بيئة متنوعة وتعاونية تُقدّر الأفكار، وتعترف بالتحديات، وتمنح كل مساهمة مساحة لإحداث فرق.',
     apply: 'قدّم الآن',
     journey: 'استكشف الفرص',
-    imageAlt: 'مهندس ميداني من المطار في العمل',
+    imageAlt: 'مهندس ميداني من المطر في العمل',
     progress: 'أشخاص حقيقيون. تقدم حقيقي.',
     pillars: [
       { title: 'نمو مهني', text: 'طوّر مهاراتك وادفع مسيرتك المهنية إلى الأمام.' },
@@ -44,7 +44,7 @@ const fallbackContent = {
       { title: 'ثقافة تعاونية', text: 'اعمل مع أشخاص رائعين لإحداث أثر دائم.' },
     ],
     cards: [
-      { title: 'لماذا العمل معنا', text: 'اكتشف القيم التي تجعل المطار مكاناً رائعاً لبناء مسيرتك.' },
+      { title: 'لماذا العمل معنا', text: 'اكتشف القيم التي تجعل المطر مكاناً رائعاً لبناء مسيرتك.' },
       { title: 'الوظائف الشاغرة', text: 'التقديمات مغلقة حالياً.' },
     ],
   },
@@ -95,13 +95,27 @@ export default function CareersPage() {
 
   return (
     <main className="careers-page careers-showcase" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+      <section className="careers-page-hero" aria-labelledby="careers-title">
+        <img src={bannerImage} alt={copy.imageAlt} />
+        <div className="careers-page-hero-overlay">
+          <div className="careers-page-hero-copy">
+            <span className="careers-page-hero-eyebrow">{eyebrow}</span>
+            <h1 id="careers-title">{heroTitle}</h1>
+            <p>{heroDesc}</p>
+            <Link href="#career-pathways" className="careers-page-hero-button">
+              {copy.journey}<span aria-hidden="true">→</span>
+            </Link>
+          </div>
+          <span className="careers-page-hero-message">{lang === 'ar' ? <>الناس<br />النمو<br />الابتكار<br />المستقبل</> : <>PEOPLE<br />GROWTH<br />INNOVATION<br />THE FUTURE</>}</span>
+        </div>
+      </section>
+
       <section className="careers-showcase-shell" aria-labelledby="careers-title">
         <div className="careers-showcase-copy">
-          <p className="careers-showcase-eyebrow"><span />{eyebrow}</p>
-          <h1 id="careers-title">{heroTitle}</h1>
-          <h2>{copy.heroSubtitle}</h2>
-          <p className="careers-showcase-lead">{heroDesc}</p>
-          <p className="careers-showcase-body">{copy.body}</p>
+          <p className="careers-showcase-eyebrow"><span />{copy.heroSubtitle}</p>
+          <h2>{lang === 'ar' ? 'مسيرتك المهنية تبدأ هنا' : 'A place to grow your career'}</h2>
+          <p className="careers-showcase-lead">{copy.body}</p>
+          <p className="careers-showcase-body">{lang === 'ar' ? 'انضم إلى فريق يقدّر الخبرة والطموح والعمل الجماعي، ويساهم في بناء مستقبل أفضل لقطاع الطاقة.' : 'Join a team that values experience, ambition and collaboration while helping shape a stronger future for the energy sector.'}</p>
 
           <div className="careers-pillars" aria-label="Career benefits">
             {copy.pillars.map((pillar, index) => (

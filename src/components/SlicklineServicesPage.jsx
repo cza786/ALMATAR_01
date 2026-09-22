@@ -228,7 +228,7 @@ export default function SlicklineServicesPage() {
               {tr('Reliable downhole solutions for well measurement, mechanical intervention and reservoir monitoring.', 'حلول موثوقة تحت سطح الأرض لقياس الآبار والتدخل الميكانيكي ومراقبة المكمن.')}
             </p>
             <p className="slickline-hero-desc">
-              {tr('ALMATAR provides safe, efficient and cost-effective slickline services to support well integrity, production optimization and reservoir management across onshore operations.', 'تقدم المطار خدمات السلك الأملس الآمنة والفعالة وذات الجدوى الاقتصادية لدعم سلامة الآبار وتحسين الإنتاج وإدارة المكامن في العمليات البرية.')}
+              {tr('ALMATAR provides safe, efficient and cost-effective slickline services to support well integrity, production optimization and reservoir management across onshore operations.', 'تقدم المطر خدمات السلك الأملس الآمنة والفعالة وذات الجدوى الاقتصادية لدعم سلامة الآبار وتحسين الإنتاج وإدارة المكامن في العمليات البرية.')}
             </p>
             <div className="slickline-hero-actions">
               <Link href="/contact" className="slickline-cta-btn">
@@ -255,9 +255,9 @@ export default function SlicklineServicesPage() {
       <ServiceIntroCard
         eyebrow={tr('PRECISION & PERFORMANCE', 'الدقة والأداء')}
         title={tr('Integrated Slickline Solutions', 'حلول متكاملة للسلك الأملس')}
-        description={tr('ALMATAR provides safe, efficient and cost-effective slickline services that support well integrity, production optimization and reservoir management.', 'تقدم المطار خدمات سلك أملس آمنة وفعالة وذات جدوى اقتصادية تدعم سلامة الآبار وتحسين الإنتاج وإدارة المكامن.')}
+              description={tr('ALMATAR provides safe, efficient and cost-effective slickline services that support well integrity, production optimization and reservoir management.', 'تقدم المطر خدمات سلك أملس آمنة وفعالة وذات جدوى اقتصادية تدعم سلامة الآبار وتحسين الإنتاج وإدارة المكامن.')}
         image={`${imgFolder}01_hero_slickline_scene.webp`}
-        imageAlt={tr('ALMATAR slickline operations', 'عمليات السلك الأملس في المطار')}
+        imageAlt={tr('ALMATAR slickline operations', 'عمليات السلك الأملس في المطر')}
       />
 
       {/* 3. TECHNICAL OVERVIEW & CAPABILITIES SECTION */}

@@ -82,7 +82,7 @@ export default function WellTestingPage() {
 
   return <div className="well-testing-page">
     <section className="wt-hero">
-      <img src="/images/service_well_testing.webp" alt={tr('ALMATAR well testing separator and field equipment', 'معدات فصل واختبار آبار المطار الميدانية')} />
+      <img src="/images/service_well_testing.webp" alt={tr('ALMATAR well testing separator and field equipment', 'معدات فصل واختبار آبار المطر الميدانية')} />
       <div className="wt-hero-overlay" />
       <div className="wt-hero-copy"><Eyebrow>{tr('OUR SERVICES', 'خدماتنا')}</Eyebrow><h1>{tr('WELL TESTING', 'اختبار الآبار')}<br />{tr('& FLARING', 'وحرق الغاز')}</h1><p>{tr('Reliable well testing solutions for accurate measurement, production evaluation and safe, controlled field operations.', 'حلول موثوقة لاختبار الآبار من أجل قياس دقيق وتقييم الإنتاج وعمليات ميدانية آمنة ومضبوطة.')}</p><Link href="/contact" className="wt-button">{tr('Request Technical Support', 'اطلب الدعم الفني')} <b>→</b></Link></div>
       <div className="wt-hero-side">{tr('PEOPLE', 'الكوادر')}<br />{tr('EXPERIENCE', 'الخبرة')}<br />{tr('SOLUTIONS', 'الحلول')}<br />{tr('LASTING VALUE', 'قيمة مستدامة')}</div>
@@ -91,7 +91,7 @@ export default function WellTestingPage() {
     <ServiceIntroCard
       eyebrow={tr('MEASUREMENT & CONTROL', 'القياس والتحكم')}
       title={tr('Reliable Well Testing Solutions', 'حلول موثوقة لاختبار الآبار')}
-      description={tr('ALMATAR provides accurate measurement, production evaluation and controlled field testing services supported by experienced teams and dependable equipment.', 'توفر المطار خدمات القياس الدقيق وتقييم الإنتاج والاختبارات الحقلية المضبوطة، بدعم من فرق خبيرة ومعدات موثوقة.')}
+      description={tr('ALMATAR provides accurate measurement, production evaluation and controlled field testing services supported by experienced teams and dependable equipment.', 'توفر المطر خدمات القياس الدقيق وتقييم الإنتاج والاختبارات الحقلية المضبوطة، بدعم من فرق خبيرة ومعدات موثوقة.')}
       image="/images/service_well_testing.webp"
       imageAlt={tr('Well testing field equipment', 'معدات اختبار الآبار الميدانية')}
     />
