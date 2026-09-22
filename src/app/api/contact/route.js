@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { serverClient } from '@/sanity/lib/serverClient'
+import { writeClient } from '@/sanity/lib/serverClient'
 import { isValidSyrianPhone } from '@/lib/syrianPhone'
 
 export async function POST(request) {
@@ -24,6 +24,10 @@ export async function POST(request) {
     const resendApiKey = process.env.RESEND_API_KEY
     if (!resendApiKey) {
       throw new Error('Email delivery is not configured. Please set RESEND_API_KEY.')
+    }
+
+    if (!process.env.SANITY_API_WRITE_TOKEN) {
+      throw new Error('Contact submissions are not configured. Please set SANITY_API_WRITE_TOKEN.')
     }
 
     const emailResponse = await fetch('https://api.resend.com/emails', {
@@ -52,7 +56,7 @@ export async function POST(request) {
     }
 
     // Create document in Sanity
-    const submission = await serverClient.create({
+    const submission = await writeClient.create({
       _type: 'contactSubmission',
       name: name.trim(),
       company: company.trim(),
