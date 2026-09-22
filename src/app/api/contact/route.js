@@ -26,10 +26,6 @@ export async function POST(request) {
       throw new Error('Email delivery is not configured. Please set RESEND_API_KEY.')
     }
 
-    if (!process.env.SANITY_API_WRITE_TOKEN) {
-      throw new Error('Contact submissions are not configured. Please set SANITY_API_WRITE_TOKEN.')
-    }
-
     const emailResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -55,25 +51,36 @@ export async function POST(request) {
       throw new Error(`Email delivery failed: ${emailError}`)
     }
 
-    // Create document in Sanity
-    const submission = await writeClient.create({
-      _type: 'contactSubmission',
-      name: name.trim(),
-      company: company.trim(),
-      phone: phone.trim(),
-      serviceType: serviceType.trim(),
-      projectDescription: projectDescription.trim(),
-      submittedAt: new Date().toISOString(),
-      status: 'new',
-    })
+    // Store a copy in Sanity when a write token is configured. Email delivery
+    // remains the primary submission path so a missing Sanity token does not
+    // make the quotation form fail for the visitor.
+    let submission = null
+    if (process.env.SANITY_API_WRITE_TOKEN) {
+      try {
+        submission = await writeClient.create({
+          _type: 'contactSubmission',
+          name: name.trim(),
+          company: company.trim(),
+          phone: phone.trim(),
+          serviceType: serviceType.trim(),
+          projectDescription: projectDescription.trim(),
+          submittedAt: new Date().toISOString(),
+          status: 'new',
+        })
+      } catch (sanityError) {
+        console.error('Sanity contact submission failed after email delivery:', sanityError)
+      }
+    } else {
+      console.warn('SANITY_API_WRITE_TOKEN is not configured; contact submission was emailed but not stored in Sanity.')
+    }
 
     return NextResponse.json({
       success: true,
-      id: submission._id,
+      id: submission?._id || null,
       message: 'Quotation request submitted successfully!',
     })
   } catch (error) {
-    console.error('Error submitting to Sanity:', error)
+    console.error('Error submitting contact request:', error)
     return NextResponse.json(
       { error: error.message || 'Failed to submit form to Sanity.' },
       { status: 500 }
