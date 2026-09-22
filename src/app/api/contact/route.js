@@ -33,7 +33,7 @@ export async function POST(request) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: process.env.CONTACT_FROM_EMAIL || 'ALMATAR Website <onboarding@resend.dev>',
+        from: process.env.CONTACT_FROM_EMAIL || 'ALMATAR Website <info@almatar-oil.com>',
         to: ['info@almatar-oil.com'],
         subject: `New quote request from ${name.trim()}`,
         text: [
