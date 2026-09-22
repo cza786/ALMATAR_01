@@ -11277,6 +11277,116 @@ body.rtl-mode .home-intro-link span:last-child {
 .tr-hero:dir(rtl) .tr-hero-content { margin-inline-start: auto; margin-inline-end: clamp(1.5rem, 6vw, 7rem); }
 .tr-hero:dir(rtl) .tr-hero-eyebrow { letter-spacing: 0; }
 
+/* Full-bleed and responsive wellhead hero. */
+.wellhead-page > .wellhead-hero {
+  width: 100vw;
+  max-width: 100vw;
+  height: clamp(22rem, 36vw, 32rem);
+  min-height: 0;
+  margin-inline-start: calc(50% - 50vw);
+  margin-inline-end: 0;
+  border-radius: 0;
+}
+
+.wellhead-page > .wellhead-hero .wellhead-hero-content {
+  width: min(1360px, calc(100% - 4rem));
+}
+
+@media (max-width: 767px) {
+  .wellhead-page > .wellhead-hero {
+    height: 370px;
+  }
+
+  .wellhead-page > .wellhead-hero .wellhead-hero-img {
+    object-position: 62% center;
+  }
+
+  .wellhead-page > .wellhead-hero .wellhead-hero-overlay {
+    background: linear-gradient(180deg, rgba(8, 24, 46, .18), rgba(8, 24, 46, .9) 100%);
+  }
+
+  .wellhead-page > .wellhead-hero .wellhead-hero-content {
+    width: min(100% - 2rem, 32rem);
+    margin: 0 auto;
+  }
+
+  .wellhead-page > .wellhead-hero .wellhead-hero-title {
+    max-width: 21rem;
+    margin-bottom: .75rem;
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: .98;
+  }
+
+  .wellhead-page > .wellhead-hero .wellhead-hero-tagline {
+    max-width: 20rem;
+    margin-bottom: 1.2rem;
+    font-size: .7rem;
+    line-height: 1.4;
+  }
+
+  .wellhead-page > .wellhead-hero .wellhead-orange-btn {
+    padding: .7rem .9rem;
+    font-size: .62rem;
+  }
+
+  .wellhead-page > .wellhead-hero .wellhead-hero-vertical-tag {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .wellhead-page > .wellhead-hero {
+    height: 335px;
+  }
+
+  .wellhead-page > .wellhead-hero .wellhead-hero-content {
+    width: calc(100% - 1.5rem);
+  }
+
+  .wellhead-page > .wellhead-hero .wellhead-kicker {
+    margin-bottom: .45rem;
+    font-size: .56rem;
+  }
+
+  .wellhead-page > .wellhead-hero .wellhead-hero-title {
+    font-size: clamp(1.7rem, 9.5vw, 2.25rem);
+  }
+
+  .wellhead-page > .wellhead-hero .wellhead-hero-tagline {
+    margin-bottom: .9rem;
+    font-size: .6rem;
+  }
+}
+
+/* Keep the zonal-isolation photograph natural; remove the blue copy-panel gradient. */
+.zonal-page .zonal-hero-copy {
+  background: transparent !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .72);
+}
+
+.zonal-page .zonal-hero-copy .zonal-orange-btn {
+  text-shadow: none;
+}
+
+.zonal-page .zonal-hero::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(8, 24, 46, .88) 0%, rgba(8, 24, 46, .62) 46%, rgba(8, 24, 46, .16) 100%);
+}
+
+.zonal-page .zonal-hero-copy {
+  z-index: 1;
+}
+
+@media (max-width: 767px) {
+  .zonal-page .zonal-hero::after {
+    background: linear-gradient(180deg, rgba(8, 24, 46, .2) 0%, rgba(8, 24, 46, .86) 100%);
+  }
+}
+
 /* Dedicated coiled tubing service page. */
 .ct-page {
   --ct-blue: #092c4d;
