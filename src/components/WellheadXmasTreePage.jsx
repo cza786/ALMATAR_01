@@ -8,7 +8,7 @@ const imgBase = '/images/policies-photo/services/almatar_wellhead_text_free_sepa
 
 const navServices = [
   { name: 'WELL INTERVENTION SERVICES', href: '/well-services', icon: 'rig' },
-  { name: 'COILED TUBING & NITROGEN PUMPING', href: '/well-services#coiled-tubing', icon: 'tubing' },
+  { name: 'COILED TUBING & NITROGEN PUMPING', href: '/coiled-tubing', icon: 'tubing' },
   { name: 'STIMULATION & FRACTURING', href: '/stimulation-fracturing', icon: 'stim' },
   { name: 'ZONAL ISOLATION & CEMENTING', href: '/zonal-isolation-cementing', icon: 'zonal' },
   { name: 'WELLHEAD & XMAS TREE SERVICES', href: '/wellhead-xmas-tree', icon: 'wellhead', active: true },

@@ -6,7 +6,7 @@ import { useLanguage } from '@/context/LanguageContext';
 
 const services = [
   { title: { en: 'Well Intervention Services', ar: 'خدمات التدخل في الآبار' }, href: '/well-services', icon: 'intervention' },
-  { title: { en: 'Coiled Tubing & Nitrogen Pumping', ar: 'الأنابيب الملتفة وضخ النيتروجين' }, href: '/well-services#coiled-tubing', icon: 'coiled' },
+  { title: { en: 'Coiled Tubing & Nitrogen Pumping', ar: 'الأنابيب الملتفة وضخ النيتروجين' }, href: '/coiled-tubing', icon: 'coiled' },
   { title: { en: 'Stimulation & Fracturing', ar: 'تنشيط الآبار والتكسير' }, href: '/stimulation-fracturing', icon: 'stimulation' },
   { title: { en: 'Zonal Isolation & Cementing', ar: 'العزل الطبقي والتسميت' }, href: '/zonal-isolation-cementing', icon: 'cementing' },
   { title: { en: 'Wellhead & Xmas Tree Services', ar: 'خدمات رؤوس الآبار وشجرة الميلاد' }, href: '/wellhead-xmas-tree', icon: 'wellhead' },

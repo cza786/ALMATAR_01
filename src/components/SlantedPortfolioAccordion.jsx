@@ -17,7 +17,7 @@ export default function SlantedPortfolioAccordion() {
 
   const services = [
     ['well-intervention', '01', 'WELL INTERVENTION SERVICES', 'Well Intervention Services', '/images/policies-photo/services/drilling_workover/well-intervention-hero-clear.webp', '/well-services', 'var(--accent-gold)'],
-    ['coiled-tubing', '02', 'COILED TUBING & NITROGEN PUMPING', 'Coiled Tubing & Nitrogen Pumping', '/images/policies-photo/services/almatar_coiled_tubing_photos/01_clean_hero_coiled_tubing.webp', '/well-services#coiled-tubing', 'var(--accent-gold)'],
+    ['coiled-tubing', '02', 'COILED TUBING & NITROGEN PUMPING', 'Coiled Tubing & Nitrogen Pumping', '/images/policies-photo/services/almatar_coiled_tubing_photos/01_clean_hero_coiled_tubing.webp', '/coiled-tubing', 'var(--accent-gold)'],
     ['stimulation', '03', 'STIMULATION & FRACTURING', 'Stimulation & Fracturing', '/images/policies-photo/services/almatar_stimulation_all_photos/01_hero_stimulation_fracturing.webp', '/stimulation-fracturing', '#10b981'],
     ['zonal-isolation', '04', 'ZONAL ISOLATION & CEMENTING', 'Zonal Isolation & Cementing', '/images/policies-photo/services/almatar_zonal_isolation_photos/01_hero_cementing_operation.webp', '/zonal-isolation-cementing', '#10b981'],
     ['wellhead', '05', 'WELLHEAD & XMAS TREE SERVICES', 'Wellhead & Xmas Tree Services', '/images/policies-photo/services/almatar_wellhead_text_free_separate_photos/01_wellhead_hero_workers.webp', '/wellhead-xmas-tree', '#f59e0b'],

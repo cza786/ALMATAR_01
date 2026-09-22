@@ -8991,24 +8991,85 @@ html, body {
   .home-page .hero-header-section,
   .home-page .hero-slider-container,
   .home-page .hero-slide.active {
-    min-height: 630px;
+    min-height: 430px;
   }
 
   .home-page .hero-content-wrap {
-    min-height: 555px;
-    padding: 4rem 0 9rem;
+    min-height: 380px;
+    padding: 2rem 1rem 5.5rem;
+  }
+
+  .home-page .hero-tag {
+    margin-bottom: .65rem;
+    font-size: .52rem;
+    letter-spacing: .1em;
+  }
+
+  .home-page .hero-tag::before {
+    width: 1.35rem;
   }
 
   .home-page .hero-title {
-    font-size: clamp(2.2rem, 11vw, 3rem);
+    max-width: 20rem;
+    margin-bottom: .7rem;
+    font-size: clamp(1.55rem, 8.8vw, 2.15rem);
+    line-height: 1.08;
   }
 
   .home-page .hero-description {
-    font-size: .88rem;
+    max-width: 20rem;
+    margin-bottom: 1.1rem;
+    font-size: .7rem;
+    line-height: 1.45;
+  }
+
+  .home-page .btn-learn-more {
+    gap: .65rem;
+    padding: .52rem .7rem .52rem .8rem;
+    font-size: .62rem;
+  }
+
+  .home-page .btn-learn-more .arrow-circle {
+    width: 20px;
+    height: 20px;
+    font-size: .7rem;
+  }
+
+  .home-page .hero-nav-bar {
+    overflow: hidden;
   }
 
   .home-page .tab-label-wrap {
     gap: .25rem;
+  }
+
+  .home-page .hero-tabs-grid {
+    display: flex;
+    width: max-content;
+    min-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .home-page .hero-tabs-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-page .hero-tab-item {
+    flex: 0 0 7.4rem;
+    min-height: 50px;
+    padding: .55rem .7rem;
+    border-right: 1px solid rgba(255, 255, 255, .1);
+    border-bottom: 0;
+    font-size: .48rem;
+  }
+
+  .home-page .hero-tab-item:nth-child(3n) {
+    border-right: 1px solid rgba(255, 255, 255, .1);
+  }
+
+  .home-page .hero-tab-item:last-child {
+    border-right: 0;
   }
 
   .home-page .tab-dot-mini {
@@ -11215,3 +11276,184 @@ body.rtl-mode .home-intro-link span:last-child {
 
 .tr-hero:dir(rtl) .tr-hero-content { margin-inline-start: auto; margin-inline-end: clamp(1.5rem, 6vw, 7rem); }
 .tr-hero:dir(rtl) .tr-hero-eyebrow { letter-spacing: 0; }
+
+/* Dedicated coiled tubing service page. */
+.ct-page {
+  --ct-blue: #092c4d;
+  --ct-orange: #c98225;
+  background: #f3f6f8;
+  color: var(--ct-blue);
+}
+
+.ct-hero {
+  position: relative;
+  min-height: 440px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.ct-hero > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 54%;
+}
+
+.ct-hero-overlay {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 440px;
+  padding: 4rem 7%;
+  background: linear-gradient(90deg, rgba(5, 25, 45, .92), rgba(5, 25, 45, .58) 48%, rgba(5, 25, 45, .08));
+}
+
+.ct-hero-copy { max-width: 580px; }
+.ct-hero-copy > span, .ct-eyebrow { color: var(--ct-orange); font-size: .68rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.ct-hero h1 { margin: .7rem 0 1rem; color: #fff; font-size: clamp(2.35rem, 5vw, 4.4rem); line-height: .98; letter-spacing: -.045em; }
+.ct-hero p { max-width: 480px; margin: 0 0 1.5rem; color: #e5edf3; font-size: .95rem; line-height: 1.6; }
+.ct-hero-button { display: inline-flex; align-items: center; gap: 1.1rem; padding: .78rem 1rem; background: var(--ct-orange); color: #fff; font-size: .7rem; font-weight: 800; text-decoration: none; }
+.ct-hero-button b { font-size: 1rem; font-weight: 400; }
+.ct-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, .8fr); align-items: center; gap: 3rem; max-width: 1180px; margin: 0 auto; padding: 5rem 2rem; }
+.ct-intro h2, .ct-capabilities h2 { margin: .65rem 0 1rem; color: var(--ct-blue); font-size: clamp(1.8rem, 3.4vw, 3rem); line-height: 1.05; letter-spacing: -.035em; }
+.ct-intro p { max-width: 560px; color: #60758a; font-size: .95rem; line-height: 1.7; }
+.ct-intro img { width: 100%; height: 280px; object-fit: cover; box-shadow: 14px 14px 0 #dfe7ed; }
+.ct-capabilities { padding: 4rem max(2rem, calc((100% - 1180px) / 2)); background: #fff; }
+.ct-capabilities h2 { margin-bottom: 2rem; }
+.ct-capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.ct-capability-grid article { padding: 1.4rem; border: 1px solid #dce5eb; background: #fff; }
+.ct-capability-grid article > span { color: var(--ct-orange); font-size: 1.5rem; }
+.ct-capability-grid h3 { margin: .8rem 0 .5rem; font-size: .95rem; }
+.ct-capability-grid p { margin: 0; color: #60758a; font-size: .78rem; line-height: 1.55; }
+
+@media (max-width: 700px) {
+  .ct-hero, .ct-hero-overlay { min-height: 390px; }
+  .ct-hero-overlay { align-items: flex-end; padding: 2rem 7% 2.25rem; background: linear-gradient(180deg, rgba(5, 25, 45, .08), rgba(5, 25, 45, .92) 76%); }
+  .ct-hero > img { object-position: 62% center; }
+  .ct-hero h1 { font-size: clamp(2rem, 10vw, 3rem); }
+  .ct-hero p { font-size: .76rem; line-height: 1.45; }
+  .ct-intro { grid-template-columns: 1fr; gap: 1.5rem; padding: 3rem 1.25rem; }
+  .ct-intro img { height: 220px; }
+  .ct-capabilities { padding: 3rem 1.25rem; }
+  .ct-capability-grid { grid-template-columns: 1fr; }
+}
+
+/* Keep the well intervention hero full-bleed inside the constrained page wrapper. */
+.well-intervention-page > .wi-hero {
+  width: 100vw;
+  max-width: 100vw;
+  margin-inline-start: calc(50% - 50vw);
+  margin-inline-end: 0;
+  border-radius: 0;
+}
+
+/* Compact, image-led well intervention hero on mobile. */
+@media (max-width: 767px) {
+  .well-intervention-page > .wi-hero {
+    height: 390px;
+    min-height: 0;
+  }
+
+  .well-intervention-page .wi-hero > img {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    object-fit: cover;
+    object-position: 62% center;
+  }
+
+  .well-intervention-page .wi-hero-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 1.35rem 7% 1.5rem;
+    background: linear-gradient(180deg, rgba(5, 28, 52, .16) 12%, rgba(5, 28, 52, .88) 100%);
+  }
+
+  .well-intervention-page .wi-hero-overlay::before,
+  .well-intervention-page[dir='rtl'] .wi-hero-overlay::before {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(5, 28, 52, .1), rgba(5, 28, 52, .72) 58%, rgba(5, 28, 52, .95));
+  }
+
+  .well-intervention-page .wi-hero-breadcrumb {
+    width: 100%;
+    margin-bottom: .8rem;
+    overflow: hidden;
+    font-size: .43rem;
+    line-height: 1.2;
+    letter-spacing: .02em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .well-intervention-page .wi-hero-overlay h1 {
+    max-width: 15rem;
+    margin-bottom: .65rem;
+    font-size: clamp(1.8rem, 9.5vw, 2.55rem);
+    line-height: .94;
+    letter-spacing: -.045em;
+  }
+
+  .well-intervention-page .wi-hero-overlay p {
+    max-width: 19rem;
+    margin-bottom: 1rem;
+    font-size: .66rem;
+    line-height: 1.38;
+  }
+
+  .well-intervention-page .wi-hero-btn {
+    gap: .75rem;
+    padding: .58rem .8rem;
+    font-size: .55rem;
+    line-height: 1.1;
+  }
+
+  .well-intervention-page .wi-hero-btn b {
+    font-size: .85rem;
+  }
+
+  .well-intervention-page .wi-hero-side {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .well-intervention-page > .wi-hero {
+    height: 335px;
+  }
+
+  .well-intervention-page .wi-hero-overlay {
+    padding: 1rem 7% 1.1rem;
+  }
+
+  .well-intervention-page .wi-hero-breadcrumb {
+    margin-bottom: .6rem;
+    font-size: .38rem;
+  }
+
+  .well-intervention-page .wi-hero-overlay h1 {
+    max-width: 12rem;
+    margin-bottom: .55rem;
+    font-size: clamp(1.65rem, 9.2vw, 2.1rem);
+  }
+
+  .well-intervention-page .wi-hero-overlay p {
+    max-width: 15rem;
+    margin-bottom: .75rem;
+    font-size: .58rem;
+    line-height: 1.32;
+  }
+
+  .well-intervention-page .wi-hero-btn {
+    padding: .5rem .7rem;
+    font-size: .5rem;
+  }
+}
