@@ -2762,7 +2762,8 @@ body.rtl-mode .footer-brand p {
    ========================================================================== */
 .next-page-banner-section {
   position: relative;
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   height: 280px;
   overflow: hidden;
   display: flex;

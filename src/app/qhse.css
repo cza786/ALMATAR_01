@@ -36,3 +36,6 @@
   .qhse-protocol-card small{font-size:.58rem}
   .qhse-protocol-card li{font-size:.62rem;line-height:1.5}
 }
+
+/* Keep the CTA border/banner edge-to-edge even inside constrained page shells. */
+.qhse-cta { width: 100vw; margin-left: calc(50% - 50vw); }

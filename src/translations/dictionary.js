@@ -44,7 +44,7 @@ export const translations = {
         drillingFluids: "DRILLING & FLUIDS",
         construction: "CONSTRUCTION",
         trading: "TRADING",
-        qhse: "QHSE SAFETY",
+        qhse: "QHSE",
         careers: "CAREERS"
       }
     },

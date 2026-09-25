@@ -34,7 +34,7 @@ export const serviceType = defineType({
         list: [
           { title: 'Well Services', value: 'well-services' },
           { title: 'Drilling Fluids', value: 'drilling-fluids' },
-          { title: 'QHSE & Integrity', value: 'qhse' },
+          { title: 'QHSE', value: 'qhse' },
           { title: 'Trading & Supply', value: 'trading' },
           { title: 'Construction & Civil', value: 'construction' },
         ],

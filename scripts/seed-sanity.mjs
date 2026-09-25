@@ -213,7 +213,7 @@ async function seed() {
       },
       {
         _key: 's6',
-        badgeEn: 'QHSE & Integrity',
+        badgeEn: 'QHSE',
         badgeAr: 'السلامة والجودة والبيئة',
         titleEn: 'Zero-Harm QHSE Standards & Rig Inspection',
         titleAr: 'معايير صارمة للصحة والسلامة وفحص الحفارات',

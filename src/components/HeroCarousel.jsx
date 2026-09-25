@@ -7,7 +7,7 @@ import { HOME_PAGE_QUERY } from '@/sanity/lib/queries';
 import { getImageUrl } from '@/sanity/lib/image';
 import { useSanityContent } from '@/sanity/lib/fetchData';
 
-const AUTOPLAY_INTERVAL_MS = 8000;
+const AUTOPLAY_INTERVAL_MS = 12000;
 
 export default function HeroCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -67,14 +67,19 @@ export default function HeroCarousel() {
   ];
 
   const slides = sanitySlides
-    ? sanitySlides.map((s, idx) => ({
-        tag: (lang === 'ar' ? s.badgeAr : s.badgeEn) || defaultSlides[idx % defaultSlides.length]?.tag,
-        title: (lang === 'ar' ? s.titleAr : s.titleEn) || defaultSlides[idx % defaultSlides.length]?.title,
-        description: (lang === 'ar' ? s.subtitleAr : s.subtitleEn) || defaultSlides[idx % defaultSlides.length]?.description,
-        image: s.image ? getImageUrl(s.image, defaultSlides[idx % defaultSlides.length]?.image) : defaultSlides[idx % defaultSlides.length]?.image,
-        link: s.link || defaultSlides[idx % defaultSlides.length]?.link,
-        tabLabel: (lang === 'ar' ? s.badgeAr : s.badgeEn) || defaultSlides[idx % defaultSlides.length]?.tabLabel,
-      }))
+    ? sanitySlides.map((s, idx) => {
+        const isQhseSlide = s.link === '/qhse' || idx === 5;
+        const label = isQhseSlide ? 'QHSE' : (lang === 'ar' ? s.badgeAr : s.badgeEn);
+
+        return {
+          tag: label || defaultSlides[idx % defaultSlides.length]?.tag,
+          title: (lang === 'ar' ? s.titleAr : s.titleEn) || defaultSlides[idx % defaultSlides.length]?.title,
+          description: (lang === 'ar' ? s.subtitleAr : s.subtitleEn) || defaultSlides[idx % defaultSlides.length]?.description,
+          image: s.image ? getImageUrl(s.image, defaultSlides[idx % defaultSlides.length]?.image) : defaultSlides[idx % defaultSlides.length]?.image,
+          link: s.link || defaultSlides[idx % defaultSlides.length]?.link,
+          tabLabel: label || defaultSlides[idx % defaultSlides.length]?.tabLabel,
+        };
+      })
     : defaultSlides;
 
   useEffect(() => {
