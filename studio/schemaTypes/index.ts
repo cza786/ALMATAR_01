@@ -6,6 +6,7 @@ import { careersPageType } from './careersPageType'
 import { contactPageType } from './contactPageType'
 import { contactSubmissionType } from './contactSubmissionType'
 import { jobType } from './jobType'
+import { qhsePageType } from './qhsePageType'
 import { applicationType } from './applicationType'
 
 export const schemaTypes = [
@@ -19,6 +20,7 @@ export const schemaTypes = [
   // Collection Types
   serviceType,
   jobType,
+  qhsePageType,
   applicationType,
   contactSubmissionType,
 ]

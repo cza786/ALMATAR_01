@@ -68,6 +68,25 @@ export const ABOUT_PAGE_QUERY = groq`
   }
 `
 
+// QHSE Page
+export const QHSE_PAGE_QUERY = groq`
+  *[_type == "qhsePage" || _id == "qhsePage"][0] {
+    ..., heroImage, commitmentImage, qmsImage, ctaImage,
+    commitmentCards[]{..., titleEn, titleAr, detailEn, detailAr},
+    policyBullets[]{..., titleEn, titleAr},
+    objectives[]{..., objectiveEn, objectiveAr, kpiEn, kpiAr, targetEn, targetAr},
+    governanceCards[]{..., titleEn, titleAr, detailEn, detailAr},
+    protocols[]{..., titleEn, titleAr, image, bulletsEn, bulletsAr},
+    tolerancePolicies[]{..., policyEn, policyAr, referenceEn, referenceAr},
+    emergencyRows[]{..., scenarioEn, scenarioAr, responseEn, responseAr, referenceEn, referenceAr},
+    certifications[]{..., titleEn, titleAr, code, detailEn, detailAr},
+    qmsSteps[]{..., titleEn, titleAr},
+    auditCards[]{..., titleEn, titleAr, detailEn, detailAr},
+    metrics[]{..., titleEn, titleAr, value, icon},
+    documents[]{..., policyEn, policyAr, referenceEn, referenceAr, url, file, "fileUrl": file.asset->url}
+  }
+`
+
 // Careers Page
 export const CAREERS_PAGE_QUERY = groq`
   *[_type == "careersPage" || _id == "careersPage"][0] {

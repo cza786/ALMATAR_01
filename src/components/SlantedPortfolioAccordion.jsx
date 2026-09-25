@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function SlantedPortfolioAccordion() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const cardsRef = useRef(null);
 
   const scrollCards = (direction) => {
@@ -16,15 +16,15 @@ export default function SlantedPortfolioAccordion() {
   };
 
   const services = [
-    ['well-intervention', '01', 'WELL INTERVENTION SERVICES', 'Well Intervention Services', '/images/policies-photo/services/drilling_workover/well-intervention-hero-clear.webp', '/well-services', 'var(--accent-gold)'],
-    ['coiled-tubing', '02', 'COILED TUBING & NITROGEN PUMPING', 'Coiled Tubing & Nitrogen Pumping', '/images/policies-photo/services/almatar_coiled_tubing_photos/01_clean_hero_coiled_tubing.webp', '/coiled-tubing', 'var(--accent-gold)'],
-    ['stimulation', '03', 'STIMULATION & FRACTURING', 'Stimulation & Fracturing', '/images/policies-photo/services/almatar_stimulation_all_photos/01_hero_stimulation_fracturing.webp', '/stimulation-fracturing', '#10b981'],
-    ['zonal-isolation', '04', 'ZONAL ISOLATION & CEMENTING', 'Zonal Isolation & Cementing', '/images/policies-photo/services/almatar_zonal_isolation_photos/01_hero_cementing_operation.webp', '/zonal-isolation-cementing', '#10b981'],
-    ['wellhead', '05', 'WELLHEAD & XMAS TREE SERVICES', 'Wellhead & Xmas Tree Services', '/images/policies-photo/services/almatar_wellhead_text_free_separate_photos/01_wellhead_hero_workers.webp', '/wellhead-xmas-tree', '#f59e0b'],
-    ['slickline', '06', 'SLICKLINE SERVICES', 'Slickline Services', '/images/policies-photo/services/almatar_clean_photos/01_hero_slickline_scene.webp', '/slickline-services', '#f59e0b'],
-    ['well-testing', '07', 'WELL TESTING & FLARING', 'Well Testing & Flaring', '/images/policies-photo/services/almatar_well_testing_clean_photos/01_hero_well_testing_scene.webp', '/well-testing', '#06b6d4'],
-    ['drilling-workover', '08', 'DRILLING & WORKOVER SERVICES', 'Drilling & Workover Services', '/images/banner_drilling_hero.webp', '/drilling-workover', 'var(--accent-cyan)'],
-    ['construction', '09', 'TOTAL FIELD CONSTRUCTION & MANPOWER LOGISTICS', 'Total Field Construction & Manpower Logistics', '/images/policies-photo/services/almatar_total_field_all_photos/03_rig_and_site_mobilization-hd.webp', '/construction', '#10b981'],
+    ['well-intervention', '01', 'WELL INTERVENTION SERVICES', 'خدمات التدخل في الآبار', 'Well Intervention Services', '/images/policies-photo/services/drilling_workover/well-intervention-hero-clear.webp', '/well-services', 'var(--accent-gold)'],
+    ['coiled-tubing', '02', 'COILED TUBING & NITROGEN PUMPING', 'الأنابيب الملتفة وضخ النيتروجين', 'Coiled Tubing & Nitrogen Pumping', '/images/policies-photo/services/almatar_coiled_tubing_photos/01_clean_hero_coiled_tubing.webp', '/coiled-tubing', 'var(--accent-gold)'],
+    ['stimulation', '03', 'STIMULATION & FRACTURING', 'تنشيط الآبار والتكسير', 'Stimulation & Fracturing', '/images/policies-photo/services/almatar_stimulation_all_photos/01_hero_stimulation_fracturing.webp', '/stimulation-fracturing', '#10b981'],
+    ['zonal-isolation', '04', 'ZONAL ISOLATION & CEMENTING', 'العزل الطبقي والتسميت', 'Zonal Isolation & Cementing', '/images/policies-photo/services/almatar_zonal_isolation_photos/01_hero_cementing_operation.webp', '/zonal-isolation-cementing', '#10b981'],
+    ['wellhead', '05', 'WELLHEAD & XMAS TREE SERVICES', 'خدمات رؤوس الآبار وشجرة الميلاد', 'Wellhead & Xmas Tree Services', '/images/policies-photo/services/almatar_wellhead_text_free_separate_photos/01_wellhead_hero_workers.webp', '/wellhead-xmas-tree', '#f59e0b'],
+    ['slickline', '06', 'SLICKLINE SERVICES', 'خدمات السلك الأملس', 'Slickline Services', '/images/policies-photo/services/almatar_clean_photos/01_hero_slickline_scene.webp', '/slickline-services', '#f59e0b'],
+    ['well-testing', '07', 'WELL TESTING & FLARING', 'اختبار الآبار وحرق الغاز', 'Well Testing & Flaring', '/images/policies-photo/services/almatar_well_testing_clean_photos/01_hero_well_testing_scene.webp', '/well-testing', '#06b6d4'],
+    ['drilling-workover', '08', 'DRILLING & WORKOVER SERVICES', 'خدمات الحفر وصيانة الآبار', 'Drilling & Workover Services', '/images/banner_drilling_hero.webp', '/drilling-workover', 'var(--accent-cyan)'],
+    ['construction', '09', 'TOTAL FIELD CONSTRUCTION & MANPOWER LOGISTICS', 'الإنشاءات الحقلية ولوجستيات القوى العاملة', 'Total Field Construction & Manpower Logistics', '/images/policies-photo/services/almatar_total_field_all_photos/03_rig_and_site_mobilization-hd.webp', '/construction', '#10b981'],
   ];
 
   return (
@@ -52,7 +52,9 @@ export default function SlantedPortfolioAccordion() {
           </button>
 
           <div className="home-service-cards" ref={cardsRef}>
-          {services.map(([id, number, tag, title, image, link, color]) => {
+          {services.map(([id, number, tagEn, tagAr, titleEn, image, link, color]) => {
+            const tag = lang === 'ar' ? tagAr : tagEn;
+            const title = lang === 'ar' ? tagAr : titleEn;
             return (
               <Link
                 key={id}

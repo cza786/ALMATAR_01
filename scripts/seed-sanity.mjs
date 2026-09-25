@@ -3,6 +3,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { createClient } from '@sanity/client'
 import { DUMMY_JOBS } from '../src/data/dummyJobs.js'
+import { QHSE_FALLBACK } from '../src/data/qhseFallback.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -109,8 +110,18 @@ async function seedDummyJobs() {
   }
 }
 
+async function seedQhsePage() {
+  console.log('\n[qhse] Seeding QHSE page...')
+  const page = { ...QHSE_FALLBACK, _id: 'qhsePage', _type: 'qhsePage' }
+  for (const field of ['heroImage', 'commitmentImage', 'qmsImage', 'ctaImage']) page[field] = await uploadImage(page[field])
+  page.protocols = await Promise.all((page.protocols || []).map(async (protocol) => ({ ...protocol, image: await uploadImage(protocol.image) })))
+  await client.createOrReplace(page)
+  console.log('  QHSE page seeded successfully.')
+}
+
 async function seed() {
   await seedDummyJobs()
+  await seedQhsePage()
   console.log('\n[1/6] ⚙️  Seeding Global Site Settings...')
   const logoAsset = await uploadImage('images/almatar_logo_raw.png')
 
