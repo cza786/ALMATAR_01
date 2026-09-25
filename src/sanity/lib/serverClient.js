@@ -5,8 +5,9 @@ export const serverClient = createClient({
   projectId,
   dataset,
   apiVersion,
-  // Public pages use published content; the CDN is faster and appropriate here.
-  useCdn: true,
+  // The API route is an uncached live-content fallback, so read directly from
+  // Sanity instead of allowing the CDN to serve an older published revision.
+  useCdn: false,
   token: process.env.SANITY_API_READ_TOKEN,
 })
 

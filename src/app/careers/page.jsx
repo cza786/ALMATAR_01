@@ -1,173 +1,50 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { useLanguage } from '@/context/LanguageContext';
-import { CAREERS_PAGE_QUERY } from '@/sanity/lib/queries';
-import { getImageUrl } from '@/sanity/lib/image';
-import { getSanityContent } from '@/sanity/lib/fetchData';
+import '../career-detail.css'
+import { useMemo, useState } from 'react'
+import Link from 'next/link'
+import { useLanguage } from '@/context/LanguageContext'
+import { CAREERS_PAGE_QUERY } from '@/sanity/lib/queries'
+import { getImageUrl } from '@/sanity/lib/image'
+import { useSanityContent } from '@/sanity/lib/fetchData'
 
-const fallbackContent = {
-  en: {
-    eyebrow: 'PEOPLE DRIVE PROGRESS',
-    heroTitle: 'Join us',
-    heroSubtitle: 'Build your future with ALMATAR',
-    heroDesc: 'At ALMATAR, you will be part of a dynamic, growing international team delivering meaningful impact across the oilfield services industry.',
-    body: 'We foster a diverse and collaborative environment where ideas are valued, challenges are recognized, and every contribution has room to make a difference.',
-    apply: 'Apply now',
-    journey: 'Explore opportunities',
-    imageAlt: 'ALMATAR field engineer at work',
-    progress: 'Real people. Real progress.',
-    pillars: [
-      { title: 'Professional growth', text: 'Develop your skills and move your career forward.' },
-      { title: 'Field innovation', text: 'Be part of practical solutions for the energy sector.' },
-      { title: 'Collaborative culture', text: 'Work with great people to make a lasting impact.' },
-    ],
-    cards: [
-      { title: 'Why work with us', text: 'Discover the values that make ALMATAR a great place to build your career.' },
-      { title: 'Open positions', text: 'Applications are currently closed.' },
-    ],
-  },
-  ar: {
-    eyebrow: 'الناس يصنعون التقدم',
-    heroTitle: 'انضم إلينا',
-    heroSubtitle: 'ابنِ مستقبلك مع المطر',
-    heroDesc: 'في المطر، ستكون جزءاً من فريق دولي متنامٍ وديناميكي يحقق أثراً حقيقياً في قطاع خدمات حقول النفط.',
-    body: 'نوفّر بيئة متنوعة وتعاونية تُقدّر الأفكار، وتعترف بالتحديات، وتمنح كل مساهمة مساحة لإحداث فرق.',
-    apply: 'قدّم الآن',
-    journey: 'استكشف الفرص',
-    imageAlt: 'مهندس ميداني من المطر في العمل',
-    progress: 'أشخاص حقيقيون. تقدم حقيقي.',
-    pillars: [
-      { title: 'نمو مهني', text: 'طوّر مهاراتك وادفع مسيرتك المهنية إلى الأمام.' },
-      { title: 'ابتكار ميداني', text: 'كن جزءاً من حلول عملية لقطاع الطاقة.' },
-      { title: 'ثقافة تعاونية', text: 'اعمل مع أشخاص رائعين لإحداث أثر دائم.' },
-    ],
-    cards: [
-      { title: 'لماذا العمل معنا', text: 'اكتشف القيم التي تجعل المطر مكاناً رائعاً لبناء مسيرتك.' },
-      { title: 'الوظائف الشاغرة', text: 'التقديمات مغلقة حالياً.' },
-    ],
-  },
-};
+function localized(lang, ar, en, fallback = '') { return lang === 'ar' ? (ar || en || fallback) : (en || ar || fallback) }
 
-const hasArabicText = (value) => /[\u0600-\u06FF]/.test(value || '');
-
-function getLocalizedContent({ lang, arabicValue, englishValue, fallback }) {
-  if (lang === 'ar') return hasArabicText(arabicValue) ? arabicValue : fallback;
-  return englishValue || fallback;
+function Icon({ type }) {
+  const common = { width: 22, height: 22, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true }
+  if (type === 'people') return <svg {...common}><circle cx="9" cy="8" r="3" /><path d="M3 20c.4-3.4 2.4-5 6-5s5.6 1.6 6 5M17 11a3 3 0 1 0-1.5-5.6M17 15c2.6.1 4.1 1.7 4.5 5" /></svg>
+  if (type === 'growth') return <svg {...common}><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /><path d="m14 6 3-3 3 3" /></svg>
+  if (type === 'safety') return <svg {...common}><path d="M12 3 4 6v5c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6l-8-3Z" /><path d="m8.5 12 2.2 2.2 4.8-5" /></svg>
+  return <svg {...common}><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5" /></svg>
 }
 
-function CareerIcon({ name }) {
-  const common = { width: 28, height: 28, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true };
-  if (name === 'growth') return <svg {...common}><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /><path d="m14 6 3-3 3 3" /></svg>;
-  if (name === 'innovation') return <svg {...common}><path d="M9 18h6M10 22h4M8.5 14.5C7 13.3 6 11.4 6 9.2A6 6 0 0 1 18 9.2c0 2.2-1 4.1-2.5 5.3-.7.6-1 1.1-1 1.7h-5c0-.6-.3-1.1-1-1.7Z" /><path d="M12 2v1M4.9 5.1l.7.7M19.1 5.1l-.7.7" /></svg>;
-  if (name === 'culture') return <svg {...common}><circle cx="9" cy="8" r="3" /><path d="M3 20c.4-3.4 2.4-5 6-5s5.6 1.6 6 5M17 11a3 3 0 1 0-1.5-5.6M17 15c2.6.1 4.1 1.7 4.5 5" /></svg>;
-  if (name === 'positions') return <svg {...common}><path d="M6 3h9l4 4v14H6z" /><path d="M15 3v5h5M9 13h6M9 17h6" /></svg>;
-  if (name === 'graduate') return <svg {...common}><path d="m2 9 10-5 10 5-10 5zM6 11.2V16c2.7 2.7 9.3 2.7 12 0v-4.8M22 10v6" /></svg>;
-  return <svg {...common}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M19 8v6M16 11h6" /></svg>;
+function ApplyModal({ job, lang, onClose }) {
+  const [status, setStatus] = useState('idle')
+  const [error, setError] = useState('')
+  async function submit(event) {
+    event.preventDefault(); setStatus('sending'); setError('')
+    const response = await fetch('/api/careers/apply', { method: 'POST', body: new FormData(event.currentTarget) })
+    const result = await response.json()
+    if (!response.ok) { setError(result.error || 'Could not submit application.'); setStatus('error'); return }
+    setStatus('success')
+  }
+  return <div className="career-modal-backdrop" role="presentation" onClick={onClose}><section className="career-modal" role="dialog" aria-modal="true" aria-labelledby="career-modal-title" onClick={(event) => event.stopPropagation()}><button type="button" className="career-modal-close" onClick={onClose} aria-label="Close">×</button>{status === 'success' ? <div className="career-success"><span>✓</span><h2>{lang === 'ar' ? 'تم إرسال طلبك' : 'Application sent'}</h2><p>{lang === 'ar' ? 'سيتواصل معك فريق الموارد البشرية قريباً.' : 'Our HR team will review your application and contact you soon.'}</p></div> : <><p className="career-modal-kicker">{lang === 'ar' ? 'التقديم على الوظيفة' : 'APPLY FOR THIS ROLE'}</p><h2 id="career-modal-title">{localized(lang, job.titleAr, job.titleEn)}</h2><p className="career-modal-meta">{localized(lang, job.departmentAr, job.departmentEn)} · {localized(lang, job.locationAr, job.locationEn)}</p><form onSubmit={submit} className="career-application-form"><input type="hidden" name="jobId" value={job._id} /><input type="hidden" name="jobTitle" value={job.titleEn} /><label>{lang === 'ar' ? 'الاسم الكامل' : 'Full name'}<input name="fullName" required /></label><label>{lang === 'ar' ? 'البريد الإلكتروني' : 'Email'}<input name="email" type="email" required /></label><label>{lang === 'ar' ? 'الهاتف' : 'Phone'}<input name="phone" /></label><label className="career-form-wide">{lang === 'ar' ? 'رسالة' : 'Message'}<textarea name="message" rows="4" /></label><label className="career-form-wide">{lang === 'ar' ? 'السيرة الذاتية (PDF/DOC)' : 'Resume (PDF/DOC)'}<input name="resume" type="file" accept=".pdf,.doc,.docx" required /></label>{error && <p className="career-form-error">{error}</p>}<button className="career-submit" type="submit" disabled={status === 'sending'}>{status === 'sending' ? 'Sending…' : (lang === 'ar' ? 'إرسال الطلب' : 'Submit application')} <span>→</span></button></form></>}</section></div>
 }
 
 export default function CareersPage() {
-  const { lang } = useLanguage();
-  const [sanityData, setSanityData] = useState(null);
-  const [isClosedNoticeOpen, setIsClosedNoticeOpen] = useState(false);
-  const copy = fallbackContent[lang] || fallbackContent.en;
+  const { lang } = useLanguage()
+  const data = useSanityContent('careers', CAREERS_PAGE_QUERY)
+  const [department, setDepartment] = useState('all')
+  const [location, setLocation] = useState('all')
+  const [selectedJob, setSelectedJob] = useState(null)
+  const pageTitle = localized(lang, data?.pageTitleAr, data?.pageTitleEn, lang === 'ar' ? 'ابنِ مستقبلك مع المطر' : 'Build Your Future With ALMATAR')
+  const pageDesc = localized(lang, data?.pageDescAr, data?.pageDescEn, lang === 'ar' ? 'انضم إلى فريقنا وساهم في صناعة مستقبل أفضل.' : 'Join a team where expertise, ambition and teamwork create real progress.')
+  const bannerImage = data?.bannerImage ? getImageUrl(data.bannerImage, '/images/careers_engineers_hero.webp') : '/images/careers_engineers_hero.webp'
+  const cultureImage = data?.cultureImage ? getImageUrl(data.cultureImage, '/images/careers_team_walking.webp') : '/images/careers_team_walking.webp'
+  const jobs = data?.jobs || []
+  const departments = useMemo(() => [...new Set(jobs.map((job) => job.departmentEn).filter(Boolean))], [jobs])
+  const locations = useMemo(() => [...new Set(jobs.map((job) => job.locationEn).filter(Boolean))], [jobs])
+  const filteredJobs = jobs.filter((job) => (department === 'all' || job.departmentEn === department) && (location === 'all' || job.locationEn === location))
 
-  useEffect(() => {
-    let isMounted = true;
-    getSanityContent('careers', CAREERS_PAGE_QUERY)
-      .then((data) => { if (isMounted && data) setSanityData(data); })
-      .catch(() => undefined);
-    return () => { isMounted = false; };
-  }, []);
-
-  const bannerImage = sanityData?.bannerImage
-    ? getImageUrl(sanityData.bannerImage, '/images/careers_engineers_hero.webp')
-    : '/images/careers_engineers_hero.webp';
-  const heroTitle = getLocalizedContent({ lang, arabicValue: sanityData?.pageTitleAr, englishValue: sanityData?.pageTitleEn, fallback: copy.heroTitle });
-  const heroDesc = getLocalizedContent({ lang, arabicValue: sanityData?.pageDescAr, englishValue: sanityData?.pageDescEn, fallback: copy.heroDesc });
-  const eyebrow = getLocalizedContent({ lang, arabicValue: sanityData?.eyebrowAr, englishValue: sanityData?.eyebrowEn, fallback: copy.eyebrow });
-  const cardIcons = ['people', 'positions'];
-  const closedButtonLabel = lang === 'ar' ? 'التقديمات مغلقة' : 'Applications Closed';
-  const closedNotice = lang === 'ar'
-    ? { title: 'التقديمات مغلقة', text: 'لا يوجد فتح للتقديمات حالياً. يرجى العودة للموقع للتحقق من الفرص القادمة.', close: 'إغلاق' }
-    : { title: 'Applications are currently closed', text: 'There are no open positions at the moment. Please check back for future opportunities.', close: 'Close' };
-
-  return (
-    <main className="careers-page careers-showcase" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-      <section className="careers-page-hero" aria-labelledby="careers-title">
-        <img src={bannerImage} alt={copy.imageAlt} />
-        <div className="careers-page-hero-overlay">
-          <div className="careers-page-hero-copy">
-            <span className="careers-page-hero-eyebrow">{eyebrow}</span>
-            <h1 id="careers-title">{heroTitle}</h1>
-            <p>{heroDesc}</p>
-            <Link href="#career-pathways" className="careers-page-hero-button">
-              {copy.journey}<span aria-hidden="true">→</span>
-            </Link>
-          </div>
-          <span className="careers-page-hero-message">{lang === 'ar' ? <>الناس<br />النمو<br />الابتكار<br />المستقبل</> : <>PEOPLE<br />GROWTH<br />INNOVATION<br />THE FUTURE</>}</span>
-        </div>
-      </section>
-
-      <section className="careers-showcase-shell" aria-labelledby="careers-title">
-        <div className="careers-showcase-copy">
-          <p className="careers-showcase-eyebrow"><span />{copy.heroSubtitle}</p>
-          <h2>{lang === 'ar' ? 'مسيرتك المهنية تبدأ هنا' : 'A place to grow your career'}</h2>
-          <p className="careers-showcase-lead">{copy.body}</p>
-          <p className="careers-showcase-body">{lang === 'ar' ? 'انضم إلى فريق يقدّر الخبرة والطموح والعمل الجماعي، ويساهم في بناء مستقبل أفضل لقطاع الطاقة.' : 'Join a team that values experience, ambition and collaboration while helping shape a stronger future for the energy sector.'}</p>
-
-          <div className="careers-pillars" aria-label="Career benefits">
-            {copy.pillars.map((pillar, index) => (
-              <article className="careers-pillar" key={pillar.title}>
-                <span className="careers-pillar-icon"><CareerIcon name={['growth', 'innovation', 'culture'][index]} /></span>
-                <div><h3>{pillar.title}</h3><p>{pillar.text}</p></div>
-              </article>
-            ))}
-          </div>
-        </div>
-
-        <div className="careers-showcase-visual">
-          <img src={bannerImage} alt={copy.imageAlt} />
-          <div className="careers-image-stamp">{copy.progress}</div>
-          <div className="careers-visual-frame" aria-hidden="true" />
-        </div>
-
-        <div className="careers-showcase-actions">
-          <button type="button" className="careers-apply-button careers-closed-button" onClick={() => setIsClosedNoticeOpen(true)}>{closedButtonLabel}<span aria-hidden="true">→</span></button>
-          <Link href="#career-pathways" className="careers-journey-link">{copy.journey}<span aria-hidden="true">↓</span></Link>
-        </div>
-      </section>
-
-      <section className="careers-pathways" id="career-pathways" aria-label="Career pathways">
-        {copy.cards.map((card, index) => (
-          index === 0 ? (
-            <Link href="/about" className="careers-pathway-card" key={card.title}>
-              <span className="careers-pathway-icon"><CareerIcon name={cardIcons[index]} /></span>
-              <span className="careers-pathway-content"><strong>{card.title}</strong><small>{card.text}</small></span>
-              <span className="careers-card-arrow" aria-hidden="true">→</span>
-            </Link>
-          ) : (
-            <button type="button" className="careers-pathway-card" key={card.title} onClick={() => setIsClosedNoticeOpen(true)}>
-              <span className="careers-pathway-icon"><CareerIcon name={cardIcons[index]} /></span>
-              <span className="careers-pathway-content"><strong>{card.title}</strong><small>{card.text}</small></span>
-              <span className="careers-card-arrow" aria-hidden="true">→</span>
-            </button>
-          )
-        ))}
-      </section>
-
-      {isClosedNoticeOpen && (
-        <div className="careers-notice-backdrop" role="presentation" onClick={() => setIsClosedNoticeOpen(false)}>
-          <section className="careers-closed-notice" role="dialog" aria-modal="true" aria-labelledby="applications-closed-title" onClick={(event) => event.stopPropagation()}>
-            <h2 id="applications-closed-title">{closedNotice.title}</h2>
-            <p>{closedNotice.text}</p>
-            <button type="button" onClick={() => setIsClosedNoticeOpen(false)}>{closedNotice.close}</button>
-          </section>
-        </div>
-      )}
-
-      <p className="careers-footer-line"><span />{lang === 'ar' ? 'معاً نحو غدٍ أقوى' : 'Together towards a stronger tomorrow'}</p>
-    </main>
-  );
+  return <main className="careers-reference-page" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}><section className="career-reference-hero"><img src={bannerImage} alt="ALMATAR field operations" /><div className="career-reference-hero-overlay"><div><p className="career-reference-kicker">{localized(lang, data?.eyebrowAr, data?.eyebrowEn, 'PEOPLE · GROWTH · INNOVATION')}</p><h1>{pageTitle}</h1><p className="career-reference-hero-desc">{pageDesc}</p><a href="#vacancies" className="career-reference-hero-button">{lang === 'ar' ? 'استكشف الوظائف' : 'Explore vacancies'} <span>→</span></a></div><p className="career-reference-side-label">PEOPLE<br />GROWTH<br />INNOVATION<br />THE FUTURE</p></div></section><section className="career-stat-strip" aria-label="ALMATAR careers facts">{[['people', '38+', lang === 'ar' ? 'عاماً من الخبرة' : 'Years of experience'], ['growth', '15+', lang === 'ar' ? 'تخصصاً مهنياً' : 'Professional disciplines'], ['safety', '100%', lang === 'ar' ? 'التزام بالسلامة' : 'Safety commitment'], ['team', '01', lang === 'ar' ? 'فريق واحد' : 'One team']].map(([icon, value, label]) => <div key={label}><Icon type={icon} /><strong>{value}</strong><span>{label}</span></div>)}</section><section className="career-vacancies-section" id="vacancies"><div className="career-section-heading"><div><p className="career-reference-kicker">{lang === 'ar' ? 'الفرص المتاحة' : 'JOIN THE TEAM'}</p><h2>{lang === 'ar' ? 'الوظائف الشاغرة الحالية' : 'Current Vacancies'}</h2></div><p>{lang === 'ar' ? 'اكتشف دورك القادم مع المطر.' : 'Find your next opportunity with ALMATAR.'}</p></div><div className="career-filters"><select value={department} onChange={(event) => setDepartment(event.target.value)}><option value="all">{lang === 'ar' ? 'كل الأقسام' : 'All departments'}</option>{departments.map((item) => <option key={item} value={item}>{item}</option>)}</select><select value={location} onChange={(event) => setLocation(event.target.value)}><option value="all">{lang === 'ar' ? 'كل المواقع' : 'All locations'}</option>{locations.map((item) => <option key={item} value={item}>{item}</option>)}</select></div>{filteredJobs.length ? <div className="career-job-grid">{filteredJobs.map((job) => <article className="career-job-card" key={job._id}><div className="career-job-card-top"><span className="career-job-icon"><Icon type="team" /></span><span className="career-open-badge">{lang === 'ar' ? 'مفتوحة' : 'OPEN'}</span></div><h3>{localized(lang, job.titleAr, job.titleEn)}</h3><p className="career-job-meta">{localized(lang, job.departmentAr, job.departmentEn)} · {localized(lang, job.locationAr, job.locationEn)}</p><p className="career-job-type">{localized(lang, job.employmentTypeAr, job.employmentType, 'Full-time')}</p><p className="career-job-description">{localized(lang, job.descriptionAr, job.descriptionEn, lang === 'ar' ? 'انضم إلى فريقنا المتخصص.' : 'Join our specialist team and help deliver field-proven energy solutions.')}</p><Link className="career-job-card-link" href={`/careers/${job.slug || job._id}`}>{lang === 'ar' ? 'عرض الوظيفة والتقديم' : 'View role & apply'} <span>→</span></Link></article>)}</div> : <div className="career-empty-state">{lang === 'ar' ? 'لا توجد وظائف مفتوحة حالياً. يرجى العودة قريباً.' : 'There are no open vacancies at the moment. Please check back soon.'}</div>}</section><section className="career-why-section"><div className="career-why-image"><img src={cultureImage} alt={lang === 'ar' ? 'فريق المطر في موقع العمل' : 'ALMATAR team in the field'} /></div><div className="career-why-copy"><p className="career-reference-kicker">{lang === 'ar' ? 'لماذا تعمل معنا' : 'WHY WORK WITH US'}</p><h2>{lang === 'ar' ? 'الخبرة تصنع التقدم' : 'Experience creates progress.'}</h2><p>{lang === 'ar' ? 'نمنح كل شخص مساحة للنمو والتعلم وصنع تأثير حقيقي في قطاع الطاقة.' : 'We give every person room to learn, grow and make a meaningful impact across the energy sector.'}</p><div className="career-why-points"><div><Icon type="growth" /><span>{lang === 'ar' ? 'نمو مهني مستمر' : 'Professional growth'}</span></div><div><Icon type="people" /><span>{lang === 'ar' ? 'ثقافة تعاونية' : 'Collaborative culture'}</span></div><div><Icon type="safety" /><span>{lang === 'ar' ? 'سلامة أولاً' : 'Safety first'}</span></div><div><Icon type="team" /><span>{lang === 'ar' ? 'أثر حقيقي' : 'Real impact'}</span></div></div></div></section></main>
 }

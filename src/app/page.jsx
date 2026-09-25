@@ -1,6 +1,4 @@
 'use client';
-
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import HeroCarousel from '@/components/HeroCarousel';
 import SlantedPortfolioAccordion from '@/components/SlantedPortfolioAccordion';
@@ -8,23 +6,11 @@ import NextPageBanner from '@/components/NextPageBanner';
 import { useLanguage } from '@/context/LanguageContext';
 import { HOME_PAGE_QUERY } from '@/sanity/lib/queries';
 import { getImageUrl } from '@/sanity/lib/image';
-import { getSanityContent } from '@/sanity/lib/fetchData';
+import { useSanityContent } from '@/sanity/lib/fetchData';
 
 export default function Home() {
   const { t, lang } = useLanguage();
-  const [homeData, setHomeData] = useState(null);
-
-  useEffect(() => {
-    async function loadHomeContent() {
-      try {
-        const data = await getSanityContent('home', HOME_PAGE_QUERY);
-        if (data) setHomeData(data);
-      } catch (err) {
-        console.warn('Using default home content:', err);
-      }
-    }
-    loadHomeContent();
-  }, []);
+  const homeData = useSanityContent('home', HOME_PAGE_QUERY);
 
   const introEyebrow =
     (lang === 'ar' ? homeData?.introEyebrowAr : homeData?.introEyebrowEn) || t('homeIntro.eyebrow');

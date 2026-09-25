@@ -62,6 +62,9 @@ export const structure: StructureResolver = (S) =>
 
       S.divider(),
 
+      S.documentTypeListItem('job').title('Vacancies'),
+      S.documentTypeListItem('jobApplication').title('Job Applications'),
+
       // 4. GLOBAL SETTINGS & FOOTER
       S.listItem()
         .title('⚙️ Global Site Settings & Footer')
@@ -79,6 +82,8 @@ export const structure: StructureResolver = (S) =>
         (listItem) =>
           !SINGLETONS.includes(listItem.getId() as string) &&
           listItem.getId() !== 'contactSubmission' &&
-          listItem.getId() !== 'service'
+          listItem.getId() !== 'service' &&
+          listItem.getId() !== 'job' &&
+          listItem.getId() !== 'jobApplication'
       ),
     ])

@@ -8,5 +8,6 @@ export default defineCliConfig({
   studioHost: 'almatar',
   deployment: {
     autoUpdates: true,
+    appId: 'mruqjlijm9qrtpzsxoxkaz0l',
   },
 })

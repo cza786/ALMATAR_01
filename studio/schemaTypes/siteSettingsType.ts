@@ -50,14 +50,14 @@ export const siteSettingsType = defineType({
       title: 'Footer Copyright Text (English)',
       type: 'string',
       group: 'footer',
-      initialValue: 'Al Matar Company. All Rights Reserved.',
+      initialValue: 'Al-Matar Company. All Rights Reserved.',
     }),
     defineField({
       name: 'copyrightAr',
       title: 'Footer Copyright Text (Arabic)',
       type: 'string',
       group: 'footer',
-      initialValue: 'جميع الحقوق محفوظة © شركة المطار (Al Matar Company).',
+      initialValue: 'جميع الحقوق محفوظة © شركة المطر (Al-Matar Company).',
     }),
 
     // CONTACT & ADDRESS GROUP

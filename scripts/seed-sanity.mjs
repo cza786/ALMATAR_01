@@ -101,8 +101,10 @@ async function seed() {
     _type: 'siteSettings',
     title: 'ALMATAR Energy & Oilfield Services',
     logo: logoAsset,
-    descriptionEn: 'Premier provider of technical oilfield solutions, well intervention, drilling fluids, and QHSE services across Syria and the Middle East.',
-    descriptionAr: 'المزود الرائد للحلول التقنية لحقول النفط، وخدمات الآبار، وسوائل الحفر، وخدمات الصحة والسلامة والبيئة في سوريا والشرق الأوسط.',
+    descriptionEn: 'Al-Matar Oilfield Services — Trusted since 1988 by oil & gas companies and international organizations for delivering drilling, well intervention, civil construction, and QHSE-compliant services.',
+    descriptionAr: 'شركة المطر لخدمات حقول النفط — موثوقة منذ عام 1988 من قبل شركات النفط والغاز والمنظمات الدولية، لتقديم خدمات الحفر والتدخل في الآبار والإنشاءات المدنية والخدمات المتوافقة مع معايير الجودة والصحة والسلامة والبيئة',
+    copyrightEn: 'Al-Matar Company. All Rights Reserved.',
+    copyrightAr: 'جميع الحقوق محفوظة © شركة المطر (Al-Matar Company).',
     contactEmail: 'info@almatar-oil.com',
     socialLinks: [
       { _key: 'linkedin', platform: 'LinkedIn', url: 'https://linkedin.com' }

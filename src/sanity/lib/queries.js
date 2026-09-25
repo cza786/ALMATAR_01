@@ -79,18 +79,49 @@ export const CAREERS_PAGE_QUERY = groq`
     pageDescEn,
     pageDescAr,
     cultureImage,
-    openPositions[] {
+    "jobs": *[_type == "job" && isOpen == true] | order(order asc, _createdAt desc) {
+      _id,
+      "slug": slug.current,
       titleEn,
       titleAr,
       departmentEn,
       departmentAr,
       locationEn,
       locationAr,
-      typeEn,
-      typeAr,
+      employmentType,
+      employmentTypeAr,
       descriptionEn,
-      descriptionAr
+      descriptionAr,
+      requirementsEn,
+      requirementsAr,
+      isOpen
     }
+  }
+`
+
+export const JOB_DETAIL_QUERY = groq`
+  *[_type == "job" && isOpen == true && (slug.current == $slug || _id == $slug)][0] {
+    _id,
+    "slug": slug.current,
+    titleEn, titleAr,
+    departmentEn, departmentAr,
+    locationEn, locationAr,
+    employmentType, employmentTypeAr,
+    descriptionEn, descriptionAr,
+    requirementsEn, requirementsAr,
+    companyEn, companyAr,
+    reportsToEn, reportsToAr,
+    sectorEn, sectorAr,
+    experienceEn, experienceAr,
+    educationEn, educationAr,
+    languageEn, languageAr,
+    summaryEn, summaryAr,
+    responsibilitiesEn, responsibilitiesAr,
+    qualificationsEn, qualificationsAr,
+    experienceRequirementsEn, experienceRequirementsAr,
+    workEnvironmentEn, workEnvironmentAr,
+    heroImage,
+    applicationEmail
   }
 `
 

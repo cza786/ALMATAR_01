@@ -107,7 +107,7 @@ export default function Header({ onOpenDrawer }) {
 
               <Link href="/trading" className={`nav-link ${isActive('/trading') ? 'active' : ''}`}>{t('nav.trading')}</Link>
               <Link href="/qhse" className={`nav-link ${isActive('/qhse') ? 'active' : ''}`}>{t('nav.qhse')}</Link>
-              <Link href="/careers" className={`nav-link ${isActive('/careers') ? 'active' : ''}`}>{t('nav.careers')}</Link>
+              <Link href="/careers" className={`nav-link ${isActive('/careers') || pathname.startsWith('/careers/') ? 'active' : ''}`}>{t('nav.careers')}</Link>
               {/* Policies Dropdown Item */}
               <div className={`nav-item-dropdown ${openDropdown === 'policies' ? 'is-open' : ''}`}>
                 <Link href="/policies" className={`nav-link ${pathname.startsWith('/policies') ? 'active' : ''}`}>

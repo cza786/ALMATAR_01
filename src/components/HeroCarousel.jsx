@@ -5,26 +5,15 @@ import Link from 'next/link';
 import { useLanguage } from '../context/LanguageContext';
 import { HOME_PAGE_QUERY } from '@/sanity/lib/queries';
 import { getImageUrl } from '@/sanity/lib/image';
-import { getSanityContent } from '@/sanity/lib/fetchData';
+import { useSanityContent } from '@/sanity/lib/fetchData';
+
+const AUTOPLAY_INTERVAL_MS = 8000;
 
 export default function HeroCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { t, lang } = useLanguage();
-  const [sanitySlides, setSanitySlides] = useState(null);
-
-  useEffect(() => {
-    async function loadHomeContent() {
-      try {
-        const homeData = await getSanityContent('home', HOME_PAGE_QUERY);
-        if (homeData?.heroSlides?.length > 0) {
-          setSanitySlides(homeData.heroSlides);
-        }
-      } catch (err) {
-        console.warn('Using default hero carousel slides:', err);
-      }
-    }
-    loadHomeContent();
-  }, []);
+  const homeData = useSanityContent('home', HOME_PAGE_QUERY);
+  const sanitySlides = homeData?.heroSlides?.length > 0 ? homeData.heroSlides : null;
 
   const defaultSlides = [
     {
@@ -91,7 +80,7 @@ export default function HeroCarousel() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 6000);
+    }, AUTOPLAY_INTERVAL_MS);
     return () => clearInterval(timer);
   }, [slides.length]);
 

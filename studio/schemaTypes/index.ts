@@ -5,6 +5,8 @@ import { aboutPageType } from './aboutPageType'
 import { careersPageType } from './careersPageType'
 import { contactPageType } from './contactPageType'
 import { contactSubmissionType } from './contactSubmissionType'
+import { jobType } from './jobType'
+import { applicationType } from './applicationType'
 
 export const schemaTypes = [
   // Singleton / Page Types
@@ -16,5 +18,7 @@ export const schemaTypes = [
 
   // Collection Types
   serviceType,
+  jobType,
+  applicationType,
   contactSubmissionType,
 ]

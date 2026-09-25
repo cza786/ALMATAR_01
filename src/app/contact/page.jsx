@@ -1,17 +1,16 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import NextPageBanner from '@/components/NextPageBanner';
 import { useLanguage } from '@/context/LanguageContext';
-import { CONTACT_PAGE_QUERY, SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
+import { CONTACT_PAGE_QUERY } from '@/sanity/lib/queries';
 import { getImageUrl } from '@/sanity/lib/image';
-import { getSanityContent } from '@/sanity/lib/fetchData';
+import { useSanityContent } from '@/sanity/lib/fetchData';
 import { isValidSyrianPhone, normalizeSyrianPhone, SYRIAN_PHONE_PREFIX, SYRIAN_PHONE_PATTERN } from '@/lib/syrianPhone';
 
 export default function ContactPage() {
   const { t, lang } = useLanguage();
-  const [sanityData, setSanityData] = useState(null);
-  const [settingsData, setSettingsData] = useState(null);
+  const sanityData = useSanityContent('contact', CONTACT_PAGE_QUERY);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -23,22 +22,6 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState('');
-
-  useEffect(() => {
-    async function loadSanityContent() {
-      try {
-        const [contactRes, settingsRes] = await Promise.all([
-          getSanityContent('contact', CONTACT_PAGE_QUERY),
-          getSanityContent('settings', SITE_SETTINGS_QUERY),
-        ]);
-        if (contactRes) setSanityData(contactRes);
-        if (settingsRes) setSettingsData(settingsRes);
-      } catch (err) {
-        console.warn('Using default contact page content:', err);
-      }
-    }
-    loadSanityContent();
-  }, []);
 
   const bannerImgUrl = sanityData?.bannerImage
     ? getImageUrl(sanityData.bannerImage, '/images/banner_about_corporate.webp?v=2')

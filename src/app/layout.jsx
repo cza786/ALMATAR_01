@@ -1,5 +1,6 @@
 import './globals.css';
 import SiteShell from '../components/SiteShell';
+import { SanityLive } from '@/sanity/lib/live';
 
 export default function RootLayout({ children }) {
   return (
@@ -51,6 +52,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <SiteShell>{children}</SiteShell>
+        <SanityLive />
       </body>
     </html>
   );
