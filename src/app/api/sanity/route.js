@@ -8,6 +8,7 @@ import {
   SITE_SETTINGS_QUERY,
   ALL_SERVICES_QUERY,
   JOB_DETAIL_QUERY,
+  WEBSITE_PAGE_QUERY,
 } from '@/sanity/lib/queries';
 
 // Content is delivered through the live client-side listener. Do not let this
@@ -23,6 +24,7 @@ const QUERIES = {
   settings: SITE_SETTINGS_QUERY,
   services: ALL_SERVICES_QUERY,
   jobDetail: JOB_DETAIL_QUERY,
+  websitePage: WEBSITE_PAGE_QUERY,
 };
 
 export async function GET(request) {
@@ -31,7 +33,11 @@ export async function GET(request) {
     const type = searchParams.get('type');
 
     if (type && QUERIES[type]) {
-      const params = type === 'jobDetail' ? { slug: searchParams.get('slug') || '' } : {};
+      const params = type === 'jobDetail'
+        ? { slug: searchParams.get('slug') || '' }
+        : type === 'websitePage'
+          ? { pageKey: searchParams.get('pageKey') || '' }
+          : {};
       const data = await serverClient.fetch(QUERIES[type], params);
       return NextResponse.json({ data }, {
         headers: { 'Cache-Control': 'no-store, max-age=0' },

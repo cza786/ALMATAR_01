@@ -6711,6 +6711,7 @@ body.rtl-mode .dropdown-link-item:hover {
 .policies-modal-heading h2 { margin: 0; color: #102950; font-family: Georgia, serif; font-size: 1.17rem; line-height: 1.25; }
 .policies-modal-close { padding: 0; border: 0; background: transparent; color: #102950; font-size: 2rem; line-height: 1; cursor: pointer; }
 .policies-pdf-frame { height: min(72vh, 700px); padding: 1rem; background: #515558; }
+.policies-pdf-frame object { width: 100%; height: 100%; display: block; border: 0; background: #fff; }
 .policies-pdf-frame iframe { width: 100%; height: 100%; display: block; border: 0; background: #fff; }
 .policies-open-pdf { display: block; padding: .75rem 1.2rem .9rem; color: #17416d; font-size: .82rem; font-weight: 700; text-align: right; text-decoration: none; }
 .policies-open-pdf span { color: #bd831b; font-size: 1.1rem; }
@@ -6965,6 +6966,13 @@ body.policies-modal-open { overflow: hidden; }
   .policies-modal-heading { min-height: 67px; padding: .65rem .85rem; }
   .policies-modal-heading h2 { font-size: 1rem; }
   .policies-pdf-frame { height: 73vh; padding: .45rem; }
+}
+
+@media (max-width: 700px) {
+  .policies-modal { width: 100%; height: calc(100dvh - 1rem); max-height: none; }
+  .policies-pdf-frame { flex: 1 1 auto; min-height: 0; height: auto; overflow: auto; -webkit-overflow-scrolling: touch; }
+  .policies-pdf-frame object { min-height: 100%; height: 100%; }
+  .policies-pdf-frame iframe { min-height: 100%; height: 100%; }
 }
 
 body.rtl-mode .ctp-card-arrow svg,

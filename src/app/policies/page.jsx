@@ -100,7 +100,9 @@ function PoliciesContent() {
               <button type="button" className="policies-modal-close" onClick={closePolicy} aria-label="Close policy document">×</button>
             </div>
             <div className="policies-pdf-frame">
-              <iframe src={`${selected.pdf}#toolbar=0&navpanes=0`} title={selected.title[lang] || selected.title.en} />
+              <object data={`${selected.pdf}#toolbar=0&navpanes=0`} type="application/pdf" aria-label={selected.title[lang] || selected.title.en}>
+                <iframe src={`${selected.pdf}#toolbar=0&navpanes=0`} title={selected.title[lang] || selected.title.en} />
+              </object>
             </div>
             <a className="policies-open-pdf" href={selected.pdf} target="_blank" rel="noreferrer">Open PDF in a new tab <span>→</span></a>
             {lang === 'ar' && (
