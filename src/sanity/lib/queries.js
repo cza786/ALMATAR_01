@@ -204,3 +204,30 @@ export const SERVICES_BY_CATEGORY_QUERY = groq`
     }
   }
 `
+
+// Generic route-page content used by the Website Pages editor for pages that
+// have a dedicated visual layout but still need a central CMS content model.
+export const WEBSITE_PAGE_QUERY = groq`
+  *[_type == "websitePage" && pageKey == $pageKey][0] {
+    pageKey,
+    adminTitle,
+    pageTitleEn, pageTitleAr,
+    pageDescriptionEn, pageDescriptionAr,
+    heroImage,
+    heroEyebrowEn, heroEyebrowAr,
+    heroTitleEn, heroTitleAr,
+    heroDescriptionEn, heroDescriptionAr,
+    sections[] {
+      sectionKey,
+      eyebrowEn, eyebrowAr,
+      titleEn, titleAr,
+      descriptionEn, descriptionAr,
+      image,
+      imageAltEn, imageAltAr,
+      bulletsEn, bulletsAr,
+      ctaLabelEn, ctaLabelAr, ctaLink,
+      cards[] { icon, titleEn, titleAr, descriptionEn, descriptionAr, image, link }
+    },
+    seo { titleEn, titleAr, descriptionEn, descriptionAr, image }
+  }
+`

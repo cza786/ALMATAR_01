@@ -8,6 +8,7 @@ import { contactSubmissionType } from './contactSubmissionType'
 import { jobType } from './jobType'
 import { qhsePageType } from './qhsePageType'
 import { applicationType } from './applicationType'
+import { websitePageType } from './websitePageType'
 
 export const schemaTypes = [
   // Singleton / Page Types
@@ -16,6 +17,7 @@ export const schemaTypes = [
   aboutPageType,
   careersPageType,
   contactPageType,
+  websitePageType,
 
   // Collection Types
   serviceType,

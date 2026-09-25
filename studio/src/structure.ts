@@ -5,7 +5,18 @@ const SINGLETONS = [
   'homePage',
   'aboutPage',
   'contactPage',
+  'careersPage',
+  'qhsePage',
+  'websitePage',
 ]
+
+const singleton = (S: any, title: string, schemaType: string, documentId: string) =>
+  S.listItem().title(title).child(
+    S.document().schemaType(schemaType).documentId(documentId).title(title),
+  )
+
+const websitePageItem = (S: any, title: string, pageKey: string) =>
+  singleton(S, title, 'websitePage', `websitePage-${pageKey}`)
 
 export const structure: StructureResolver = (S) =>
   S.list()
@@ -54,6 +65,23 @@ export const structure: StructureResolver = (S) =>
                     .documentId('contactPage')
                     .title('Contact Page')
                 ),
+              singleton(S, 'Careers Page', 'careersPage', 'careersPage'),
+              singleton(S, 'QHSE Page', 'qhsePage', 'qhsePage'),
+              S.divider(),
+              websitePageItem(S, 'Services Overview', 'services'),
+              websitePageItem(S, 'Well Services', 'well-services'),
+              websitePageItem(S, 'Drilling & Workover', 'drilling-workover'),
+              websitePageItem(S, 'Drilling Fluids', 'drilling-fluids'),
+              websitePageItem(S, 'Coiled Tubing', 'coiled-tubing'),
+              websitePageItem(S, 'Stimulation & Fracturing', 'stimulation-fracturing'),
+              websitePageItem(S, 'Zonal Isolation & Cementing', 'zonal-isolation-cementing'),
+              websitePageItem(S, 'Slickline Services', 'slickline-services'),
+              websitePageItem(S, 'Well Testing', 'well-testing'),
+              websitePageItem(S, 'Wellhead & Xmas Tree', 'wellhead-xmas-tree'),
+              websitePageItem(S, 'Construction', 'construction'),
+              websitePageItem(S, 'Trading & Supply', 'trading'),
+              websitePageItem(S, 'Policies', 'policies'),
+              websitePageItem(S, 'Our Team', 'our-team'),
             ])
         ),
 
@@ -84,6 +112,7 @@ export const structure: StructureResolver = (S) =>
           listItem.getId() !== 'contactSubmission' &&
           listItem.getId() !== 'service' &&
           listItem.getId() !== 'job' &&
-          listItem.getId() !== 'jobApplication'
+          listItem.getId() !== 'jobApplication' &&
+          listItem.getId() !== 'websitePage'
       ),
     ])
