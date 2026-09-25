@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { createClient } from '@sanity/client'
+import { DUMMY_JOBS } from '../src/data/dummyJobs.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -92,7 +93,24 @@ async function uploadImage(relPath) {
   }
 }
 
+async function seedDummyJobs() {
+  console.log('\n[careers] Seeding dummy vacancies...')
+  for (const [index, job] of DUMMY_JOBS.entries()) {
+    const existing = await client.fetch('*[_type == "job" && slug.current == $slug][0]._id', { slug: job.slug })
+    if (existing) {
+      const { _id, ...fields } = job
+      await client.patch(existing).set({ ...fields, slug: { _type: 'slug', current: job.slug }, order: index + 1 }).commit()
+      console.log(`  Updated vacancy: ${job.titleEn}`)
+    } else {
+      const { _id, ...fields } = job
+      await client.create({ _type: 'job', ...fields, slug: { _type: 'slug', current: job.slug }, order: index + 1 })
+      console.log(`  Created vacancy: ${job.titleEn}`)
+    }
+  }
+}
+
 async function seed() {
+  await seedDummyJobs()
   console.log('\n[1/6] ⚙️  Seeding Global Site Settings...')
   const logoAsset = await uploadImage('images/almatar_logo_raw.png')
 

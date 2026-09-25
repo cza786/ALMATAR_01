@@ -79,7 +79,7 @@ export const CAREERS_PAGE_QUERY = groq`
     pageDescEn,
     pageDescAr,
     cultureImage,
-    "jobs": *[_type == "job" && isOpen == true] | order(order asc, _createdAt desc) {
+  "jobs": *[_type == "job"] | order(order asc, _createdAt desc) {
       _id,
       "slug": slug.current,
       titleEn,
@@ -94,13 +94,14 @@ export const CAREERS_PAGE_QUERY = groq`
       descriptionAr,
       requirementsEn,
       requirementsAr,
-      isOpen
+      isOpen,
+      postedDate
     }
   }
 `
 
 export const JOB_DETAIL_QUERY = groq`
-  *[_type == "job" && isOpen == true && (slug.current == $slug || _id == $slug)][0] {
+  *[_type == "job" && (slug.current == $slug || _id == $slug)][0] {
     _id,
     "slug": slug.current,
     titleEn, titleAr,
@@ -121,7 +122,9 @@ export const JOB_DETAIL_QUERY = groq`
     experienceRequirementsEn, experienceRequirementsAr,
     workEnvironmentEn, workEnvironmentAr,
     heroImage,
-    applicationEmail
+    applicationEmail,
+    isOpen,
+    postedDate
   }
 `
 

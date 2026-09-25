@@ -9,6 +9,7 @@ import { useLanguage } from '@/context/LanguageContext'
 import { JOB_DETAIL_QUERY } from '@/sanity/lib/queries'
 import { getImageUrl } from '@/sanity/lib/image'
 import { useSanityContent } from '@/sanity/lib/fetchData'
+import { DUMMY_JOBS } from '@/data/dummyJobs'
 
 function localized(lang, ar, en) { return lang === 'ar' ? (ar || en || '') : (en || ar || '') }
 function lines(value) { return String(value || '').split(/\r?\n/).map((item) => item.replace(/^\s*[-•*]\s*/, '').trim()).filter(Boolean) }
@@ -36,7 +37,8 @@ export default function JobDetailPage() {
   const { lang } = useLanguage()
   const params = useParams()
   const slug = params?.slug || ''
-  const job = useSanityContent('jobDetail', JOB_DETAIL_QUERY, { slug })
+  const sanityJob = useSanityContent('jobDetail', JOB_DETAIL_QUERY, { slug })
+  const job = sanityJob || DUMMY_JOBS.find((item) => item.slug === slug || item._id === slug)
   if (!job) return <main className="job-detail-page"><div className="job-detail-loading">Loading vacancy…</div></main>
 
   const title = localized(lang, job.titleAr, job.titleEn)

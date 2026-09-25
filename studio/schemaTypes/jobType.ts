@@ -43,6 +43,7 @@ export const jobType = defineType({
     defineField({ name: 'heroImage', title: 'Vacancy Hero Image', type: 'image', options: { hotspot: true } }),
     defineField({ name: 'applicationEmail', title: 'Application Email', type: 'string', initialValue: 'hr@almatar.com' }),
     defineField({ name: 'isOpen', title: 'Open for Applications', type: 'boolean', initialValue: true }),
+    defineField({ name: 'postedDate', title: 'Posted Date', type: 'date' }),
     defineField({ name: 'order', title: 'Display Order', type: 'number', initialValue: 0 }),
   ],
   preview: {
