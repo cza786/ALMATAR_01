@@ -5,7 +5,20 @@ import ServiceIntroCard from '@/components/ServiceIntroCard';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function DrillingFluidsPage() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
+  const intro = lang === 'ar'
+    ? {
+        eyebrow: 'الدقة والأداء',
+        title: 'حلول متكاملة للحفر وكيمياء سوائل الحفر',
+        description: 'تجمع المطر بين خبرة الحفر الموجه وأنظمة السوائل المصممة خصيصاً وتحليل المختبرات لتقديم إنشاء آبار دقيق وموثوق وفعال.',
+        imageAlt: 'عمليات كيمياء سوائل الحفر',
+      }
+    : {
+        eyebrow: 'PRECISION & PERFORMANCE',
+        title: 'Integrated Drilling & Fluid Chemistry Solutions',
+        description: 'ALMATAR combines directional drilling expertise, engineered fluid systems and laboratory analysis to deliver precise, reliable and efficient well construction.',
+        imageAlt: 'Drilling fluid chemistry operations',
+      };
 
   return (
     <>
@@ -21,11 +34,11 @@ export default function DrillingFluidsPage() {
         </div>
 
         <ServiceIntroCard
-          eyebrow="PRECISION &amp; PERFORMANCE"
-          title="Integrated Drilling &amp; Fluid Chemistry Solutions"
-          description="ALMATAR combines directional drilling expertise, engineered fluid systems and laboratory analysis to deliver precise, reliable and efficient well construction."
+          eyebrow={intro.eyebrow}
+          title={intro.title}
+          description={intro.description}
           image="/images/service_drilling_fluids.webp"
-          imageAlt="Drilling fluid chemistry operations"
+          imageAlt={intro.imageAlt}
         />
 
         <div className="cards-grid">

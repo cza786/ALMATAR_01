@@ -214,7 +214,7 @@ export default function SlicklineServicesPage() {
   }, [galleryIndex]);
 
   return (
-    <div className="slickline-page-root">
+    <div className="slickline-page-root" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       {/* 1. HERO BANNER SECTION */}
       <section className="slickline-hero-section">
         <div className="slickline-hero-container">

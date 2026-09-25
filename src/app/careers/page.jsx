@@ -32,7 +32,7 @@ export default function CareersPage() {
   const pageTitle = localized(lang, data?.pageTitleAr, data?.pageTitleEn, 'Build Your Future With ALMATAR')
   const pageDesc = localized(lang, data?.pageDescAr, data?.pageDescEn, 'Join a team where expertise, ambition and teamwork create real progress.')
   const bannerImage = data?.bannerImage ? getImageUrl(data.bannerImage, '/images/careers_engineers_hero.webp') : '/images/careers_engineers_hero.webp'
-  const jobs = data?.jobs?.length ? data.jobs : DUMMY_JOBS
+  const jobs = data?.jobs?.length ? data.jobs.map((job) => ({ ...(DUMMY_JOBS.find((item) => item.slug === job.slug) || {}), ...job })) : DUMMY_JOBS
 
   return <main className="careers-reference-page" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
     <section className="career-reference-hero"><img src={bannerImage} alt="ALMATAR field operations" /><div className="career-reference-hero-overlay"><div><p className="career-reference-kicker">PEOPLE · GROWTH · INNOVATION</p><h1>{pageTitle}</h1><p className="career-reference-hero-desc">{pageDesc}</p><a href="#vacancies" className="career-reference-hero-button">{lang === 'ar' ? 'استكشف الوظائف' : 'Explore vacancies'} <span>→</span></a></div><p className="career-reference-side-label">PEOPLE<br />GROWTH<br />INNOVATION<br />THE FUTURE</p></div></section>

@@ -9,6 +9,19 @@ import { useLanguage } from '@/context/LanguageContext';
 export default function TradingPage() {
   const { t, lang } = useLanguage();
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  const intro = lang === 'ar'
+    ? {
+        eyebrow: 'التوريد والشراكات',
+        title: 'حلول متكاملة لتوريد معدات حقول النفط',
+        description: 'توفر المطر معدات عالية المواصفات ومواد كيميائية للحفر ومنتجات معتمدة وفق API من خلال شبكة من الشركاء الدوليين الموثوقين.',
+        imageAlt: 'سلسلة توريد معدات حقول النفط لدى المطر',
+      }
+    : {
+        eyebrow: 'SUPPLY & PARTNERSHIP',
+        title: 'Integrated Oilfield Supply Solutions',
+        description: 'ALMATAR sources high-specification equipment, drilling chemicals and API-certified products through trusted international partner networks.',
+        imageAlt: 'ALMATAR oilfield supply chain',
+      };
 
   const whatWeTradeItems = t('trading.items') || [];
 
@@ -124,11 +137,11 @@ export default function TradingPage() {
       </section>
 
       <ServiceIntroCard
-        eyebrow="SUPPLY &amp; PARTNERSHIP"
-        title="Integrated Oilfield Supply Solutions"
-        description="ALMATAR sources high-specification equipment, drilling chemicals and API-certified products through trusted international partner networks."
+        eyebrow={intro.eyebrow}
+        title={intro.title}
+        description={intro.description}
         image="/images/trading_supply_chain_dark.webp"
-        imageAlt="ALMATAR oilfield supply chain"
+        imageAlt={intro.imageAlt}
       />
 
       {/* ===================== MAIN CONTENT SECTION ===================== */}

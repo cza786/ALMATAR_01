@@ -29,6 +29,9 @@ function ClientCard({ image, title, children, icon }) {
 export default function AboutPage() {
   const { lang } = useLanguage();
   const isArabic = lang === 'ar';
+  const nextBanner = isArabic
+    ? { title: 'لنبنِ بنية تحتية موثوقة معاً', subtitle: 'شارك AL-MATAR في تقديم حلول ميدانية آمنة وفعالة ومستدامة في جميع أنحاء سوريا.' }
+    : { title: "Let's Build Reliable Infrastructure Together", subtitle: 'Partner with AL-MATAR for safe, efficient and sustainable field solutions across Syria.' };
   const [activeClient, setActiveClient] = useState(0);
   const currentValues = isArabic ? arabicValues : values;
   useEffect(() => {
@@ -74,6 +77,6 @@ export default function AboutPage() {
 
     <section className="about-clients about-new-container"><div className="about-section-heading"><span className="about-new-eyebrow">{isArabic ? 'سجل الإنجازات المثبت' : 'PROVEN TRACK RECORD'}</span><h2>{isArabic ? 'موثوقون عبر قطاعات الطاقة والقطاعين الإنساني والعام' : 'Trusted Across Energy, Humanitarian &amp; Public Sectors'}</h2><p>{isArabic ? 'نحن فخورون بكوننا المقاول المفضل للشركات الرائدة في مجال الطاقة والمنظمات الإنسانية العالمية في جميع أنحاء سوريا.' : 'We are proud to be the preferred contractor for leading energy companies and global humanitarian organizations across Syria.'}</p></div><div className="about-client-grid"><ClientCard image="/images/oilfield_operations_clean.webp" title={isArabic ? 'قطاع النفط والغاز' : 'Oil and Gas'} icon="⌁"><p><b>{isArabic ? 'شركة دبلن (Dublin Company):' : 'Dublin Company:'}</b> {isArabic ? 'عمليات حفر القسم الأول (حقل عودة – 4 آبار؛ حقل تشرين – 35 بئراً).' : 'First section drilling operations (Auda Field – 4 wells; Tishreen Field – 35 wells).'}</p><p><b>{isArabic ? 'شركة تاتا (TATA Company):' : 'TATA Company:'}</b> {isArabic ? 'حفر آبار استكشافية (دير الزور).' : 'Exploration well drilling (Deir ez-Zor).'}</p></ClientCard><ClientCard image="/images/service_site_camp.webp" title={isArabic ? 'المنظمات الإنسانية والدولية' : 'Humanitarian and International Organizations'} icon="♧"><p><b>UNICEF, UNHCR, NRC, ICRC, AAH</b> {isArabic ? 'وإنقاذ الطفولة (Save The Children): تأهيل البنى التحتية، والتوريد والتركيب، وأنظمة المياه، والمدارس والمرافق.' : 'and Save The Children — infrastructure rehabilitation, supply and installation, water systems, schools and facilities.'}</p></ClientCard><ClientCard image="/images/about_field_operations.webp" title={isArabic ? 'القطاع الحكومي والعام' : 'Government and Public Sector'} icon="▥"><p><b>{isArabic ? 'مؤسسات المياه:' : 'Water Authorities:'}</b> {isArabic ? 'مشاريع واسعة النطاق لحفر آبار المياه، وتطويرها، وصيانتها في محافظات الحسكة، الرقة، حلب، حماة، ودير الزور.' : 'Large-scale water well drilling, development, and maintenance projects in Hasakah, Raqqa, Aleppo, Hama, and Deir ez-Zor governorates.'}</p></ClientCard></div></section>
 
-    <NextPageBanner title="Let's Build Reliable Infrastructure Together" subtitle="Partner with AL-MATAR for safe, efficient and sustainable field solutions across Syria." link="/well-services" bgImage="/images/banner_well_services_hero.webp" />
+    <NextPageBanner title={nextBanner.title} subtitle={nextBanner.subtitle} link="/well-services" bgImage="/images/banner_well_services_hero.webp" />
   </div>;
 }
