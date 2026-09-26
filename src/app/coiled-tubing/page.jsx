@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
-import CmsRoute from '@/components/CmsRoute';
 
 const imageBase = '/images/policies-photo/services/almatar_coiled_tubing_photos/';
 
@@ -82,5 +81,5 @@ function CoiledTubingLegacy() {
 }
 
 export default function CoiledTubingPage() {
-  return <CmsRoute serviceKey="coiled-tubing" fallback={<CoiledTubingLegacy />} />;
+  return <CoiledTubingLegacy />;
 }

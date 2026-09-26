@@ -5,7 +5,6 @@ import NextPageBanner from '@/components/NextPageBanner';
 import ServiceIntroCard from '@/components/ServiceIntroCard';
 import QuoteModal from '@/components/QuoteModal';
 import { useLanguage } from '@/context/LanguageContext';
-import CmsRoute from '@/components/CmsRoute';
 
 function TradingLegacy() {
   const { t, lang } = useLanguage();
@@ -237,5 +236,5 @@ function TradingLegacy() {
 }
 
 export default function TradingPage() {
-  return <CmsRoute serviceKey="trading" fallback={<TradingLegacy />} />;
+  return <TradingLegacy />;
 }

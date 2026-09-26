@@ -3,7 +3,6 @@
 import NextPageBanner from '@/components/NextPageBanner';
 import ServiceIntroCard from '@/components/ServiceIntroCard';
 import { useLanguage } from '@/context/LanguageContext';
-import CmsRoute from '@/components/CmsRoute';
 
 function DrillingFluidsLegacy() {
   const { lang, t } = useLanguage();
@@ -90,5 +89,5 @@ function DrillingFluidsLegacy() {
 }
 
 export default function DrillingFluidsPage() {
-  return <CmsRoute serviceKey="drilling-fluids" fallback={<DrillingFluidsLegacy />} />;
+  return <DrillingFluidsLegacy />;
 }

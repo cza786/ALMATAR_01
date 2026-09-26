@@ -1,6 +1,7 @@
 'use client'
 
 import '../qhse.css'
+import { useRef } from 'react'
 import { useLanguage } from '@/context/LanguageContext'
 import { QHSE_PAGE_QUERY } from '@/sanity/lib/queries'
 import { getImageUrl } from '@/sanity/lib/image'
@@ -9,6 +10,34 @@ import { QHSE_FALLBACK } from '@/data/qhseFallback'
 
 const text = (lang, item, key, fallback = '') => item ? (item[`${key}${lang === 'ar' ? 'Ar' : 'En'}`] || item[`${key}${lang === 'ar' ? 'En' : 'Ar'}`] || fallback) : fallback
 const image = (value, fallback) => value ? (typeof value === 'string' ? value : getImageUrl(value, fallback)) : fallback
+
+function decodeLegacyUtf8(value) {
+  if (typeof value !== 'string' || !/[ÃÂØÙ]/.test(value)) return value
+  try {
+    return new TextDecoder('utf-8').decode(Uint8Array.from(Array.from(value, (character) => character.charCodeAt(0))))
+  } catch {
+    return value
+  }
+}
+
+function normalizeQhseContent(value) {
+  if (Array.isArray(value)) return value.map(normalizeQhseContent)
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, normalizeQhseContent(item)]))
+  }
+  return decodeLegacyUtf8(value)
+}
+
+function mergeQhseContent(cmsData) {
+  const fallback = normalizeQhseContent(QHSE_FALLBACK)
+  if (!cmsData) return fallback
+
+  return Object.entries(cmsData).reduce((merged, [key, value]) => {
+    const hasValue = Array.isArray(value) ? value.length > 0 : value !== null && value !== undefined && value !== ''
+    if (hasValue) merged[key] = normalizeQhseContent(value)
+    return merged
+  }, { ...fallback })
+}
 
 function Icon({ name = 'shield' }) {
   const paths = {
@@ -35,11 +64,22 @@ function Table({ headers, rows }) {
 
 export default function QhsePage() {
   const { lang } = useLanguage()
-  const data = useSanityContent('qhse', QHSE_PAGE_QUERY) || QHSE_FALLBACK
+  const data = mergeQhseContent(useSanityContent('qhse', QHSE_PAGE_QUERY))
   const ar = lang === 'ar'
   const pick = (key, fallback = '') => data[`${key}${ar ? 'Ar' : 'En'}`] || data[`${key}${ar ? 'En' : 'Ar'}`] || fallback
   const protocols = data.protocols || []
   const documents = data.documents || []
+  const protocolGridRef = useRef(null)
+
+  const scrollProtocols = (direction) => {
+    const grid = protocolGridRef.current
+    if (!grid) return
+
+    grid.scrollBy({
+      left: direction * (grid.clientWidth * 0.82),
+      behavior: 'smooth',
+    })
+  }
 
   return <main className="qhse-page" dir={ar ? 'rtl' : 'ltr'}>
     <section className="qhse-hero"><img src={image(data.heroImage, '/images/qhse-hero.webp')} alt={pick('heroTitle')} /><div className="qhse-hero-overlay"><div className="qhse-container"><p className="qhse-eyebrow">{pick('heroEyebrow')}</p><h1>{pick('heroTitle')}</h1><p>{pick('heroDescription')}</p></div></div></section>
@@ -50,7 +90,7 @@ export default function QhsePage() {
 
     <section className="qhse-container qhse-section qhse-split-section"><div><Heading eyebrow={pick('objectivesEyebrow')} title={pick('objectivesTitle')} /><Table headers={ar ? ['الهدف', 'مؤشر الأداء', 'المستهدف'] : ['Objective', 'KPI', 'Target']} rows={(data.objectives || []).map((item) => [text(lang, item, 'objective'), text(lang, item, 'kpi'), text(lang, item, 'target')])} /></div><div><Heading eyebrow={pick('governanceEyebrow')} title={pick('governanceTitle')} /><div className="qhse-card-grid three">{(data.governanceCards || []).map((item, index) => <article className="qhse-outline-card" key={`${item.titleEn}-${index}`}><Icon name={item.icon} /><h3>{text(lang, item, 'title')}</h3><p>{text(lang, item, 'detail')}</p></article>)}</div></div></section>
 
-    <section className="qhse-container qhse-section"><Heading eyebrow={pick('protocolsEyebrow')} title={pick('protocolsTitle')} /><div className="qhse-protocol-grid">{protocols.map((item, index) => <article className="qhse-protocol-card" key={`${item.titleEn}-${index}`}><img src={image(item.image, '/images/qhse_safety.webp')} alt={text(lang, item, 'title')} /><div><h3>{text(lang, item, 'title')}</h3><small>{item.code}</small><ul>{(ar ? item.bulletsAr : item.bulletsEn || item.bulletsAr || item.bulletsEn)?.slice(0, 4).map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></div></article>)}</div></section>
+    <section className="qhse-container qhse-section"><Heading eyebrow={pick('protocolsEyebrow')} title={pick('protocolsTitle')} /><div className="qhse-protocol-carousel"><button className="qhse-protocol-control qhse-protocol-control-left" type="button" aria-label="Scroll protocol cards left" onClick={() => scrollProtocols(-1)}>&larr;</button><div className="qhse-protocol-grid" ref={protocolGridRef}>{protocols.map((item, index) => <article className="qhse-protocol-card" key={`${item.titleEn}-${index}`}><img src={image(item.image, '/images/qhse_safety.webp')} alt={text(lang, item, 'title')} /><div><h3>{text(lang, item, 'title')}</h3><small>{item.code}</small><ul>{(ar ? item.bulletsAr : item.bulletsEn || item.bulletsAr || item.bulletsEn)?.slice(0, 4).map((bullet) => <li key={bullet}>{bullet}</li>)}</ul></div></article>)}</div><button className="qhse-protocol-control qhse-protocol-control-right" type="button" aria-label="Scroll protocol cards right" onClick={() => scrollProtocols(1)}>&rarr;</button></div></section>
 
     <section className="qhse-container qhse-section qhse-split-section"><div><Heading eyebrow={pick('toleranceEyebrow')} title={pick('toleranceTitle')} /><Table headers={ar ? ['السياسة', 'المرجع'] : ['Policy', 'Reference']} rows={(data.tolerancePolicies || []).map((item) => [text(lang, item, 'policy'), text(lang, item, 'reference')])} /></div><div><Heading eyebrow={pick('emergencyEyebrow')} title={pick('emergencyTitle')} /><Table headers={ar ? ['الحالة', 'الاستجابة', 'المرجع'] : ['Scenario', 'Response', 'Reference']} rows={(data.emergencyRows || []).map((item) => [text(lang, item, 'scenario'), text(lang, item, 'response'), text(lang, item, 'reference')])} /></div></section>
 
