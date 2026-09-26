@@ -91,19 +91,6 @@ export const structure: StructureResolver = (S) =>
 
       S.divider(),
 
-      S.listItem()
-        .title('Vacancies')
-        .child(
-          S.documentTypeList('job')
-            .title('Vacancies — use + to add a new vacancy')
-            .defaultOrdering([
-              { field: 'isOpen', direction: 'desc' },
-              { field: 'postedDate', direction: 'desc' },
-            ])
-            .initialValueTemplates([
-              S.initialValueTemplateItem('job'),
-            ]),
-        ),
       S.documentTypeListItem('jobApplication').title('Job Applications'),
 
       // 4. GLOBAL SETTINGS & FOOTER

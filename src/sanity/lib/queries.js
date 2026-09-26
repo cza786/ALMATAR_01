@@ -96,7 +96,6 @@ export const CAREERS_PAGE_QUERY = groq`
     eyebrowEn, eyebrowAr,
     pageTitleEn, pageTitleAr,
     pageDescEn, pageDescAr,
-    heroButtonEn, heroButtonAr,
     heroSideTextEn, heroSideTextAr,
     whyWorkEyebrowEn, whyWorkEyebrowAr,
     whyWorkHeadingEn, whyWorkHeadingAr,
@@ -105,28 +104,9 @@ export const CAREERS_PAGE_QUERY = groq`
     whyItems[] { titleEn, titleAr, descEn, descAr },
     benefitsEyebrowEn, benefitsEyebrowAr,
     benefitsItems[] { titleEn, titleAr, descEn, descAr },
-    vacanciesEyebrowEn, vacanciesEyebrowAr,
-    vacanciesTitleEn, vacanciesTitleAr,
-    vacanciesDescEn, vacanciesDescAr,
-    openLabelEn, openLabelAr,
-    closedLabelEn, closedLabelAr,
-    viewDetailsEn, viewDetailsAr,
-    postedLabelEn, postedLabelAr,
-    emptyMessageEn, emptyMessageAr,
     ctaEyebrowEn, ctaEyebrowAr,
     ctaHeadingEn, ctaHeadingAr,
-    ctaButtonEn, ctaButtonAr,
-    "jobs": *[_type == "job"] | order(order asc, _createdAt desc) {
-      _id,
-      "slug": slug.current,
-      titleEn, titleAr,
-      departmentEn, departmentAr,
-      locationEn, locationAr,
-      employmentType, employmentTypeAr,
-      descriptionEn, descriptionAr,
-      requirementsEn, requirementsAr,
-      isOpen, postedDate
-    }
+    ctaButtonEn, ctaButtonAr
   }
 `
 

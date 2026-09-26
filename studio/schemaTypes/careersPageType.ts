@@ -1,5 +1,13 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
+const retiredVacancyField = {
+  hidden: true,
+  readOnly: true,
+  deprecated: {
+    reason: 'Vacancies are no longer displayed on the Careers page.',
+  },
+}
+
 export const careersPageType = defineType({
   name: 'careersPage',
   title: 'Careers Page',
@@ -15,8 +23,8 @@ export const careersPageType = defineType({
     defineField({ name: 'pageTitleAr', title: 'Hero Page Title (Arabic)', type: 'string' }),
     defineField({ name: 'pageDescEn', title: 'Hero Description (English)', type: 'text', rows: 3 }),
     defineField({ name: 'pageDescAr', title: 'Hero Description (Arabic)', type: 'text', rows: 3 }),
-    defineField({ name: 'heroButtonEn', title: 'Hero Button Label (English)', type: 'string' }),
-    defineField({ name: 'heroButtonAr', title: 'Hero Button Label (Arabic)', type: 'string' }),
+    defineField({ name: 'heroButtonEn', title: 'Hero Button Label (English)', type: 'string', ...retiredVacancyField }),
+    defineField({ name: 'heroButtonAr', title: 'Hero Button Label (Arabic)', type: 'string', ...retiredVacancyField }),
     defineField({ name: 'heroSideTextEn', title: 'Hero Side Message (English)', type: 'text', rows: 4 }),
     defineField({ name: 'heroSideTextAr', title: 'Hero Side Message (Arabic)', type: 'text', rows: 4 }),
 
@@ -68,22 +76,22 @@ export const careersPageType = defineType({
     }),
 
     // --- VACANCIES SECTION LABELS ---
-    defineField({ name: 'vacanciesEyebrowEn', title: 'Vacancies Eyebrow (English)', type: 'string' }),
-    defineField({ name: 'vacanciesEyebrowAr', title: 'Vacancies Eyebrow (Arabic)', type: 'string' }),
-    defineField({ name: 'vacanciesTitleEn', title: 'Vacancies Heading (English)', type: 'string' }),
-    defineField({ name: 'vacanciesTitleAr', title: 'Vacancies Heading (Arabic)', type: 'string' }),
-    defineField({ name: 'vacanciesDescEn', title: 'Vacancies Description (English)', type: 'text', rows: 3 }),
-    defineField({ name: 'vacanciesDescAr', title: 'Vacancies Description (Arabic)', type: 'text', rows: 3 }),
-    defineField({ name: 'openLabelEn', title: 'Open Status Label (English)', type: 'string' }),
-    defineField({ name: 'openLabelAr', title: 'Open Status Label (Arabic)', type: 'string' }),
-    defineField({ name: 'closedLabelEn', title: 'Closed Status Label (English)', type: 'string' }),
-    defineField({ name: 'closedLabelAr', title: 'Closed Status Label (Arabic)', type: 'string' }),
-    defineField({ name: 'viewDetailsEn', title: 'View Details Label (English)', type: 'string' }),
-    defineField({ name: 'viewDetailsAr', title: 'View Details Label (Arabic)', type: 'string' }),
-    defineField({ name: 'postedLabelEn', title: 'Posted Date Label (English)', type: 'string' }),
-    defineField({ name: 'postedLabelAr', title: 'Posted Date Label (Arabic)', type: 'string' }),
-    defineField({ name: 'emptyMessageEn', title: 'No Vacancies Message (English)', type: 'string' }),
-    defineField({ name: 'emptyMessageAr', title: 'No Vacancies Message (Arabic)', type: 'string' }),
+    defineField({ name: 'vacanciesEyebrowEn', title: 'Vacancies Eyebrow (English)', type: 'string', ...retiredVacancyField }),
+    defineField({ name: 'vacanciesEyebrowAr', title: 'Vacancies Eyebrow (Arabic)', type: 'string', ...retiredVacancyField }),
+    defineField({ name: 'vacanciesTitleEn', title: 'Vacancies Heading (English)', type: 'string', ...retiredVacancyField }),
+    defineField({ name: 'vacanciesTitleAr', title: 'Vacancies Heading (Arabic)', type: 'string', ...retiredVacancyField }),
+    defineField({ name: 'vacanciesDescEn', title: 'Vacancies Description (English)', type: 'text', rows: 3, ...retiredVacancyField }),
+    defineField({ name: 'vacanciesDescAr', title: 'Vacancies Description (Arabic)', type: 'text', rows: 3, ...retiredVacancyField }),
+    defineField({ name: 'openLabelEn', title: 'Open Status Label (English)', type: 'string', ...retiredVacancyField }),
+    defineField({ name: 'openLabelAr', title: 'Open Status Label (Arabic)', type: 'string', ...retiredVacancyField }),
+    defineField({ name: 'closedLabelEn', title: 'Closed Status Label (English)', type: 'string', ...retiredVacancyField }),
+    defineField({ name: 'closedLabelAr', title: 'Closed Status Label (Arabic)', type: 'string', ...retiredVacancyField }),
+    defineField({ name: 'viewDetailsEn', title: 'View Details Label (English)', type: 'string', ...retiredVacancyField }),
+    defineField({ name: 'viewDetailsAr', title: 'View Details Label (Arabic)', type: 'string', ...retiredVacancyField }),
+    defineField({ name: 'postedLabelEn', title: 'Posted Date Label (English)', type: 'string', ...retiredVacancyField }),
+    defineField({ name: 'postedLabelAr', title: 'Posted Date Label (Arabic)', type: 'string', ...retiredVacancyField }),
+    defineField({ name: 'emptyMessageEn', title: 'No Vacancies Message (English)', type: 'string', ...retiredVacancyField }),
+    defineField({ name: 'emptyMessageAr', title: 'No Vacancies Message (Arabic)', type: 'string', ...retiredVacancyField }),
 
     // --- CALL TO ACTION SECTION ---
     defineField({ name: 'ctaEyebrowEn', title: 'CTA Eyebrow (English)', type: 'string' }),
