@@ -57,3 +57,33 @@
 
 /* Keep the CTA border/banner edge-to-edge even inside constrained page shells. */
 .qhse-cta { width: 100vw; margin-left: calc(50% - 50vw); }
+
+/* Keep protocol cards in one horizontal row on desktop, using the mobile card treatment. */
+@media(min-width:641px){
+  .qhse-protocol-grid{
+    display:flex;
+    gap:1rem;
+    overflow-x:auto;
+    padding:.35rem .15rem .8rem;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .qhse-protocol-grid::-webkit-scrollbar{display:none}
+  .qhse-protocol-card{
+    flex:0 0 calc((100% - 3rem) / 4);
+    scroll-snap-align:start;
+    border:0;
+    border-radius:1.5rem;
+    box-shadow:0 10px 26px rgba(10,33,57,.12);
+    background:#fff;
+  }
+  .qhse-protocol-card img{height:180px;border-radius:1.5rem 1.5rem 0 0}
+  .qhse-protocol-card>div{padding:1.1rem 1.15rem 1.25rem}
+  .qhse-protocol-card h3{font-size:.9rem}
+  .qhse-protocol-card small{font-size:.58rem}
+  .qhse-protocol-card li{font-size:.62rem;line-height:1.5}
+}
+@media(min-width:641px) and (max-width:900px){
+  .qhse-protocol-card{flex-basis:calc((100% - 2rem) / 3)}
+}

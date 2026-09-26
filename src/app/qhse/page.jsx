@@ -1,7 +1,6 @@
 'use client'
 
 import '../qhse.css'
-import { useState } from 'react'
 import { useLanguage } from '@/context/LanguageContext'
 import { QHSE_PAGE_QUERY } from '@/sanity/lib/queries'
 import { getImageUrl } from '@/sanity/lib/image'
@@ -37,7 +36,6 @@ function Table({ headers, rows }) {
 export default function QhsePage() {
   const { lang } = useLanguage()
   const data = useSanityContent('qhse', QHSE_PAGE_QUERY) || QHSE_FALLBACK
-  const [openDocument, setOpenDocument] = useState(null)
   const ar = lang === 'ar'
   const pick = (key, fallback = '') => data[`${key}${ar ? 'Ar' : 'En'}`] || data[`${key}${ar ? 'En' : 'Ar'}`] || fallback
   const protocols = data.protocols || []
@@ -62,10 +60,9 @@ export default function QhsePage() {
 
     <section className="qhse-container qhse-section"><Heading eyebrow={pick('metricsEyebrow')} title={pick('metricsTitle')} /><div className="qhse-metrics">{(data.metrics || []).map((item, index) => <div key={`${item.titleEn}-${index}`}><Icon name={item.icon} /><span>{text(lang, item, 'title')}</span><strong>{item.value}</strong></div>)}</div></section>
 
-    <section className="qhse-container qhse-section"><Heading eyebrow={pick('documentsEyebrow')} title={pick('documentsTitle')} /><div className="qhse-documents"><Table headers={ar ? ['#', 'السياسة', 'المرجع', 'الإجراء'] : ['#', 'Policy', 'Reference', 'Action']} rows={documents.map((item, index) => [index + 1, text(lang, item, 'policy'), text(lang, item, 'reference'), <button type="button" key={`${item.policyEn}-button`} onClick={() => setOpenDocument(item)}>{ar ? 'عرض / تنزيل' : 'View / Download'} →</button>])} /></div></section>
+    <section className="qhse-container qhse-section"><Heading eyebrow={pick('documentsEyebrow')} title={pick('documentsTitle')} /><div className="qhse-documents"><Table headers={ar ? ['#', 'السياسة', 'المرجع'] : ['#', 'Policy', 'Reference']} rows={documents.map((item, index) => [index + 1, text(lang, item, 'policy'), text(lang, item, 'reference')])} /></div></section>
 
     <section className="qhse-cta"><div className="qhse-container"><div><p className="qhse-eyebrow">{ar ? 'تواصل معنا' : 'GET IN TOUCH'}</p><h2>{pick('ctaTitle')}</h2><p>{pick('ctaDescription')}</p></div><a href={`mailto:${data.ctaEmail || 'qhse@almatar-oil.com'}`}>{data.ctaEmail || 'qhse@almatar-oil.com'} <span>→</span></a></div></section>
 
-    {openDocument && <div className="qhse-modal-backdrop" role="presentation" onClick={(event) => event.target === event.currentTarget && setOpenDocument(null)}><section className="qhse-modal" role="dialog" aria-modal="true"><button type="button" className="qhse-modal-close" onClick={() => setOpenDocument(null)}>×</button><h2>{text(lang, openDocument, 'policy')}</h2>{openDocument.fileUrl || openDocument.url ? <iframe src={`${openDocument.fileUrl || openDocument.url}#toolbar=0`} title={text(lang, openDocument, 'policy')} /> : <p>{ar ? 'لم يتم تحميل وثيقة لهذه السياسة بعد.' : 'No document has been uploaded for this policy yet.'}</p>}</section></div>}
   </main>
 }
