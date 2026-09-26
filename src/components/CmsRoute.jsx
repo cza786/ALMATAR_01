@@ -10,5 +10,9 @@ export default function CmsRoute({ pageKey, serviceKey, fallback }) {
     serviceKey ? SERVICE_PAGE_QUERY : WEBSITE_PAGE_QUERY,
     serviceKey ? { routeKey: serviceKey } : { pageKey },
   )
-  return data ? <WebsitePageRenderer data={data} /> : fallback
+  return data && data.sections && data.sections.length > 2 ? (
+    <WebsitePageRenderer data={data} />
+  ) : (
+    fallback
+  )
 }
