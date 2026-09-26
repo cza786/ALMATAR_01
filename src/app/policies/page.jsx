@@ -54,8 +54,23 @@ function PoliciesContent() {
     setSelected(requested || null);
   }, [searchParams]);
 
-  const openPolicy = (policy) => setSelected(policy);
-  const closePolicy = () => setSelected(null);
+  const openPolicy = (policy) => {
+    setSelected(policy);
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      url.searchParams.set('policy', policy.id);
+      window.history.pushState({}, '', url.toString());
+    }
+  };
+
+  const closePolicy = () => {
+    setSelected(null);
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('policy');
+      window.history.pushState({}, '', url.toString());
+    }
+  };
 
   useEffect(() => {
     if (!selected) return undefined;
@@ -109,10 +124,6 @@ function PoliciesContent() {
                 alt={selected.title[lang] || selected.title.en}
               />
             </div>
-
-
-
-
           </section>
         </div>
       )}
