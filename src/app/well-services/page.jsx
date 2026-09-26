@@ -1,5 +1,6 @@
 import WellInterventionPage from '@/components/WellInterventionPage';
+import CmsRoute from '@/components/CmsRoute';
 
 export default function WellServicesPage() {
-  return <WellInterventionPage />;
+  return <CmsRoute serviceKey="well-services" fallback={<WellInterventionPage />} />;
 }

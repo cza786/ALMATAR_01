@@ -9187,7 +9187,7 @@ body.rtl-mode .home-intro-link span:last-child {
 .top-header { min-height: 114px; border-top: 1px solid #f0d8d8; border-bottom: 3px solid #dce2e8; box-shadow: none; }
 .top-header-main { padding: 0 !important; }
 .top-header-fullwidth { min-height: 111px; padding: 0 40px !important; }
-.brand-logo-white-badge, .header-logo-img-prominent { height: 100px !important; max-height: 100px !important; }
+.brand-logo-white-badge, .header-logo-img-prominent { height: 110px !important; max-height: 110px !important; }
 .main-nav { gap: 29px; }
 .nav-link { color: #17263b; font-size: 14px; font-weight: 500; letter-spacing: 0; text-transform: none; padding: 8px 0 10px; }
 .nav-link:hover, .nav-link.active { color: #a96e05; }
@@ -9209,7 +9209,7 @@ body.rtl-mode .home-intro-link span:last-child {
 .site-footer .interactive-contact-btn { padding: 10px 18px; font-size: 14px; }
 .site-footer .footer-bottom { background: #000 !important; padding: 31px 0 43px; border-top: 1px solid #333; color: #9dc4e5 !important; font-size: 14px; }
 @media (max-width: 1100px) { .main-nav { gap: 15px; } .nav-link { font-size: 12px; } .header-actions { gap: 12px !important; } .top-header-fullwidth { padding-inline: 24px !important; } .site-footer .footer-grid { gap: 28px; } }
-@media (max-width: 991px) { .top-header { min-height: 82px; } .top-header-fullwidth { min-height: 80px; } .brand-logo-white-badge, .header-logo-img-prominent { height: 68px !important; max-height: 68px !important; } }
+@media (max-width: 991px) { .top-header { min-height: 82px; } .top-header-fullwidth { min-height: 80px; } .brand-logo-white-badge, .header-logo-img-prominent { height: 74px !important; max-height: 74px !important; } }
 @media (max-width: 600px) { .site-footer { padding-top: 42px !important; } .site-footer > .container { padding-inline: 24px; } .site-footer .footer-grid { gap: 34px; margin-bottom: 38px; } .site-footer .footer-bottom { gap: 12px; padding-bottom: 28px; } }
 
 /* Layout cleanup: keep content sections driven by their content rather than
@@ -11673,3 +11673,23 @@ body.rtl-mode .home-intro-link span:last-child {
   .slickline-page-root .banner-title { font-size:clamp(1.75rem,8vw,2.5rem); }
   .slickline-page-root .banner-sub { font-size:.82rem; }
 }
+/* CMS-managed website pages */
+.cms-page { background: #f7f8fa; color: #111827; }
+.cms-page-hero { min-height: 460px; background-position: center; background-size: cover; display: flex; align-items: end; }
+.cms-page-hero-copy { width: min(1180px, 100%); margin: 0 auto; padding: 90px 24px 72px; color: #fff; }
+.cms-page-hero-copy span, .cms-eyebrow { color: #d7aa4a; font-size: .78rem; letter-spacing: .16em; font-weight: 700; }
+.cms-page-hero-copy h1 { max-width: 850px; margin: 14px 0; font-size: clamp(2.4rem, 6vw, 5.6rem); line-height: .98; }
+.cms-page-hero-copy p { max-width: 720px; font-size: 1.12rem; line-height: 1.7; color: #e5e7eb; }
+.cms-page-sections { width: min(1180px, 100%); margin: 0 auto; padding: 36px 24px 90px; }
+.cms-content-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .8fr); gap: 48px; align-items: center; padding: 72px 0; border-bottom: 1px solid #dfe3e8; }
+.cms-content-section-reverse { direction: rtl; }
+.cms-content-section-reverse > * { direction: ltr; }
+.cms-content-copy h2 { margin: 10px 0 16px; font-size: clamp(1.8rem, 3vw, 3rem); }
+.cms-content-copy p { color: #4b5563; line-height: 1.8; white-space: pre-line; }
+.cms-content-copy ul { padding-inline-start: 20px; line-height: 2; }
+.cms-content-copy a { display: inline-block; margin-top: 16px; color: #0d5c83; font-weight: 700; }
+.cms-content-section > img { width: 100%; max-height: 420px; object-fit: cover; border-radius: 4px; }
+.cms-card-grid { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+.cms-card-grid article { background: #fff; padding: 24px; border-top: 3px solid #d7aa4a; box-shadow: 0 8px 26px rgba(15,23,42,.07); }
+.cms-card-grid img { width: 100%; max-height: 150px; object-fit: cover; margin-top: 10px; }
+@media (max-width: 720px) { .cms-content-section, .cms-content-section-reverse { grid-template-columns: 1fr; direction: ltr; } .cms-page-hero { min-height: 390px; } }

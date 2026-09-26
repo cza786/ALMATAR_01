@@ -47,6 +47,11 @@ export default function ContactPage() {
     sanityData?.emailAddresses?.length > 0
       ? sanityData.emailAddresses
       : ['info@almatar-oil.com'];
+  const localizedValue = (ar, en, fallback) => (lang === 'ar' ? (sanityData?.[ar] || sanityData?.[en] || fallback) : (sanityData?.[en] || sanityData?.[ar] || fallback));
+  const headOffice = localizedValue('headOfficeAr', 'headOfficeEn', t('footer.headOffice'));
+  const headOfficeAddress = localizedValue('headOfficeAddressAr', 'headOfficeAddressEn', t('footer.headOfficeAddress'));
+  const companyOffice = localizedValue('companyOfficeAr', 'companyOfficeEn', t('footer.companyOffice'));
+  const companyOfficeAddress = localizedValue('companyOfficeAddressAr', 'companyOfficeAddressEn', t('footer.companyOfficeAddress'));
 
   const contactCards = [
     {
@@ -67,17 +72,17 @@ export default function ContactPage() {
     },
     {
       id: 'head-office',
-      type: t('footer.headOffice').toUpperCase(),
-      label: t('footer.headOffice'),
-      value: t('footer.headOfficeAddress'),
+      type: headOffice.toUpperCase(),
+      label: headOffice,
+      value: headOfficeAddress,
       href: '#contact-addresses',
       isExternal: false,
     },
     {
       id: 'company-office',
-      type: t('footer.companyOffice').toUpperCase(),
-      label: t('footer.companyOffice'),
-      value: t('footer.companyOfficeAddress'),
+      type: companyOffice.toUpperCase(),
+      label: companyOffice,
+      value: companyOfficeAddress,
       href: '#contact-addresses',
       isExternal: false,
     }
@@ -221,12 +226,12 @@ export default function ContactPage() {
               <div id="contact-addresses" className="contact-address-panel">
                 <h2 className="quote-modal-title">{t('contact.addressesTitle')}</h2>
                 <div className="contact-address-item">
-                  <h3>{t('footer.headOffice')}</h3>
-                  <p>{t('footer.headOfficeAddress')}</p>
+                  <h3>{headOffice}</h3>
+                  <p>{headOfficeAddress}</p>
                 </div>
                 <div className="contact-address-item">
-                  <h3>{t('footer.companyOffice')}</h3>
-                  <p>{t('footer.companyOfficeAddress')}</p>
+                  <h3>{companyOffice}</h3>
+                  <p>{companyOfficeAddress}</p>
                 </div>
               </div>
               <div>

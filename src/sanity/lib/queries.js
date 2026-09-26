@@ -97,6 +97,26 @@ export const CAREERS_PAGE_QUERY = groq`
     pageTitleAr,
     pageDescEn,
     pageDescAr,
+    heroButtonEn,
+    heroButtonAr,
+    heroSideTextEn,
+    heroSideTextAr,
+    vacanciesEyebrowEn,
+    vacanciesEyebrowAr,
+    vacanciesTitleEn,
+    vacanciesTitleAr,
+    vacanciesDescEn,
+    vacanciesDescAr,
+    openLabelEn,
+    openLabelAr,
+    closedLabelEn,
+    closedLabelAr,
+    viewDetailsEn,
+    viewDetailsAr,
+    postedLabelEn,
+    postedLabelAr,
+    emptyMessageEn,
+    emptyMessageAr,
     cultureImage,
   "jobs": *[_type == "job"] | order(order asc, _createdAt desc) {
       _id,
@@ -160,7 +180,17 @@ export const CONTACT_PAGE_QUERY = groq`
     quoteTitleEn,
     quoteTitleAr,
     quoteDescEn,
-    emailAddresses
+    quoteDescAr,
+    emailAddresses,
+    headOfficeEn,
+    headOfficeAr,
+    headOfficeAddressEn,
+    headOfficeAddressAr,
+    companyOfficeEn,
+    companyOfficeAr,
+    companyOfficeAddressEn,
+    companyOfficeAddressAr,
+    whatsappNumber
   }
 `
 
@@ -181,6 +211,22 @@ export const ALL_SERVICES_QUERY = groq`
     features[] {
       featureEn,
       featureAr
+    },
+    pageContent {
+      routeKey,
+      heroImage,
+      heroEyebrowEn, heroEyebrowAr,
+      heroTitleEn, heroTitleAr,
+      heroDescriptionEn, heroDescriptionAr,
+      introImage, introImageAltEn, introImageAltAr,
+      introEyebrowEn, introEyebrowAr,
+      introTitleEn, introTitleAr,
+      introDescriptionEn, introDescriptionAr,
+      sections[] { ..., cards[] { ... } },
+      stats[] { value, labelEn, labelAr },
+      ctaTitleEn, ctaTitleAr,
+      ctaDescriptionEn, ctaDescriptionAr,
+      ctaButtonEn, ctaButtonAr, ctaLink, ctaImage
     }
   }
 `
@@ -229,5 +275,29 @@ export const WEBSITE_PAGE_QUERY = groq`
       cards[] { icon, titleEn, titleAr, descriptionEn, descriptionAr, image, link }
     },
     seo { titleEn, titleAr, descriptionEn, descriptionAr, image }
+  }
+`
+
+export const SERVICE_PAGE_QUERY = groq`
+  *[_type == "service" && (pageContent.routeKey == $routeKey || slug.current == $routeKey)][0] {
+    titleEn,
+    titleAr,
+    image,
+    pageContent {
+      routeKey,
+      heroImage,
+      heroEyebrowEn, heroEyebrowAr,
+      heroTitleEn, heroTitleAr,
+      heroDescriptionEn, heroDescriptionAr,
+      introImage, introImageAltEn, introImageAltAr,
+      introEyebrowEn, introEyebrowAr,
+      introTitleEn, introTitleAr,
+      introDescriptionEn, introDescriptionAr,
+      sections[] { ..., cards[] { ... } },
+      stats[] { value, labelEn, labelAr },
+      ctaTitleEn, ctaTitleAr,
+      ctaDescriptionEn, ctaDescriptionAr,
+      ctaButtonEn, ctaButtonAr, ctaLink, ctaImage
+    }
   }
 `

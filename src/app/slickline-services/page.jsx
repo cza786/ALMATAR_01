@@ -1,4 +1,5 @@
 import SlicklineServicesPage from '@/components/SlicklineServicesPage';
+import CmsRoute from '@/components/CmsRoute';
 
 export const metadata = {
   title: 'Slickline Services | ALMATAR Petroleum Services',
@@ -6,5 +7,5 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <SlicklineServicesPage />;
+  return <CmsRoute serviceKey="slickline-services" fallback={<SlicklineServicesPage />} />;
 }

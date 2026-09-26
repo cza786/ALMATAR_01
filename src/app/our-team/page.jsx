@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
+import CmsRoute from '@/components/CmsRoute';
 
 const copy = {
   en: {
@@ -67,7 +68,7 @@ function TeamGroup({ title, note, members, lang }) {
   );
 }
 
-export default function OurTeamPage() {
+function OurTeamLegacy() {
   const { lang } = useLanguage();
   const text = copy[lang] || copy.en;
 
@@ -103,4 +104,8 @@ export default function OurTeamPage() {
       </section>
     </div>
   );
+}
+
+export default function OurTeamPage() {
+  return <CmsRoute pageKey="our-team" fallback={<OurTeamLegacy />} />;
 }

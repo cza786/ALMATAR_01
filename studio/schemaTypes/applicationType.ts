@@ -9,6 +9,7 @@ export const applicationType = defineType({
     defineField({ name: 'email', title: 'Email', type: 'string', readOnly: true }),
     defineField({ name: 'phone', title: 'Phone', type: 'string', readOnly: true }),
     defineField({ name: 'jobTitle', title: 'Applied Position', type: 'string', readOnly: true }),
+    defineField({ name: 'jobId', title: 'Vacancy Document ID', type: 'string', readOnly: true }),
     defineField({ name: 'message', title: 'Applicant Message', type: 'text', rows: 6, readOnly: true }),
     defineField({ name: 'resumeFileName', title: 'Resume File Name', type: 'string', readOnly: true }),
     defineField({ name: 'submittedAt', title: 'Submitted At', type: 'datetime', readOnly: true }),

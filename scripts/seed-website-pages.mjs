@@ -120,6 +120,12 @@ const pages = [
     sections: [section('downhole', 'Downhole Intervention & Measurement', 'Disciplined slickline operations delivered by experienced field teams.', image('almatar_clean_photos/02_rig_depth_scene_clean.webp'), ['Mechanical intervention', 'Well measurement and surveys', 'Plug setting and retrieval'])],
   },
   {
+    key: 'slickline', title: 'Slickline Services', eyebrow: 'WELL SERVICES',
+    description: 'Reliable downhole solutions for measurement, mechanical intervention and reservoir monitoring.',
+    hero: image('almatar_clean_photos/01_hero_slickline_scene.webp'),
+    sections: [section('downhole', 'Downhole Intervention & Measurement', 'Disciplined slickline operations delivered by experienced field teams.', image('almatar_clean_photos/02_rig_depth_scene_clean.webp'), ['Mechanical intervention', 'Well measurement and surveys', 'Plug setting and retrieval'])],
+  },
+  {
     key: 'well-testing', title: 'Well Testing & Flaring', eyebrow: 'WELL SERVICES',
     description: 'Safe, accurate surface testing and controlled flaring for reliable production evaluation.',
     hero: image('almatar_well_testing_clean_photos/01_hero_well_testing_scene.webp'),
@@ -169,6 +175,50 @@ const serviceDocs = [
   ['construction', 'Total Field Construction & Manpower Logistics', 'construction', 'almatar_total_field_all_photos/01_hero_total_field_construction.webp'],
 ]
 
+const arabicPageCopy = {
+  services: ['خدمات حقول النفط المتكاملة', 'خدمات البترول المتكاملة', 'حلول متخصصة لكل مرحلة من مراحل عمليات حقول النفط.'],
+  'well-services': ['خدمات التدخل في الآبار', 'خدمات الآبار', 'حلول مجرّبة للتدخل في الآبار والإصلاح ودعم الإنتاج.'],
+  'drilling-workover': ['خدمات الحفر والإصلاح', 'الحفر والإصلاح', 'دعم متكامل للحفر وإصلاح الآبار وإنشائها في العمليات الميدانية الصعبة.'],
+  'drilling-fluids': ['سوائل الحفر والكيمياء', 'الحفر والسوائل', 'حلول جودة البئر وكيمياء الطين واختبار السوائل لحفر مستقر وفعّال.'],
+  'coiled-tubing': ['الأنابيب الملتفة وضخ النيتروجين', 'خدمات الآبار', 'حلول فعّالة للتدخل والتنظيف والتحفيز واستعادة الإنتاج.'],
+  'stimulation-fracturing': ['التحفيز والتكسير الهيدروليكي', 'خدمات الآبار', 'برامج ضخ وتحفيز مصممة لتحسين إنتاجية الآبار وأداء المكمن.'],
+  'zonal-isolation-cementing': ['العزل الطبقي والإسمنت', 'خدماتنا', 'عزل موثوق لجدار البئر من أجل آبار أكثر أماناً وإنتاجية واستدامة.'],
+  'slickline-services': ['خدمات السلك المعدني', 'خدمات الآبار', 'حلول موثوقة للقياس والتدخل الميكانيكي ومراقبة المكامن.'],
+  slickline: ['خدمات السلك المعدني', 'خدمات الآبار', 'حلول موثوقة للقياس والتدخل الميكانيكي ومراقبة المكامن.'],
+  'well-testing': ['اختبار الآبار والحرق', 'خدمات الآبار', 'اختبار سطحي آمن ودقيق وحرق مضبوط لتقييم الإنتاج بثقة.'],
+  'wellhead-xmas-tree': ['خدمات رؤوس الآبار وشجرة الميلاد', 'خدمات الآبار', 'دعم رؤوس الآبار وشجرة الميلاد للتركيب والصيانة والإنتاج الآمن.'],
+  construction: ['الإنشاءات الميدانية والنقل والكوادر', 'الإنشاءات واللوجستيات', 'حلول متكاملة للإنشاءات والنقل والكوادر ودعم المواقع.'],
+  trading: ['التجارة والتوريد', 'توريد المعدات والمواد الكيميائية', 'أدوات معتمدة من API ورؤوس آبار ومواد حفر ومعدات صناعية تصل إلى الموقع.'],
+  policies: ['السياسات', 'معايير المطار', 'سياسات الشركة التي توجه عمليات آمنة وأخلاقية ومسؤولة.'],
+  'our-team': ['فريقنا', 'كوادرنا', 'مهندسون ومشغلون وفرق دعم ذوو خبرة يقدمون أداءً ميدانياً منضبطاً.'],
+}
+
+const arabicServiceCopy = {
+  'well-intervention': ['خدمات التدخل في الآبار', 'حلول ميدانية موثوقة للتدخل في الآبار والإصلاح ودعم الإنتاج.'],
+  'coiled-tubing': ['الأنابيب الملتفة وضخ النيتروجين', 'عمليات الأنابيب الملتفة للتنظيف والتحفيز ورفع الإنتاج.'],
+  'stimulation-fracturing': ['التحفيز والتكسير الهيدروليكي', 'برامج ضخ وتحفيز هندسية لتحسين إنتاجية الآبار وأداء المكمن.'],
+  'zonal-isolation-cementing': ['العزل الطبقي والإسمنت', 'خدمات إسمنت وعزل هندسية لحماية سلامة البئر والإنتاج والبيئة.'],
+  'wellhead-xmas-tree': ['خدمات رؤوس الآبار وشجرة الميلاد', 'تركيب وصيانة وفحص رؤوس الآبار وشجرات الميلاد ودعم الإنتاج.'],
+  'slickline-services': ['خدمات السلك المعدني', 'عمليات سلك معدني منضبطة للقياس والتدخل الميكانيكي ومراقبة المكامن.'],
+  'well-testing': ['اختبار الآبار والحرق', 'اختبار سطحي آمن ودقيق ومراقبة للضغط والحرارة وحرق مضبوط.'],
+  'drilling-workover': ['خدمات الحفر والإصلاح', 'دعم متكامل للحفر وإصلاح الآبار وإنشائها في العمليات الميدانية.'],
+  construction: ['الإنشاءات الميدانية واللوجستيات', 'إنشاءات ميدانية ونقل وكوادر ودعم مواقع آمن وموثوق.'],
+}
+
+const servicePageLinks = [
+  ['service-well-intervention', 'well-services'],
+  ['service-coiled-tubing', 'coiled-tubing'],
+  ['service-stimulation-fracturing', 'stimulation-fracturing'],
+  ['service-zonal-isolation-cementing', 'zonal-isolation-cementing'],
+  ['service-slickline-services', 'slickline-services'],
+  ['service-well-testing', 'well-testing'],
+  ['service-wellhead-xmas-tree', 'wellhead-xmas-tree'],
+  ['service-drilling-workover', 'drilling-workover'],
+  ['service-drilling-fluids', 'drilling-fluids'],
+  ['service-construction', 'construction'],
+  ['service-trading-supply', 'trading'],
+]
+
 function clean(value) {
   if (Array.isArray(value)) return value.map(clean)
   if (!value || typeof value !== 'object') return value
@@ -181,6 +231,7 @@ async function main() {
 
   console.log(`Seeding ${pages.length} Website Page documents...`)
   for (const page of pages) {
+    const arabic = arabicPageCopy[page.key] || [page.title, page.eyebrow, page.description]
     const heroImage = await uploadImage(page.hero)
     const preparedSections = []
     for (const item of page.sections) {
@@ -196,13 +247,25 @@ async function main() {
       pageKey: page.key,
       adminTitle: page.title,
       pageTitleEn: page.title,
+      pageTitleAr: arabic[0],
       pageDescriptionEn: page.description,
+      pageDescriptionAr: arabic[2],
       heroImage,
       heroEyebrowEn: page.eyebrow,
+      heroEyebrowAr: arabic[1],
       heroTitleEn: page.title,
+      heroTitleAr: arabic[0],
       heroDescriptionEn: page.description,
-      sections: preparedSections,
-      seo: { titleEn: `${page.title} | ALMATAR`, descriptionEn: page.description, image: heroImage },
+      heroDescriptionAr: arabic[2],
+      sections: preparedSections.map((item) => ({
+        ...item,
+        eyebrowAr: arabic[1],
+        titleAr: arabic[0],
+        descriptionAr: arabic[2],
+        imageAltAr: arabic[0],
+        bulletsAr: item.bulletsEn?.map((bullet) => `حلول ${bullet}`) || [],
+      })),
+      seo: { titleEn: `${page.title} | ALMATAR`, titleAr: `${arabic[0]} | المطار`, descriptionEn: page.description, descriptionAr: arabic[2], image: heroImage },
       publishedNote: 'Initial content imported from the existing ALMATAR service page. Edit and publish this document to update CMS-connected layouts.',
     })
     console.log(`  ✓ ${page.key}`)
@@ -212,7 +275,19 @@ async function main() {
   for (let index = 0; index < serviceDocs.length; index += 1) {
     const [slug, title, category, imagePath] = serviceDocs[index]
     const id = `service-${slug}`
-    const exists = await client.fetch('*[_id == $id][0]{_id}', { id })
+    const serviceArabic = arabicServiceCopy[slug] || [title, `تقدم المطار خدمات ${title} لعمليات حقول نفط آمنة وموثوقة.`]
+    const preparedServiceImage = await uploadImage(imagePath.startsWith('images/') ? imagePath : `images/policies-photo/services/${imagePath}`)
+    const exists = await client.fetch('*[_id == $id][0]{_id,image}', { id })
+    if (exists) {
+      const servicePatch = {
+        titleAr: serviceArabic[0],
+        shortDescriptionAr: serviceArabic[1],
+        fullDescriptionAr: serviceArabic[1],
+      }
+      if (!exists.image && preparedServiceImage) servicePatch.image = preparedServiceImage
+      await client.patch(id).set(servicePatch).commit()
+      console.log(`updated bilingual ${slug}`)
+    }
     if (exists) {
       console.log(`  • kept existing ${slug}`)
       continue
@@ -222,14 +297,39 @@ async function main() {
       _id: id,
       _type: 'service',
       titleEn: title,
+      titleAr: serviceArabic[0],
       slug: { _type: 'slug', current: slug },
       category,
       order: index + 1,
       shortDescriptionEn: `ALMATAR ${title.toLowerCase()} support for safe, reliable oilfield operations.`,
-      image: serviceImage,
+      shortDescriptionAr: `تقدم المطار خدمات ${title} لعمليات حقول نفط آمنة وموثوقة.`,
+      image: preparedServiceImage,
       features: [],
     })
     console.log(`  ✓ ${slug}`)
+  }
+
+  console.log('Copying complete bilingual page content into Service & Solution documents...')
+  for (const [serviceId, routeKey] of servicePageLinks) {
+    const page = await client.fetch('*[_type == "websitePage" && pageKey == $routeKey][0]{heroImage,heroEyebrowEn,heroEyebrowAr,heroTitleEn,heroTitleAr,heroDescriptionEn,heroDescriptionAr,sections}', { routeKey })
+    if (!page) {
+      console.warn(`Missing website page content for ${routeKey}`)
+      continue
+    }
+    await client.patch(serviceId).set({
+      pageContent: {
+        routeKey,
+        heroImage: page.heroImage,
+        heroEyebrowEn: page.heroEyebrowEn,
+        heroEyebrowAr: page.heroEyebrowAr,
+        heroTitleEn: page.heroTitleEn,
+        heroTitleAr: page.heroTitleAr,
+        heroDescriptionEn: page.heroDescriptionEn,
+        heroDescriptionAr: page.heroDescriptionAr,
+        sections: page.sections || [],
+      },
+    }).commit()
+    console.log(`copied ${serviceId} <- ${routeKey}`)
   }
 
   console.log('Sanity service content is ready.')

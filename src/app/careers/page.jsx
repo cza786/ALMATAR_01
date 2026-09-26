@@ -6,7 +6,6 @@ import { useLanguage } from '@/context/LanguageContext'
 import { CAREERS_PAGE_QUERY } from '@/sanity/lib/queries'
 import { getImageUrl } from '@/sanity/lib/image'
 import { useSanityContent } from '@/sanity/lib/fetchData'
-import { DUMMY_JOBS } from '@/data/dummyJobs'
 
 function localized(lang, ar, en, fallback = '') {
   return lang === 'ar' ? (ar || en || fallback) : (en || ar || fallback)
@@ -32,12 +31,22 @@ export default function CareersPage() {
   const pageTitle = localized(lang, data?.pageTitleAr, data?.pageTitleEn, 'Build Your Future With ALMATAR')
   const pageDesc = localized(lang, data?.pageDescAr, data?.pageDescEn, 'Join a team where expertise, ambition and teamwork create real progress.')
   const bannerImage = data?.bannerImage ? getImageUrl(data.bannerImage, '/images/careers_engineers_hero.webp') : '/images/careers_engineers_hero.webp'
-  const jobs = data?.jobs?.length ? data.jobs.map((job) => ({ ...(DUMMY_JOBS.find((item) => item.slug === job.slug) || {}), ...job })) : DUMMY_JOBS
+  const jobs = data?.jobs || []
+  const heroButton = localized(lang, data?.heroButtonAr, data?.heroButtonEn, lang === 'ar' ? 'استكشف الوظائف' : 'Explore vacancies')
+  const heroSideText = localized(lang, data?.heroSideTextAr, data?.heroSideTextEn, lang === 'ar' ? 'الأفراد\nالنمو\nالابتكار\nالمستقبل' : 'PEOPLE\nGROWTH\nINNOVATION\nTHE FUTURE')
+  const vacanciesEyebrow = localized(lang, data?.vacanciesEyebrowAr, data?.vacanciesEyebrowEn, lang === 'ar' ? 'الفرص المتاحة' : 'JOIN THE TEAM')
+  const vacanciesTitle = localized(lang, data?.vacanciesTitleAr, data?.vacanciesTitleEn, lang === 'ar' ? 'الوظائف الشاغرة الحالية' : 'Current Vacancies')
+  const vacanciesDesc = localized(lang, data?.vacanciesDescAr, data?.vacanciesDescEn, lang === 'ar' ? 'اكتشف دورك القادم مع المطار.' : 'Find your next opportunity with ALMATAR.')
+  const openLabel = localized(lang, data?.openLabelAr, data?.openLabelEn, lang === 'ar' ? 'مفتوحة' : 'OPEN')
+  const closedLabel = localized(lang, data?.closedLabelAr, data?.closedLabelEn, lang === 'ar' ? 'مغلقة' : 'CLOSED')
+  const viewDetails = localized(lang, data?.viewDetailsAr, data?.viewDetailsEn, lang === 'ar' ? 'عرض التفاصيل' : 'View Details')
+  const postedLabel = localized(lang, data?.postedLabelAr, data?.postedLabelEn, lang === 'ar' ? 'نُشرت' : 'Posted')
+  const emptyMessage = localized(lang, data?.emptyMessageAr, data?.emptyMessageEn, lang === 'ar' ? 'لا توجد وظائف شاغرة حالياً.' : 'There are no vacancies at this time.')
 
   return <main className="careers-reference-page" lang={lang} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-    <section className="career-reference-hero"><img src={bannerImage} alt="ALMATAR field operations" /><div className="career-reference-hero-overlay"><div><p className="career-reference-kicker">PEOPLE · GROWTH · INNOVATION</p><h1>{pageTitle}</h1><p className="career-reference-hero-desc">{pageDesc}</p><a href="#vacancies" className="career-reference-hero-button">{lang === 'ar' ? 'استكشف الوظائف' : 'Explore vacancies'} <span>→</span></a></div><p className="career-reference-side-label">PEOPLE<br />GROWTH<br />INNOVATION<br />THE FUTURE</p></div></section>
-    <section className="career-vacancies-section" id="vacancies"><div className="career-section-heading"><div><p className="career-reference-kicker">{lang === 'ar' ? 'الفرص المتاحة' : 'JOIN THE TEAM'}</p><h2>{lang === 'ar' ? 'الوظائف الشاغرة الحالية' : 'Current Vacancies'}</h2></div><p>{lang === 'ar' ? 'اكتشف دورك القادم مع المطر.' : 'Find your next opportunity with ALMATAR.'}</p></div>
-      <div className="career-job-grid">{jobs.map((job) => <article className="career-job-card" key={job._id}><div className="career-job-card-top"><span className="career-job-icon"><Icon type="briefcase" /></span><span className={`career-open-badge ${job.isOpen === false ? 'is-closed' : ''}`}>{job.isOpen === false ? 'CLOSED' : 'OPEN'}</span></div><h3>{localized(lang, job.titleAr, job.titleEn)}</h3><div className="career-job-meta"><span><Icon type="briefcase" />{localized(lang, job.departmentAr, job.departmentEn)}</span><span><Icon type="pin" />{localized(lang, job.locationAr, job.locationEn)}</span><span><Icon type="file" />{localized(lang, job.employmentTypeAr, job.employmentType, 'Full-time')}</span></div><p className="career-job-description">{localized(lang, job.descriptionAr, job.descriptionEn)}</p><div className="career-job-card-footer"><span><Icon type="calendar" />Posted {formatDate(job.postedDate)}</span>{job.isOpen === false ? <span className="career-closed-label">Closed</span> : <Link className="career-job-card-link" href={`/careers/${job.slug || job._id}`}>View Details <span>→</span></Link>}</div></article>)}</div>
+    <section className="career-reference-hero"><img src={bannerImage} alt="ALMATAR field operations" /><div className="career-reference-hero-overlay"><div><p className="career-reference-kicker">{localized(lang, data?.eyebrowAr, data?.eyebrowEn, 'PEOPLE · GROWTH · INNOVATION')}</p><h1>{pageTitle}</h1><p className="career-reference-hero-desc">{pageDesc}</p><a href="#vacancies" className="career-reference-hero-button">{heroButton} <span>→</span></a></div><p className="career-reference-side-label">{heroSideText.split('\n').map((line) => <span key={line}>{line}<br /></span>)}</p></div></section>
+    <section className="career-vacancies-section" id="vacancies"><div className="career-section-heading"><div><p className="career-reference-kicker">{vacanciesEyebrow}</p><h2>{vacanciesTitle}</h2></div><p>{vacanciesDesc}</p></div>
+      <div className="career-job-grid">{jobs.length ? jobs.map((job) => <article className="career-job-card" key={job._id}><div className="career-job-card-top"><span className="career-job-icon"><Icon type="briefcase" /></span><span className={`career-open-badge ${job.isOpen === false ? 'is-closed' : ''}`}>{job.isOpen === false ? closedLabel : openLabel}</span></div><h3>{localized(lang, job.titleAr, job.titleEn)}</h3><div className="career-job-meta"><span><Icon type="briefcase" />{localized(lang, job.departmentAr, job.departmentEn)}</span><span><Icon type="pin" />{localized(lang, job.locationAr, job.locationEn)}</span><span><Icon type="file" />{localized(lang, job.employmentTypeAr, job.employmentType, 'Full-time')}</span></div><p className="career-job-description">{localized(lang, job.descriptionAr, job.descriptionEn)}</p><div className="career-job-card-footer"><span><Icon type="calendar" />{postedLabel} {formatDate(job.postedDate)}</span>{job.isOpen === false ? <span className="career-closed-label">{closedLabel}</span> : <Link className="career-job-card-link" href={`/careers/${job.slug || job._id}`}>{viewDetails} <span>→</span></Link>}</div></article>) : <p className="career-empty-state">{emptyMessage}</p>}</div>
     </section>
   </main>
 }

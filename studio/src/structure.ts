@@ -76,6 +76,7 @@ export const structure: StructureResolver = (S) =>
               websitePageItem(S, 'Stimulation & Fracturing', 'stimulation-fracturing'),
               websitePageItem(S, 'Zonal Isolation & Cementing', 'zonal-isolation-cementing'),
               websitePageItem(S, 'Slickline Services', 'slickline-services'),
+              websitePageItem(S, 'Slickline (legacy route)', 'slickline'),
               websitePageItem(S, 'Well Testing', 'well-testing'),
               websitePageItem(S, 'Wellhead & Xmas Tree', 'wellhead-xmas-tree'),
               websitePageItem(S, 'Construction', 'construction'),
@@ -90,7 +91,19 @@ export const structure: StructureResolver = (S) =>
 
       S.divider(),
 
-      S.documentTypeListItem('job').title('Vacancies'),
+      S.listItem()
+        .title('Vacancies')
+        .child(
+          S.documentTypeList('job')
+            .title('Vacancies — use + to add a new vacancy')
+            .defaultOrdering([
+              { field: 'isOpen', direction: 'desc' },
+              { field: 'postedDate', direction: 'desc' },
+            ])
+            .initialValueTemplates([
+              S.initialValueTemplateItem('job'),
+            ]),
+        ),
       S.documentTypeListItem('jobApplication').title('Job Applications'),
 
       // 4. GLOBAL SETTINGS & FOOTER

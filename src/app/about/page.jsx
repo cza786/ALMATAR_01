@@ -3,6 +3,7 @@
 import NextPageBanner from '@/components/NextPageBanner';
 import { useLanguage } from '@/context/LanguageContext';
 import { useEffect, useState } from 'react';
+import CmsRoute from '@/components/CmsRoute';
 
 const values = [
   ['Safety First', 'Protecting our people, communities and environment in everything we do.', '♢'],
@@ -26,7 +27,7 @@ function ClientCard({ image, title, children, icon }) {
   return <article className="about-client-card"><img src={image} alt="" /><div className="about-client-copy"><span className="about-client-icon">{icon}</span><div><h3>{title}</h3>{children}</div><span className="about-client-arrow">→</span></div><div className="about-client-controls"><button className="about-client-prev" type="button" aria-label="Previous card" onClick={() => window.dispatchEvent(new CustomEvent('about-client-change', { detail: -1 }))}>&larr;</button><button className="about-client-next" type="button" aria-label="Next card" onClick={() => window.dispatchEvent(new CustomEvent('about-client-change', { detail: 1 }))}>&rarr;</button></div></article>;
 }
 
-export default function AboutPage() {
+function AboutLegacy() {
   const { lang } = useLanguage();
   const isArabic = lang === 'ar';
   const nextBanner = isArabic
@@ -79,4 +80,8 @@ export default function AboutPage() {
 
     <NextPageBanner title={nextBanner.title} subtitle={nextBanner.subtitle} link="/well-services" bgImage="/images/banner_well_services_hero.webp" />
   </div>;
+}
+
+export default function AboutPage() {
+  return <CmsRoute pageKey="about" fallback={<AboutLegacy />} />;
 }

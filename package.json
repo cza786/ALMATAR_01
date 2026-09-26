@@ -11,7 +11,8 @@
     "images:drilling-cards": "node scripts/create-drilling-card-images.mjs",
     "studio:dev": "npm --prefix studio run dev",
     "studio:build": "npm --prefix studio run build",
-    "seed": "node scripts/seed-sanity.mjs"
+    "seed": "node scripts/seed-sanity.mjs",
+    "seed:vacancies": "node scripts/seed-vacancies.mjs"
   },
   "dependencies": {
     "@portabletext/react": "^3.2.4",

@@ -1,5 +1,6 @@
 import WellTestingPage from '@/components/WellTestingPage';
+import CmsRoute from '@/components/CmsRoute';
 
 export default function Page() {
-  return <WellTestingPage />;
+  return <CmsRoute serviceKey="well-testing" fallback={<WellTestingPage />} />;
 }

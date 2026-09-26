@@ -32,6 +32,7 @@ export const websitePageType = defineType({
           { title: 'Stimulation & Fracturing', value: 'stimulation-fracturing' },
           { title: 'Zonal Isolation & Cementing', value: 'zonal-isolation-cementing' },
           { title: 'Slickline Services', value: 'slickline-services' },
+          { title: 'Slickline (legacy route)', value: 'slickline' },
           { title: 'Well Testing', value: 'well-testing' },
           { title: 'Wellhead & Xmas Tree', value: 'wellhead-xmas-tree' },
           { title: 'Construction', value: 'construction' },

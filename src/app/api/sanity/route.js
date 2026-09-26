@@ -9,6 +9,7 @@ import {
   ALL_SERVICES_QUERY,
   JOB_DETAIL_QUERY,
   WEBSITE_PAGE_QUERY,
+  SERVICE_PAGE_QUERY,
 } from '@/sanity/lib/queries';
 
 // Content is delivered through the live client-side listener. Do not let this
@@ -25,6 +26,7 @@ const QUERIES = {
   services: ALL_SERVICES_QUERY,
   jobDetail: JOB_DETAIL_QUERY,
   websitePage: WEBSITE_PAGE_QUERY,
+  servicePage: SERVICE_PAGE_QUERY,
 };
 
 export async function GET(request) {
@@ -37,6 +39,8 @@ export async function GET(request) {
         ? { slug: searchParams.get('slug') || '' }
         : type === 'websitePage'
           ? { pageKey: searchParams.get('pageKey') || '' }
+          : type === 'servicePage'
+            ? { routeKey: searchParams.get('routeKey') || '' }
           : {};
       const data = await serverClient.fetch(QUERIES[type], params);
       return NextResponse.json({ data }, {

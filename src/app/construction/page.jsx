@@ -20,4 +20,8 @@ function LegacyConstructionPage(){
   <NextPageBanner title="LET’S MOBILIZE YOUR NEXT FIELD PROJECT" subtitle="Reliable logistics. Skilled people. Complete field support. Wherever you operate." link="/contact" bgImage={`${base}01_hero_total_field_construction.webp`}/>
 </div>}
 
-export default ConstructionPage;
+import CmsRoute from '@/components/CmsRoute';
+
+export default function ConstructionRoute() {
+  return <CmsRoute serviceKey="construction" fallback={<ConstructionPage />} />;
+}

@@ -5,8 +5,9 @@ import NextPageBanner from '@/components/NextPageBanner';
 import ServiceIntroCard from '@/components/ServiceIntroCard';
 import QuoteModal from '@/components/QuoteModal';
 import { useLanguage } from '@/context/LanguageContext';
+import CmsRoute from '@/components/CmsRoute';
 
-export default function TradingPage() {
+function TradingLegacy() {
   const { t, lang } = useLanguage();
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const intro = lang === 'ar'
@@ -233,4 +234,8 @@ export default function TradingPage() {
       <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
     </>
   );
+}
+
+export default function TradingPage() {
+  return <CmsRoute serviceKey="trading" fallback={<TradingLegacy />} />;
 }
