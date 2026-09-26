@@ -80,17 +80,21 @@ export const websitePageType = defineType({
             },
           },
         }),
+      ],
+    }),
     defineField({
       name: 'stats',
       title: 'Page statistics',
       type: 'array',
-      of: [defineArrayMember({
-        type: 'object',
-        fields: [
-          defineField({ name: 'value', title: 'Value', type: 'string' }),
-          ...bilingual('label', 'Label'),
-        ],
-      })],
+      of: [
+        defineArrayMember({
+          type: 'object',
+          fields: [
+            defineField({ name: 'value', title: 'Value', type: 'string' }),
+            ...bilingual('label', 'Label'),
+          ],
+        }),
+      ],
     }),
     defineField({
       name: 'cta',
@@ -108,16 +112,16 @@ export const websitePageType = defineType({
       name: 'documents',
       title: 'Downloadable documents',
       type: 'array',
-      of: [defineArrayMember({
-        type: 'object',
-        fields: [
-          ...bilingual('title', 'Title'),
-          ...bilingual('description', 'Description', 'text'),
-          defineField({ name: 'file', title: 'File', type: 'file' }),
-          defineField({ name: 'url', title: 'External URL', type: 'url' }),
-        ],
-      })],
-    }),
+      of: [
+        defineArrayMember({
+          type: 'object',
+          fields: [
+            ...bilingual('title', 'Title'),
+            ...bilingual('description', 'Description', 'text'),
+            defineField({ name: 'file', title: 'File', type: 'file' }),
+            defineField({ name: 'url', title: 'External URL', type: 'url' }),
+          ],
+        }),
       ],
     }),
     defineField({

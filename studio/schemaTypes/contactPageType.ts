@@ -87,7 +87,7 @@ export const contactPageType = defineType({
     defineField({ name: 'companyOfficeAddressEn', title: 'Company Office Address (English)', type: 'text', rows: 2 }),
     defineField({ name: 'companyOfficeAddressAr', title: 'Company Office Address (Arabic)', type: 'text', rows: 2 }),
     defineField({ name: 'whatsappNumber', title: 'WhatsApp Number', type: 'string' }),
-    defineField({ name: 'serviceOptionsEn', title: 'Quotation Service Options (English)', type: 'array', of: [{ type: 'string' }] }),
-    defineField({ name: 'serviceOptionsAr', title: 'Quotation Service Options (Arabic)', type: 'array', of: [{ type: 'string' }] }),
+    defineField({ name: 'serviceOptionsEn', title: 'Quotation Service Options (English)', type: 'array', of: [defineArrayMember({ type: 'string' })] }),
+    defineField({ name: 'serviceOptionsAr', title: 'Quotation Service Options (Arabic)', type: 'array', of: [defineArrayMember({ type: 'string' })] }),
   ],
 })
