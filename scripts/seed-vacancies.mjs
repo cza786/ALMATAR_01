@@ -2,11 +2,14 @@ import fs from 'fs'
 import path from 'path'
 import { createClient } from '@sanity/client'
 
-const rootDir = path.resolve('.')
+const rootDir = fs.existsSync(path.resolve('.env.local')) ? path.resolve('.') : path.resolve('..')
+const envPath = path.join(rootDir, '.env.local')
 
-for (const line of fs.readFileSync(path.join(rootDir, '.env.local'), 'utf8').split(/\r?\n/)) {
-  const index = line.indexOf('=')
-  if (index > 0 && !process.env[line.slice(0, index)]) process.env[line.slice(0, index)] = line.slice(index + 1)
+if (fs.existsSync(envPath)) {
+  for (const line of fs.readFileSync(envPath, 'utf8').split(/\r?\n/)) {
+    const index = line.indexOf('=')
+    if (index > 0 && !process.env[line.slice(0, index)]) process.env[line.slice(0, index)] = line.slice(index + 1)
+  }
 }
 
 const client = createClient({
@@ -71,6 +74,7 @@ for (let index = 0; index < jobs.length; index += 1) {
     ...source,
     _type: 'job',
     slug: { _type: 'slug', current: source.slug },
+    isOpen: true,
     locationEn: vacancyLocationEn,
     locationAr: vacancyLocationAr,
     heroImage,

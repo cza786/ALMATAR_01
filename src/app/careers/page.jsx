@@ -32,8 +32,7 @@ export default function CareersPage() {
   const pageTitle = localized(lang, data?.pageTitleAr, data?.pageTitleEn, 'Build Your Future With ALMATAR')
   const pageDesc = localized(lang, data?.pageDescAr, data?.pageDescEn, 'Join a team where expertise, ambition and teamwork create real progress.')
   const bannerImage = data?.bannerImage ? getImageUrl(data.bannerImage, '/images/careers_engineers_hero.webp') : '/images/careers_engineers_hero.webp'
-  const HIDE_VACANCIES = true
-  const jobs = HIDE_VACANCIES ? [] : (data?.jobs || []).filter((job) => job.isOpen !== false)
+  const jobs = (data?.jobs || []).filter((job) => job.isOpen !== false)
   const heroButton = localized(lang, data?.heroButtonAr, data?.heroButtonEn, lang === 'ar' ? 'استكشف الوظائف' : 'Explore vacancies')
   const heroSideText = localized(lang, data?.heroSideTextAr, data?.heroSideTextEn, lang === 'ar' ? 'الأفراد\nالنمو\nالابتكار\nالمستقبل' : 'PEOPLE\nGROWTH\nINNOVATION\nTHE FUTURE')
   const vacanciesEyebrow = localized(lang, data?.vacanciesEyebrowAr, data?.vacanciesEyebrowEn, lang === 'ar' ? 'الفرص المتاحة' : 'JOIN THE TEAM')
