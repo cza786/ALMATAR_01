@@ -311,11 +311,11 @@ export default function Header({ onOpenDrawer }) {
               <button type="button" className="policy-preview-close" onClick={() => setSelectedPolicy(null)} aria-label="Close policy preview">×</button>
             </div>
             <div className="policy-preview-document">
-              <iframe src={`${selectedPolicy.pdf}#toolbar=0&navpanes=0`} title={selectedPolicy.title[lang] || selectedPolicy.title.en} />
+              <iframe src={`${selectedPolicy.pdf}#page=${lang === 'ar' ? 1 : 2}&toolbar=0&navpanes=0`} title={selectedPolicy.title[lang] || selectedPolicy.title.en} />
             </div>
-            <div className="policy-preview-footer">
-              <a href={selectedPolicy.pdf} target="_blank" rel="noreferrer">Open PDF in a new tab&nbsp; →</a>
-            </div>
+
+
+
           </div>
         </div>
       )}

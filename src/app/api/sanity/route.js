@@ -10,6 +10,7 @@ import {
   JOB_DETAIL_QUERY,
   WEBSITE_PAGE_QUERY,
   SERVICE_PAGE_QUERY,
+  QHSE_PAGE_QUERY,
 } from '@/sanity/lib/queries';
 
 // Content is delivered through the live client-side listener. Do not let this
@@ -27,6 +28,7 @@ const QUERIES = {
   jobDetail: JOB_DETAIL_QUERY,
   websitePage: WEBSITE_PAGE_QUERY,
   servicePage: SERVICE_PAGE_QUERY,
+  qhse: QHSE_PAGE_QUERY,
 };
 
 export async function GET(request) {

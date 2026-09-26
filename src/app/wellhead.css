@@ -869,6 +869,33 @@
   background-color: #b8862b;
 }
 
+/* Keep the technical labels inside the diagram image, matching the annotated
+   wellhead reference instead of letting them sit outside the image column. */
+.diagram-wrapper { overflow: hidden; }
+.callout {
+  z-index: 2;
+  width: 34%;
+  white-space: normal;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, .9);
+}
+.callout-top-left { top: 6%; left: 1%; }
+.callout-mid-left { top: 24%; left: 1%; }
+.callout-low-left { top: 48%; left: 1%; }
+.callout-top-right { top: 12%; right: 1%; text-align: right; }
+.callout-mid-right { top: 27%; right: 1%; text-align: right; }
+.callout-tubing-right { top: 63%; right: 1%; text-align: right; }
+.callout-casing-right { top: 82%; right: 1%; text-align: right; }
+.callout-line { top: 50%; width: 58%; }
+.line-top-left, .line-mid-left, .line-low-left { left: 100%; }
+.line-top-right, .line-mid-right, .line-tubing-right, .line-casing-right { right: 100%; }
+
+@media (max-width: 700px) {
+  .wellhead-diagram-center { order: -1; }
+  .diagram-wrapper { max-width: 520px; }
+  .callout { font-size: .48rem; }
+  .callout .callout-sub { font-size: .43rem; }
+}
+
 .cta-overlay {
   background: linear-gradient(90deg, rgba(143, 101, 29, 0.92) 0%, rgba(143, 101, 29, 0.75) 100%);
 }

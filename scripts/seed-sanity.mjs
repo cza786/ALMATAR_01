@@ -120,6 +120,11 @@ async function seedQhsePage() {
 }
 
 async function seed() {
+  if (process.argv.includes('--qhse-only')) {
+    await seedQhsePage()
+    return
+  }
+
   await seedDummyJobs()
   await seedQhsePage()
   console.log('\n[1/6] ⚙️  Seeding Global Site Settings...')

@@ -3,6 +3,9 @@
 import NextPageBanner from './NextPageBanner';
 import ServiceIntroCard from './ServiceIntroCard';
 import { useLanguage } from '@/context/LanguageContext';
+import { useSanityContent } from '@/sanity/lib/fetchData';
+import { WEBSITE_PAGE_QUERY } from '@/sanity/lib/queries';
+import { getImageUrl } from '@/sanity/lib/image';
 
 const base = '/images/policies-photo/services/almatar_total_field_all_photos/';
 
@@ -24,11 +27,32 @@ const content = {
 const capabilities = [['02_heavy_haulage_transport-hd.webp', ['HEAVY HAULAGE & SPECIALIZED TRANSPORT', 'النقل الثقيل والنقل المتخصص']], ['03_rig_and_site_mobilization-hd.webp', ['RIG & SITE MOBILIZATION', 'تجهيز الحفارات والمواقع']], ['04_lifting_and_cranes-hd.webp', ['LIFTING AND CRANES', 'الرفع والرافعات']], ['05_temporary_roads_site_preparation-hd.webp', ['TEMPORARY ROADS & SITE PREPARATION', 'الطرق المؤقتة وتجهيز المواقع']], ['06_modular_camps_facilities.webp', ['MODULAR CAMPS & FACILITIES', 'المخيمات والمرافق المتنقلة']], ['07_certified_engineers_operators.webp', ['CERTIFIED ENGINEERS & OPERATORS', 'مهندسون ومشغّلون معتمدون']], ['08_catering_support.webp', ['CATERING SUPPORT', 'دعم الإعاشة']], ['09_500_bbl_frac_tank_rental.webp', ['500 BBL FRAC TANK RENTAL', 'تأجير خزانات فراك 500 برميل']], ['10_acid_storage_containment.webp', ['ACID STORAGE & CONTAINMENT', 'تخزين الأحماض واحتواؤها']]];
 const routeImages = ['06_modular_camps_facilities.webp', '02_heavy_haulage_transport-hd.webp', '03_rig_and_site_mobilization-hd.webp', '04_lifting_and_cranes-hd.webp', '01_hero_total_field_construction.webp'];
 
-export default function LocalizedConstructionPage() {
-  const { lang } = useLanguage(); const text = content[lang] || content.en; const index = lang === 'ar' ? 1 : 0;
-  return <div className="total-field-page tf-construction" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-    <section className="tf-hero"><img src={`${base}01_hero_total_field_construction.webp`} alt={text.introTitle} /><div className="tf-hero-copy"><span>{text.heroEyebrow}</span><h1>{text.heroTitle}</h1><p>{text.heroDescription}</p><a href="#capabilities">{text.heroSupport} →</a><a className="tf-outline-button" href="#capabilities">{text.heroCapabilities}</a></div><span className="tf-hero-side">{text.heroSide}</span></section>
-    <ServiceIntroCard eyebrow={text.introEyebrow} title={text.introTitle} description={text.introDescription} image={`${base}02_heavy_haulage_transport-hd.webp`} imageAlt={text.introTitle} />
+export default function LocalizedConstructionPage({ cmsData }) {
+  const { lang } = useLanguage();
+  const fetchedData = useSanityContent('websitePage', WEBSITE_PAGE_QUERY, { pageKey: 'construction' });
+  const data = cmsData || fetchedData;
+  const text = content[lang] || content.en;
+  const index = lang === 'ar' ? 1 : 0;
+  const isArabic = lang === 'ar';
+
+  const heroImg = getImageUrl(data?.heroImage || data?.image || data?.pageContent?.heroImage, `${base}01_hero_total_field_construction.webp`);
+  const heroEyebrow = (isArabic ? (data?.heroEyebrowAr || data?.pageContent?.heroEyebrowAr) : (data?.heroEyebrowEn || data?.pageContent?.heroEyebrowEn)) || text.heroEyebrow;
+  const heroTitle = (isArabic ? (data?.heroTitleAr || data?.pageContent?.heroTitleAr) : (data?.heroTitleEn || data?.pageContent?.heroTitleEn)) || text.heroTitle;
+  const heroDescription = (isArabic ? (data?.heroDescriptionAr || data?.pageContent?.heroDescriptionAr) : (data?.heroDescriptionEn || data?.pageContent?.heroDescriptionEn)) || text.heroDescription;
+
+  const firstSection = data?.sections?.[0] || data?.pageContent?.sections?.[0];
+  const introImg = getImageUrl(firstSection?.image || data?.introImage || data?.pageContent?.introImage, `${base}02_heavy_haulage_transport-hd.webp`);
+  const introEyebrow = (isArabic ? (firstSection?.eyebrowAr || data?.introEyebrowAr) : (firstSection?.eyebrowEn || data?.introEyebrowEn)) || text.introEyebrow;
+  const introTitle = (isArabic ? (firstSection?.titleAr || data?.introTitleAr) : (firstSection?.titleEn || data?.introTitleEn)) || text.introTitle;
+  const introDescription = (isArabic ? (firstSection?.descriptionAr || data?.introDescriptionAr) : (firstSection?.descriptionEn || data?.introDescriptionEn)) || text.introDescription;
+
+  const ctaImg = getImageUrl(data?.cta?.image || data?.ctaImage || data?.pageContent?.ctaImage, `${base}01_hero_total_field_construction.webp`);
+  const ctaTitle = (isArabic ? (data?.cta?.titleAr || data?.ctaTitleAr || data?.pageContent?.ctaTitleAr) : (data?.cta?.titleEn || data?.ctaTitleEn || data?.pageContent?.ctaTitleEn)) || text.ctaTitle;
+  const ctaDescription = (isArabic ? (data?.cta?.descriptionAr || data?.ctaDescriptionAr || data?.pageContent?.ctaDescriptionAr) : (data?.cta?.descriptionEn || data?.ctaDescriptionEn || data?.pageContent?.ctaDescriptionEn)) || text.ctaDescription;
+
+  return <div className="total-field-page tf-construction" dir={isArabic ? 'rtl' : 'ltr'}>
+    <section className="tf-hero"><img src={heroImg} alt={typeof heroTitle === 'string' ? heroTitle : text.introTitle} /><div className="tf-hero-copy"><span>{heroEyebrow}</span><h1>{heroTitle}</h1><p>{heroDescription}</p><a href="#capabilities">{text.heroSupport} →</a><a className="tf-outline-button" href="#capabilities">{text.heroCapabilities}</a></div><span className="tf-hero-side">{text.heroSide}</span></section>
+    <ServiceIntroCard eyebrow={introEyebrow} title={introTitle} description={introDescription} image={introImg} imageAlt={typeof introTitle === 'string' ? introTitle : text.introTitle} />
     <section className="tf-section tf-intro"><div><small>{text.fromBase}</small><h2>{text.deliveryTitle}</h2><p>{text.deliveryDescription}</p></div><div className="tf-intro-cards">{text.introCards.map(([title, description], itemIndex) => <article key={title}><b>{['▣', '♧', '△'][itemIndex]}</b><h3>{title.split('\n').map((line) => <span key={line}>{line}<br /></span>)}</h3><p>{description}</p></article>)}</div></section>
     <section className="tf-section tf-process"><small>{text.logisticsEyebrow}</small><h2>{text.logisticsTitle}</h2><p>{text.logisticsDescription}</p><div className="tf-route">{text.route.map((title, itemIndex) => <article key={title}><img src={`${base}${routeImages[itemIndex]}`} alt={title} /><strong>{title}</strong></article>)}</div></section>
     <section id="capabilities" className="tf-section"><small>{text.capabilitiesEyebrow}</small><h2>{text.capabilitiesTitle}</h2><div className="tf-capabilities">{capabilities.map(([image, title]) => <article key={image}><img src={`${base}${image}`} alt={title[index]} /><h3>{title[index]}</h3><p>{text.capabilityDescription}</p></article>)}<article className="tf-cta"><h3>{text.tailored}</h3><a href="/contact">{text.discuss} →</a></article></div></section>
@@ -36,6 +60,6 @@ export default function LocalizedConstructionPage() {
     <section className="tf-feature-grid"><article><img src={`${base}11_heavy_equipment_clean.webp`} alt={text.features[0]} /><h2>{text.features[0]}</h2></article><article><img src={`${base}12_modular_camps_clean.webp`} alt={text.features[1]} /><h2>{text.features[1]}</h2></article></section>
     <section className="tf-feature-grid tf-people">{text.people.map(([eyebrow, title, description], itemIndex) => <article key={eyebrow}><img src={`${base}${itemIndex === 0 ? '13_disciplined_crews_clean.webp' : '14_safety_people_environment_clean.webp'}`} alt={eyebrow} /><div><small>{eyebrow}</small><h2>{title}</h2><p>{description}</p></div></article>)}</section>
     <section className="tf-stats">{text.stats.map(([value, label]) => <b key={value}>{value}<small>{label}</small></b>)}</section>
-    <NextPageBanner title={text.ctaTitle} subtitle={text.ctaDescription} link="/contact" bgImage={`${base}01_hero_total_field_construction.webp`} />
+    <NextPageBanner title={ctaTitle} subtitle={ctaDescription} link="/contact" bgImage={ctaImg} />
   </div>;
 }
