@@ -6,6 +6,7 @@ import { useLanguage } from '@/context/LanguageContext'
 import { CAREERS_PAGE_QUERY } from '@/sanity/lib/queries'
 import { getImageUrl } from '@/sanity/lib/image'
 import { useSanityContent } from '@/sanity/lib/fetchData'
+import { careerVacanciesVisible } from '@/lib/careerVisibility'
 
 function localized(lang, ar, en, fallback = '') {
   return lang === 'ar' ? (ar || en || fallback) : (en || ar || fallback)
@@ -51,7 +52,9 @@ export default function CareersPage() {
   ]
 
   // Vacancies section content
-  const jobs = (data?.jobs || []).filter((job) => job.isOpen !== false)
+  const jobs = careerVacanciesVisible
+    ? (data?.jobs || []).filter((job) => job.isOpen !== false)
+    : []
   const vacanciesEyebrow = localized(lang, data?.vacanciesEyebrowAr, data?.vacanciesEyebrowEn, lang === 'ar' ? 'الفرص المتاحة' : 'JOIN THE TEAM')
   const vacanciesTitle = localized(lang, data?.vacanciesTitleAr, data?.vacanciesTitleEn, lang === 'ar' ? 'الوظائف الشاغرة الحالية' : 'Current Vacancies')
   const vacanciesDesc = localized(lang, data?.vacanciesDescAr, data?.vacanciesDescEn, lang === 'ar' ? 'اكتشف دورك القادم مع المطار.' : 'Find your next opportunity with ALMATAR.')

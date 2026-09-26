@@ -1,10 +1,18 @@
 import { NextResponse } from 'next/server'
 import { writeClient } from '@/sanity/lib/serverClient'
+import { careerVacanciesVisible } from '@/lib/careerVisibility'
 
 export const runtime = 'nodejs'
 const MAX_RESUME_BYTES = 5 * 1024 * 1024
 
 export async function POST(request) {
+  if (!careerVacanciesVisible) {
+    return NextResponse.json(
+      { error: 'Career applications are not currently being accepted.' },
+      { status: 404 }
+    )
+  }
+
   try {
     const formData = await request.formData()
     const fullName = String(formData.get('fullName') || '').trim()
