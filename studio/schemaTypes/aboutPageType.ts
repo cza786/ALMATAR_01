@@ -61,6 +61,12 @@ export const aboutPageType = defineType({
       rows: 3,
     }),
     defineField({
+      name: 'visionImage',
+      title: 'Vision Section Image',
+      type: 'image',
+      options: { hotspot: true },
+    }),
+    defineField({
       name: 'missionTitleEn',
       title: 'Mission Title (English)',
       type: 'string',
@@ -81,6 +87,12 @@ export const aboutPageType = defineType({
       title: 'Mission Description (Arabic)',
       type: 'text',
       rows: 3,
+    }),
+    defineField({
+      name: 'missionImage',
+      title: 'Mission Section Image',
+      type: 'image',
+      options: { hotspot: true },
     }),
     defineField({
       name: 'operationsImage',

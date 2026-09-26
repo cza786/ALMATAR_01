@@ -40,7 +40,7 @@ export default function WebsitePageRenderer({ data }) {
           const image = getImageUrl(section.image)
           const bullets = section[lang === 'ar' ? 'bulletsAr' : 'bulletsEn'] || section.bulletsEn || []
           return (
-            <section className={`cms-content-section ${index % 2 ? 'cms-content-section-reverse' : ''}`} key={section._key || section.sectionKey || index}>
+            <section className={`cms-content-section ${index % 2 ? 'cms-content-section-reverse' : ''} ${!image ? 'no-image' : ''}`} key={section._key || section.sectionKey || index}>
               <div className="cms-content-copy">
                 {localField(section, 'eyebrow', lang) && <span className="cms-eyebrow">{localField(section, 'eyebrow', lang)}</span>}
                 <h2>{localField(section, 'title', lang) || section.sectionKey}</h2>

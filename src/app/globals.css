@@ -11716,6 +11716,7 @@ body.rtl-mode .home-intro-link span:last-child {
 .cms-page-intro img { width: 100%; max-height: 420px; object-fit: cover; border-radius: 4px; }
 .cms-page-sections { width: min(1180px, 100%); margin: 0 auto; padding: 36px 24px 90px; }
 .cms-content-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .8fr); gap: 48px; align-items: center; padding: 72px 0; border-bottom: 1px solid #dfe3e8; }
+.cms-content-section.no-image, .cms-content-section:not(:has(> img)) { grid-template-columns: 1fr; }
 .cms-content-section-reverse { direction: rtl; }
 .cms-content-section-reverse > * { direction: ltr; }
 .cms-content-copy h2 { margin: 10px 0 16px; font-size: clamp(1.8rem, 3vw, 3rem); }

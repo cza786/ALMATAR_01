@@ -89,7 +89,66 @@ function AboutCmsPage() {
   const data = useSanityContent('about', ABOUT_PAGE_QUERY);
   if (!data) return <AboutLegacy />;
   const value = (en, ar) => lang === 'ar' ? ar || en || '' : en || ar || '';
-  return <main className="cms-page about-cms-page" dir={lang === 'ar' ? 'rtl' : 'ltr'}><section className="cms-page-hero" style={{ backgroundImage: `linear-gradient(90deg, rgba(5,10,20,.88), rgba(5,10,20,.28)), url(${getImageUrl(data.bannerImage, '/images/banner_about_corporate.webp')})` }}><div className="cms-page-hero-copy"><span>{value(data.eyebrowEn, data.eyebrowAr)}</span><h1>{value(data.pageTitleEn, data.pageTitleAr)}</h1></div></section><div className="cms-page-sections"><section className="cms-content-section"><div className="cms-content-copy"><h2>{value(data.visionTitleEn, data.visionTitleAr)}</h2><p>{value(data.visionDescEn, data.visionDescAr)}</p></div></section><section className="cms-content-section cms-content-section-reverse"><div className="cms-content-copy"><h2>{value(data.missionTitleEn, data.missionTitleAr)}</h2><p>{value(data.missionDescEn, data.missionDescAr)}</p></div></section><section className="cms-content-section"><div className="cms-content-copy"><h2>{value(data.syriaTitleEn, data.syriaTitleAr)}</h2><p>{value(data.syriaDescEn, data.syriaDescAr)}</p></div>{getImageUrl(data.operationsImage) && <img src={getImageUrl(data.operationsImage)} alt={value(data.syriaTitleEn, data.syriaTitleAr)} />}</section></div></main>;
+  const visionImg = getImageUrl(data.visionImage, '/images/about_field_operations.webp');
+  const missionImg = getImageUrl(data.missionImage, '/images/qhse_safety.webp');
+  const opsImg = getImageUrl(data.operationsImage, '/images/service_site_camp.webp');
+
+  return (
+    <main className="cms-page about-cms-page" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+      <section
+        className="cms-page-hero"
+        style={{
+          backgroundImage: `linear-gradient(90deg, rgba(5,10,20,.88), rgba(5,10,20,.28)), url(${getImageUrl(
+            data.bannerImage,
+            '/images/banner_about_corporate.webp'
+          )})`,
+        }}
+      >
+        <div className="cms-page-hero-copy">
+          <span>{value(data.eyebrowEn, data.eyebrowAr)}</span>
+          <h1>{value(data.pageTitleEn, data.pageTitleAr)}</h1>
+        </div>
+      </section>
+      <div className="cms-page-sections">
+        <section className={`cms-content-section ${!visionImg ? 'no-image' : ''}`}>
+          <div className="cms-content-copy">
+            <h2>{value(data.visionTitleEn, data.visionTitleAr)}</h2>
+            <p>{value(data.visionDescEn, data.visionDescAr)}</p>
+          </div>
+          {visionImg && (
+            <img
+              src={visionImg}
+              alt={value(data.visionTitleEn, data.visionTitleAr) || 'Our Corporate Vision'}
+            />
+          )}
+        </section>
+        <section className={`cms-content-section cms-content-section-reverse ${!missionImg ? 'no-image' : ''}`}>
+          <div className="cms-content-copy">
+            <h2>{value(data.missionTitleEn, data.missionTitleAr)}</h2>
+            <p>{value(data.missionDescEn, data.missionDescAr)}</p>
+          </div>
+          {missionImg && (
+            <img
+              src={missionImg}
+              alt={value(data.missionTitleEn, data.missionTitleAr) || 'Our Operational Mission'}
+            />
+          )}
+        </section>
+        <section className={`cms-content-section ${!opsImg ? 'no-image' : ''}`}>
+          <div className="cms-content-copy">
+            <h2>{value(data.syriaTitleEn, data.syriaTitleAr)}</h2>
+            <p>{value(data.syriaDescEn, data.syriaDescAr)}</p>
+          </div>
+          {opsImg && (
+            <img
+              src={opsImg}
+              alt={value(data.syriaTitleEn, data.syriaTitleAr) || 'Syria Field Operations'}
+            />
+          )}
+        </section>
+      </div>
+    </main>
+  );
 }
 
 export default function AboutPage() {
