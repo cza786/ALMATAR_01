@@ -21,9 +21,12 @@ export default function WebsitePageRenderer({ data }) {
   const stats = content.stats || data.stats || []
   const cta = content.cta || data.cta
   const documents = content.documents || data.documents || []
+  const heroGradient = lang === 'ar'
+    ? 'linear-gradient(270deg, rgba(5,10,20,.88), rgba(5,10,20,.28))'
+    : 'linear-gradient(90deg, rgba(5,10,20,.88), rgba(5,10,20,.28))'
   return (
     <main className="cms-page" dir={dir}>
-      <section className="cms-page-hero" style={{ backgroundImage: `linear-gradient(90deg, rgba(5,10,20,.88), rgba(5,10,20,.28)), url(${hero})` }}>
+      <section className="cms-page-hero" style={{ backgroundImage: `${heroGradient}, url(${hero})` }}>
         <div className="cms-page-hero-copy">
           <span>{localField(content, 'heroEyebrow', lang) || data.adminTitle || localField(data, 'title', lang)}</span>
           <h1>{localField(content, 'heroTitle', lang) || localField(content, 'pageTitle', lang) || localField(data, 'title', lang) || data.adminTitle}</h1>

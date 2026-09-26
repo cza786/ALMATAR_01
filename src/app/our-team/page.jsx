@@ -32,22 +32,73 @@ const copy = {
   },
 };
 
+// Team members list with full bilingual support for name and role
 const boardMembers = [
-  ['Suleiman Matar Youssef', 'Chairman of the Board', 'رئيس مجلس الإدارة'],
-  ['Mohammed Amin Suleiman', 'Vice Chairman of the Board', 'نائب رئيس مجلس الإدارة'],
-  ['Mohammed Nouri Mohammed Tamer', 'Independent Board Member', 'عضو مستقل في مجلس الإدارة'],
+  {
+    id: 'suleiman-matar',
+    nameEn: 'Suleiman Matar Youssef',
+    nameAr: 'سليمان مطر يوسف',
+    roleEn: 'Chairman of the Board',
+    roleAr: 'رئيس مجلس الإدارة',
+    photo: null,
+  },
+  {
+    id: 'mohammed-amin',
+    nameEn: 'Mohammed Amin Suleiman',
+    nameAr: 'محمد أمين سليمان',
+    roleEn: 'Vice Chairman of the Board',
+    roleAr: 'نائب رئيس مجلس الإدارة',
+    photo: null,
+  },
+  {
+    id: 'mohammed-nouri',
+    nameEn: 'Mohammed Nouri Mohammed Tamer',
+    nameAr: 'محمد نوري محمد تامر',
+    roleEn: 'Independent Board Member',
+    roleAr: 'عضو مستقل في مجلس الإدارة',
+    photo: null,
+  },
 ];
 
 const managementMembers = [
-  ['Nazdar Mohammed Amin Suleiman', 'Chief Executive Officer (CEO)', 'الرئيس التنفيذي'],
-  ['Hassan Ibrahim', 'Head of Operations', 'رئيس العمليات'],
-  ['Muhannad Mohammed Al-Ali', 'Technical Manager', 'المدير الفني'],
+  {
+    id: 'nazdar-mohammed',
+    nameEn: 'Nazdar Mohammed Amin Suleiman',
+    nameAr: 'نازدار محمد أمين سليمان',
+    roleEn: 'Chief Executive Officer (CEO)',
+    roleAr: 'الرئيس التنفيذي',
+    photo: null,
+  },
+  {
+    id: 'hassan-ibrahim',
+    nameEn: 'Hassan Ibrahim',
+    nameAr: 'حسن إبراهيم',
+    roleEn: 'Head of Operations',
+    roleAr: 'رئيس العمليات',
+    photo: null,
+  },
+  {
+    id: 'muhannad-alali',
+    nameEn: 'Muhannad Mohammed Al-Ali',
+    nameAr: 'مهند محمد العلي',
+    roleEn: 'Technical Manager',
+    roleAr: 'المدير الفني',
+    photo: null,
+  },
 ];
 
-function MemberCard({ name, role }) {
+function MemberCard({ name, role, photo }) {
   return (
     <article className="team-member-card">
-      <div className="team-avatar" aria-hidden="true"><span /></div>
+      <div className="team-avatar">
+        {photo ? (
+          <img src={photo} alt={name} className="team-avatar-img" />
+        ) : (
+          <div className="team-avatar-placeholder" aria-hidden="true">
+            <span />
+          </div>
+        )}
+      </div>
       <h3>{name}</h3>
       <p>{role}</p>
     </article>
@@ -62,7 +113,16 @@ function TeamGroup({ title, note, members, lang }) {
         <span>{note}</span>
         <i aria-hidden="true">⌃</i>
       </div>
-      <div className="team-members">{members.map(([name, role, roleAr]) => <MemberCard key={name} name={name} role={lang === 'ar' ? roleAr : role} />)}</div>
+      <div className="team-members">
+        {members.map((m) => (
+          <MemberCard
+            key={m.id || m.nameEn}
+            name={lang === 'ar' ? m.nameAr : m.nameEn}
+            role={lang === 'ar' ? m.roleAr : m.roleEn}
+            photo={m.photo}
+          />
+        ))}
+      </div>
     </section>
   );
 }
@@ -72,7 +132,7 @@ export default function OurTeamPage() {
   const text = copy[lang] || copy.en;
 
   return (
-    <div className="our-team-page">
+    <div className="our-team-page" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       <section className="team-hero">
         <img src="/images/careers_engineers_hero.webp" alt="AL-MATAR field engineers" />
         <div className="team-hero-overlay">
@@ -86,7 +146,13 @@ export default function OurTeamPage() {
         </div>
       </section>
 
-      <div className="team-breadcrumb"><Link href="/">{text.home}</Link><b>›</b><Link href="/about">{text.aboutUs}</Link><b>›</b><span>{text.title}</span></div>
+      <div className="team-breadcrumb">
+        <Link href="/">{text.home}</Link>
+        <b>›</b>
+        <Link href="/about">{text.aboutUs}</Link>
+        <b>›</b>
+        <span>{text.title}</span>
+      </div>
 
       <main className="team-content">
         <div className="team-heading">
@@ -99,7 +165,12 @@ export default function OurTeamPage() {
       </main>
 
       <section className="team-cta">
-        <div><span className="team-eyebrow"><i /> {text.journey}</span><h2>{text.cta}</h2><p>{text.ctaText}</p><Link href="/careers">{text.careers} <b>→</b></Link></div>
+        <div>
+          <span className="team-eyebrow"><i /> {text.journey}</span>
+          <h2>{text.cta}</h2>
+          <p>{text.ctaText}</p>
+          <Link href="/careers">{text.careers} <b>→</b></Link>
+        </div>
       </section>
     </div>
   );
