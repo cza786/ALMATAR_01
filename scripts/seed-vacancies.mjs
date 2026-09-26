@@ -36,6 +36,22 @@ const heroImage = await uploadImage('images/careers_engineers_hero.webp')
 const vacancyLocationEn = 'Syria, Al-Hasakah, Qamishli'
 const vacancyLocationAr = 'سوريا، الحسكة، القامشلي'
 
+const whyItems = [
+  { titleEn: 'GROW YOUR CAREER', titleAr: 'طور مسارك المهني', descEn: 'Development programs and on-the-job training to help you reach your full potential.', descAr: 'برامج تطوير وتدريب عملي لمساعدتك على تحقيق أقصى إمكانياتك.' },
+  { titleEn: 'WORK SAFELY', titleAr: 'بيئة عمل آمنة', descEn: 'We prioritise the health and safety of our people in everything we do.', descAr: 'نضع صحة وسلامة كوادرنا على رأس أولوياتنا في كافة مواقع العمل.' },
+  { titleEn: 'BE PART OF A TEAM', titleAr: 'كن جزءاً من فريق', descEn: 'Collaborate with experienced professionals and build lasting relationships.', descAr: 'تعاون مع خبراء ومهندسين متخصصين وابنِ علاقات مهنية مستدامة.' },
+  { titleEn: 'MAKE AN IMPACT', titleAr: 'اصنع أثراً ملموساً', descEn: 'Contribute to reliable energy solutions that power communities worldwide.', descAr: 'ساهم في تقديم حلول طاقة موثوقة تمكن المكتسبات التنموية.' },
+  { titleEn: 'OUR VALUES', titleAr: 'قيمنا الراسخة', descEn: 'Integrity, innovation and excellence are at the core of our culture and every decision we make.', descAr: 'النزاهة، الابتكار والتميز هي جوهر ثقافتنا وركيزة كافة قراراتنا.' },
+]
+
+const benefitsItems = [
+  { titleEn: 'Competitive Compensation', titleAr: 'تعويضات ومكافآت تنافسية', descEn: 'We offer competitive salaries and performance-based rewards.', descAr: 'نقدم رواتب مجزية وحوافز مرتبطة بالأداء والإنجاز.' },
+  { titleEn: 'Training & Development', titleAr: 'التدريب والتطوير المستمر', descEn: 'Continuous learning opportunities to enhance your skills and grow.', descAr: 'فرص تعليم مستمرة لتعزيز مهاراتك الفنية والقيادية.' },
+  { titleEn: 'Safe & Supportive Work Environment', titleAr: 'بيئة عمل آمنة وداعمة', descEn: 'We are committed to providing a safe, inclusive and respectful workplace.', descAr: 'نلتزم بتوفير مكان عمل آمن، محترم وشامل للجميع.' },
+  { titleEn: 'Career Growth Opportunities', titleAr: 'فرص الترقية والنمو', descEn: 'Clear career paths and opportunities to advance within the company.', descAr: 'مسارات مهنية واضحة وفرص حقيقية للترقي داخل الشركة.' },
+  { titleEn: 'Performance Recognition', titleAr: 'تقدير الأداء والإنجاز', descEn: 'We recognise and reward the dedication and achievements of our people.', descAr: 'نحتفي بتفاني وإنجازات فريقنا ونكافئ التميز بشكل مستمر.' },
+]
+
 await client.createIfNotExists({ _id: 'careersPage', _type: 'careersPage', title: 'Careers Page' })
 await client.patch('careersPage').set({
   bannerImage: heroImage,
@@ -49,6 +65,17 @@ await client.patch('careersPage').set({
   heroButtonAr: 'استكشف الوظائف',
   heroSideTextEn: 'PEOPLE\nGROWTH\nINNOVATION\nTHE FUTURE',
   heroSideTextAr: 'الأفراد\nالنمو\nالابتكار\nالمستقبل',
+  whyWorkEyebrowEn: 'WHY WORK WITH ALMATAR?',
+  whyWorkEyebrowAr: 'لماذا تعمل مع المطر؟',
+  whyWorkHeadingEn: "More Than a Job, It's a Purpose",
+  whyWorkHeadingAr: 'أكثر من مجرد وظيفة، إنها رسالة وهدف',
+  whyWorkLeadEn: 'At ALMATAR Petroleum Services, we offer a challenging work environment, continuous learning opportunities and the chance to grow your career while contributing to the energy that drives the world.',
+  whyWorkLeadAr: 'في شركة المطر للخدمات البترولية، نوفر بيئة عمل محفزة وفرص تعلم وتطوير مستمرة لنمو مسارك المهني مع المساهمة في قطاع الطاقة الحيوي.',
+  cultureImage: heroImage,
+  whyItems,
+  benefitsEyebrowEn: 'EMPLOYEE BENEFITS',
+  benefitsEyebrowAr: 'مزايا الموظفين',
+  benefitsItems,
   vacanciesEyebrowEn: 'JOIN THE TEAM',
   vacanciesEyebrowAr: 'الفرص المتاحة',
   vacanciesTitleEn: 'Current Vacancies',
@@ -65,6 +92,12 @@ await client.patch('careersPage').set({
   postedLabelAr: 'نُشرت',
   emptyMessageEn: 'There are no vacancies at this time.',
   emptyMessageAr: 'لا توجد وظائف شاغرة حالياً.',
+  ctaEyebrowEn: 'READY TO MAKE A DIFFERENCE?',
+  ctaEyebrowAr: 'هل أنت جاهز لصناعة الفارق؟',
+  ctaHeadingEn: 'Join ALMATAR and be part of a team that powers progress.',
+  ctaHeadingAr: 'انضم إلى المطر وكن جزءاً من فريق يقود التقدم والتميز.',
+  ctaButtonEn: 'SUBMIT YOUR CV',
+  ctaButtonAr: 'أرسل سيرتك الذاتية',
 }).commit()
 
 for (let index = 0; index < jobs.length; index += 1) {

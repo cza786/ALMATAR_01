@@ -6,42 +6,33 @@ import { usePathname } from 'next/navigation';
 
 import { useLanguage } from '../context/LanguageContext';
 import AlmatarLogo from './AlmatarLogo';
-import PolicyImageViewer from './PolicyImageViewer';
 import { SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
 import { useSanityContent } from '@/sanity/lib/fetchData';
 import { getImageUrl } from '@/sanity/lib/image';
 
 const policyDocuments = [
-  { title: { en: 'Quality, Health, Safety & Environment (QHSE)', ar: 'الجودة والصحة والسلامة والبيئة (QHSE)' }, image: 'qhse-policy' },
-  { title: { en: 'Employee Security and Site Safety', ar: 'أمن الموظفين وسلامة الموقع' }, image: 'employee-security-and-site-safety-policy' },
-  { title: { en: 'Anti-Bribery and Gifts Policy', ar: 'سياسة مكافحة الرشوة والهدايا' }, image: 'anti-bribery-and-gifts-policy' },
-  { title: { en: 'Conflict of Interest Policy', ar: 'سياسة تعارض المصالح' }, image: 'conflict-of-interest-policy' },
-  { title: { en: 'Vehicle and Equipment Usage', ar: 'استخدام المركبات والمعدات' }, image: 'vehicle-and-equipment-usage-policy' },
-  { title: { en: 'Substance Abuse Policy', ar: 'سياسة إساءة استخدام المواد' }, image: 'substance-abuse-policy' },
-  { title: { en: 'Incident Reporting and Crisis Management', ar: 'الإبلاغ عن الحوادث وإدارة الأزمات' }, image: 'incident-reporting-and-crisis-management-policy' },
-  { title: { en: 'Confidentiality and Data Protection', ar: 'السرية وحماية البيانات' }, image: 'confidentiality-and-data-protection-policy' },
-  { title: { en: 'Employment Affairs and Workplace Conduct', ar: 'شؤون الموظفين وسلوكيات مكان العمل' }, image: 'employment-affairs-and-workplace-conduct-policy' },
-  { title: { en: 'Procurement and Supply Chain', ar: 'المشتريات وسلسلة التوريد' }, image: 'procurement-and-supply-chain-policy' },
-  { title: { en: 'Quality Policy', ar: 'سياسة الجودة' }, image: 'quality-policy' },
+  { id: 'qhse', title: { en: 'Quality, Health, Safety & Environment (QHSE)', ar: 'الجودة والصحة والسلامة والبيئة (QHSE)' } },
+  { id: 'employee-security', title: { en: 'Employee Security and Site Safety', ar: 'أمن الموظفين وسلامة الموقع' } },
+  { id: 'anti-bribery', title: { en: 'Anti-Bribery and Gifts Policy', ar: 'سياسة مكافحة الرشوة والهدايا' } },
+  { id: 'conflict', title: { en: 'Conflict of Interest Policy', ar: 'سياسة تعارض المصالح' } },
+  { id: 'vehicle', title: { en: 'Vehicle and Equipment Usage', ar: 'استخدام المركبات والمعدات' } },
+  { id: 'substance-abuse', title: { en: 'Substance Abuse Policy', ar: 'سياسة إساءة استخدام المواد' } },
+  { id: 'incident', title: { en: 'Incident Reporting and Crisis Management', ar: 'الإبلاغ عن الحوادث وإدارة الأزمات' } },
+  { id: 'confidentiality', title: { en: 'Confidentiality and Data Protection', ar: 'السرية وحماية البيانات' } },
+  { id: 'employment', title: { en: 'Employment Affairs and Workplace Conduct', ar: 'شؤون الموظفين وسلوكيات مكان العمل' } },
+  { id: 'procurement', title: { en: 'Procurement and Supply Chain', ar: 'المشتريات وسلسلة التوريد' } },
+  { id: 'quality', title: { en: 'Quality Policy', ar: 'سياسة الجودة' } },
 ];
 
 export default function Header({ onOpenDrawer }) {
   const pathname = usePathname();
   const [isMegaOpen, setIsMegaOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
-  const [selectedPolicy, setSelectedPolicy] = useState(null);
   const { lang, toggleLanguage, t } = useLanguage();
   const settings = useSanityContent('settings', SITE_SETTINGS_QUERY);
   const logo = settings?.logo ? getImageUrl(settings.logo, '/images/almatar_logo_transparent.webp?v=12') : '/images/almatar_logo_transparent.webp?v=12';
 
   const isActive = (path) => pathname === path;
-
-  useEffect(() => {
-    if (!selectedPolicy) return undefined;
-    const closeOnEscape = (event) => event.key === 'Escape' && setSelectedPolicy(null);
-    document.addEventListener('keydown', closeOnEscape);
-    return () => document.removeEventListener('keydown', closeOnEscape);
-  }, [selectedPolicy]);
 
   useEffect(() => {
     const closeOnEscape = (event) => event.key === 'Escape' && setOpenDropdown(null);
@@ -131,9 +122,9 @@ export default function Header({ onOpenDrawer }) {
                   </div>
                   <div className="dropdown-links-list">
                     {policyDocuments.map((policy) => (
-                      <button key={policy.image} type="button" className="dropdown-link-item policy-dropdown-button" onClick={() => setSelectedPolicy(policy)}>
+                      <Link key={policy.id} href={`/policies?policy=${policy.id}`} className="dropdown-link-item" onClick={() => setOpenDropdown(null)}>
                         &#8226; {policy.title[lang] || policy.title.en}
-                      </button>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -304,27 +295,6 @@ export default function Header({ onOpenDrawer }) {
         </div>
       </header>
 
-      {selectedPolicy && (
-        <div className="policy-preview-overlay" onClick={() => setSelectedPolicy(null)} role="presentation">
-          <div className="policy-preview-modal" onClick={(event) => event.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="policy-preview-title">
-            <div className="policy-preview-header">
-              <h2 id="policy-preview-title">{selectedPolicy.title[lang] || selectedPolicy.title.en}</h2>
-              <button type="button" className="policy-preview-close" onClick={() => setSelectedPolicy(null)} aria-label="Close policy preview">×</button>
-            </div>
-            <div className="policy-preview-document">
-              <PolicyImageViewer
-                key={`${selectedPolicy.image}-${lang}`}
-                lang={lang}
-                src={`/${lang === 'ar' ? 'arabic-documents' : 'English-documents'}/${selectedPolicy.image}-${lang}.jpeg`}
-                alt={selectedPolicy.title[lang] || selectedPolicy.title.en}
-              />
-            </div>
-
-
-
-          </div>
-        </div>
-      )}
     </>
   );
 }
