@@ -1,4 +1,5 @@
 import ConstructionPage from '@/components/LocalizedConstructionPage';
+import CmsRoute from '@/components/CmsRoute';
 
 const base='/images/policies-photo/services/almatar_total_field_all_photos/';
 const services=[['02_heavy_haulage_transport-hd.webp','HEAVY HAULAGE & SPECIALIZED TRANSPORT'],['03_rig_and_site_mobilization-hd.webp','RIG & SITE MOBILIZATION'],['04_lifting_and_cranes-hd.webp','LIFTING AND CRANES'],['05_temporary_roads_site_preparation-hd.webp','TEMPORARY ROADS & SITE PREPARATION'],['06_modular_camps_facilities.webp','MODULAR CAMPS & FACILITIES'],['07_certified_engineers_operators.webp','CERTIFIED ENGINEERS & OPERATORS'],['08_catering_support.webp','CATERING SUPPORT'],['09_500_bbl_frac_tank_rental.webp','500 BBL FRAC TANK RENTAL'],['10_acid_storage_containment.webp','ACID STORAGE & CONTAINMENT']];
@@ -21,5 +22,5 @@ function LegacyConstructionPage(){
 </div>}
 
 export default function ConstructionRoute() {
-  return <ConstructionPage />;
+  return <CmsRoute pageKey="construction" fallback={<ConstructionPage />} />;
 }

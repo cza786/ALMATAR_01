@@ -1,14 +1,22 @@
 import './globals.css';
 import SiteShell from '../components/SiteShell';
 import { SanityLive } from '@/sanity/lib/live';
+import { serverClient } from '@/sanity/lib/serverClient';
+import { SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
+import { getImageUrl } from '@/sanity/lib/image';
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  let settings = null;
+  try { settings = await serverClient.fetch(SITE_SETTINGS_QUERY); } catch { /* Keep static defaults when Sanity is unavailable during build. */ }
+  const siteTitle = settings?.title || 'ALMATAR | Integrated Oilfield & Projects Management';
+  const siteDescription = settings?.descriptionEn || 'ALMATAR Integrated Oilfield & Projects Management provides specialized oilfield and infrastructure services in Syria.';
+  const logoUrl = getImageUrl(settings?.logo, '/opengraph-image.webp?v=9');
   return (
     <html lang="en">
       <head>
-        <title>ALMATAR | Integrated Oilfield & Projects Management</title>
+        <title>{siteTitle}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="ALMATAR Integrated Oilfield & Projects Management provides specialized well intervention, coiled tubing, stimulation, cementing, wellhead maintenance, drilling fluids, and construction services in Syria." />
+        <meta name="description" content={siteDescription} />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=9" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=9" />
         <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=9" />
@@ -21,27 +29,27 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#090d16" />
         <link rel="canonical" href="https://www.almatar-oil.com" />
         <meta property="og:url" content="https://www.almatar-oil.com" />
-        <meta property="og:title" content="ALMATAR | Integrated Oilfield & Projects Management" />
-        <meta property="og:description" content="Specialized well intervention, coiled tubing, stimulation, drilling fluids, and oilfield services." />
-        <meta property="og:image" content="/opengraph-image.webp?v=9" />
+        <meta property="og:title" content={siteTitle} />
+        <meta property="og:description" content={siteDescription} />
+        <meta property="og:image" content={logoUrl} />
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:image" content="/opengraph-image.webp?v=9" />
+        <meta name="twitter:image" content={logoUrl} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "ALMATAR Integrated Oilfield & Projects Management",
+              "name": siteTitle,
               "url": "https://www.almatar-oil.com",
               "logo": "https://www.almatar-oil.com/images/almatar_logo_transparent.webp",
               "image": "https://www.almatar-oil.com/opengraph-image.webp",
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "email": "info@almatar-oil.com"
+                "email": settings?.contactEmail || "info@almatar-oil.com"
               }
             })
           }}

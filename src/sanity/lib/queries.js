@@ -190,7 +190,9 @@ export const CONTACT_PAGE_QUERY = groq`
     companyOfficeAr,
     companyOfficeAddressEn,
     companyOfficeAddressAr,
-    whatsappNumber
+    whatsappNumber,
+    serviceOptionsEn,
+    serviceOptionsAr
   }
 `
 
@@ -274,6 +276,13 @@ export const WEBSITE_PAGE_QUERY = groq`
       ctaLabelEn, ctaLabelAr, ctaLink,
       cards[] { icon, titleEn, titleAr, descriptionEn, descriptionAr, image, link }
     },
+    stats[] { value, labelEn, labelAr },
+    cta {
+      titleEn, titleAr,
+      descriptionEn, descriptionAr,
+      buttonEn, buttonAr, link, image
+    },
+    documents[] { titleEn, titleAr, descriptionEn, descriptionAr, url, file, "fileUrl": file.asset->url },
     seo { titleEn, titleAr, descriptionEn, descriptionAr, image }
   }
 `

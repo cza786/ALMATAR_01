@@ -2379,7 +2379,11 @@ body.rtl-mode .footer-brand p {
 /* ===== HERO ===== */
 .ctp-hero {
   position: relative;
-  width: 100%;
+  /* Break out of any page-width wrapper so the banner reaches both viewport edges. */
+  width: 100vw;
+  max-width: none;
+  margin-inline: calc(50% - 50vw);
+  border-inline: 0;
   min-height: 300px;
   display: flex;
   align-items: center;
@@ -8463,19 +8467,28 @@ html, body {
 
 /* --- BOTTOM CTA BANNER --- */
 .slickline-cta-banner-section {
-  padding: 4rem 1.5rem;
-  background: #0b192c;
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  min-height: 280px;
+  padding: 0;
+  background: #080c14;
 }
 
 .slickline-banner-wrap {
-  max-width: 1320px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
   position: relative;
-  border-radius: 16px;
+  border-radius: 0;
   overflow: hidden;
   padding: 4rem 3rem;
-  background: #0b192c;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  background: #080c14;
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: none;
 }
 
 .banner-bg-img {
@@ -8483,7 +8496,7 @@ html, body {
   top: 0;
   right: 0;
   bottom: 0;
-  width: 55%;
+  width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0.45;
@@ -8492,7 +8505,7 @@ html, body {
 .banner-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #0b192c 45%, rgba(11, 25, 44, 0.6) 100%);
+  background: linear-gradient(90deg, rgba(8, 12, 20, 0.95) 0%, rgba(8, 12, 20, 0.8) 50%, rgba(8, 12, 20, 0.4) 100%);
 }
 
 .banner-content {
@@ -11022,6 +11035,8 @@ body.rtl-mode .home-intro-link span:last-child {
 :where(
   .zonal-page > .zonal-hero,
   .well-intervention-page > .wi-hero,
+  .well-intervention-page > .wi-sustainability,
+  .well-intervention-page > .wi-cta,
   .stimulation-page > .stim-hero,
   .well-testing-page > .wt-hero,
   .wellhead-page > .wellhead-hero,
@@ -11030,8 +11045,8 @@ body.rtl-mode .home-intro-link span:last-child {
 ) {
   width: 100vw;
   max-width: 100vw;
-  margin-inline-start: calc(50% - 50vw);
-  margin-inline-end: 0;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
 /* Slickline's former split layout becomes a full-width photographic hero. */
@@ -11652,10 +11667,11 @@ body.rtl-mode .home-intro-link span:last-child {
 .slickline-page-root[dir='rtl'] > .slickline-hero-section .slickline-hero-content { margin-left:auto; margin-right:0; text-align:right; }
 .slickline-page-root[dir='rtl'] > .slickline-hero-section .slickline-hero-image-wrap::before { background:transparent; }
 .slickline-page-root[dir='rtl'] > .slickline-hero-section .slickline-badge-overlay { right:auto; left:2rem; border-right:0; border-left:4px solid #d9531e; }
-.slickline-page-root .slickline-cta-banner-section { padding:4.5rem 1.25rem; background:#07182d; }
-.slickline-page-root .slickline-banner-wrap { min-height:360px; display:flex; align-items:center; padding:3rem 4rem; }
-.slickline-page-root .banner-bg-img { width:100%; opacity:.5; }
-.slickline-page-root .banner-overlay { background:linear-gradient(90deg,rgba(4,19,36,.97),rgba(4,19,36,.68)); }
+.slickline-page-root .slickline-cta-banner-section { padding:0; background:#080c14; width:100vw; margin-left:calc(50% - 50vw); }
+.slickline-page-root .slickline-banner-wrap { min-height:280px; display:flex; align-items:center; padding:3.5rem 3rem; max-width:100%; border-radius:0; box-shadow:none; margin:0; background:#080c14; }
+.slickline-page-root .banner-bg-img { width:100%; opacity:.4; }
+.slickline-page-root .banner-overlay { background:linear-gradient(90deg,rgba(8,12,20,.95),rgba(8,12,20,.8) 50%,rgba(8,12,20,.4)); }
+.slickline-page-root[dir='rtl'] .banner-overlay { background:linear-gradient(-90deg,rgba(8,12,20,.95),rgba(8,12,20,.8) 50%,rgba(8,12,20,.4)); }
 .slickline-page-root[dir='rtl'] .banner-content { margin-left:0; margin-right:auto; text-align:right; }
 .slickline-page-root[dir='rtl'] .slickline-cta-banner-section .section-label-group { flex-direction:row-reverse; }
 @media (max-width:700px) {
@@ -11666,10 +11682,10 @@ body.rtl-mode .home-intro-link span:last-child {
   .slickline-page-root > .slickline-hero-section .slickline-hero-desc { font-size:.78rem; }
   .slickline-page-root > .slickline-hero-section .slickline-badge-overlay { top:1rem; right:1rem; }
   .slickline-page-root[dir='rtl'] > .slickline-hero-section .slickline-badge-overlay { right:auto; left:1rem; }
-  .slickline-page-root .slickline-cta-banner-section { padding:2.5rem .75rem; }
-  .slickline-page-root .slickline-banner-wrap { min-height:430px; padding:2rem 1.25rem; }
+  .slickline-page-root .slickline-cta-banner-section { padding:0; }
+  .slickline-page-root .slickline-banner-wrap { min-height:280px; padding:2.5rem 1.5rem; border-radius:0; }
   .slickline-page-root .banner-bg-img { width:100%; }
-  .slickline-page-root .banner-overlay { background:rgba(4,19,36,.82); }
+  .slickline-page-root .banner-overlay { background:rgba(8,12,20,.88); }
   .slickline-page-root .banner-title { font-size:clamp(1.75rem,8vw,2.5rem); }
   .slickline-page-root .banner-sub { font-size:.82rem; }
 }

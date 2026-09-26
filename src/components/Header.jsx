@@ -6,6 +6,9 @@ import { usePathname } from 'next/navigation';
 
 import { useLanguage } from '../context/LanguageContext';
 import AlmatarLogo from './AlmatarLogo';
+import { SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
+import { useSanityContent } from '@/sanity/lib/fetchData';
+import { getImageUrl } from '@/sanity/lib/image';
 
 const policyDocuments = [
   { title: { en: 'Quality, Health, Safety & Environment (QHSE)', ar: 'الجودة والصحة والسلامة والبيئة (QHSE)' }, pdf: '/images/policies-photo/pdfs/health-safety-and-environment.pdf' },
@@ -27,6 +30,8 @@ export default function Header({ onOpenDrawer }) {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [selectedPolicy, setSelectedPolicy] = useState(null);
   const { lang, toggleLanguage, t } = useLanguage();
+  const settings = useSanityContent('settings', SITE_SETTINGS_QUERY);
+  const logo = settings?.logo ? getImageUrl(settings.logo, '/images/almatar_logo_transparent.webp?v=12') : '/images/almatar_logo_transparent.webp?v=12';
 
   const isActive = (path) => pathname === path;
 
@@ -53,7 +58,7 @@ export default function Header({ onOpenDrawer }) {
             {/* Brand Logo Navigation (Most Left) */}
             <div className="brand-text-nav">
               <Link href="/" className="brand-logo-white-badge" aria-label="ALMATAR Homepage">
-                <img src="/images/almatar_logo_transparent.webp?v=12" alt="ALMATAR Petroleum Services" className="header-logo-img-prominent" />
+                <img src={logo} alt={settings?.title || 'ALMATAR Petroleum Services'} className="header-logo-img-prominent" />
               </Link>
             </div>
 

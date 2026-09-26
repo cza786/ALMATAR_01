@@ -80,6 +80,44 @@ export const websitePageType = defineType({
             },
           },
         }),
+    defineField({
+      name: 'stats',
+      title: 'Page statistics',
+      type: 'array',
+      of: [defineArrayMember({
+        type: 'object',
+        fields: [
+          defineField({ name: 'value', title: 'Value', type: 'string' }),
+          ...bilingual('label', 'Label'),
+        ],
+      })],
+    }),
+    defineField({
+      name: 'cta',
+      title: 'Bottom call to action',
+      type: 'object',
+      fields: [
+        ...bilingual('title', 'Title'),
+        ...bilingual('description', 'Description', 'text'),
+        ...bilingual('button', 'Button'),
+        defineField({ name: 'link', title: 'Link', type: 'string' }),
+        defineField({ name: 'image', title: 'Background image', type: 'image', options: { hotspot: true } }),
+      ],
+    }),
+    defineField({
+      name: 'documents',
+      title: 'Downloadable documents',
+      type: 'array',
+      of: [defineArrayMember({
+        type: 'object',
+        fields: [
+          ...bilingual('title', 'Title'),
+          ...bilingual('description', 'Description', 'text'),
+          defineField({ name: 'file', title: 'File', type: 'file' }),
+          defineField({ name: 'url', title: 'External URL', type: 'url' }),
+        ],
+      })],
+    }),
       ],
     }),
     defineField({

@@ -18,6 +18,9 @@ export default function WebsitePageRenderer({ data }) {
 
   const content = data.pageContent || data
   const hero = getImageUrl(content.heroImage || data.image, '/images/hero_drilling_rig.webp')
+  const stats = content.stats || data.stats || []
+  const cta = content.cta || data.cta
+  const documents = content.documents || data.documents || []
   return (
     <main className="cms-page" dir={dir}>
       <section className="cms-page-hero" style={{ backgroundImage: `linear-gradient(90deg, rgba(5,10,20,.88), rgba(5,10,20,.28)), url(${hero})` }}>
@@ -27,6 +30,8 @@ export default function WebsitePageRenderer({ data }) {
           <p>{localField(content, 'heroDescription', lang) || localField(content, 'pageDescription', lang)}</p>
         </div>
       </section>
+      {stats.length > 0 && <section className="cms-page-stats">{stats.map((stat, index) => <div key={stat._key || index}><strong>{stat.value}</strong><span>{localField(stat, 'label', lang)}</span></div>)}</section>}
+      {content.introTitleEn || content.introTitleAr || content.introDescriptionEn || content.introDescriptionAr ? <section className="cms-page-intro"><div><span className="cms-eyebrow">{localField(content, 'introEyebrow', lang)}</span><h2>{localField(content, 'introTitle', lang)}</h2><p>{localField(content, 'introDescription', lang)}</p></div>{getImageUrl(content.introImage) && <img src={getImageUrl(content.introImage)} alt={lang === 'ar' ? content.introImageAltAr || content.introImageAltEn || '' : content.introImageAltEn || ''} />}</section> : null}
       <div className="cms-page-sections">
         {content.sections?.map((section, index) => {
           const image = getImageUrl(section.image)
@@ -41,11 +46,13 @@ export default function WebsitePageRenderer({ data }) {
                 {section.ctaLink && (section.ctaLabelEn || section.ctaLabelAr) && <Link href={section.ctaLink}>{localField(section, 'ctaLabel', lang)} →</Link>}
               </div>
               {image && <img src={image} alt={lang === 'ar' ? section.imageAltAr || section.imageAltEn || '' : section.imageAltEn || ''} />}
-              {section.cards?.length > 0 && <div className="cms-card-grid">{section.cards.map((card, cardIndex) => <article key={card._key || cardIndex}><h3>{localField(card, 'title', lang)}</h3><p>{localField(card, 'description', lang)}</p>{getImageUrl(card.image) && <img src={getImageUrl(card.image)} alt="" />}</article>)}</div>}
+              {section.cards?.length > 0 && <div className="cms-card-grid">{section.cards.map((card, cardIndex) => <article key={card._key || cardIndex}><h3>{localField(card, 'title', lang)}</h3><p>{localField(card, 'description', lang)}</p>{getImageUrl(card.image) && <img src={getImageUrl(card.image)} alt="" />}{card.link && <Link href={card.link}>{lang === 'ar' ? 'اقرأ المزيد' : 'Learn more'} →</Link>}</article>)}</div>}
             </section>
           )
         })}
       </div>
+      {documents.length > 0 && <section className="cms-page-documents"><h2>{lang === 'ar' ? 'المستندات' : 'Documents'}</h2><div>{documents.map((document, index) => { const href = document.fileUrl || document.url; return href ? <a key={document._key || index} href={href} target="_blank" rel="noreferrer"><strong>{localField(document, 'title', lang)}</strong><span>{localField(document, 'description', lang)}</span><em>↓</em></a> : null })}</div></section>}
+      {cta && (cta.titleEn || cta.titleAr) && <section className="cms-page-cta" style={getImageUrl(cta.image) ? { backgroundImage: `linear-gradient(90deg, rgba(5,10,20,.9), rgba(5,10,20,.45)), url(${getImageUrl(cta.image)})` } : undefined}><div><span className="cms-eyebrow">{lang === 'ar' ? 'تواصل معنا' : 'GET IN TOUCH'}</span><h2>{localField(cta, 'title', lang)}</h2><p>{localField(cta, 'description', lang)}</p>{cta.link && <Link href={cta.link}>{localField(cta, 'button', lang) || (lang === 'ar' ? 'اعرف المزيد' : 'Learn more')} →</Link>}</div></section>}
     </main>
   )
 }

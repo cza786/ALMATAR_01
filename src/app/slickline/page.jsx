@@ -4,7 +4,8 @@ export const metadata = {
 };
 
 import SlicklineServicesPage from '@/components/SlicklineServicesPage';
+import CmsRoute from '@/components/CmsRoute';
 
 export default function SlicklinePage() {
-  return <SlicklineServicesPage />;
+  return <CmsRoute pageKey="slickline" fallback={<SlicklineServicesPage />} />;
 }

@@ -3,9 +3,12 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { isValidSyrianPhone, normalizeSyrianPhone, SYRIAN_PHONE_PREFIX, SYRIAN_PHONE_PATTERN } from '../lib/syrianPhone';
+import { CONTACT_PAGE_QUERY } from '../sanity/lib/queries';
+import { useSanityContent } from '../sanity/lib/fetchData';
 
 export default function QuoteModal({ isOpen, onClose }) {
   const { t, lang } = useLanguage();
+  const contact = useSanityContent('contact', CONTACT_PAGE_QUERY);
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -72,7 +75,7 @@ export default function QuoteModal({ isOpen, onClose }) {
     onClose();
   };
 
-  const serviceOptions = t('quote.servicesOptions') || [];
+  const serviceOptions = (lang === 'ar' ? contact?.serviceOptionsAr : contact?.serviceOptionsEn) || contact?.serviceOptionsEn || t('quote.servicesOptions') || [];
 
   return (
     <div className="quote-modal-overlay" onClick={handleClose}>

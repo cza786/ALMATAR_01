@@ -3,7 +3,9 @@
 import NextPageBanner from '@/components/NextPageBanner';
 import { useLanguage } from '@/context/LanguageContext';
 import { useEffect, useState } from 'react';
-import CmsRoute from '@/components/CmsRoute';
+import { ABOUT_PAGE_QUERY } from '@/sanity/lib/queries';
+import { getImageUrl } from '@/sanity/lib/image';
+import { useSanityContent } from '@/sanity/lib/fetchData';
 
 const values = [
   ['Safety First', 'Protecting our people, communities and environment in everything we do.', '♢'],
@@ -82,6 +84,14 @@ function AboutLegacy() {
   </div>;
 }
 
+function AboutCmsPage() {
+  const { lang } = useLanguage();
+  const data = useSanityContent('about', ABOUT_PAGE_QUERY);
+  if (!data) return <AboutLegacy />;
+  const value = (en, ar) => lang === 'ar' ? ar || en || '' : en || ar || '';
+  return <main className="cms-page about-cms-page" dir={lang === 'ar' ? 'rtl' : 'ltr'}><section className="cms-page-hero" style={{ backgroundImage: `linear-gradient(90deg, rgba(5,10,20,.88), rgba(5,10,20,.28)), url(${getImageUrl(data.bannerImage, '/images/banner_about_corporate.webp')})` }}><div className="cms-page-hero-copy"><span>{value(data.eyebrowEn, data.eyebrowAr)}</span><h1>{value(data.pageTitleEn, data.pageTitleAr)}</h1></div></section><div className="cms-page-sections"><section className="cms-content-section"><div className="cms-content-copy"><h2>{value(data.visionTitleEn, data.visionTitleAr)}</h2><p>{value(data.visionDescEn, data.visionDescAr)}</p></div></section><section className="cms-content-section cms-content-section-reverse"><div className="cms-content-copy"><h2>{value(data.missionTitleEn, data.missionTitleAr)}</h2><p>{value(data.missionDescEn, data.missionDescAr)}</p></div></section><section className="cms-content-section"><div className="cms-content-copy"><h2>{value(data.syriaTitleEn, data.syriaTitleAr)}</h2><p>{value(data.syriaDescEn, data.syriaDescAr)}</p></div>{getImageUrl(data.operationsImage) && <img src={getImageUrl(data.operationsImage)} alt={value(data.syriaTitleEn, data.syriaTitleAr)} />}</section></div></main>;
+}
+
 export default function AboutPage() {
-  return <CmsRoute pageKey="about" fallback={<AboutLegacy />} />;
+  return <AboutCmsPage />;
 }

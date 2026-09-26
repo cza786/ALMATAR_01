@@ -2,22 +2,27 @@
 
 import Link from 'next/link';
 import { useLanguage } from '../context/LanguageContext';
-import { SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
+import { SITE_SETTINGS_QUERY, CONTACT_PAGE_QUERY } from '@/sanity/lib/queries';
 import { getImageUrl } from '@/sanity/lib/image';
 import { useSanityContent } from '@/sanity/lib/fetchData';
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const settings = useSanityContent('settings', SITE_SETTINGS_QUERY);
+  const contact = useSanityContent('contact', CONTACT_PAGE_QUERY);
 
   const logoImg = settings?.logo
     ? getImageUrl(settings.logo, '/images/almatar_logo_raw.webp?v=5')
     : '/images/almatar_logo_raw.webp?v=5';
 
-  const desc = t('footer.desc');
-  const email = 'info@almatar-oil.com';
+  const desc = (lang === 'ar' ? settings?.descriptionAr : settings?.descriptionEn) || settings?.descriptionEn || t('footer.desc');
+  const email = settings?.contactEmail || contact?.emailAddresses?.[0] || 'info@almatar-oil.com';
   const qhseLabel = t('nav.qhse').replace(/\s+safety$/i, '');
-  const copyright = t('footer.rights');
+  const copyright = (lang === 'ar' ? settings?.copyrightAr : settings?.copyrightEn) || settings?.copyrightEn || t('footer.rights');
+  const headOffice = (lang === 'ar' ? contact?.headOfficeAr : contact?.headOfficeEn) || contact?.headOfficeEn || t('footer.headOffice');
+  const headOfficeAddress = (lang === 'ar' ? contact?.headOfficeAddressAr : contact?.headOfficeAddressEn) || contact?.headOfficeAddressEn || t('footer.location');
+  const companyOffice = (lang === 'ar' ? contact?.companyOfficeAr : contact?.companyOfficeEn) || contact?.companyOfficeEn || t('footer.companyOffice');
+  const companyOfficeAddress = (lang === 'ar' ? contact?.companyOfficeAddressAr : contact?.companyOfficeAddressEn) || contact?.companyOfficeAddressEn || t('footer.companyOfficeAddress');
 
   return (
     <footer className="site-footer">
@@ -64,18 +69,19 @@ export default function Footer() {
               </li>
 
               <li className="footer-address-item">
-                <strong>{t('footer.headOffice')}</strong>
-                <span>{t('footer.location')}</span>
+                <strong>{headOffice}</strong>
+                <span>{headOfficeAddress}</span>
               </li>
               <li className="footer-address-item">
-                <strong>{t('footer.companyOffice')}</strong>
-                <span>{t('footer.companyOfficeAddress')}</span>
+                <strong>{companyOffice}</strong>
+                <span>{companyOfficeAddress}</span>
               </li>
 
             </ul>
           </div>
 
         </div>
+        {settings?.socialLinks?.length > 0 && <div className="footer-social-links">{settings.socialLinks.map((social) => <a key={social._key || social.url} href={social.url} target="_blank" rel="noreferrer">{social.platform}</a>)}</div>}
 
         <div className="footer-bottom">
           <div>

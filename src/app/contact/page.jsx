@@ -85,7 +85,15 @@ export default function ContactPage() {
       value: companyOfficeAddress,
       href: '#contact-addresses',
       isExternal: false,
-    }
+    },
+    ...(sanityData?.whatsappNumber ? [{
+      id: 'whatsapp',
+      type: 'WHATSAPP',
+      label: sanityData.whatsappNumber,
+      value: lang === 'ar' ? 'تواصل معنا عبر واتساب' : 'Message us on WhatsApp',
+      href: `https://wa.me/${sanityData.whatsappNumber.replace(/[^0-9]/g, '')}`,
+      isExternal: true,
+    }] : [])
   ];
 
   const iconMap = {
@@ -161,7 +169,7 @@ export default function ContactPage() {
     }
   };
 
-  const serviceOptions = t('quote.servicesOptions') || [];
+  const serviceOptions = (lang === 'ar' ? sanityData?.serviceOptionsAr : sanityData?.serviceOptionsEn) || sanityData?.serviceOptionsEn || t('quote.servicesOptions') || [];
 
   return (
     <>

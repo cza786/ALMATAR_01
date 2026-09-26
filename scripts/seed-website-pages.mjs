@@ -30,6 +30,7 @@ const client = createClient({
 })
 
 const uploaded = new Map()
+const uploadedFiles = new Map()
 
 async function uploadImage(relativePath) {
   if (!relativePath) return null
@@ -49,6 +50,35 @@ async function uploadImage(relativePath) {
   uploaded.set(relativePath, image)
   return image
 }
+
+async function uploadFile(relativePath) {
+  if (!relativePath) return null
+  if (uploadedFiles.has(relativePath)) return uploadedFiles.get(relativePath)
+  const fullPath = path.join(rootDir, 'public', relativePath.replace(/^\//, ''))
+  if (!fs.existsSync(fullPath)) {
+    console.warn(`Missing local file: ${relativePath}`)
+    uploadedFiles.set(relativePath, null)
+    return null
+  }
+  const asset = await client.assets.upload('file', fs.createReadStream(fullPath), { filename: path.basename(fullPath) })
+  const file = { _type: 'file', asset: { _type: 'reference', _ref: asset._id } }
+  uploadedFiles.set(relativePath, file)
+  return file
+}
+
+const policyDocuments = [
+  ['Quality, Health, Safety & Environment (QHSE)', 'images/policies-photo/pdfs/health-safety-and-environment.pdf'],
+  ['Anti-Bribery and Gifts', 'images/policies-photo/pdfs/anti-bribery-and-gifts-policy.pdf'],
+  ['Employment Affairs and Workplace Conduct', 'images/policies-photo/pdfs/employment-affairs-and-workplace-conduct-policy.pdf'],
+  ['Confidentiality and Data Protection', 'images/policies-photo/pdfs/Confidentiality-and-data-protection-policy.pdf'],
+  ['Conflict of Interest', 'images/policies-photo/pdfs/conflict-of-interest-policy.pdf'],
+  ['Employee Security and Site Safety', 'images/policies-photo/pdfs/employee-security-and-site-safety-policy.pdf'],
+  ['Vehicle and Equipment Usage', 'images/policies-photo/pdfs/vehicle-and equipment-usage-policy.pdf'],
+  ['Procurement and Supply Chain', 'images/policies-photo/pdfs/procurement-and-supply-chain-policy.pdf'],
+  ['Incident Reporting and Crisis Management', 'images/policies-photo/pdfs/incident-reporting-and-crisis-management-policy.pdf'],
+  ['Substance Abuse', 'images/policies-photo/pdfs/substance-abuse-policy.pdf'],
+  ['Quality Policy', 'images/policies-photo/pdfs/quality-policy.pdf'],
+]
 
 function section(key, title, description, imagePath, bullets = [], cards = []) {
   return {
@@ -241,6 +271,7 @@ async function main() {
       if (item.image?.__localPath) await uploadImage(item.image.__localPath)
       preparedSections.push(clean(item))
     }
+    const documents = page.key === 'policies' ? await Promise.all(policyDocuments.map(async ([title, filePath]) => ({ titleEn: title, titleAr: title, file: await uploadFile(filePath) }))) : []
     await client.createOrReplace({
       _id: `websitePage-${page.key}`,
       _type: 'websitePage',
@@ -265,6 +296,7 @@ async function main() {
         imageAltAr: arabic[0],
         bulletsAr: item.bulletsEn?.map((bullet) => `حلول ${bullet}`) || [],
       })),
+      documents,
       seo: { titleEn: `${page.title} | ALMATAR`, titleAr: `${arabic[0]} | المطار`, descriptionEn: page.description, descriptionAr: arabic[2], image: heroImage },
       publishedNote: 'Initial content imported from the existing ALMATAR service page. Edit and publish this document to update CMS-connected layouts.',
     })
