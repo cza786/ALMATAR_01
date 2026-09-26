@@ -4,6 +4,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
 import CmsRoute from '@/components/CmsRoute';
+import PolicyImageViewer from '@/components/PolicyImageViewer';
 
 const policies = [
   { id: 'qhse', title: { en: 'Quality, Health, Safety & Environment (QHSE)', ar: 'الجودة والصحة والسلامة والبيئة (QHSE)' }, image: 'qhse-policy' },
@@ -101,7 +102,9 @@ function PoliciesContent() {
               <button type="button" className="policies-modal-close" onClick={closePolicy} aria-label="Close policy document">×</button>
             </div>
             <div className="policies-pdf-frame">
-              <img
+              <PolicyImageViewer
+                key={`${selected.image}-${lang}`}
+                lang={lang}
                 src={`/${lang === 'ar' ? 'arabic-documents' : 'English-documents'}/${selected.image}-${lang}.jpeg`}
                 alt={selected.title[lang] || selected.title.en}
               />

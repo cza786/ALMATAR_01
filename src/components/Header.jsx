@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 
 import { useLanguage } from '../context/LanguageContext';
 import AlmatarLogo from './AlmatarLogo';
+import PolicyImageViewer from './PolicyImageViewer';
 import { SITE_SETTINGS_QUERY } from '@/sanity/lib/queries';
 import { useSanityContent } from '@/sanity/lib/fetchData';
 import { getImageUrl } from '@/sanity/lib/image';
@@ -311,7 +312,9 @@ export default function Header({ onOpenDrawer }) {
               <button type="button" className="policy-preview-close" onClick={() => setSelectedPolicy(null)} aria-label="Close policy preview">×</button>
             </div>
             <div className="policy-preview-document">
-              <img
+              <PolicyImageViewer
+                key={`${selectedPolicy.image}-${lang}`}
+                lang={lang}
                 src={`/${lang === 'ar' ? 'arabic-documents' : 'English-documents'}/${selectedPolicy.image}-${lang}.jpeg`}
                 alt={selectedPolicy.title[lang] || selectedPolicy.title.en}
               />
