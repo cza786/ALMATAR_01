@@ -90,7 +90,7 @@ export default function HeroCarousel() {
   }, [slides.length]);
 
   return (
-    <section className="hero-header-section">
+    <section className="hero-header-section" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
       <div className="hero-slider-container">
         {slides.map((slide, i) => (
           <div key={i} className={`hero-slide ${i === currentIndex ? 'active' : ''}`}>

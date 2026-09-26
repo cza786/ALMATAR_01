@@ -9138,6 +9138,10 @@ body.rtl-mode .home-page .hero-slide::after {
   background: linear-gradient(270deg, rgba(4, 19, 35, .88) 0%, rgba(4, 19, 35, .63) 43%, rgba(4, 19, 35, .15) 78%);
 }
 
+.home-page .hero-header-section[dir='rtl'] .hero-slide::after {
+  background: linear-gradient(270deg, rgba(4, 19, 35, .88) 0%, rgba(4, 19, 35, .63) 43%, rgba(4, 19, 35, .15) 78%);
+}
+
 body.rtl-mode .home-page .hero-tag::before {
   order: 2;
 }
