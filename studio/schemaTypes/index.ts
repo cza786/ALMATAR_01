@@ -1,14 +1,14 @@
 import { siteSettingsType } from './siteSettingsType'
-import { serviceType } from './serviceType'
+import { serviceType, servicePageSectionType, servicePageCardType } from './serviceType'
 import { homePageType } from './homePageType'
 import { aboutPageType } from './aboutPageType'
 import { careersPageType } from './careersPageType'
 import { contactPageType } from './contactPageType'
 import { contactSubmissionType } from './contactSubmissionType'
 import { jobType } from './jobType'
-import { qhsePageType } from './qhsePageType'
+import { qhsePageType, qhseSafetyProtocolType } from './qhsePageType'
 import { applicationType } from './applicationType'
-import { websitePageType } from './websitePageType'
+import { websitePageType, websitePageSectionType, websitePageCardType } from './websitePageType'
 
 export const schemaTypes = [
   // Singleton / Page Types
@@ -18,11 +18,16 @@ export const schemaTypes = [
   careersPageType,
   contactPageType,
   websitePageType,
+  websitePageSectionType,
+  websitePageCardType,
 
   // Collection Types
   serviceType,
+  servicePageSectionType,
+  servicePageCardType,
   jobType,
   qhsePageType,
+  qhseSafetyProtocolType,
   applicationType,
   contactSubmissionType,
 ]

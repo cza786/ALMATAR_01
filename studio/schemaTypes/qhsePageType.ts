@@ -11,6 +11,19 @@ const bilingualObject = (title: string, fields: any[] = []) => defineArrayMember
   fields: [...textPair('title', 'Title'), ...fields],
 })
 
+export const qhseSafetyProtocolType = defineType({
+  name: 'qhseSafetyProtocol',
+  title: 'Safety Protocol',
+  type: 'object',
+  fields: [
+    ...textPair('title', 'Title'),
+    defineField({ name: 'code', title: 'Reference Code', type: 'string' }),
+    defineField({ name: 'image', title: 'Protocol Image', type: 'image', options: { hotspot: true } }),
+    defineField({ name: 'bulletsEn', title: 'Bullets (English)', type: 'array', of: [defineArrayMember({ type: 'string' })] }),
+    defineField({ name: 'bulletsAr', title: 'Bullets (Arabic)', type: 'array', of: [defineArrayMember({ type: 'string' })] }),
+  ],
+})
+
 export const qhsePageType = defineType({
   name: 'qhsePage',
   title: 'QHSE Page',
@@ -37,7 +50,7 @@ export const qhsePageType = defineType({
     defineField({ name: 'governanceCards', title: 'Governance Cards', type: 'array', of: [bilingualObject('Governance Card', [defineField({ name: 'icon', title: 'Icon Name', type: 'string' }), ...textPair('detail', 'Detail', 'text')])] }),
     ...textPair('protocolsEyebrow', 'Protocols Eyebrow'),
     ...textPair('protocolsTitle', 'Protocols Title'),
-    defineField({ name: 'protocols', title: 'Critical Safety Protocols', type: 'array', of: [bilingualObject('Safety Protocol', [defineField({ name: 'code', title: 'Reference Code', type: 'string' }), defineField({ name: 'image', title: 'Protocol Image', type: 'image', options: { hotspot: true } }), defineField({ name: 'bulletsEn', title: 'Bullets (English)', type: 'array', of: [defineArrayMember({ type: 'string' })] }), defineField({ name: 'bulletsAr', title: 'Bullets (Arabic)', type: 'array', of: [defineArrayMember({ type: 'string' })] })])] }),
+    defineField({ name: 'protocols', title: 'Critical Safety Protocols', type: 'array', of: [defineArrayMember({ type: 'qhseSafetyProtocol' })] }),
     ...textPair('toleranceEyebrow', 'Zero-Tolerance Eyebrow'),
     ...textPair('toleranceTitle', 'Zero-Tolerance Title'),
     defineField({ name: 'tolerancePolicies', title: 'Zero-Tolerance Policies', type: 'array', of: [defineArrayMember({ type: 'object', fields: [...textPair('policy', 'Policy'), ...textPair('reference', 'Reference')] })] }),

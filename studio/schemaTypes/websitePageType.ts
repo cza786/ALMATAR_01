@@ -5,13 +5,60 @@ const bilingual = (name: string, title: string, type: 'string' | 'text' = 'strin
   defineField({ name: `${name}Ar`, title: `${title} (Arabic)`, type, ...(type === 'text' ? { rows: 4 } : {}) }),
 ]
 
-const cardFields = [
-  defineField({ name: 'icon', title: 'Icon name (optional)', type: 'string' }),
-  ...bilingual('title', 'Card title'),
-  ...bilingual('description', 'Card description', 'text'),
-  defineField({ name: 'image', title: 'Card image', type: 'image', options: { hotspot: true } }),
-  defineField({ name: 'link', title: 'Card link', type: 'string' }),
-]
+export const websitePageCardType = defineType({
+  name: 'websitePageCard',
+  title: 'Section Card',
+  type: 'object',
+  fields: [
+    defineField({ name: 'icon', title: 'Icon name (optional)', type: 'string' }),
+    ...bilingual('title', 'Card title'),
+    ...bilingual('description', 'Card description', 'text'),
+    defineField({ name: 'image', title: 'Card image', type: 'image', options: { hotspot: true } }),
+    defineField({ name: 'link', title: 'Card link', type: 'string' }),
+  ],
+})
+
+export const websitePageSectionType = defineType({
+  name: 'websitePageSection',
+  title: 'Content Section',
+  type: 'object',
+  fields: [
+    defineField({ name: 'sectionKey', title: 'Section key / label', type: 'string' }),
+    ...bilingual('eyebrow', 'Eyebrow'),
+    ...bilingual('title', 'Section title'),
+    ...bilingual('description', 'Section description', 'text'),
+    defineField({ name: 'image', title: 'Section image', type: 'image', options: { hotspot: true } }),
+    defineField({ name: 'imageAltEn', title: 'Image alt text (English)', type: 'string' }),
+    defineField({ name: 'imageAltAr', title: 'Image alt text (Arabic)', type: 'string' }),
+    defineField({
+      name: 'cards',
+      title: 'Cards / capabilities',
+      type: 'array',
+      of: [defineArrayMember({ type: 'websitePageCard' })],
+    }),
+    defineField({
+      name: 'bulletsEn',
+      title: 'Bullet points (English)',
+      type: 'array',
+      of: [defineArrayMember({ type: 'string' })],
+    }),
+    defineField({
+      name: 'bulletsAr',
+      title: 'Bullet points (Arabic)',
+      type: 'array',
+      of: [defineArrayMember({ type: 'string' })],
+    }),
+    defineField({ name: 'ctaLabelEn', title: 'CTA label (English)', type: 'string' }),
+    defineField({ name: 'ctaLabelAr', title: 'CTA label (Arabic)', type: 'string' }),
+    defineField({ name: 'ctaLink', title: 'CTA link', type: 'string' }),
+  ],
+  preview: {
+    select: { title: 'titleEn', subtitle: 'sectionKey', media: 'image' },
+    prepare({ title, subtitle, media }) {
+      return { title: title || subtitle || 'Content section', subtitle, media }
+    },
+  },
+})
 
 export const websitePageType = defineType({
   name: 'websitePage',
@@ -54,33 +101,7 @@ export const websitePageType = defineType({
       name: 'sections',
       title: 'Page sections',
       type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'object',
-          title: 'Content section',
-          fields: [
-            defineField({ name: 'sectionKey', title: 'Section key / label', type: 'string' }),
-            ...bilingual('eyebrow', 'Eyebrow'),
-            ...bilingual('title', 'Section title'),
-            ...bilingual('description', 'Section description', 'text'),
-            defineField({ name: 'image', title: 'Section image', type: 'image', options: { hotspot: true } }),
-            defineField({ name: 'imageAltEn', title: 'Image alt text (English)', type: 'string' }),
-            defineField({ name: 'imageAltAr', title: 'Image alt text (Arabic)', type: 'string' }),
-            defineField({ name: 'cards', title: 'Cards / capabilities', type: 'array', of: [defineArrayMember({ type: 'object', fields: cardFields })] }),
-            defineField({ name: 'bulletsEn', title: 'Bullet points (English)', type: 'array', of: [defineArrayMember({ type: 'string' })] }),
-            defineField({ name: 'bulletsAr', title: 'Bullet points (Arabic)', type: 'array', of: [defineArrayMember({ type: 'string' })] }),
-            defineField({ name: 'ctaLabelEn', title: 'CTA label (English)', type: 'string' }),
-            defineField({ name: 'ctaLabelAr', title: 'CTA label (Arabic)', type: 'string' }),
-            defineField({ name: 'ctaLink', title: 'CTA link', type: 'string' }),
-          ],
-          preview: {
-            select: { title: 'titleEn', subtitle: 'sectionKey', media: 'image' },
-            prepare({ title, subtitle, media }) {
-              return { title: title || subtitle || 'Content section', subtitle, media }
-            },
-          },
-        }),
-      ],
+      of: [defineArrayMember({ type: 'websitePageSection' })],
     }),
     defineField({
       name: 'stats',
