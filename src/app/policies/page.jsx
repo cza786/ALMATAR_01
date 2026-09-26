@@ -6,17 +6,17 @@ import { useLanguage } from '@/context/LanguageContext';
 import CmsRoute from '@/components/CmsRoute';
 
 const policies = [
-  { id: 'qhse', title: { en: 'Quality, Health, Safety & Environment (QHSE)', ar: 'الجودة والصحة والسلامة والبيئة (QHSE)' }, pdf: '/images/policies-photo/pdfs/health-safety-and-environment.pdf' },
-  { id: 'anti-bribery', title: { en: 'Anti-Bribery and Gifts', ar: 'مكافحة الرشوة والهدايا' }, pdf: '/images/policies-photo/pdfs/anti-bribery-and-gifts-policy.pdf' },
-  { id: 'employment', title: { en: 'Employment Affairs and Workplace Conduct', ar: 'شؤون الموظفين وسلوكيات مكان العمل' }, pdf: '/images/policies-photo/pdfs/employment-affairs-and-workplace-conduct-policy.pdf' },
-  { id: 'confidentiality', title: { en: 'Confidentiality and Data Protection', ar: 'السرية وحماية البيانات' }, pdf: '/images/policies-photo/pdfs/Confidentiality-and-data-protection-policy.pdf' },
-  { id: 'conflict', title: { en: 'Conflict of Interest', ar: 'تعارض المصالح' }, pdf: '/images/policies-photo/pdfs/conflict-of-interest-policy.pdf' },
-  { id: 'employee-security', title: { en: 'Employee Security and Site Safety', ar: 'أمن الموظفين وسلامة الموقع' }, pdf: '/images/policies-photo/pdfs/employee-security-and-site-safety-policy.pdf' },
-  { id: 'vehicle', title: { en: 'Vehicle and Equipment Usage', ar: 'استخدام المركبات والمعدات' }, pdf: '/images/policies-photo/pdfs/vehicle-and equipment-usage-policy.pdf' },
-  { id: 'procurement', title: { en: 'Procurement and Supply Chain', ar: 'المشتريات وسلسلة التوريد' }, pdf: '/images/policies-photo/pdfs/procurement-and-supply-chain-policy.pdf' },
-  { id: 'incident', title: { en: 'Incident Reporting and Crisis Management', ar: 'الإبلاغ عن الحوادث وإدارة الأزمات' }, pdf: '/images/policies-photo/pdfs/incident-reporting-and-crisis-management-policy.pdf' },
-  { id: 'substance-abuse', title: { en: 'Substance Abuse', ar: 'إساءة استخدام المواد' }, pdf: '/images/policies-photo/pdfs/substance-abuse-policy.pdf' },
-  { id: 'quality', title: { en: 'Quality Policy', ar: 'سياسة الجودة' }, pdf: '/images/policies-photo/pdfs/quality-policy.pdf' },
+  { id: 'qhse', title: { en: 'Quality, Health, Safety & Environment (QHSE)', ar: 'الجودة والصحة والسلامة والبيئة (QHSE)' }, image: 'qhse-policy' },
+  { id: 'anti-bribery', title: { en: 'Anti-Bribery and Gifts', ar: 'مكافحة الرشوة والهدايا' }, image: 'anti-bribery-and-gifts-policy' },
+  { id: 'employment', title: { en: 'Employment Affairs and Workplace Conduct', ar: 'شؤون الموظفين وسلوكيات مكان العمل' }, image: 'employment-affairs-and-workplace-conduct-policy' },
+  { id: 'confidentiality', title: { en: 'Confidentiality and Data Protection', ar: 'السرية وحماية البيانات' }, image: 'confidentiality-and-data-protection-policy' },
+  { id: 'conflict', title: { en: 'Conflict of Interest', ar: 'تعارض المصالح' }, image: 'conflict-of-interest-policy' },
+  { id: 'employee-security', title: { en: 'Employee Security and Site Safety', ar: 'أمن الموظفين وسلامة الموقع' }, image: 'employee-security-and-site-safety-policy' },
+  { id: 'vehicle', title: { en: 'Vehicle and Equipment Usage', ar: 'استخدام المركبات والمعدات' }, image: 'vehicle-and-equipment-usage-policy' },
+  { id: 'procurement', title: { en: 'Procurement and Supply Chain', ar: 'المشتريات وسلسلة التوريد' }, image: 'procurement-and-supply-chain-policy' },
+  { id: 'incident', title: { en: 'Incident Reporting and Crisis Management', ar: 'الإبلاغ عن الحوادث وإدارة الأزمات' }, image: 'incident-reporting-and-crisis-management-policy' },
+  { id: 'substance-abuse', title: { en: 'Substance Abuse', ar: 'إساءة استخدام المواد' }, image: 'substance-abuse-policy' },
+  { id: 'quality', title: { en: 'Quality Policy', ar: 'سياسة الجودة' }, image: 'quality-policy' },
 ];
 
 const pageText = {
@@ -101,9 +101,10 @@ function PoliciesContent() {
               <button type="button" className="policies-modal-close" onClick={closePolicy} aria-label="Close policy document">×</button>
             </div>
             <div className="policies-pdf-frame">
-              <object data={`${selected.pdf}#page=${lang === 'ar' ? 1 : 2}&toolbar=0&navpanes=0`} type="application/pdf" aria-label={selected.title[lang] || selected.title.en}>
-                <iframe src={`${selected.pdf}#page=${lang === 'ar' ? 1 : 2}&toolbar=0&navpanes=0`} title={selected.title[lang] || selected.title.en} />
-              </object>
+              <img
+                src={`/${lang === 'ar' ? 'arabic-documents' : 'English-documents'}/${selected.image}-${lang}.jpeg`}
+                alt={selected.title[lang] || selected.title.en}
+              />
             </div>
 
 

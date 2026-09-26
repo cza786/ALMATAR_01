@@ -164,57 +164,57 @@ export default function SideDrawer({ isOpen, onClose }) {
               {isPoliciesOpen && (
                 <div className="drawer-sub-container" id="drawer-policies-menu">
                   <div className="drawer-nav-sub-item">
-                    <Link href="/images/policies-photo/pdfs/health-safety-and-environment.pdf" target="_blank" rel="noreferrer" className="drawer-nav-link sub-link" onClick={onClose}>
+                    <Link href="/policies?policy=qhse" className="drawer-nav-link sub-link" onClick={onClose}>
                       <span>• Quality, Health, Safety &amp; Environment (QHSE)</span>
                     </Link>
                   </div>
                   <div className="drawer-nav-sub-item">
-                    <Link href="/images/policies-photo/pdfs/employee-security-and-site-safety-policy.pdf" target="_blank" rel="noreferrer" className="drawer-nav-link sub-link" onClick={onClose}>
+                    <Link href="/policies?policy=employee-security" className="drawer-nav-link sub-link" onClick={onClose}>
                       <span>• Employee Security and Site Safety</span>
                     </Link>
                   </div>
                   <div className="drawer-nav-sub-item">
-                    <Link href="/images/policies-photo/pdfs/anti-bribery-and-gifts-policy.pdf" target="_blank" rel="noreferrer" className="drawer-nav-link sub-link" onClick={onClose}>
+                    <Link href="/policies?policy=anti-bribery" className="drawer-nav-link sub-link" onClick={onClose}>
                       <span>• Anti-Bribery and Gifts Policy</span>
                     </Link>
                   </div>
                   <div className="drawer-nav-sub-item">
-                    <Link href="/images/policies-photo/pdfs/conflict-of-interest-policy.pdf" target="_blank" rel="noreferrer" className="drawer-nav-link sub-link" onClick={onClose}>
+                    <Link href="/policies?policy=conflict" className="drawer-nav-link sub-link" onClick={onClose}>
                       <span>Conflict of Interest Policy</span>
                     </Link>
                   </div>
                   <div className="drawer-nav-sub-item">
-                    <Link href="/images/policies-photo/pdfs/vehicle-and equipment-usage-policy.pdf" target="_blank" rel="noreferrer" className="drawer-nav-link sub-link" onClick={onClose}>
+                    <Link href="/policies?policy=vehicle" className="drawer-nav-link sub-link" onClick={onClose}>
                       <span>• Vehicle and Equipment Usage</span>
                     </Link>
                   </div>
                   <div className="drawer-nav-sub-item">
-                    <Link href="/images/policies-photo/pdfs/substance-abuse-policy.pdf" target="_blank" rel="noreferrer" className="drawer-nav-link sub-link" onClick={onClose}>
+                    <Link href="/policies?policy=substance-abuse" className="drawer-nav-link sub-link" onClick={onClose}>
                       <span>• Substance Abuse Policy</span>
                     </Link>
                   </div>
                   <div className="drawer-nav-sub-item">
-                    <Link href="/images/policies-photo/pdfs/incident-reporting-and-crisis-management-policy.pdf" target="_blank" rel="noreferrer" className="drawer-nav-link sub-link" onClick={onClose}>
+                    <Link href="/policies?policy=incident" className="drawer-nav-link sub-link" onClick={onClose}>
                       <span>• Incident Reporting and Crisis Management</span>
                     </Link>
                   </div>
                   <div className="drawer-nav-sub-item">
-                    <Link href="/images/policies-photo/pdfs/Confidentiality-and-data-protection-policy.pdf" target="_blank" rel="noreferrer" className="drawer-nav-link sub-link" onClick={onClose}>
+                    <Link href="/policies?policy=confidentiality" className="drawer-nav-link sub-link" onClick={onClose}>
                       <span>• Confidentiality and Data Protection</span>
                     </Link>
                   </div>
                   <div className="drawer-nav-sub-item">
-                    <Link href="/images/policies-photo/pdfs/employment-affairs-and-workplace-conduct-policy.pdf" target="_blank" rel="noreferrer" className="drawer-nav-link sub-link" onClick={onClose}>
+                    <Link href="/policies?policy=employment" className="drawer-nav-link sub-link" onClick={onClose}>
                       <span>• Employment Affairs and Workplace Conduct</span>
                     </Link>
                   </div>
                   <div className="drawer-nav-sub-item">
-                    <Link href="/images/policies-photo/pdfs/procurement-and-supply-chain-policy.pdf" target="_blank" rel="noreferrer" className="drawer-nav-link sub-link" onClick={onClose}>
+                    <Link href="/policies?policy=procurement" className="drawer-nav-link sub-link" onClick={onClose}>
                       <span>• Procurement and Supply Chain</span>
                     </Link>
                   </div>
                   <div className="drawer-nav-sub-item">
-                    <Link href="/images/policies-photo/pdfs/quality-policy.pdf" target="_blank" rel="noreferrer" className="drawer-nav-link sub-link" onClick={onClose}>
+                    <Link href="/policies?policy=quality" className="drawer-nav-link sub-link" onClick={onClose}>
                       <span>• Quality Policy</span>
                     </Link>
                   </div>

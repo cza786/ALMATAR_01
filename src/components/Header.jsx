@@ -11,17 +11,17 @@ import { useSanityContent } from '@/sanity/lib/fetchData';
 import { getImageUrl } from '@/sanity/lib/image';
 
 const policyDocuments = [
-  { title: { en: 'Quality, Health, Safety & Environment (QHSE)', ar: 'الجودة والصحة والسلامة والبيئة (QHSE)' }, pdf: '/images/policies-photo/pdfs/health-safety-and-environment.pdf' },
-  { title: { en: 'Employee Security and Site Safety', ar: 'أمن الموظفين وسلامة الموقع' }, pdf: '/images/policies-photo/pdfs/employee-security-and-site-safety-policy.pdf' },
-  { title: { en: 'Anti-Bribery and Gifts Policy', ar: 'سياسة مكافحة الرشوة والهدايا' }, pdf: '/images/policies-photo/pdfs/anti-bribery-and-gifts-policy.pdf' },
-  { title: { en: 'Conflict of Interest Policy', ar: 'سياسة تعارض المصالح' }, pdf: '/images/policies-photo/pdfs/conflict-of-interest-policy.pdf' },
-  { title: { en: 'Vehicle and Equipment Usage', ar: 'استخدام المركبات والمعدات' }, pdf: '/images/policies-photo/pdfs/vehicle-and equipment-usage-policy.pdf' },
-  { title: { en: 'Substance Abuse Policy', ar: 'سياسة إساءة استخدام المواد' }, pdf: '/images/policies-photo/pdfs/substance-abuse-policy.pdf' },
-  { title: { en: 'Incident Reporting and Crisis Management', ar: 'الإبلاغ عن الحوادث وإدارة الأزمات' }, pdf: '/images/policies-photo/pdfs/incident-reporting-and-crisis-management-policy.pdf' },
-  { title: { en: 'Confidentiality and Data Protection', ar: 'السرية وحماية البيانات' }, pdf: '/images/policies-photo/pdfs/Confidentiality-and-data-protection-policy.pdf' },
-  { title: { en: 'Employment Affairs and Workplace Conduct', ar: 'شؤون الموظفين وسلوكيات مكان العمل' }, pdf: '/images/policies-photo/pdfs/employment-affairs-and-workplace-conduct-policy.pdf' },
-  { title: { en: 'Procurement and Supply Chain', ar: 'المشتريات وسلسلة التوريد' }, pdf: '/images/policies-photo/pdfs/procurement-and-supply-chain-policy.pdf' },
-  { title: { en: 'Quality Policy', ar: 'سياسة الجودة' }, pdf: '/images/policies-photo/pdfs/quality-policy.pdf' },
+  { title: { en: 'Quality, Health, Safety & Environment (QHSE)', ar: 'الجودة والصحة والسلامة والبيئة (QHSE)' }, image: 'qhse-policy' },
+  { title: { en: 'Employee Security and Site Safety', ar: 'أمن الموظفين وسلامة الموقع' }, image: 'employee-security-and-site-safety-policy' },
+  { title: { en: 'Anti-Bribery and Gifts Policy', ar: 'سياسة مكافحة الرشوة والهدايا' }, image: 'anti-bribery-and-gifts-policy' },
+  { title: { en: 'Conflict of Interest Policy', ar: 'سياسة تعارض المصالح' }, image: 'conflict-of-interest-policy' },
+  { title: { en: 'Vehicle and Equipment Usage', ar: 'استخدام المركبات والمعدات' }, image: 'vehicle-and-equipment-usage-policy' },
+  { title: { en: 'Substance Abuse Policy', ar: 'سياسة إساءة استخدام المواد' }, image: 'substance-abuse-policy' },
+  { title: { en: 'Incident Reporting and Crisis Management', ar: 'الإبلاغ عن الحوادث وإدارة الأزمات' }, image: 'incident-reporting-and-crisis-management-policy' },
+  { title: { en: 'Confidentiality and Data Protection', ar: 'السرية وحماية البيانات' }, image: 'confidentiality-and-data-protection-policy' },
+  { title: { en: 'Employment Affairs and Workplace Conduct', ar: 'شؤون الموظفين وسلوكيات مكان العمل' }, image: 'employment-affairs-and-workplace-conduct-policy' },
+  { title: { en: 'Procurement and Supply Chain', ar: 'المشتريات وسلسلة التوريد' }, image: 'procurement-and-supply-chain-policy' },
+  { title: { en: 'Quality Policy', ar: 'سياسة الجودة' }, image: 'quality-policy' },
 ];
 
 export default function Header({ onOpenDrawer }) {
@@ -130,7 +130,7 @@ export default function Header({ onOpenDrawer }) {
                   </div>
                   <div className="dropdown-links-list">
                     {policyDocuments.map((policy) => (
-                      <button key={policy.pdf} type="button" className="dropdown-link-item policy-dropdown-button" onClick={() => setSelectedPolicy(policy)}>
+                      <button key={policy.image} type="button" className="dropdown-link-item policy-dropdown-button" onClick={() => setSelectedPolicy(policy)}>
                         &#8226; {policy.title[lang] || policy.title.en}
                       </button>
                     ))}
@@ -311,7 +311,10 @@ export default function Header({ onOpenDrawer }) {
               <button type="button" className="policy-preview-close" onClick={() => setSelectedPolicy(null)} aria-label="Close policy preview">×</button>
             </div>
             <div className="policy-preview-document">
-              <iframe src={`${selectedPolicy.pdf}#page=${lang === 'ar' ? 1 : 2}&toolbar=0&navpanes=0`} title={selectedPolicy.title[lang] || selectedPolicy.title.en} />
+              <img
+                src={`/${lang === 'ar' ? 'arabic-documents' : 'English-documents'}/${selectedPolicy.image}-${lang}.jpeg`}
+                alt={selectedPolicy.title[lang] || selectedPolicy.title.en}
+              />
             </div>
 
 

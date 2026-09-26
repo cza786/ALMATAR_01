@@ -6720,6 +6720,7 @@ body.rtl-mode .dropdown-link-item:hover {
 .policies-pdf-frame { height: min(72vh, 700px); padding: 1rem; background: #515558; }
 .policies-pdf-frame object { width: 100%; height: 100%; display: block; border: 0; background: #fff; }
 .policies-pdf-frame iframe { width: 100%; height: 100%; display: block; border: 0; background: #fff; }
+.policies-pdf-frame img { width: 100%; height: 100%; display: block; object-fit: contain; background: #fff; }
 .policies-open-pdf { display: block; padding: .75rem 1.2rem .9rem; color: #17416d; font-size: .82rem; font-weight: 700; text-align: right; text-decoration: none; }
 .policies-open-pdf span { color: #bd831b; font-size: 1.1rem; }
 body.policies-modal-open { overflow: hidden; }
@@ -9785,7 +9786,7 @@ body.rtl-mode .home-intro-link span:last-child {
   width: min(690px, 100%);
   height: min(88vh, 720px);
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto minmax(0, 1fr);
   overflow: hidden;
   border-radius: 6px;
   background: #fff;
@@ -9830,12 +9831,17 @@ body.rtl-mode .home-intro-link span:last-child {
   min-height: 0;
 }
 
-.policy-preview-document iframe {
+.policy-preview-document iframe,
+.policy-preview-document img {
   width: 100%;
   height: 100%;
   display: block;
   border: 3px solid #17191a;
   background: #fff;
+}
+
+.policy-preview-document img {
+  object-fit: contain;
 }
 
 .policy-preview-footer {
