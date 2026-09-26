@@ -3,7 +3,6 @@
 import { Suspense, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useLanguage } from '@/context/LanguageContext';
-import CmsRoute from '@/components/CmsRoute';
 
 const policies = [
   { id: 'qhse', title: { en: 'Quality, Health, Safety & Environment (QHSE)', ar: 'الجودة والصحة والسلامة والبيئة (QHSE)' }, pdf: '/images/policies-photo/pdfs/health-safety-and-environment.pdf' },
@@ -117,5 +116,5 @@ function PoliciesContent() {
 }
 
 export default function PoliciesPage() {
-  return <CmsRoute pageKey="policies" fallback={<Suspense fallback={null}><PoliciesContent /></Suspense>} />;
+  return <Suspense fallback={null}><PoliciesContent /></Suspense>;
 }
